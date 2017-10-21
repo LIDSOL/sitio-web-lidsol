@@ -484,3 +484,13 @@ a:hover .fa-circle {
         background-attachment: scroll;
     }
 }
+
+#acomodador {
+  display: flex;
+  flex-direction: row column;
+}
+
+.imaagencartel {
+  flex-grow: 0.5;
+  height: 50%;
+}
