@@ -7,10 +7,6 @@ superuser: false
 
 role: Presidente del Capitulo Estudiantil de la ACM
 
-organizations:
-- name: Laboratorio de Investigación y desarollo de Software Libre
-  url: "#"
-
 bio: >
     Estudiante de Ingeniería en Computación interesado en lenguajes de
     programacion, hardware abierto, inteligencia artificial, seguridad
@@ -20,15 +16,12 @@ bio: >
 education:
   courses:
   - course: Ingeniería en Computación
-    institution: Facultad de Ingeniería
-  - course: Técnico en Computación
-    institution: Escuela Nacional Preparatoria 3
-    year: 2015
+    institution: Facultad de Ingeniería, UNAM
 
 social:
 - icon: envelope
   icon_pack: fas
-  link: 'mailto:emilio1625@gmail.com'  # For a direct email link, use "mailto:test@example.org".
+  link: 'http://scr.im/emilio1625'  # For a direct email link, use "mailto:test@example.org".
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/emilio1625
@@ -36,7 +29,7 @@ social:
   icon_pack: fab
   link: https://gitlab.com/emilio1625
 
-email: "emilio1625@gmail.com"
+#email: "emilio1625@gmail.com"
 
 user_groups:
   - Alumnos
