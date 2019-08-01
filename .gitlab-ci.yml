@@ -1,16 +1,20 @@
 # All available Hugo versions are listed here: https://gitlab.com/pages/hugo/container_registry
-image: registry.gitlab.com/pages/hugo:latest
+image: registry.gitlab.com/pages/hugo/hugo_extended:latest
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
 test:
+  before_script:
+  - apk add --update --no-cache git
   script:
   - hugo
   except:
   - master
 
 pages:
+  before_script:
+  - apk add --update --no-cache git
   script:
   - hugo
   artifacts:
