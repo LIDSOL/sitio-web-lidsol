@@ -31,7 +31,7 @@ education:
 social:
 - icon: envelope
   icon_pack: fas
-  link: "mailto:gwolf@gwolf.org"
+  link: "http://scr.im/47an"
 - icon: globe
   icon_pack: fas
   link: "https://gwolf.org"
@@ -39,7 +39,7 @@ social:
   icon_pack: fab
   link: "https://github.com/gwolf"
 
-email: "gwolf@gwolf.org"
+#email: "gwolf@gwolf.org"
 
 user_groups:
   - Responsables Académicos
