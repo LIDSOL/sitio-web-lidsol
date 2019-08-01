@@ -5,12 +5,13 @@ active = true
 weight = 68
 title = "Integrantes"
 
-user_groups = ["Responsables Académicos",
-               "Tesistas",
-               "Alumnos",
-               "Exalumnos",
-               #"Academicos",
-               #"Investigadores",
-               "Externos"
+user_groups = [
+    "Responsables Académicos",
+    #"Tesistas",
+    "Alumnos",
+    #"Exalumnos",
+    #"Academicos",
+    #"Investigadores",
+    #"Externos"
 ]
 +++

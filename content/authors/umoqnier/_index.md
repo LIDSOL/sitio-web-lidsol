@@ -35,7 +35,7 @@ social:
 #email: "gwolf@gwolf.org"
 
 user_groups:
-  - Tesistas
+  - Alumnos
 ---
 
 Me gusta programar en *[Object object]*, promuevo la privacidad y el anonimato,

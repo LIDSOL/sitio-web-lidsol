@@ -19,9 +19,8 @@ organizations:
 
 # Short bio (displayed in user profile at end of posts)
 bio: >
-    El LIDSOL es un laboratorio de la Facultad de Ingeniería de la UNAM,
-    establecido en 2001, formado por voluntarios, alumnos, ex-alumnos y
-    académicos interesados en el desarrollo de tecnologías libres y las
+    El LIDSOL es un laboratorio formado por voluntarios, alumnos, ex-alumnos
+    y académicos interesados en el desarrollo de tecnologías libres y las
     discusiones sobre su impacto en la sociedad.
 
 
