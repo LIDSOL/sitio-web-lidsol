@@ -15,7 +15,7 @@ subtitle = "En el LIDSOL encontrarás"
 [[feature]]
   icon = "user-lock"
   icon_pack = "fas"
-  name = "Privacidad y anonimato en la red"
+  name = "Seguridad Informática"
 
 [[feature]]
   icon = "open-access"
@@ -31,6 +31,7 @@ subtitle = "En el LIDSOL encontrarás"
 #icon = "acm"
 #  icon_pack = "ai"
 #  name = "UNAM-FI"
+
 [[feature]]
   icon = "language"
   icon_pack = "fas"

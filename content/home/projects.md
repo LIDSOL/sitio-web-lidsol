@@ -9,12 +9,12 @@ title = "Proyectos del Laboratorio"
   page_type = "project"
 
    [[content.filter_button]]
-    name = "All"
+    name = "Todos"
     tag = "*"
 
   [[content.filter_button]]
-    name = "Deep Learning"
-    tag = "Deep Learning"
+    name = "Privacidad"
+    tag = "privacidad"
 
   [[content.filter_button]]
     name = "Other"
