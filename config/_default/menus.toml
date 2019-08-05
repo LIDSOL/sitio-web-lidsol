@@ -1,0 +1,34 @@
+[[main]]
+  name = "Blog"
+  url = "/post"
+  weight = 10
+
+[[main]]
+  name = "Eventos"
+  url = "/talk"
+  weight = 20
+
+[[main]]
+  name = "Cursos"
+  url = "/courses"
+  weight = 30
+
+[[main]]
+  name = "Proyectos"
+  url = "/project"
+  weight = 40
+
+[[main]]
+  name = "Publicaciones"
+  url = "/publication"
+  weight = 50
+
+[[main]]
+  name = "Acerca de"
+  url = "/about"
+  weight = 60
+
+[[main]]
+  name = "Contacto"
+  url = "#contact"
+  weight = 70
