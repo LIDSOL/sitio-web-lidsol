@@ -1,4 +1,5 @@
 ---
+title: Cinthya Celina Tamayo González
 name: Cinthya Celina Tamayo González
 authors:
 - cinthya

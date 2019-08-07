@@ -1,4 +1,5 @@
 ---
+title: Luz Torres
 name: Luz Torres
 authors:
 - luztorres
