@@ -1,4 +1,4 @@
 +++
 type = "widget_page"
-title = "Acerca del LIDSOL"
+title = "Acerca de LIDSOL"
 +++
