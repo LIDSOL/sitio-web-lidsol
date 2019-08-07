@@ -6,7 +6,7 @@ variables:
 
 test:
   before_script:
-  - apk add --update --no-cache git
+  - apk add --quiet --update --no-cache git
   script:
   - hugo
   except:
@@ -14,7 +14,7 @@ test:
 
 pages:
   before_script:
-  - apk add --update --no-cache git
+  - apk add --quiet --update --no-cache git
   script:
   - hugo
   artifacts:
