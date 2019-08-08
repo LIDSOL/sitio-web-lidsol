@@ -58,7 +58,7 @@ time_format = "15:04"
 ############################
 
 # Enter contact details (optional). To hide a field, clear it to "".
-email = "lidsol@outlook.com"
+email = "lidsol@protonmail.com"
 # phone = "888 888 88 88" ## Cual es nuestro telefono?
 address = """Edificio P, Piso 2, P-213, Conjunto Sur (Anexo), Facultad de Ingenieria<br />
 Cto. Exterior 18, CU, 04510 Ciudad de México, CDMX"""
