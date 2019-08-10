@@ -14,7 +14,11 @@ role: Laboratorio de investigación
 
 # Organizations/Affiliations
 organizations:
-- name: Division de Ingeniería Electrica
+- name: Universidad Nacional Autónoma de México
+  url: "http://www.unam.mx/"
+- name: Facultad de Ingeniería - UNAM
+  url: "http://www.ingenieria.unam.mx/"
+- name: División de Ingeniería Electrica - Facultad de Ingeniería - UNAM
   url: "http://www.fi-b.unam.mx/"
 
 # Short bio (displayed in user profile at end of posts)
@@ -22,7 +26,6 @@ bio: >
     El LIDSOL es un laboratorio formado por voluntarios, alumnos, ex-alumnos
     y académicos interesados en el desarrollo de tecnologías libres y las
     discusiones sobre su impacto en la sociedad.
-
 
 #education:
 #  courses:
@@ -44,7 +47,8 @@ bio: >
 social:
 - icon: envelope
   icon_pack: fas
-  link: 'mailto:lidsol@protonmail.com'  # For a direct email link, use "mailto:test@example.org".
+  # For a direct email link, use "mailto:test@example.org".
+  link: 'mailto:lidsol@protonmail.com'
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/lidsol
@@ -54,6 +58,12 @@ social:
 - icon: gitlab
   icon_pack: fab
   link: https://gitlab.com/lidsol
+- icon: github
+  icon_pack: fab
+  link: https://github.com/lidsol
+- icon: linkedin
+  icon_pack: fab
+  link: https://linkedin.com/company/lidsol/
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment
 # the lines below.
@@ -90,3 +100,4 @@ El LIDSOL realiza múltiples actividades temporales y permanentes:
 -   Desarrollo de tecnologías libres y abiertas
 
 Además el LIDSOL es el hogar el Capítulo Estudiantil de la ACM UNAM-FI.
+
