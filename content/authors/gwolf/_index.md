@@ -1,4 +1,5 @@
 ---
+title: Gunnar Eyal Wolf Iszaevich
 name: Gunnar Eyal Wolf Iszaevich
 authors:
 - gwolf

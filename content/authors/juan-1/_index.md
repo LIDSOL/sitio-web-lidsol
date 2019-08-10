@@ -1,4 +1,5 @@
 ---
+title: Juan Flores
 name: Juan Flores
 authors:
 - juan-1

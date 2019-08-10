@@ -1,4 +1,5 @@
 ---
+title: Diego Barriga
 name: Diego Barriga
 authors:
 - umoqnier

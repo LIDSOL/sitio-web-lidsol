@@ -1,5 +1,6 @@
 ---
 name: Paul Aguilar (Æsahættr Penserbjorne)
+title: Paul Aguilar (Æsahættr Penserbjorne)
 authors:
 - penserbjorne
 
