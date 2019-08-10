@@ -11,11 +11,11 @@ role: Mentor académico
 
 organizations:
 - name: Laboratorio de Investigación y Desarrollo de Software Libre - LIDSoL
-  url: "http://lidsol.fi-b.unam.mx/"
+  url: http://lidsol.fi-b.unam.mx/
 - name: Capítulo de la ACM - Facultad de Ingeniería - UNAM
-  url: "https://www.acm.org/"
+  url: https://www.acm.org/
 - name: GIAC Advisory Board
-  url: "https://www.giac.org/certified-professionals/advisory-board"
+  url: https://www.giac.org/certified-professionals/advisory-board
 
 bio: >
     Soy un ingeniero en computación con más de 10 años de experiencia y un
@@ -27,9 +27,12 @@ education:
   courses:
   - course: Ingeniería en computación
     institution: Facultad de Ingeniería
+  - course: Plan de Becarios de Seguridad en Cómputo
+    institution: Coordinación de Seguridad de la Información / UNAM-CERT
+    url: https://www.seguridad.unam.mx/becarios
   - course: Certificaciones GCUX y GWEB
     institution: SANS Institute
-    url: "https://www.youracclaim.com/user/tonejito"
+    url: https://www.youracclaim.com/user/tonejito
 
 social:
 - icon: twitter
