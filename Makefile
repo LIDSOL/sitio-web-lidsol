@@ -7,6 +7,7 @@ TEST_SCRIPT=test.sh
 test:	${TEST_SCRIPT}
 	docker run -it \
 	  -p ${PORT}:${PORT} \
-	  -v "$(shell pwd)/${TEST_SCRIPT}:${WORKDIR}/${TEST_SCRIPT}" \
+	  -v "$(shell pwd):${WORKDIR}" \
 	  alpine:latest \
 	  ${WORKDIR}/${TEST_SCRIPT}
+

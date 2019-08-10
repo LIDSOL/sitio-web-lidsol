@@ -2,9 +2,9 @@
 
 apk add --quiet --update --no-cache git hugo
 
-git clone https://gitlab.com/LIDSoL/lidsol.gitlab.io.git /opt
+test -e /srv/.git || git clone https://gitlab.com/LIDSoL/lidsol.gitlab.io.git /srv
 
-cd /opt
+cd /srv
 echo init update | xargs -r -t -n 1 git submodule
 
 hugo server --verbose --watch --bind=0.0.0.0 --port=1313 
