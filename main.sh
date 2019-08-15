@@ -1,11 +1,17 @@
-#!/bin/sh -vxe
+#!/bin/sh -ve
 
-apk add --quiet --update --no-cache git hugo
+WORKDIR=/srv
+GIT_REPO=https://gitlab.com/LIDSoL/lidsol.gitlab.io.git
 
-test -e /srv/.git || git clone https://gitlab.com/LIDSoL/lidsol.gitlab.io.git /srv
+apk add --quiet --update --no-cache git make hugo
 
-cd /srv
-echo init update | xargs -r -t -n 1 git submodule
+test -e ${WORKDIR}/.git || \
+  git clone ${GIT_REPO} ${WORKDIR}
 
-hugo server --verbose --watch --bind=0.0.0.0 --port=1313 
+if [ -e ${WORKDIR}/Makefile ]
+then
+  make init run -C ${WORKDIR}
+else
+  ${SHELL}
+fi
 
