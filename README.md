@@ -43,26 +43,17 @@ $ hugo version | grep extended
 Hugo Static Site Generator v0.55.6/extended linux/amd64 BuildDate: unknown
 ```
 
-Clona el tema del sitio usando git submodule
+Clona el tema del sitio utilizando `make`:
 
 ```shell
-$ git submodule init
-$ git submodule update
+$ make init
 ```
 
->>>
-También puedes utilizar el `Makefile` incluido para inicializar el ambiente y correr `make init`
->>>
-
-Ahora puedes probar el sitio ejecutando hugo:
+Ahora puedes probar el sitio ejecutando el siguiente comando:
 
 ```shell
-$ hugo server --verbose --watch --bind=0.0.0.0 --port=1313 --appendPort=false --baseURL="/" --buildDrafts --disableFastRender
+$ make run
 ```
-
->>>
-Otra opción es correr `make run`
->>>
 
 Espera a que se construya el ambiente de prueba y que diga que el
 servidor web esta listo para recibir peticiones:
