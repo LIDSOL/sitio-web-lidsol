@@ -19,12 +19,12 @@ education:
     institution: Facultad de Ingeniería, UNAM
   - course: Introducción a la Critografía 
     institution: LIDSOL, UNAM
-  - course: Spring Master 
+  - course: Curso para Spring Master 
     institution: Dev.f
   - course: Backend con Django
     institution: Dev.f
-  - course: Programa de Becarios
-    institution: Unidad de Cómputo Académico, Facultad de Ingeniería, UNAM
+  - course: Programa de Becarios de la Unidad de Cómputo Académico
+    institution: Facultad de Ingeniería, UNAM
 
 social:
 - icon: envelope
