@@ -17,6 +17,14 @@ education:
   courses:
   - course: Ingeniería en Computación
     institution: Facultad de Ingeniería, UNAM
+  - course: Introducción a la Critografía 
+    institution: LIDSOL, UNAM
+  - course: Curso para Spring Master 
+    institution: Dev.f
+  - course: Backend con Django
+    institution: Dev.f
+  - course: Programa de Becarios de la Unidad de Cómputo Académico
+    institution: Facultad de Ingeniería, UNAM
 
 social:
 - icon: envelope
@@ -27,18 +35,16 @@ social:
   link: "https://twitter.com/umoqnier"
 - icon: github
   icon_pack: fab
-  link: "https://gitlab.com/umoqnier"
+  link: "https://github.com/umoqnier"
 - icon: gitlab
   icon_pack: fab
-  link: "https://github.com/umoqnier"
+  link: "https://gitlab.com/umoqnier"
 
-
-#email: "gwolf@gwolf.org"
 
 user_groups:
   - Alumnos
 ---
 
-Me gusta programar en *[Object object]*, promuevo la privacidad y el anonimato,
+Me gusta programar en *None*, promuevo la privacidad y el anonimato,
 hago *&lt;undefined&gt;* y soy músico de closet.
 
