@@ -9,9 +9,9 @@ Software Libre (LIDSOL).
 
 ### Utilizando `docker`
 
-Puedes visualizar el sitio con `hugo` utilizando docker si ejecutas
-el siguiente comando. Asegúrate de tener `make` y `docker` instalados
-en tu equipo:
+Puedes visualizar el sitio con `hugo` corriendo sobre `alpine` si
+ejecutas el siguiente comando. Asegúrate de tener `make` y `docker`
+instalados en tu equipo:
 
 ```shell
 $ make test
@@ -32,7 +32,7 @@ Visita <http://localhost:1313/> para ver el sitio
 Clona este repositorio usando `git`:
 
 ```shell
-git clone https://gitlab.com/lidsol/lidsol.gitlab.io.git
+$ git clone https://gitlab.com/lidsol/lidsol.gitlab.io.git
 ```
 
 Asegúrate de tener la version *extended* de Hugo instalado. Puedes
@@ -51,17 +51,13 @@ $ git submodule update
 ```
 
 >>>
-También puedes utilizar el `Makefile` incluido para inicializar el ambiente:
-
-```shell
-$ make init
-```
+También puedes utilizar el `Makefile` incluido para inicializar el ambiente y correr `make init`
 >>>
 
 Ahora puedes probar el sitio ejecutando hugo:
 
 ```shell
-hugo server --verbose --watch --bind=0.0.0.0 --port=1313 --appendPort=false --baseURL="/" --buildDrafts --disableFastRender
+$ hugo server --verbose --watch --bind=0.0.0.0 --port=1313 --appendPort=false --baseURL="/" --buildDrafts --disableFastRender
 ```
 
 >>>
@@ -84,5 +80,5 @@ Lee la documentación de [hugo](https://gohugo.io/getting-started) y del
 [tema](https://sourcethemes.com/academic/docs).
 
 Haz un fork de este repositorio, realiza tu modificación y abre un
-_merge request_.
+_merge request_ a la rama `stage`.
 
