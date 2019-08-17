@@ -64,8 +64,10 @@ address = """Edificio P, Piso 2, P-213, Conjunto Sur (Anexo), Facultad de Ingeni
 Cto. Exterior 18, CU, 04510 Ciudad de México, CDMX"""
 
 # Office hours: use `<br>` to insert a line break, or set to "" to remove office hours
-office_hours = """Monday 10:00 to 13:00<br>
-                  Wednesday 09:00 to 10:00"""
+office_hours = """Lunes: 9:00 - 20:00<br>
+                  Martes: 12:00 - 20:00<br>
+                  Mie - Jue: 9:00 - 20:00<br>
+                  Viernes: 9:00 - 15:00"""
 
 # Enter an optional link for booking appointments (e.g. calendly.com).
 #appointment_url = "https://calendly.com"
