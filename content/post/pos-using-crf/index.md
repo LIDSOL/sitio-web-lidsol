@@ -1,70 +1,77 @@
 ---
-# Documentation: https://sourcethemes.com/academic/docs/managing-content/
-
 title: "Part Of Speech tagging usando Conditional Random Fields"
 subtitle: "Una brevísima introducción al etiquetado POS usando aprendizaje estructurado con CRFs"
-summary: ""
-authors: 
+summary: "Una brevísima introducción al etiquetado POS usando aprendizaje estructurado con CRFs"
+authors:
 - umoqnier
 tags: ["nlp", "crf", "pos"]
 categories: []
-date: 2019-08-14T13:40:03-05:00
-lastmod: 2019-08-14T13:40:03-05:00
-featured: false
-draft: false
+math: true
 
-# Featured image
-# To use, add an image named `featured.jpg/png` to your page's folder.
-# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
-  caption: ""
-  focal_point: ""
   preview_only: false
-
-# Projects (optional).
-#   Associate this post with one or more of your projects.
-#   Simply enter your project's folder or file name without extension.
-#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
-#   Otherwise, set `projects = []`.
-projects: []
 ---
 
 ## Introducción
 
 ### Part of Speech tagging
-En lingüistica computacional el etiquetado *Part of Speech (POS)* hace referencia al proceso de asignar a cada palabra de un texto su categoría gramatical. Para el correcto etiquetado se hace uso de la definición de la palabra y del contexto al que pertenece. La complejidad de esta tarea aumenta en lenguas naturales ya que las palabras pueden tener distintas categorías gramaticales en función del contexto en el que aparecen. Por ejemplo, la palabra 'dado' puede referirse a un nombre singular o a una forma del verbo 'dar'.
 
-En esté artículo se creará un etiquetador POS usando el método probabilístico llamado *Conditional Random Fields (CRFs)*. Los CRFs tratan de modelas una distribución condicional de probabilidad `P(y|x)`. Además del etiquetado POS, los CRFs se pueden utilizar para otros tipos de etiquetado de secuencias como Named Entity Recognisers (NER). 
+En lingüistica computacional el etiquetado *Part of Speech (POS)* hace
+referencia al proceso de asignar a cada palabra de un texto su categoría
+gramatical. Para el correcto etiquetado se hace uso de la definición de la
+palabra y del contexto al que pertenece. La complejidad de esta tarea aumenta
+en lenguas naturales ya que las palabras pueden tener distintas categorías
+gramaticales en función del contexto en el que aparecen. Por ejemplo, la
+palabra 'dado' puede referirse a un nombre singular o a una forma del verbo
+'dar'.
+
+En este artículo se creará un etiquetador POS usando el método
+probabilístico llamado *Conditional Random Fields (CRFs)*. Los CRFs tratan de
+modelar una distribución condicional de probabilidad $P(y\|x)$. Además del
+etiquetado POS, los CRFs se pueden utilizar para otros tipos de etiquetado
+de secuencias como Named Entity Recognizers (NER).
 
 ### Conditional Random Fields
-En CRFs, la entrada es un conjunto de *features* (números reales) derivados de las llamadas *feature functions* . Con los pesos asociados a las *features*, que son aprendidos, junto con la etiqueta anterior se buscan predecir la etiqueta siguiente. Los pesos de las diferentes *feature functions* seran determinados de tal manera que la probabilidad de las etiquetas en los datos de entrenamiento sea maximizada.
 
-Un conjunto de *feature functions* es definido para extraer *features* para cada palabra en una oración. Algunos ejemplos de *feature functions* son los siguientes:
+En CRFs, la entrada es un conjunto de *features* (números reales) derivados de
+las llamadas *feature functions* . Con los pesos asociados a las *features*,
+que son aprendidos, junto con la etiqueta anterior se buscan predecir la
+etiqueta siguiente. Los pesos de las diferentes *feature functions* serán
+determinados de tal manera que la probabilidad de las etiquetas en los datos
+de entrenamiento sea maximizada.
 
+Un conjunto de *feature functions* es definido para extraer *features*
+para cada palabra en una oración. Algunos ejemplos de *feature functions*
+son los siguientes:
 
 *  Si la primera letra de la palabra es mayúscula
 *  Cuál es el sufijo y prefijo de la palabra
 *  Es la primera o la última palabra de la oración
 *  Es un número
 
-Este conjunto de características es llamado **State Features**. Tambien, se pasan las etiquetas de las palabras previas y la etiqueta de la palabra actual para aprender los pesos. CRF tratará de determinar los pesos de diferentes *feature functions* que maximizarán la probabilidad de las etiquetas de los datos de entrenamiento. La *feature functions* que depende de la etiqueta de la palabra previa es llamada **Transition Feature**.
+Este conjunto de características es llamado **State Features**. También,
+se pasan las etiquetas de las palabras previas y la etiqueta de la palabra
+actual para aprender los pesos. CRF tratará de determinar los pesos de
+diferentes *feature functions* que maximizarán la probabilidad de las
+etiquetas de los datos de entrenamiento. La *feature functions* que depende
+de la etiqueta de la palabra previa es llamada **Transition Feature**.
 
-A continuación se mostrará cómo utilizar CRF para la identificación de las etiquetas POS en `python`
+A continuación se mostrará cómo utilizar CRF para la identificación de
+las etiquetas POS en `python`.
 
 ## Preparando el ambiente de desarrollo
 
 ### Instalando bibliotecas para usar CRFs
 
-Se requieren las bibliotecas de `nltk`, `sklearn` y `sklearn-crfsuite`
-
+Se requieren las bibliotecas de `nltk`, `sklearn` y `sklearn-crfsuite`.
 
 ```python
 !pip install nltk
 !pip install sklearn
 !pip install sklearn-crfsuite
 ```
-### Descargando dataset
 
+### Descargando dataset
 
 ```python
 import nltk
@@ -76,7 +83,10 @@ nltk.download('treebank')
 
 ## ¿Qué contiene el dataset?
 
-Se utilizará el dataset de *NLTK Treebank* con el *Universal Tagset*. El [Universal Tagset de NLTK](https://www.nltk.org/_modules/nltk/tag/mapping.html) comprende 12 clases de etiquetas que son las que se listan acontinuación. Las etiquetas y las palabras con en *inglés*
+Se utilizará el dataset de *NLTK Treebank* con el *Universal Tagset*. El
+[Universal Tagset de NLTK](https://www.nltk.org/_modules/nltk/tag/mapping.html)
+comprende 12 clases de etiquetas que son las que se listan a continuación. Las
+etiquetas y las palabras con en *inglés*.
 
 * Verbo - *Verb*
 * Sustantivo - *Noun*
@@ -91,8 +101,8 @@ Se utilizará el dataset de *NLTK Treebank* con el *Universal Tagset*. El [Unive
 * Otro/Palabras extranjeras - *Other/Fereign Words*
 * Puntuaciones - *Punctuations*
 
-Este dataset tiene 3,914 sentencias etiquetadas y un vocabulario (palabras no repetidas) de 12,408 palabras.
-
+Este dataset tiene 3,914 sentencias etiquetadas y un vocabulario (palabras
+no repetidas) de 12,408 palabras.
 
 ```python
 tagged_sentence = nltk.corpus.treebank.tagged_sents(tagset='universal')
@@ -103,18 +113,18 @@ vocab=set([word for word,tag in tagged_words])
 print("Vocabulario del Corpus: ", len(vocab))
 tags=set([tag for word,tag in tagged_words])
 print("Número de etiquetas del Corpus: ", len(tags))
-print("\nEjemplo de sentencia etiquetada:") 
+print("\nEjemplo de sentencia etiquetada:")
 print("'" + " ".join([t[0] for t in tagged_sentence[0]]) + "'")
 for t in tagged_sentence[0]:
-  print('{:>12} -> {:>5}'.format(t[0], t[1])) 
+  print('{:>12} -> {:>5}'.format(t[0], t[1]))
 ```
 
     Número de sentencias etiquetadas:  3914
     Total de palabras etiquetadas:  100676
     Vocabulario del Corpus:  12408
     Número de etiquetas del Corpus:  12
-    
-    Ejemplo de sentencia etiquetada: 
+
+    Ejemplo de sentencia etiquetada:
     'Pierre Vinken , 61 years old , will join the board as a nonexecutive director Nov. 29 .'
           Pierre ->  NOUN
           Vinken ->  NOUN
@@ -135,15 +145,12 @@ for t in tagged_sentence[0]:
               29 ->   NUM
                . ->     .
 
-
-
 ## Preprocesamiento de datos
 
 ### Separando el conjunto de entrenamiento y de test
-Se separará el conjunto de entrenamiento y el de test con una relación 80:20 siguiendo el [principio de pareto](https://en.wikipedia.org/wiki/Pareto_principle). 
-
-
-
+Se separará el conjunto de entrenamiento y el de test con una relación
+80:20 siguiendo el
+[principio de pareto](https://en.wikipedia.org/wiki/Pareto_principle).
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -160,20 +167,26 @@ print("Número de sentencias en los datos de test ", len(test_set))
 
 
 ### Creando las *feature functions*
-Para la correcta identificación de las etiquetas POS, se tiene que crear una función que retorne un diccionario con las siguientes características para cada palabra en una sentencia: 
 
+Para la correcta identificación de las etiquetas POS, se tiene que crear
+una función que retorne un diccionario con las siguientes características
+para cada palabra en una sentencia:
 
-*   ¿La primera letra de la palabra está en mayúsculas? (Generalmente los nombres propios tienen la primer letra en mayúsculas
+*   ¿La primera letra de la palabra está en mayúsculas? (Generalmente
+    los nombres propios tienen la primer letra en mayúsculas
 *   ¿Es la primer palabra de la sentencia?
 *   ¿Es la última palabra de la sentencia?
 *   ¿Contiene la palabra números y letras?
-*   ¿La palabra contiene guiones? (generalmente en inglés, los **adjetivos** contienen guiones -. Por ejemplo, las palabras  fast-growing y slow-moving)
+*   ¿La palabra contiene guiones? (generalmente en inglés, los **adjetivos**
+    contienen guiones -. Por ejemplo, las palabras  fast-growing y slow-moving)
 *   ¿Está la palabra completamente en mayúsculas?
 *   ¿Es un número?
-*   ¿Cuáles son los primeros cuatro sufijos y prefijos? (Palabras en ingles que terminan con "ed" son generalmente **verbos**, palabras que terminan con "ous" como *disastrous* con **adjetivos**)
+*   ¿Cuáles son los primeros cuatro sufijos y prefijos? (Palabras en ingles
+    que terminan con "ed" son generalmente **verbos**, palabras que terminan con
+    "ous" como *disastrous* con **adjetivos**)
 
-La *feature function* es definida abajo y se extraen las características para el entrenamiento y el test.
-
+La *feature function* es definida abajo y se extraen las características
+para el entrenamiento y el test.
 
 ```python
 import re
@@ -203,13 +216,13 @@ def features(sentence, index):
         'suffix_2': sentence[index][-2:],
         'suffix_3': sentence[index][-3:],
         'suffix_4': sentence[index][-4:],
-        'word_has_hyphen': 1 if '-' in sentence[index] else 0  
+        'word_has_hyphen': 1 if '-' in sentence[index] else 0
          }
-  
-  
+
+
 def untag(sentence):
     """
-    :param list sentence: Lista de palabras con etiquetas de la forma 
+    :param list sentence: Lista de palabras con etiquetas de la forma
     [(w1, t1), (w2, t2), ...]
     :return: Una lista de palabras sin etiquetas
     """
@@ -218,7 +231,7 @@ def untag(sentence):
 
 def prepare_data(tagged_sentences):
     """
-    :params list tagged_sentences: Lista de palabras con etiquetas de la forma 
+    :params list tagged_sentences: Lista de palabras con etiquetas de la forma
     [(w1, t1), (w2, t2), ...]
     :return list X: Diccionarios con las features para el modelo
     :return list y: Etiquetas por sentencias
@@ -233,14 +246,12 @@ def prepare_data(tagged_sentences):
 
 ### Creación de entrenamiento y test para modelado
 
-
 ```python
 X_train, y_train = prepare_data(train_set)
 X_test, y_test = prepare_data(test_set)
 ```
 
 Viendo las primeras cinco palabras de la primera sentencia
-
 
 ```python
 X_train[0][:5]
@@ -331,25 +342,24 @@ X_train[0][:5]
       'suffix_4': 'and',
       'word_has_hyphen': 0}]
 
-
-
 Primeras cinco etiquetas de la primera sentencia
-
 
 ```python
 y_train[0][:5]
 ```
 
-
-
-
     ['ADP', 'NOUN', 'NOUN', 'NOUN', 'CONJ']
 
-
-
 ## Configurando el modelo de CRF
-Terminado el preprocesamiento del dataset se usará la biblioteca de `sklearn_crfsuite` para la creación del modelo. El modelo es optimizado por el **Gradiente Decendente** usando el método de **[L-BFGS](https://en.wikipedia.org/wiki/Limited-memory_BFGS)** con  regularización **[Elastic Net L1 + L2](https://en.wikipedia.org/wiki/Elastic_net_regularization)**. Se configurará el modelo para generar todas las transiciones posibles de etiquetas, incluso aquellas que no ocurren en los datos de entrenamiento.
 
+Terminado el preprocesamiento del dataset se usará la biblioteca
+de `sklearn_crfsuite` para la creación del modelo. El modelo es
+optimizado por el **Gradiente Descendente** usando el método de
+**[L-BFGS](https://en.wikipedia.org/wiki/Limited-memory_BFGS)**
+con  regularización
+**[Elastic Net L1 + L2](https://en.wikipedia.org/wiki/Elastic_net_regularization)**.
+Se configurará el modelo para generar todas las transiciones posibles de
+etiquetas, incluso aquellas que no ocurren en los datos de entrenamiento.
 
 ```python
 from sklearn_crfsuite import CRF
@@ -364,13 +374,9 @@ crf = CRF(
 
 ## Entrenamiento
 
-
 ```python
 crf.fit(X_train, y_train)
 ```
-
-
-
 
     CRF(algorithm='lbfgs', all_possible_states=None, all_possible_transitions=True,
         averaging=None, c=None, c1=0.01, c2=0.1, calibration_candidates=None,
@@ -380,22 +386,32 @@ crf.fit(X_train, y_train)
         max_linesearch=None, min_freq=None, model_filename=None, num_memories=None,
         pa_type=None, period=None, trainer_cls=None, variance=None, verbose=False)
 
-
-
 ## Evaluación
-Se utilizará *F-score* para evaluar el modélo de CRF. *F-score*  es un balance entre [*Precision y Recall*](https://en.wikipedia.org/wiki/Precision_and_recall) y está definido como:
+
+Se utilizará *F-score* para evaluar el modelo de CRF. *F-score* es un
+balance entre
+[*Precision y Recall*](https://en.wikipedia.org/wiki/Precision_and_recall)
+y está definido como:
+
 ```
 f-score = 2*((precision * recall) / (precision + recall))
 ```
-*Precision* está definido como el número de  **verdaderos positivos (TP)** entre el **número total de prediciones positivas (TP + FP)**. Tambien es conocido como *Positive Predictive Value (PPV)*. 
+
+*Precision* está definido como el número de  **verdaderos positivos (TP)**
+entre el **número total de predicciones positivas (TP + FP)**. También es
+conocido como *Positive Predictive Value (PPV)*.
+
 ```
 presicion = TP / (TP + FP)
 ```
-*Recall* está definido como el número total de **verdaderos positivos (TP)** entre el total de **valores de clase postivos (TP + FN)**. Tambien es conocido como *Sensitivity* o *True Positive Rate*.
+
+*Recall* está definido como el número total de **verdaderos positivos
+(TP)** entre el total de **valores de clase postivos (TP + FN)**. También
+es conocido como *Sensitivity* o *True Positive Rate*.
+
 ```
 recall = TP / (TP + FN)
 ```
-
 
 ```python
 from sklearn_crfsuite import metrics
@@ -404,22 +420,22 @@ from sklearn_crfsuite import scorers
 
 y_pred = crf.predict(X_test)
 print("F-score del test data ")
-print(metrics.flat_f1_score(y_test, y_pred, average='weighted', 
+print(metrics.flat_f1_score(y_test, y_pred, average='weighted',
                             labels=crf.classes_))
 print("F-score en datos de Entrenamiento ")
 y_pred_train = crf.predict(X_train)
-print(metrics.flat_f1_score(y_train, y_pred_train, average='weighted', 
+print(metrics.flat_f1_score(y_train, y_pred_train, average='weighted',
                             labels=crf.classes_))
 ```
-
-    F-score del test data 
+    F-score del test data
     0.9738471726864286
-    F-score en datos de Entrenamiento 
+    F-score en datos de Entrenamiento
     0.9963402924209424
 
-
-Del puntaje de clase del CRF, se observa que para predecir Adjetivos *(ADJ)*, los resultados de la evaluación, *precision*, *recall* y *F-score*, son bajos. Esto quiere decir que **se deben agregar más *CRF feature functions* relacionadas con adjetivos**.
-
+Del puntaje de clase del CRF, se observa que para predecir Adjetivos *(ADJ)*,
+los resultados de la evaluación, *precision*, *recall* y *F-score*, son
+bajos. Esto quiere decir que **se deben agregar más *CRF feature functions*
+relacionadas con adjetivos**.
 
 ```python
 print(metrics.flat_classification_report(
@@ -428,7 +444,7 @@ print(metrics.flat_classification_report(
 ```
 
                   precision    recall  f1-score   support
-    
+
              ADP      0.979     0.985     0.982      1869
             NOUN      0.966     0.977     0.972      5606
             CONJ      0.994     0.994     0.994       480
@@ -441,15 +457,15 @@ print(metrics.flat_classification_report(
              ADV      0.927     0.909     0.918       585
             PRON      0.998     0.998     0.998       562
              PRT      0.979     0.982     0.980       614
-    
+
         accuracy                          0.974     19710
        macro avg      0.975     0.972     0.974     19710
     weighted avg      0.974     0.974     0.974     19710
-    
 
-
-Se observan el total de *Transition Features* y el top 20 de las más probables. Por ejemplo, la primera transición muestra que **si se tiene un Adjetivo es muy probable la siguiente palabra será un sustantivo, un verbo es mas probable que sea seguido por una partícula (como *TO*)**
-
+Se observan el total de *Transition Features* y el top 20 de las más
+probables. Por ejemplo, la primera transición muestra que **si se tiene un
+Adjetivo es muy probable la siguiente palabra será un sustantivo, un verbo
+es mas probable que sea seguido por una partícula (como *TO*)**.
 
 ```python
 from collections import Counter
@@ -483,10 +499,12 @@ Counter(crf.transition_features_).most_common(20)
      (('NOUN', 'ADV'), 1.380086),
      (('ADV', 'ADV'), 1.301282)]
 
-
-
-Tambien se observan el total de *state features* y las más comúnes. Se observa que cuando las palabras inmediatamente anteriores son *will* o *would*, es probable que sean un verbo., o si una palabra termina con *ed*, probablemente será un verbo. A su vez, si una palabra contiene un guión, la probabilidad de que sea un adjetivo aumenta. Por último, si la palabra tiene la primera letra ne mayúsculas, probablemente será un sustantivo.
-
+También se observan el total de *state features* y las más comunes. Se
+observa que cuando las palabras inmediatamente anteriores son *will* o
+*would*, es probable que sean un verbo, o si una palabra termina con *ed*,
+probablemente será un verbo. A su vez, si una palabra contiene un guión,
+la probabilidad de que sea un adjetivo aumenta. Por último, si la palabra
+tiene la primera letra en mayúsculas, probablemente será un sustantivo.
 
 ```python
 print("Total de State Features ",len(crf.state_features_))
@@ -515,10 +533,18 @@ Counter(crf.state_features_).most_common(20)
      (('suffix_4:food', 'NOUN'), 4.116688),
      (('suffix_2:ed', 'VERB'), 4.070659)]
 
-
-
 ## Conclusiones
-En este artículo, se aprendió a utilizar CRF para construir un etiquetador POS para el inglés. Con un enfoque similar se puede utilizar para crear NERs usando CRF. Las *feature functions* son determinantes para mejorar el rendimiento del modelo y en ese sentido es conveniente identificar cuales son más adecuadas acorde con la lengua que se analiza. Por ejemplo, puede ser conveniente ver las dos últimas palabras de la sentencia en lugar de solo la previa, o las dos siguientes, etc. Este artículo está fuertemente basado en el [artículo](https://medium.com/analytics-vidhya/pos-tagging-using-conditional-random-fields-92077e5eaa31) de [Aiswarya Ramachandran](https://medium.com/@aiswaryar)
+
+En este artículo, se aprendió a utilizar CRF para construir un etiquetador
+POS para el inglés. Con un enfoque similar se puede utilizar para crear
+NERs usando CRF. Las *feature functions* son determinantes para mejorar el
+rendimiento del modelo y en ese sentido es conveniente identificar cuales
+son más adecuadas acorde con la lengua que se analiza. Por ejemplo, puede
+ser conveniente ver las dos últimas palabras de la sentencia en lugar de
+solo la previa, o las dos siguientes, etc. Este artículo está fuertemente
+basado en el
+[artículo](https://medium.com/analytics-vidhya/pos-tagging-using-conditional-random-fields-92077e5eaa31)
+de [Aiswarya Ramachandran](https://medium.com/@aiswaryar).
 
 ## Referencias
 * [Universal Tagset de NLTK](https://www.nltk.org/_modules/nltk/tag/mapping.html)
@@ -529,5 +555,7 @@ En este artículo, se aprendió a utilizar CRF para construir un etiquetador POS
 * [POS using conditional random fields](https://medium.com/analytics-vidhya/pos-tagging-using-conditional-random-fields-92077e5eaa31)
 
 ---
-**`Este es el primer artículo de una serie recién nacida. Cualquier recomendación, 
-comentario o felicitación es bien recibida. Tus comentarios nos ayudan a mejorar`**
+
+**`Este es el primer artículo de una serie recién nacida. Cualquier
+recomendación, comentario o felicitación es bien recibida. Tus comentarios
+nos ayudan a mejorar`**

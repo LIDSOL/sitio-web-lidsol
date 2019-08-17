@@ -78,7 +78,7 @@ contact_links = [
   {icon = "twitter", icon_pack = "fab", name = "Síguenos en Twitter", link = "https://twitter.com/lidsol"},
   {icon = "facebook-f", icon_pack = "fab", name = "Danos like", link = "https://facebook.com/lidsol.unam"},
   {icon = "gitlab", icon_pack = "fab", name = "Ve nuestro código", link = "https://gitlab.com/lidsol"},
-   {icon = "telegram", icon_pack = "fab", name = "Unete al grupo de telegram", link = "https://telegram.me/lidsol"},
+   {icon = "telegram", icon_pack = "fab", name = "Únete al grupo de Telegram", link = "https://telegram.me/lidsol"},
   ]
 
 # Display a map.
