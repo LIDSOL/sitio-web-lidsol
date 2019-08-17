@@ -2,14 +2,12 @@
 title: Alexis Ríos
 name: Alexis Ríos
 authors:
-- alexizrm
+- alexisrm
 
 superuser: false
 
-role:
-
 bio: >
-    Estudiante de ingeniería en computación, con intereses enfocados en el 
+    Estudiante de ingeniería en computación, con intereses enfocados en el
     desarrollo de aplicaciones móviles y seguridad informática
 
 education:
@@ -20,11 +18,11 @@ education:
 social:
 - icon: envelope
   icon_pack: fas
-  link: 'mailto:soir_0907@hotmail.com'  # For a direct email link, use "mailto:test@example.org".
+  link: 'mailto:soir_0907@hotmail.com'
 
 user_groups:
   - Alumnos
 ---
 
-Estudiante de ingeniería en computación, con intereses enfocados en el 
+Estudiante de ingeniería en computación, con intereses enfocados en el
 desarrollo de aplicaciones móviles y seguridad informática
