@@ -10,7 +10,7 @@ organizations:
 - name: Seguridad Digital en SocialTIC
   url: "https://socialtic.org/"
 - name: Comunidad Elotl
-  url: "https://www.facebook.com/comunidadelotl/"
+  url: "https://elotl.mx/"
 
 bio: >
   Interesado en tecnologías libres, inteligencia artificial, seguridad
@@ -19,22 +19,28 @@ bio: >
 
 education:
   courses:
+  - course: Tecnólogo en Informática y Computación
+    institution: CETI Colomos
   - course: Ingeniería en Computación
     institution: Facultad de Ingeniería, UNAM
   - course: Matemáticas
     institution: Facultad de Ciencias, UNAM
 
-
 social:
-- icon: envelope
-  icon_pack: fas
-  link: "http://scr.im/47an"
-- icon: globe
-  icon_pack: fas
-  link: "https://gwolf.org"
-- icon: github
-  icon_pack: fab
-  link: "https://github.com/gwolf"
+  - icon: twitter
+    icon_pack: fab
+    link: https://twitter.com/_penserbjorne
+  - icon: gitlab
+    icon_pack: fab
+    link: https://gitlab.com/penserbjorne
+  - icon: github
+    icon_pack: fab
+    link: https://github.com/penserbjorne
+  - icon: linkedin
+    icon_pack: fab
+    link: https://linkedin.com/in/penserbjorne
+
+email: "paul.aguilar.enriquez@hotmail.com"
 
 user_groups:
   - Alumnos
