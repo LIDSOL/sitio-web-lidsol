@@ -7,8 +7,8 @@ authors:
 superuser: false
 
 bio: >
-  Interesado en la Inteligencia Artificial, especialmente en la 
-  visión por computadora. Amante de GNU/Linux. 
+  Amante de GNU/Linux. Interesado en los sistemas operativos y 
+  los lenguajes de programación. Soy tu amiko.
 
 education:
   courses:
