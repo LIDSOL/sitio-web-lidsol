@@ -2,7 +2,7 @@
 title: "Taller para contribuir a Python"
 event: "PythonDay"
 event_url: https://pythondaymx.github.io/
-location: Facultad de Ingeniería UNAM
+location: Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas, UNAM
 summary: >-
     Acercate a la comunidad de Python y ayuda al desarrollo del proyecto.
 abstract: |-
