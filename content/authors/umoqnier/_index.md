@@ -26,6 +26,9 @@ education:
   - course: Programa de Becarios de la Unidad de Cómputo Académico
     institution: Facultad de Ingeniería, UNAM
 
+interests: [Procesamiento del Lenguaje Natural (NLP), Machine Learning, 
+Privacidad y anonimato, Cultura abierta, Ciencia Ficción, Música]
+
 social:
 - icon: envelope
   icon_pack: fas
@@ -45,6 +48,7 @@ user_groups:
   - Alumnos
 ---
 
-Me gusta programar en *None*, promuevo la privacidad y el anonimato,
-hago *&lt;undefined&gt;* y soy músico de closet.
+Desarrollo NLP para lenguas mexicanas en la [Comunidad Elotl](https://elotl.mx), 
+promuevo la privacidad y el anonimato, hago danza aérea y soy músico de closet.
+*Siempre empujar las fronteras del conocimiento* es mi mantra.
 
