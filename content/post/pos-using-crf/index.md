@@ -1,5 +1,5 @@
 ---
-title: "Part Of Speech tagging usando Conditional Random Fields"
+title: "Etiquetador gramatical (POS) usando Conditional Random Fields"
 subtitle: "Una brevísima introducción al etiquetado POS usando aprendizaje estructurado con CRFs"
 summary: "Una brevísima introducción al etiquetado POS usando aprendizaje estructurado con CRFs"
 authors:
@@ -14,10 +14,10 @@ image:
 
 ## Introducción
 
-### Part of Speech tagging
+### Etiquetado gramatical
 
-En lingüistica computacional el etiquetado *Part of Speech (POS)* hace
-referencia al proceso de asignar a cada palabra de un texto su categoría
+En lingüistica computacional el etiquetado gramatical o *Part of Speech (POS)* 
+se refiere al proceso de asignar a cada palabra de un texto su categoría
 gramatical. Para el correcto etiquetado se hace uso de la definición de la
 palabra y del contexto al que pertenece. La complejidad de esta tarea aumenta
 en lenguas naturales ya que las palabras pueden tener distintas categorías
