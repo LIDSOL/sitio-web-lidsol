@@ -72,7 +72,11 @@ image:
 #projects: []
 ---
 
-#### Requisitos:
+#### Requisitos
 
 * Traer computadora personal
+
+#### Registro
+
+* [Registra tu asistencia aquí](https://forms.gle/DfJdZ9bEJQjAHn5X6)
 

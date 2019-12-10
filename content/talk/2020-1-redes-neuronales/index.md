@@ -20,7 +20,7 @@ abstract: |-
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
 date: 2020-01-13T10:00:00-06:00
-date_end: 2020-01-17T12:00:00-06:00
+date_end: 2020-01-17T13:00:00-06:00
 all_day: false
 
 # Schedule page publish date (NOT talk date).
@@ -70,4 +70,16 @@ image:
 # projects: []
 ---
 
+#### Requisitos:
+
+* Conocimientos básicos en probabilidad, estadística, álgebra lineal y cálculo
+
+#### Opcional:
+
+* Se recomienda tener experiencia usando el lenguaje de programación Python
+* Traer computadora personal
+
+#### Registro
+
+* [Registra tu asistencia aquí](https://forms.gle/8wib7sJmsxxgofxA8)
 
