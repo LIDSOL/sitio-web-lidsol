@@ -5,6 +5,7 @@ active = true
 weight = 68
 title = "Integrantes"
 
+[content]
 user_groups = [
     "Responsables Académicos",
     #"Tesistas",
@@ -14,4 +15,11 @@ user_groups = [
     #"Investigadores",
     #"Externos"
 ]
+
+[design]
+  # Show user's social networking links? (true/false)
+  show_social = false
+
+  # Show user's interests? (true/false)
+  show_interests = false
 +++
