@@ -6,13 +6,10 @@ authors:
 
 superuser: false
 
-role: Presidente del Capitulo Estudiantil de la ACM
-
 bio: >
     Estudiante de Ingeniería en Computación interesado en lenguajes de
     programacion, hardware abierto, inteligencia artificial, seguridad
-    informática y ética en la computación. Presidente del Capitulo
-    Estudiantil de la ACM.
+    informática y ética en la computación.
 
 education:
   courses:
