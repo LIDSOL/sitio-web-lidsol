@@ -5,7 +5,7 @@ title: "Memorias del CCOSS"
 subtitle: "Así fue como LIDSOL vivió la Cumbre de Contribuidores de 
 Open Source Software en su primera edición"
 summary: "Esto es un resumen de prueba para saber que escribir"
-authors: []
+authors: [umoqnier]
 tags: [comunidad, open source, eventos, ccoss]
 categories: []
 date: 2019-09-21T22:06:25-05:00
