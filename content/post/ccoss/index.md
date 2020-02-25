@@ -2,22 +2,21 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Memorias del CCOSS"
-subtitle: "Así fue como LIDSOL vivió la Cumbre de Contribuidores de 
+summary: "Así fue como LIDSOL vivió la Cumbre de Contribuidores de 
 Open Source Software en su primera edición"
-summary: "Esto es un resumen de prueba para saber que escribir"
 authors: [umoqnier]
 tags: [comunidad, open source, eventos, ccoss]
 categories: []
 date: 2019-09-21T22:06:25-05:00
 lastmod: 2019-09-21T22:06:25-05:00
 featured: false
-draft: true
+draft: false
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
-  caption: ""
+  caption: "CCOSS 2019"
   focal_point: ""
   preview_only: false
 
