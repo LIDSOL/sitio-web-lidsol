@@ -18,7 +18,6 @@ image:
   preview_only: false
 ---
 
-
 ## ¿Qué es FLISoL?
 
 El FLISoL es el evento de difusión de Software Libre más grande en Latinoamérica
@@ -50,12 +49,24 @@ usar sus computadoras.
 
 ## ¿Qué habrá?
 
+### Instalación de software libre
+
+La actividad principal del evento es la instalación de software libre en las
+computadoras de los asistentes, así que si deseas probar algún software libre
+o instalar un sistema operativo libre puedes traer tu computadora y nosotros te
+ayudaremos a instalarlo.
+
+### Conferencias
+
 Los dos días que dura el evento habrán conferencias relacionadas con la adopción
-y uso del software libre en la industria, el gobierno y la academia. También
-tenemos planeado un concurso de programación, más adelante publicaremos más
-información al respecto.
+y uso del software libre en la industria, el gobierno y la academia.
 
 [Agenda de Charlas proximamente...](#)
+
+### Concursos
+
+También tenemos planeado un concurso de programación, más adelante publicaremos
+más información al respecto.
 
 ## ¿Cómo participo?
 
