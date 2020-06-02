@@ -6,8 +6,8 @@ authors:
 
 superuser: false
 
-bio: >
-  Profesor adjunto de lógica en la Facultad de Filosofía y Letras de la UNAM, interesado en la familia de lenguajes de programación LISP, las tecnologías libres, la seguridad digital, el diseño de videojuegos, la auto-organización y la filosofía de Spinoza.
+bio: 
+  Profesor adjunto de lógica en la Facultad de Filosofía y Letras de la UNAM, interesado en la familia de lenguajes de programación LISP,  las tecnologías libres, la seguridad digital,  el diseño de videojuegos, la auto-organización y la filosofía de Spinoza.
 
 education:
   courses:
