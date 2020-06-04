@@ -4,7 +4,7 @@ headless = true
 active = true
 weight = 10
 
-interval = 3000
+interval = 4000
 height = "calc(100vh - 50px)"
 
 [[item]]
@@ -23,16 +23,30 @@ height = "calc(100vh - 50px)"
   align = "left"
 
   overlay_color = "#555"  # An HTML color value.
-  overlay_img = "slider/01.jpg"  # Image path relative to your `static/img/` folder.
+  overlay_img = "slider/06.jpg"  # Image path relative to your `static/img/` folder.
   overlay_filter = 0.5  # Darken the image. Value in range 0-1.
 
 [[item]]
   content = "Buscamos promover e impulsar la investigación y desarrollo de tecnologías a través proyectos, cursos, conferencias y eventos de instalación"
-  align = "right"
+  align = "left"
 
   overlay_color = "#333"  # An HTML color value.
-  overlay_img = "slider/02.jpg"  # Image path relative to your `static/img/` folder.
+  overlay_img = "slider/04.jpg"  # Image path relative to your `static/img/` folder.
+  overlay_filter = 0.1  # Darken the image. Value in range 0-1.
+
+[[item]]
+	title = "Grupos de estudio 🔬"
+	content = "En LIDSOL encontrarás diversos grupos de estudio conducidos por la comunidad. Te invitamos a acercarte."
+	align = "right"
+
+  overlay_color = "#333"  # An HTML color value.
+  overlay_img = "slider/05.jpg"  # Image path relative to your `static/img/` folder.
   overlay_filter = 0.5  # Darken the image. Value in range 0-1.
+
+	cta_label = "Ver grupos actuales"
+  cta_url = "https://lidsol.org/courses/"
+  cta_icon_pack = "fas"
+  cta_icon = "graduation-cap"
 
 [[item]]
   title = "Libera tu servicio social aquí"
@@ -42,4 +56,5 @@ height = "calc(100vh - 50px)"
   overlay_color = "#333"  # An HTML color value.
   overlay_img = "slider/03.jpg"  # Image path relative to your `static/img/` folder.
   overlay_filter = 0.5  # Darken the image. Value in range 0-1.
+
 +++
