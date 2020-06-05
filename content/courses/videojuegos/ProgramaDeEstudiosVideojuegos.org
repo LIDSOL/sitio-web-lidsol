@@ -1,0 +1,93 @@
+---
+title: Programa
+linktitle: Programa 
+toc: true
+type: docs
+date: "2019-05-05T00:00:00+01:00"
+draft: false
+menu:
+   videojuegos:
+     parent: Contenidos
+     weight: 1
+---
+
+* Seminario de videojuegos con herramientas libres I: Common LISP
+** 1° sesión - 6 de junio
+ - Presentación
+** 2° sesión - 13 de junio
+ - Historia de LISP
+ - Funciones y datos
+** 3° sesión - 20 de junio
+ - Juego "Adivina mi número"
+ - Listas I
+** 4° sesión - 27 de junio
+ - Sesión de discusión: Sobre el concepto de juego
+** 5° sesión - 4 de julio
+ - Sintaxis del código de LISP
+ - Listas II
+** 6° sesión - 11 de julio
+ - Condicionales I
+ - Notación EVAL I
+** 7° sesión - 18 de julio
+ - Juego "La aventura del mago"
+ - Notación EVAL II
+** 8° sesión - 25 de julio
+ - Sesión de discusión: Juego y narrativa
+** 9° sesión - 1 de agosto
+ - La simetría entre código y dato en LISP
+ - Condicionales II
+** 10° sesión - 8 de agosto
+ - La función Lambda
+ - Variables y efectos
+** 11° sesión - 15 de agosto
+ - Listas III
+ - Listas IV
+** 12° sesión - 22 de agosto
+ - Juego "Grand Theft Wumpus"
+ - Listas V
+** 13° sesión - 29 de agosto
+ - Sesión de herramientas: Introducción a Pixelorama para hacer pixel art 
+** 14° sesión - 5 de septiembre
+ - Listas VI
+ - Programación funcional I
+** 15° sesión - 12 de septiembre
+ - Juego "Batalla de orcos"
+ - Programación funcional II
+** 16° sesión - 19 de septiembre
+ - Bucles y formato
+ - Recursión I
+** 17° sesión - 26 de septiembre
+ - Sesión de herramientas: Introducción a Goxel para hacer voxel art
+** 18° sesión - 3 de octubre
+ - Bucles
+ - Recursión II
+** 19° sesión - 10 de octubre
+ - Función de formato
+ - Recursión III
+** 20° sesión - 17 de octubre
+ - Flujos
+ - Input/Output
+** 21° sesión - 24 de octubre
+ - Servidores
+ - Asignación
+** 22° sesión - 31 de octubre
+ - Sesión de herramientas: Introducción a Blender para hacer assets 3D
+** 23° sesión - 7 de noviembre
+ - Programación funcional III
+ - Iteración y bloques
+** 25° sesión - 14 de noviembre
+ - Programación funcional IV
+ - Sistema de estructuras y tipos
+** 26° sesión - 21 de noviembre
+ - Juego "Dados de la ruina" I
+ - Listas VII
+** 27° sesión - 28 de noviembre
+ - Sesión de herramientas: Introducción a Milkytracker para hacer chiptune
+** 28° sesión - 5 de diciembre
+ - Macros I
+ - Macros II
+** 29° sesión - 12 de diciembre
+ - Juego "Dados de la ruina" II
+ - Macros III
+** 30° sesión - 19 de diciembre
+ - Sesión de herramientas: Introducción al sistema de escenas, nodos y señales en Godot
