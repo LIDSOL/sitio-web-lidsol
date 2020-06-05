@@ -14,61 +14,61 @@ menu:
 
 * Seminario de LISP
 ** 1° sesión - 3 de junio
-Introducción a LISP, a la programación funcional y a la /Estructura e Interpretación de Programas de Computadora/
+- Introducción a LISP, a la programación funcional y a la /Estructura e Interpretación de Programas de Computadora/
 ** 2° sesión - 10 de junio
-Los elementos de la programación
+- Los elementos de la programación
 ** 3° sesión - 17 de junio
-Los procedimientos y los procesos que generan
+- Los procedimientos y los procesos que generan
 ** 4° sesión - 24 de junio
-Formulando abstracciones con procesos de orden superior
+- Formulando abstracciones con procesos de orden superior
 ** 5° sesión - 1 de julio
-Introducción a la abstracción de datos
+- Introducción a la abstracción de datos
 ** 6° sesión - 8 de julio
-Datos jerárquicos y propiedad de cierre I: representando secuencias y estructuras jerárquicas
+- Datos jerárquicos y propiedad de cierre I: representando secuencias y estructuras jerárquicas
 ** 7° sesión - 15 de julio
-Datos jerárquicos y propiedad de cierre II: secuencias como interfaces convencionales y el ejemplo de un lenguaje pictórico
+- Datos jerárquicos y propiedad de cierre II: secuencias como interfaces convencionales y el ejemplo de un lenguaje pictórico
 ** 8° sesión - 22 de julio
-Datos simbólicos
+- Datos simbólicos
 ** 9° sesión - 29 de julio
-Representaciones múltiples para datos abstractos
+- Representaciones múltiples para datos abstractos
 ** 10° sesión - 5 de agosto
-Sistemas con operaciones genéricas
+- Sistemas con operaciones genéricas
 ** 11° sesión - 12 de agosto
-Asignación y estado local
+- Asignación y estado local
 ** 12° sesión - 19 de agosto
-El modelo de entorno de evaluación
+- El modelo de entorno de evaluación
 ** 13° sesión - 26 de agosto
-Modelando con datos mutables I: estructura de lista mutable, representando colas y tablas
+- Modelando con datos mutables I: estructura de lista mutable, representando colas y tablas
 ** 14° sesión - 2 de septiembre
-Modelando con datos mutables II: un simulador de circuitos digitales y propagación de restricciones
+- Modelando con datos mutables II: un simulador de circuitos digitales y propagación de restricciones
 ** 15° sesión - 9 de septiembre
-Concurrencia: el tiempo es esencial
+- Concurrencia: el tiempo es esencial
 ** 16° sesión - 16 de septiembre
-Flujos I: flujos como listas retrasadas y flujos infinitos
+- Flujos I: flujos como listas retrasadas y flujos infinitos
 ** 17° sesión - 23 de septiembre
-Flujos II: explotando el paradigma de flujos, flujos y evaluación retrasada y la modularidad de programas funcionales y de objetos
+- Flujos II: explotando el paradigma de flujos, flujos y evaluación retrasada y la modularidad de programas funcionales y de objetos
 ** 18° sesión - 30 de septiembre
-El evaluador metacircular I: el nucleo del evaluador, representando expresiones y evaluador de estructuras de datos
+- El evaluador metacircular I: el nucleo del evaluador, representando expresiones y evaluador de estructuras de datos
 ** 19° sesión - 7 de octubre
-El evaluador metacircular II: corriendo el evaluador como programa, datos como programas, definiciones internas y separando análisis sintáctico de ejecución
+- El evaluador metacircular II: corriendo el evaluador como programa, datos como programas, definiciones internas y separando análisis sintáctico de ejecución
 ** 20° sesión - 14 de octubre
-Variaciones de un esquema -- Evaluación perezosa
+- Variaciones de un esquema -- Evaluación perezosa
 ** 21° sesión - 21 de octubre
-Variaciones de un esquema -- Cómputo no determinístico
+- Variaciones de un esquema -- Cómputo no determinístico
 ** 22° sesión - 28 de octubre
-Programación lógica I: obtención de información deductiva, cómo funciona el sistema de consultas y ¿la programación lógica es lógica matemática?
+- Programación lógica I: obtención de información deductiva, cómo funciona el sistema de consultas y ¿la programación lógica es lógica matemática?
 ** 23° sesión - 4 de noviembre
-Programación lógica II: implementando el sistema de consultas
+- Programación lógica II: implementando el sistema de consultas
 ** 25° sesión - 11 de noviembre
-Diseñando máquinas de registros
+- Diseñando máquinas de registros
 ** 26° sesión - 18 de noviembre
-Un simulador de máquinas de registros
+- Un simulador de máquinas de registros
 ** 27° sesión - 25 de noviembre
-Asignación de memoria y recolección de basura
+- Asignación de memoria y recolección de basura
 ** 28° sesión - 2 de diciembre
-El evaluador de control explícito
+- El evaluador de control explícito
 ** 29° sesión - 9 de diciembre
-Compilación I: estructura del compilador, compilando expresiones y combinaciones
+- Compilación I: estructura del compilador, compilando expresiones y combinaciones
 ** 30° sesión - 16 de diciembre
-Compilación II: combinando secuencias de instrucción, en ejemplo de código compilado, direccionamiento léxico y realizando la interfaz del código compilado al evaluador
+- Compilación II: combinando secuencias de instrucción, en ejemplo de código compilado, direccionamiento léxico y realizando la interfaz del código compilado al evaluador
 
