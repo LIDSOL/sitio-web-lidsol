@@ -6,11 +6,11 @@ event: Sala de Jitsi
 event_url: https://meet.jit.si/SeminarioVideojuegosLidsol
 summary: Grupo para explorar el diseño y desarrollo de videojuegos usando herramientas libres.
 abstract: |-
-    Taller dedicado a aprender el diseño y desarrollo de videojuegos usando
+    Taller dedicado a aprender diseño y desarrollo de videojuegos usando
     herramientas libres. Comenzaremos con programación de juegos con
     Common LISP y dedicaremos la última sesión de cada mes a abordar temas
-    como música, motores libres, herramientas para creación de arte (*pixel art*,
-    *voxel art*, etc), narrativa y el concepto de juego.
+    como música, motores libres, herramientas para creación de arte
+    (*pixel art*, *voxel art*, etc), narrativa y el concepto de juego.
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
