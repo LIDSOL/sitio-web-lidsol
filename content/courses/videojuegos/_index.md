@@ -4,7 +4,7 @@ linktitle: Seminario de videojuegos con herramientas libres
 summary: Grupo para explorar el diseño y desarrollo de videojuegos usando herramientas libres.
 
 # Page metadata.
-title: Seminario de videojuegos con herramientas libre
+title: Seminario de videojuegos con herramientas libres
 date: "2020-06-04T19:00:00Z"
 lastmod: "2020-06-02T22:59:00Z"
 draft: false  # Is this a draft? true/false
