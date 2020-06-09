@@ -18,28 +18,27 @@ image:
 projects: []
 ---
 
-Durante los últimos 4 años TELMEX ha mantenido bloqueados las autoridades
-directorio de la red Tor[^1][^2], ese bloqueo impidió la creación de nodos de
+Durante los últimos 4 años TELMEX mantuvo bloqueadas a las _autoridades
+directorio_ de la red Tor[^1][^2], lo cual impidió la creación de nodos de
 Tor en la red de TELMEX.
 
-Que TELMEX levantara las restricciones de acceso que tenía a la red Tor no fue
-por arte de magia y requirió el esfuerzo de muchas personas, pero [Gunnar Wolf
+TELMEX no terminó con este bloqueo por arte de magia sino gracias al esfuerzo de muchas personas--[Gunnar Wolf
 cuenta mejor esa
 historia](https://gwolf.org/2020/06/tor-from-telmex-when-i-say-achievement-unlocked-i-mean-it.html).
 
-Ahora que TELMEX ha desbloqueado la creación de nuevos nodos en su red, solo
+Ahora que TELMEX ha desbloqueado la creación de nuevos nodos en su red, sólo
 falta que toda persona interesada en temas de privacidad instale su propio
 nodo.
 
 # ¿Por qué instalar un nodo de Tor?
 
-Tor es una red que permite navegar de forma anónima, evitar el rastreo y la
+Tor es una red que permite navegar de forma anónima, evitando el rastreo y la
 censura en internet. Es de vital importancia para activistas, hacktivistas,
-periodistas, grupos vulnerables, y habitantes de países con regímenes
+periodistas, grupos vulnerables y habitantes de países con regímenes
 totalitarios.
 
-Las tecnologías en las que se sustenta la red Tor solo pueden garantizar el
-anonimato si existe una gran cantidad de nodos en la red y estos nodos están
+Las tecnologías en las que se sustenta la red Tor sólo pueden garantizar el
+anonimato si existe una gran cantidad de nodos en la red y éstos están
 distribuidos de forma uniforme en el planeta. Actualmente la presencia de nodos
 fuera de países europeos o Estados Unidos es minoritaria, por lo que
 instalar nodos en México ayudará bastante a las salud general de la red.
@@ -67,8 +66,7 @@ En México existen gran cantidad de activistas, ya sea en temas de protección a
 medio ambiente, búsqueda de personas desaparecidas, diversidad, feminismo,
 protección de derechos humanos, etc. La red Tor brinda a todos ellos
 herramientas para organizarse de forma libre y anónima, gestar movimientos y
-evitar el acoso y vigilancia del Estado. La salud de la red Tor debería de ser
-de su interés y mantener un nodo de Tor podría estar en sus posibilidades.
+evitar el acoso y vigilancia del Estado y otros actores. La salud de la red Tor debería de ser de su interés y mantener un nodo de Tor podría estar en sus posibilidades.
 
 ## Bloggers, científicos
 
@@ -81,32 +79,26 @@ alguna compañía.
 
 ## Hackers, makers y estudiantes
 
-Personas que les gusta crear nuevas cosas o la cultura de _hazlo tu mismo_, que
-quieran instalar su propia "nube" casera para no depender de Google, que quieran
-crear su propio servicio de streaming para ellos y su familia, o que deseen
+Personas a quienes les gusta crear nuevas cosas o la cultura de _hazlo tu mismo_, que quieran instalar su propia "nube" casera para no depender de Google, que quieran
+crear su propio servicio de streaming para ellos y su familia o que deseen
 tener algún servidor o blog es su propia computadora para compartir con las
 comunidades en que participan se pueden beneficiar de la red Tor y de tener un
 nodo propio para instalar servicios ocultos dentro de la red Tor.
 
 # ¿Dónde aprender a instalar un nodo?
 
-Tor tiene excelente información sobre cómo instalar un nodo de Tor, desde las
+Tor tiene excelente información sobre cómo instalar un nodo de Tor, desde
 consideraciones legales hasta aspectos técnicos. El sitio indicado para
 encontrar esos recursos es en su [sitio de
-comunidad](https://community.torproject.org/relay), también cuentas con una
-[wiki](https://trac.torproject.org/projects/tor) pero algunos artículos no han
-sido actualizados y contienen información obsoleta, revisa la fecha de la última
-actualización antes de seguir una guía de la wiki. Una vez que hayas instalado
-tu nodo de Tor, recuerda unirte a la [lista do
+comunidad](https://community.torproject.org/relay), que también cuenta con una
+[wiki](https://trac.torproject.org/projects/tor). Sin embargo, es importante revisar la fecha de la última actualización antes de seguir una guía de la wiki pues algunos artículos no han sido actualizados y contienen información obsoleta. Una vez que hayas instalado tu nodo de Tor, recuerda unirte a la [lista do
 correos](https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-relays) para
 mantenerte informado sobre las mejores prácticas de seguridad y poder solicitar
 y brindar ayuda a otros voluntarios.
 
 Por desgracia la mayoría de los recursos de arriba están en inglés, así que en
-LIDSoL estaremos publicando algunas guías sobre cómo instalar nodos y crear
-servicios ocultos en la red Tor los próximos días. Si quieres instalar un nodo y
-tienes dudas puedes contactar al Laboratorio en nuestro grupo de telegram.
-
+LIDSoL estaremos publicando los próximos días algunas guías sobre cómo instalar nodos y crear servicios ocultos en la red Tor. Si quieres instalar un nodo y
+tienes dudas puedes contactar al Laboratorio en nuestro [grupo de telegram](https://telegram.me/lidsol).
 
 [^1]: Distributed Detection of Tor Directory Authorities Censorship in Mexico. Gunnar Eyal Wolf Iszaevich
 [^2]: Case study: Tor Directory Authorities Censorship in Mexico. Jacobo Nájera. Vasilis Ververis
