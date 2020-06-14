@@ -51,13 +51,14 @@ instalar un nodo de Tor.
 
 El periodismo es probablemente el trabajo más peligroso en México. Tor
 es una de las herramientas más poderosas que tienen los periodistas, ya
-que les permite publicar de forma anónima, realizar investigaciones
-evadiendo la vigilancia del Estado, intercambiar archivos de forma
-anónima con sus fuentes y ofrecer sus contenidos incluso cuando el
-Estado intenta censurarlos. Por ello contribuir a la red Tor con ancho
-de banda es especialmente benéfico para agencias de noticias, periódicos
-independientes y periodistas ya que garantiza que la red Tor este
-disponible para ellos y otros periodistas en el mundo.
+que les permite intercambiar documentos con sus fuentes, realizar
+investigaciones y ofrecer sus contenidos de forma anónima, evadiendo así
+la vigilancia y los intentos de censura y represión por parte del
+Estado, grupos delictivos, empresas o cualquier actor que vea sus
+intereses amenazados por la labor periodística. Por ello contribuir a la
+red Tor con ancho de banda es especialmente benéfico para agencias de
+noticias, periódicos independientes y periodistas ya que garantiza que
+la red Tor este disponible para ellos y otros periodistas en el mundo.
 
 ## Grupos de activistas
 
@@ -113,7 +114,9 @@ instalar un nodo y tienes dudas puedes contactar al Laboratorio en
 nuestro [grupo de telegram](https://telegram.me/lidsol).
 
 [^1]: [Distributed Detection of Tor Directory Authorities Censorship in
-    Mexico](https://www.thinkmind.org/index.php?view=article&articleid=icn_2019_6_20_38010). Gunnar Eyal Wolf Iszaevich
+    Mexico](https://www.thinkmind.org/index.php?view=article&articleid=icn_2019_6_20_38010).
+    Gunnar Eyal Wolf Iszaevich
 
-[^2]: [Case study: Tor Directory Authorities Censorship in Mexico](https://magma.lavafeld.org/guide/data-analysis.html#case-study-tor-directory-authorities-censorship-in-mexico). Jacobo
-    Nájera. Vasilis Ververis
+[^2]: [Case study: Tor Directory Authorities Censorship in
+    Mexico](https://magma.lavafeld.org/guide/data-analysis.html#case-study-tor-directory-authorities-censorship-in-mexico).
+    Jacobo Nájera. Vasilis Ververis
