@@ -69,15 +69,3 @@ slides: ""
 #   Otherwise, set `projects = []`.
 projects: []
 ---
-
-## Semblanza
-
-Andrés Hernández
-
-Ingeniero DevOps con enfoque en seguridad, automatización y buenas prácticas. Ha colaborado con el UNAM-CERT en varios proyectos de auditoría, revisión de configuraciones y pruebas de seguridad web con entidades de la UNAM y del sector público de México.
-
-Actualmente es profesor del Plan de Becarios de Seguridad Informática donde imparte el curso de seguridad y administración de GNU/Linux desde 2012. También ha impartido el curso de Hardening de sistemas operativos GNU/Linux de 2011 a 2016 en el Congreso de Seguridad en Cómputo organizado por UNAM-CERT.
-
-Colabora en LIDSoL de la Facultad de Ingeniería, UNAM desde 2007 y actualmente es profesor de las materias de sistemas operativos y redes de computadoras de la Facultad de Ciencias, UNAM.
-
-Cuenta con dos certificaciones de SANS Institute (GWEB y GCUX), la certificación CKA de Linux Foundation y es miembro del programa AWS Educate.
