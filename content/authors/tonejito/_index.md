@@ -47,6 +47,9 @@ social:
 - icon: linkedin
   icon_pack: fab
   link: https://linkedin.com/in/tonejito
+- icon: youtube
+  icon_pack: fab
+  link: https://tinyurl.com/Redes-Ciencias-UNAM-YouTube
 
 email: "tonejito@comunidad.unam.mx"
 
