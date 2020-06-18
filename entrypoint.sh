@@ -3,7 +3,7 @@
 WORKDIR=/srv
 GIT_REPO=https://gitlab.com/LIDSoL/lidsol.gitlab.io.git
 
-apk add --quiet --update --no-cache git make hugo
+apk add --quiet --update --no-cache git make
 
 test -e ${WORKDIR}/.git || \
   git clone ${GIT_REPO} ${WORKDIR}

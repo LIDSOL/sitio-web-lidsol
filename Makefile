@@ -2,14 +2,16 @@ SHELL=/bin/sh
 
 PORT=1313
 WORKDIR=/srv
-TEST_SCRIPT=main.sh
+ENTRYPOINT=${WORKDIR}/entrypoint.sh
+IMAGE=registry.gitlab.com/pages/hugo/hugo_extended
+TAG=0.62.2
 
 test:	${TEST_SCRIPT}
 	docker run -it \
 	  -p ${PORT}:${PORT} \
 	  -v "$(CURDIR):${WORKDIR}" \
-	  alpine:latest \
-	  ${WORKDIR}/${TEST_SCRIPT}
+	  ${IMAGE}:${TAG} \
+	    ${ENTRYPOINT}
 
 init:	.gitmodules
 	echo init update | \
