@@ -13,9 +13,11 @@ address:
   country:
 summary: Charla de @tonejito de LIDSoL en OpenExpo Europe 2020 - Sábado 20 de Junio de 2020 12:00 hrs (CST)
 abstract: |-
-    Veremos como exponer y alcanzar servicios internos y externos a través de las opciones LocalForward y RemoteForward de SSH, también analizaremos el proxy SOCKS que provee SSH con DynamicForward y cómo compartir el agente de SSH del equipo de escritorio con varios equipos de manera anidada para evitar copiar las llaves SSH.
+    Veremos como funciona la autenticación de SSH con llaves por medio de `IdentityFile`, cómo utilizar el _agente de SSH_ y compartirlo con varios equipos de manera anidada por medio de `ForwardAgent` para evitar copiar las llaves SSH. También veremos como exponer y alcanzar servicios internos y externos a través de los _túneles SSH_ con `LocalForward` y `RemoteForward` y por último analizaremos el _proxy SOCKS_ que provee SSH con la opción `DynamicForward`.
 
     Estas herramientas son útiles para diversos fines como ingresar a recursos internos cuando se opera en el campo, acceder recursos bloqueados utilizando un equipo remoto como intermediario, exfiltrar datos después de una intrusión y en general para la administración de sistemas.
+
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
