@@ -67,11 +67,10 @@ links:
   url: https://www.timeanddate.com/worldclock/converter.html?iso=20200620T170000&p1=141&p2=155
 
 # Optional filename of your slides within your talk's folder or a URL.
-url_slides:
-
-url_code:
+url_slides: /files/lpi-openexpo-2020-ssh-tonejito.pdf
+url_code: https://github.com/tonejito/lpi-openexpo-2020.git
 url_pdf:
-url_video:
+url_video: https://www.youtube.com/channel/UCEdZMA3it9kp9iwlY9vEYWQ
 
 # Markdown Slides (optional).
 #   Associate this talk with Markdown slides.
