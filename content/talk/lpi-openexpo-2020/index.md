@@ -17,7 +17,11 @@ abstract: |-
 
     Estas herramientas son útiles para diversos fines como ingresar a recursos internos cuando se opera en el campo, acceder recursos bloqueados utilizando un equipo remoto como intermediario, exfiltrar datos después de una intrusión y en general para la administración de sistemas.
 
-    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+    <div style="width: 100px; margin: 0 auto;"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Attribution-ShareAlike 4.0 International License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a></div>
+
+    <div style="text-align: center;"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a></div>
+
+    <hr/>
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
@@ -69,9 +73,9 @@ links:
   url: https://www.timeanddate.com/worldclock/converter.html?iso=20200620T170000&p1=141&p2=155
 
 # Optional filename of your slides within your talk's folder or a URL.
-url_slides: /files/lpi-openexpo-2020-ssh-tonejito.pdf
+# url_pdf: http://static.tonejito.org/lpi-openexpo-2020/OpenExpo_Europe_2020-Tuneles_y_Agente_SSH-Andres_Hernandez.pdf
 url_code: https://github.com/tonejito/lpi-openexpo-2020.git
-url_pdf:
+url_slides: /files/lpi-openexpo-2020-ssh-tonejito.pdf
 url_video: https://www.youtube.com/channel/UCEdZMA3it9kp9iwlY9vEYWQ
 
 # Markdown Slides (optional).
