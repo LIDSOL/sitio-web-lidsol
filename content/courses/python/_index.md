@@ -27,7 +27,7 @@ menu:
 ## Resumen
 
 Python es un lenguaje versátil y en constante crecimiento. En los últimos años
-a mostrado una adopción explosiva que se refleja en el desarrollo de
+ha mostrado una adopción explosiva que se refleja en el desarrollo de
 inteligencia artificial, desarrollo web, manejo de grandes cantidades de datos,
 entre otras. En este curso abundaremos en los elementos básicos del lenguaje
 que servirán como cimientos para la elaboración de un proyecto que muestre la
