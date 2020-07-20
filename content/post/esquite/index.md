@@ -24,14 +24,14 @@ que hacen un trabajo estupendo. [Comunidad Elotl](https://elotl.mx/) es una de
 ellas.
 
 Elotl es un proyecto colaborativo, sin fines de lucro, dedicado a la
-creación de herramientas digitales libres (obvio :heart:) y gratuitas con el objetivo de
-preservar y difundir lenguas indígenas mexicanas. Además, buscan promover este
-tema en la agenda nacional y realizar investigaciones académicas en ese sentido.
+creación de herramientas digitales libres (obvio :heart:) y gratuitas con el
+objetivo de preservar y difundir lenguas indígenas mexicanas. Además, buscan
+promover este tema en la agenda nacional y realizar investigaciones académicas
+en ese sentido.
 
 El tema central de Elotl es la **diversidad lingüística** y la creación de
-tecnología para toda esta diversidad. México cuenta con 11 grupos de lenguas
-desglosadas en 68 lenguas distintas y que a su vez engloban 364 variantes (casi
-una variante por día del año :astonished:).
+tecnología para toda esta diversidad. México cuenta con 11 familias lingüísticas desglosadas en 68 agrupaciones lingüísticas distintas y que a su vez
+engloban 364 variantes (casi una variante por día del año :astonished:).
 
 ## ¿Qué es Esquite?
 
@@ -65,11 +65,11 @@ los que se listan a continuación:
 * **Comodín**(`*`): Reemplaza cero o más caracteres. Por ejemplo: `mexic*`
 * **Comodín**(`?`): Reemplaza un caracter. Por ejemplo: `nin?s`
 
-Un característica especialmente pensada para las personas que estén
+Un característica especialmente pensada para personas que estén
 interesadas en la investigación o que deseen hacer experimentos con los
-resultados las búsquedas que realicen se pone a disposición de las usuarias la
-posibilidad de exportar los resultados en formato `.csv`. Para mayor información
-pueden checar la [sección de ayuda](https://tsunkua.elotl.mx/ayuda/) de la página.
+resultados de las búsquedas es la posibilidad de exportar los resultados en
+formato `.csv`. Para mayor información pueden checar la [sección de
+ayuda](https://tsunkua.elotl.mx/ayuda/) de la página.
 
 {{< figure src="export_csv.png" title="Botón para exportar resultados" lightbox="true" >}}
 
