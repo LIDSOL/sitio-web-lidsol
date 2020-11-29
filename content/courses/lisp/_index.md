@@ -6,7 +6,7 @@ summary: Acércate a la programación funcional y a la computación con LISP :)
 # Page metadata.
 title: Seminario de LISP
 date: "2020-06-01T19:00:00Z"
-lastmod: "2020-06-02T22:59:00Z"
+lastmod: "2020-11-28T18:24:00Z"
 draft: false  # Is this a draft? true/false
 toc: true  # Show table of contents? true/false
 type: docs  # Do not modify.
@@ -16,7 +16,7 @@ type: docs  # Do not modify.
 # - weight: Position of link in menu.
 menu:
   lisp:
-    name: Contenidos
+    name: Presentación
     weight: 1
 ---
 
