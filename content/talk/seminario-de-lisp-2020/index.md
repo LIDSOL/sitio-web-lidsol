@@ -5,10 +5,9 @@ title: "Seminario De Lisp 2020"
 event_url: meet.jit.si/SeminarioLISPLidsol
 summary: Acércate a la programación funcional y a la computación con LISP :)
 abstract: |-
-     En este seminario leeremos el clásico SICP (*Structure and Interpretation of Computer Programs*),
-     utilizado en el MIT durante décadas para iniciar a sus alumnos a la computación y a la programación empleando Scheme, un dialecto minimalista y elegante
-     de la familia de lenguajes de programación LISP. 
-
+     En este seminario revisamos capítulos del libro *Common Lisp: A Gentle
+     introduction to Symbolic Computation* y resolvemos ejercicios varios
+     relacionados con la familia de lenguajes de LISP.
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
 date: 2020-06-03T19:00:00-05:00
@@ -18,14 +17,14 @@ all_day: false
 # Schedule page publish date (NOT talk date).
 publishDate: 2020-06-02T21:54:40-05:00
 
-authors: ["telior", "umoqnier", "penserbjorne"]
-tags: ["LISP", "Programación funcional", "Scheme"]
+authors: ["telior"]
+tags: ["LISP", "Programación funcional", "Scheme", "Common Lisp"]
 
 # Is this a featured talk? (true/false)
 featured: true
 
 # Featured image
-# To use, add an image named `featured.jpg/png` to your page's folder. 
+# To use, add an image named `featured.jpg/png` to your page's folder.
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
   caption: ""
