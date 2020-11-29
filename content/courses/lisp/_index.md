@@ -22,6 +22,9 @@ menu:
 
 ![Cartel del seminario](featured.png)
 
-En este seminario leeremos el clásico SICP (*Structure and Interpretation of Computer Programs*),
-     utilizado en el MIT durante décadas para iniciar a sus alumnos a la computación y a la programación empleando Scheme, un dialecto minimalista y elegante
-     de la familia de lenguajes de programación LISP.
+* **Miércoles: 19:00 - 21:00 *UTC-6* (CDMX)** revisamos capítulos del libro
+[*Common Lisp: A Gentle introduction to Symbolic Computation*](https://gitlab.com/lidsol/seminario-lisp/-/blob/main/books/Common_Lisp_A_Gentle_Intro_to_Sym_Prog.pdf)
+
+* **Sábados: 19:00 - 21:00 *UTC-6* (CDMX)** resolvemos ejercicios varios.
+
+* Sala de Jitsi: https://meet.jit.si/SeminarioLISPLidsol
