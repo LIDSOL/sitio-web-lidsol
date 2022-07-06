@@ -53,10 +53,10 @@ links:
   url: https://twitter.com/tonejito
   icon_pack: fab
   icon: twitter
-- name: Tonejito
-  url: https://tinyurl.com/Redes-Ciencias-UNAM-YouTube
-  icon_pack: fab
-  icon: youtube
+# - name: Tonejito
+#   url: https://tinyurl.com/Redes-Ciencias-UNAM-YouTube
+#   icon_pack: fab
+#   icon: youtube
 - name: Agenda de LPI
   url: https://www.lpi.org/es/articles/lpi-excited-support-openexpo-virtual-experience-2020-0
 - name: Agenda de OpenExpo
@@ -76,7 +76,9 @@ links:
 # url_pdf: http://static.tonejito.org/lpi-openexpo-2020/OpenExpo_Europe_2020-Tuneles_y_Agente_SSH-Andres_Hernandez.pdf
 url_code: https://github.com/tonejito/lpi-openexpo-2020.git
 url_slides: /files/lpi-openexpo-2020-ssh-tonejito.pdf
-url_video: https://www.youtube.com/channel/UCEdZMA3it9kp9iwlY9vEYWQ
+# LPI YouTube
+# url_video: https://www.youtube.com/channel/UCEdZMA3it9kp9iwlY9vEYWQ
+url_video: https://youtu.be/-8kx_-twFJA
 
 # Markdown Slides (optional).
 #   Associate this talk with Markdown slides.
