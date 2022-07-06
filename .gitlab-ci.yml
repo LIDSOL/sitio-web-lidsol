@@ -4,17 +4,17 @@ image: registry.gitlab.com/pages/hugo/hugo_extended:0.62.2
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
+before_script:
+- apk --quiet --no-progress update
+- apk --quiet --no-progress --no-cache add make git
+
 test:
-  before_script:
-  - apk add --quiet --update --no-cache git
   script:
   - hugo
   except:
   - master
 
 pages:
-  before_script:
-  - apk add --quiet --update --no-cache git
   script:
   - hugo
   artifacts:
