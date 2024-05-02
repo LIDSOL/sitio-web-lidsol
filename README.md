@@ -1,9 +1,7 @@
-# Sitio Temporal del LIDSOL
+# Página web del LIDSoL
 
-Sitio Web de LIDSOL.
+Este repositorio contiene el código para generar la página web del LIDSoL. Publicada en el [dominio UNAM](https://lidsol.unam.mx/)
 
-## Basado en ...
+## Tecnologías
 
-[ForBetterWeb.com](http://forbetterweb.com/) was created by and is maintained by **Jeny Elind** - [elkind.net](http://elkind.net/).
-
-ForBetterWeb.com is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
+- [Hugo](https://gohugo.io/)
