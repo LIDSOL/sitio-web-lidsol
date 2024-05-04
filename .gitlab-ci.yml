@@ -5,6 +5,8 @@ variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
 before_script:
+- sed -i'' -e 's/edge/v3.12/g' /etc/apk/repositories 
+- apk --quiet --no-progress --update --allow-untrusted -X https://dl-cdn.alpinelinux.org/alpine/v3.12/main add alpine-keys
 - apk --quiet --no-progress update
 - apk --quiet --no-progress --no-cache add make git
 
