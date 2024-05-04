@@ -1,3 +1,4 @@
+#!/usr/bin/make -f
 SHELL=/bin/sh
 
 PORT=1313
@@ -28,4 +29,3 @@ run:	init
 	  --buildDrafts \
 	  --disableFastRender \
 	;
-
