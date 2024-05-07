@@ -37,7 +37,7 @@ site_type = "EducationalOrganization"
 
 # Organization name (optional)
 # Enter an organization or project name. Defaults to the site title from `config.toml`.
-org_name = "LIDSOL"
+org_name = "LIDSoL"
 
 # Description for social sharing and search engines. If undefined, superuser role is used in place.
 description = "Laboratorio de Investigación y Desarrollo de Software Libre"
@@ -84,7 +84,7 @@ edit_page = {repo_url = "https://gitlab.com/lidsol/lidsol.gitlab.io", editable =
 email = "lidsol@protonmail.com"
 # phone = "888 888 88 88" ## Cual es nuestro telefono?
 
-address = { street = "Edificio P, Piso 2, P-213<br/> Conjunto Sur (Anexo), Facultad de Ingenieria<br/> Cto. Exterior 18", city = "CU", region = "Ciudad de México", postcode = "04510", country = "México", country_code = "MX"}
+address = { street = "Edificio P, Piso 2, P-213<br/> Conjunto Sur (Anexo), Facultad de Ingeniería<br/> Cto. Exterior 18", city = "CU", region = "Ciudad de México", postcode = "04510", country = "México", country_code = "MX"}
 
 # Geographic coordinates
 # To get your coordinates, right-click on Google Maps and choose "What's here?". The coords will show up at the bottom.
@@ -92,7 +92,7 @@ coordinates = { latitude = "19.3277325", longitude = "-99.1823637" }
 
 # Office hours
 # A list of your office hours. To remove, set to an empty list `[]`.
-office_hours = [ "Lunes: 9:00 - 20:00", "Martes: 12:00 - 20:00", "Mie - Jue: 9:00 - 20:00", "Viernes: 9:00 - 15:00"]
+office_hours = [ "Lunes: 15:00 - 17:00", "Martes: 13:00 - 15:00 y 17:00 - 19:00", "Miércoles: 9:00 - 17:00", "Jueves: 12:00 - 15:00 y 17:00 - 19:00" ]
 
 # Enter an optional link for booking appointments (e.g. calendly.com).
 #appointment_url = "https://calendly.com"
@@ -100,10 +100,13 @@ office_hours = [ "Lunes: 9:00 - 20:00", "Martes: 12:00 - 20:00", "Mie - Jue: 9:0
 # Contact links
 #   Set to `[]` to disable, or comment out unwanted lines with a hash `#`.
 contact_links = [
-  {icon = "twitter", icon_pack = "fab", name = "Síguenos en Twitter", link = "https://twitter.com/lidsol"},
-  {icon = "facebook-f", icon_pack = "fab", name = "Danos like", link = "https://facebook.com/lidsol.unam"},
-  {icon = "gitlab", icon_pack = "fab", name = "Ve nuestro código", link = "https://gitlab.com/lidsol"},
-  {icon = "telegram", icon_pack = "fab", name = "Únete al grupo de Telegram", link = "https://telegram.me/lidsol"},
+  {icon = "youtube", icon_pack = "fab", name = "Youtube", link = "https://www.youtube.com/@lidsol"},
+  {icon = "facebook-f", icon_pack = "fab", name = "Facebook", link = "https://facebook.com/lidsol.unam"},
+  {icon = "instagram", icon_pack = "fab", name = "Instagram", link = "https://www.instagram.com/lidsol_fi/"},
+  {icon = "twitter", icon_pack = "fab", name = "Twitter", link = "https://twitter.com/lidsol"},
+  {icon = "github", icon_pack = "fab", name = "Github org", link = "https://github.com/lidsol"},
+  {icon = "gitlab", icon_pack = "fab", name = "Gitlab org", link = "https://gitlab.com/lidsol"},
+  {icon = "telegram", icon_pack = "fab", name = "Grupo de Telegram", link = "https://telegram.me/lidsol"},
 ]
 
 ############################
