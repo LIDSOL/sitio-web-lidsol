@@ -20,7 +20,7 @@ menu:
     weight: 1
 ---
 
-![Cartel del curso](featured.jpg)
+![Cartel del curso](featured.png)
 
 ¡Aprende LaTeX desde la comodidad de tu hogar! 🖥️✨ Únete a nuestro curso virtual gratuito organizado por el Laboratorio de Investigación y Desarrollo de Software Libre (LIDSoL).
 
