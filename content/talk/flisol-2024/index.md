@@ -40,9 +40,9 @@ El FLISoL esta dirigido a todo tipo de público: estudiantes, académicos, empre
 
 La actividad principal del evento es la instalación de software libre en las computadoras de los asistentes, así que si deseas probar algún software libre o instalar un sistema operativo libre puedes traer tu computadora y nosotros te ayudaremos a instalarlo.
 
-### Conferencias
+### Talleres
 
-Los dos días que dura el evento habrán conferencias relacionadas con la adopción y uso del software libre en la industria, el gobierno y la academia.
+Los dos días que dura el evento habrán talleres introductorios a tecnologías como Arduino y Git.
 
 Página oficial en el wiki de FLISoL
 
