@@ -2,12 +2,12 @@
 widget = "pages"
 headless = true
 active = true
-weight = 30
-title = "Entradas del Blog"
+weight = 40
+title = "Posts en el Blog"
 
 [content]
   page_type = "post"
-  count = 5
+  count = 2
   order = "desc"
 
 [design]

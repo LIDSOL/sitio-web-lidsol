@@ -27,30 +27,10 @@ subtitle = "En el LIDSOL encontrarás"
   icon_pack = "fab"
   name = "Licencias abiertas"
 
-#[[feature]]
-#icon = "acm"
-#  icon_pack = "ai"
-#  name = "UNAM-FI"
-
-[[feature]]
-  icon = "language"
-  icon_pack = "fas"
-  name = "Procesamiento de lenguaje natural"
-
 [[feature]]
   icon = "microchip"
   icon_pack = "fas"
   name = "Hardware Abierto"
-
-[[feature]]
-  icon = "vr-cardboard"
-  icon_pack = "fas"
-  name = "Realidad Virtual"
-
-[[feature]]
-  icon = "braille"
-  icon_pack = "fas"
-  name = "Aprendizaje Máquina"
 
 [[feature]]
   icon = "docker"
