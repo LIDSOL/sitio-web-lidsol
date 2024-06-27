@@ -25,13 +25,14 @@ menu:
 
 ## Resumen
 
-Un administrador de sistemas, conocido como sysadmin, es un profesional especializado en la gestion y mantenimiento de la infrestructura tecnologica de una organizacion.
-Su trabajo consiste en configurar, mantener y asegurar servidores, redes y sistemas informaticos para que funcionen de manera eficiente y segura. Los sysadmin tambien se encargan de garantizar que los servicios tecnológicos estén disponibles y funcionando correctamente para los usuarios.
+Un administrador de sistemas, conocido como sysadmin, es un profesional especializado en la gestión y mantenimiento de la infrestructura tecnologica de una organizacion.
+Su trabajo consiste en configurar, mantener y asegurar servidores, redes y sistemas informaticos para que funcionen de manera eficiente y segura. 
+Los sysadmin tambien se encargan de garantizar que los servicios tecnológicos estén disponibles y funcionando correctamente para los usuarios.
 Además, gestionan la seguridad de la información, realizan copias de seguridad y resuelven problemas técnicos para asegurar que todo el sistema operativo de la organización sea confiable y efectivo.
 
 ## Aprende a ...
 
-Gestionar servidores GNU/Linux de manera profesional! 🌟
+Gestionar servidores GNU/Linux! 🌟
 
 ✨ Únete a nuestro curso presencial organizado por el Laboratorio de Investigación y Desarrollo de Software Libre (LIDSOL).
 
@@ -45,4 +46,9 @@ Aprendiendo GNU/Linux de la mano de expertos y potencia tu carrera en el ámbito
 
 No pierdas la oportunidad de dominar esta importante herramienta de administración de sistemas.
 
-Inscríbete ahora: [Registro al curso](https://mmedia1.fi-b.unam.mx/)
+[Inscríbete ahora](https://mmedia1.fi-b.unam.mx/)
+
+## ¿Tienes alguna duda?
+
+- Instagram: [@lidsol_fi](https://www.instagram.com/lidsol_fi/)
+- Correo: [lidsol-info@proton.me](mailto:lidsol-info@proton.me)
