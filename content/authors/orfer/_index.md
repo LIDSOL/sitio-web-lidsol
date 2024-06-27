@@ -6,7 +6,8 @@ authors:
 
 superuser: false
 
-role: Comunity Manager del Capitulo Estudiantil LIDSoL
+role: Comunity Manager de LIDSoL
+
 bio: 
   Estudiante de la facultad de Ingeniería de la UNAM. Interesada por la seguridad informática, software libre, programación y astronomia.
 
