@@ -10,7 +10,7 @@ user_groups = [
     "Responsables Académicos",
     #"Tesistas",
     "Alumnos",
-    #"Exalumnos",
+    "Exalumnos",
     #"Academicos",
     #"Investigadores",
     #"Externos"
