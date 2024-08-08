@@ -45,7 +45,7 @@ social:
 
 
 user_groups:
-  - Alumnos
+  - Exalumnos
 ---
 
 Desarrollo NLP para lenguas mexicanas en la [Comunidad Elotl](https://elotl.mx), 

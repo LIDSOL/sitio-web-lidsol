@@ -31,7 +31,7 @@ social:
   link: "https://telegram.me/LuzTorres"
 
 user_groups:
-  - Alumnos
+  - Exalumnos
 ---
 
 Estudiante de ingeniería eléctrica electrónica, con interés en sistemas

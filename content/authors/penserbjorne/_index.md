@@ -43,7 +43,7 @@ social:
 email: "paul.aguilar.enriquez@hotmail.com"
 
 user_groups:
-  - Alumnos
+  - Exalumnos
 ---
 
 Tapatío de nacimiento, libre de corazón, perdido en la Ciudad

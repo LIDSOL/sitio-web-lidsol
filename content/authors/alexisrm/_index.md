@@ -21,7 +21,7 @@ social:
   link: 'mailto:soir_0907@hotmail.com'
 
 user_groups:
-  - Alumnos
+  - Exalumnos
 ---
 
 Estudiante de ingeniería en computación, con intereses enfocados en el

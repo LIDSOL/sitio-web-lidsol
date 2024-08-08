@@ -39,7 +39,7 @@ social:
 #email: "emilio1625@gmail.com"
 
 user_groups:
-  - Alumnos
+  - Exalumnos
 ---
 
 Estudiante de Ingeniería Eléctrica Electrónica, entusiasta sobre la

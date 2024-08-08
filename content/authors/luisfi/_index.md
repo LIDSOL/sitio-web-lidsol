@@ -27,7 +27,7 @@ social:
   link: https://gitlab.com/luisfi
 
 user_groups:
-- Alumnos
+- Exalumnos
 ---
 
 Neófito de la computación, practicante en todo y experto en nada. 

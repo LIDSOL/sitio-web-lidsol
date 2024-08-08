@@ -26,7 +26,7 @@ social:
   link: "https://telegram.me/SystemFailurem"
 
 user_groups:
-  - Alumnos
+  - Exalumnos
 ---
 
 Estudiante de ingeniería en computación en la UNAM. Autodidacta en temas

@@ -19,5 +19,5 @@ social:
   link: "https://telegram.me/T3lior"
 
 user_groups:
-  - Alumnos
+  - Exalumnos
 ---
