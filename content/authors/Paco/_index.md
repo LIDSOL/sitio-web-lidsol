@@ -7,7 +7,7 @@ authors:
 
 superuser: false
 
-role: 
+role: Tesorero y Compa
 
 bio: Soy un compa al que le gusta todo lo relacionado con las computadoras y las matemáticas. Me gusta el software simple, que no trate de bajarme la luna ni de imponerme reglas cuando yo sólo quiero leer un libro. 
 
