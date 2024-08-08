@@ -6,7 +6,7 @@ authors:
 
 superuser: false
 
-role: 
+role: Lider de Equipo
 
 bio: 
   Un estudiante intentando aprender sobre computadoras, automatización, resolución de problemas mediante la programación, y mucha teconología. Fan de la buena comida y las largas caminatas.

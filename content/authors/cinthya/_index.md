@@ -22,7 +22,7 @@ social:
   link: "http://scr.im/cinthya"
 
 user_groups:
-  - Alumnos
+  - Exalumnos
 ---
 
 Estudiante de ingeniería en telecomunicaciones, ingresó a la facultad en el
