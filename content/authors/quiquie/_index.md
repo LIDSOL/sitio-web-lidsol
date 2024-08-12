@@ -1,15 +1,15 @@
 ---
 title: Quique Calderon
 name: Quique Calderon
-authors: 
+authors:
 - ksobrenat32
 
 superuser: false
 
-role: Lider de Equipo
+role: Líder de Equipo
 
-bio: 
-  Un estudiante intentando aprender sobre computadoras, automatización, resolución de problemas mediante la programación, y mucha teconología. Fan de la buena comida y las largas caminatas.
+bio:
+  Un estudiante intentando aprender sobre computadoras, automatización, resolución de problemas mediante la programación, y mucha tecnología. Fan de la buena comida y las largas caminatas.
 
 
 interests: [Sysadmin, DevOps, Programación Competitiva, FOSS, Comida ]
@@ -17,11 +17,16 @@ interests: [Sysadmin, DevOps, Programación Competitiva, FOSS, Comida ]
 education:
   courses:
 
-  - course: Ingenieria en Computación
-    institution: Facultad de Ingenieria de la UNAM
+  - course: Ingeniería en Computación
+    institution: Facultad de Ingeniería de la UNAM
+  - course: Carrera Técnica en Computación
+    institution: Escuela Nacional Preparatoria \# 5 "José Vasconcelos"
 
 
 social:
+- icon: linkedin
+  icon_pack: fab
+  link: https://www.linkedin.com/in/enrique-calderon-035744294
 - icon: envelope
   icon_pack: fas
   link: "mailto:lidsol@ks32.dev"
@@ -42,4 +47,4 @@ social:
 user_groups:
   - Alumnos
 ---
-Un estudiante intentando aprender sobre computadoras, automatización, resolución de problemas mediante la programación, y mucha teconología. Fan de la buena comida y las largas caminatas.
+Un estudiante intentando aprender sobre computadoras, automatización, resolución de problemas mediante la programación, y mucha tecnología. Fan de la buena comida y las largas caminatas.
