@@ -16,7 +16,7 @@ run:
 	  ${IMAGE_NAME}:${IMAGE_TAG}
 
 build:
-	docker run -it \
+	docker run \
 	  -p ${PORT}:1313 \
 	  -v "$(CURDIR):/srv:Z" \
 	  ${IMAGE_NAME}:${IMAGE_TAG} \
