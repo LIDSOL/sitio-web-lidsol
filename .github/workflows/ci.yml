@@ -2,6 +2,8 @@ name: CI
 run-name: Publicación de la pagina web
 on:
   push:
+    branches:
+      - master
 
 jobs:
   build:
