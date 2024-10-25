@@ -36,4 +36,4 @@ social:
 user_groups:
   - Alumnos
 ---
-Llegué de casualidad al mundo FLOSS buscando un ERP para una fábrica de galletas. La fabrica se fue, pero el software y la curiosidad quedaron. Ahora ayudando a organizaciones a navegar los meandros de la tecnología. 
+Llegué de casualidad al mundo FLOSS buscando un ERP para una fábrica de galletas. La fabrica se fue, pero el software y la curiosidad quedaron. Ahora ayudando a organizaciones a navegar los meandros de la tecnología.
