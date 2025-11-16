@@ -1,40 +1,55 @@
 name: CI
-run-name: Publicación de la pagina web
+run-name: Publicación de la pagina web como un contenedor Docker
+
+# Trigger the workflow on push or merge
 on:
   push:
     branches:
       - master
+  pull_request_target:
+    types: closed
+    branches:
+      - master
+
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.event.issue.number || github.sha || github.head_ref || github.ref }}-${{ github.event.schedule || github.event.comment.id || github.event.sender.login }}'
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  packages: write
 
 jobs:
-  build:
+  docker:
+    if: ${{ github.event_name != 'pull_request_target' || github.event.pull_request.merged == true }}
     runs-on: ubuntu-latest
-    environment: deploy
     steps:
-      - name: Checkout the current branch
-        uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
-      - name: Initialize the ssh-agent
-        uses: webfactory/ssh-agent@v0.4.1
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - name: Downcase REPO variable
+      run: |
+        # Lowercase repository identifier (bash expansion)
+        echo "REPO=${GITHUB_REPOSITORY,,}" >> "${GITHUB_ENV}"
 
-      - name: Create the docker image
-        run: make init
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
 
-      - name: Build the website
-        run: make build
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
 
-      - name: Scan the host key
-        run: mkdir -p ~/.ssh/ && ssh-keyscan -p $DEPLOY_PORT -H $DEPLOY_SERVER >> ~/.ssh/known_hosts
-        env:
-          DEPLOY_SERVER: ${{ secrets.DEPLOY_SERVER }}
-          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+    - name: Log in to ghcr
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Deploy the website
-        run: >-
-          rsync -avx -e "ssh -p $DEPLOY_PORT" --delete --exclude '.ssh' public/ $DEPLOY_USERNAME@$DEPLOY_SERVER:$DEPLOY_PATH
-        env:
-          DEPLOY_SERVER: ${{ secrets.DEPLOY_SERVER }}
-          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
-          DEPLOY_USERNAME: ${{ secrets.DEPLOY_USERNAME }}
-          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+    - name: Build and push
+      uses: docker/build-push-action@v5
+      with:
+        push: true
+        tags: |
+          ghcr.io/${{ env.REPO }}:${{ github.ref_name }}
+          ghcr.io/${{ env.REPO }}:${{ github.sha }}
+        platforms: linux/amd64
+      
