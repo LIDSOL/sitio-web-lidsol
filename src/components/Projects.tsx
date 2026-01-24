@@ -1,0 +1,162 @@
+import { Star, Users, Github } from "lucide-react";
+import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
+import { useLanguage } from "./LanguageProvider";
+import { projects } from "../data/projects";
+import { useState, useMemo } from "react";
+
+interface ProjectsProps {
+  onProjectClick: (projectId: number) => void;
+}
+
+// Simple contribution graph component
+function ContributionGraph({ projectId }: { projectId: number }) {
+  // Generate contribution data once based on projectId (deterministic)
+  const contributions = useMemo(() => {
+    const weeks = 12;
+    const days = 7;
+    // Use projectId as seed for consistent data
+    const seed = projectId * 1000;
+    return Array.from({ length: weeks }, (_, weekIndex) =>
+      Array.from({ length: days }, (_, dayIndex) => {
+        // Deterministic "random" based on position and projectId
+        const value = (seed + weekIndex * 7 + dayIndex) % 5;
+        return value;
+      })
+    );
+  }, [projectId]);
+
+  const getColor = (level: number) => {
+    if (level === 0) return "bg-muted";
+    if (level === 1) return "bg-primary/20";
+    if (level === 2) return "bg-primary/40";
+    if (level === 3) return "bg-primary/60";
+    return "bg-primary/80";
+  };
+
+  return (
+    <div className="flex gap-0.5 mb-4">
+      {contributions.map((week, weekIndex) => (
+        <div key={weekIndex} className="flex flex-col gap-0.5">
+          {week.map((day, dayIndex) => (
+            <div
+              key={dayIndex}
+              className={`w-2 h-2 rounded-sm ${getColor(day)}`}
+              title={`${day} contributions`}
+            />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export function Projects({ onProjectClick }: ProjectsProps) {
+  const { language } = useLanguage();
+  const [expandedProjects, setExpandedProjects] = useState<Set<number>>(new Set());
+
+  const toggleExpanded = (projectId: number) => {
+    const newExpanded = new Set(expandedProjects);
+    if (newExpanded.has(projectId)) {
+      newExpanded.delete(projectId);
+    } else {
+      newExpanded.add(projectId);
+    }
+    setExpandedProjects(newExpanded);
+  };
+
+  const t = {
+    title: { en: "Open Source Projects", es: "Proyectos de Código Abierto" },
+    sourceCode: { en: "Source Code", es: "Código Fuente" },
+    viewDetails: { en: "View Details", es: "Ver Detalles" },
+    contributors: { en: "contributors", es: "contribuidores" },
+    showMore: { en: "Show more", es: "Ver más" },
+    showLess: { en: "Show less", es: "Ver menos" },
+    activity: { en: "Activity", es: "Actividad" },
+  };
+
+  return (
+    <div className="min-h-screen bg-background py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 className="text-5xl sm:text-6xl mb-12">{t.title[language]}</h1>
+        <div className="space-y-4">
+          {projects.map((project) => {
+            const isExpanded = expandedProjects.has(project.id);
+            return (
+              <div
+                key={project.id}
+                className="bg-card rounded-2xl p-6 border border-border/50 hover:border-primary/30 transition-all hover:shadow-md"
+              >
+                <div className="flex flex-col gap-4">
+                  {/* Header */}
+                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <h3 
+                          className="text-xl hover:text-primary transition-colors cursor-pointer"
+                          onClick={() => onProjectClick(project.id)}
+                        >
+                          {project.title[language]}
+                        </h3>
+                        <span className="text-xs px-3 py-1 bg-muted rounded-full">
+                          {project.category[language]}
+                        </span>
+                      </div>
+                      <p className={`text-muted-foreground mb-3 ${isExpanded ? "" : "line-clamp-2"}`}>
+                        {isExpanded ? project.fullDescription[language] : project.shortDescription[language]}
+                      </p>
+                      
+                      {/* Show More/Less Button */}
+                      <button
+                        onClick={() => toggleExpanded(project.id)}
+                        className="text-sm text-primary hover:underline mb-3"
+                      >
+                        {isExpanded ? t.showLess[language] : t.showMore[language]}
+                      </button>
+
+                      {/* Contribution Graph */}
+                      <div className="mb-3">
+                        <div className="text-xs text-muted-foreground mb-2">{t.activity[language]}</div>
+                        <ContributionGraph projectId={project.id} />
+                      </div>
+
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground flex-wrap">
+                        <div className="flex items-center gap-1">
+                          <Star className="h-4 w-4 text-yellow-500" />
+                          {project.stars}
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Users className="h-4 w-4 text-primary" />
+                          {project.contributors} {t.contributors[language]}
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <div className={`w-3 h-3 ${project.color} rounded-full`} />
+                          {project.language}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      {project.github && (
+                        <Button variant="outline" size="sm" className="gap-2">
+                          <Github className="h-4 w-4" />
+                          {t.sourceCode[language]}
+                        </Button>
+                      )}
+                      <Button 
+                        size="sm" 
+                        className="gap-2"
+                        onClick={() => onProjectClick(project.id)}
+                      >
+                        {t.viewDetails[language]}
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}

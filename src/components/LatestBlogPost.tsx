@@ -1,0 +1,95 @@
+import { Card } from "./ui/card";
+import { Badge } from "./ui/badge";
+import { Calendar, User, ArrowRight } from "lucide-react";
+import { Button } from "./ui/button";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { useLanguage } from "./LanguageProvider";
+import { blogPosts } from "../data/blogPosts";
+
+interface LatestBlogPostProps {
+  onViewPost: (postId: number) => void;
+  onViewAllPosts: () => void;
+}
+
+export function LatestBlogPost({ onViewPost, onViewAllPosts }: LatestBlogPostProps) {
+  const { language } = useLanguage();
+  
+  // Get the latest blog post (first one)
+  const latestPost = blogPosts[0];
+
+  const t = {
+    title: { en: "Latest from Our Blog", es: "Último del Blog" },
+    viewPost: { en: "Read Full Article", es: "Leer Artículo Completo" },
+    viewAll: { en: "View All Posts", es: "Ver Todos los Posts" },
+    readTime: { en: "min read", es: "min de lectura" },
+  };
+
+  return (
+    <section id="latest-blog" className="py-20 bg-background">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl sm:text-5xl mb-4">{t.title[language]}</h2>
+        </div>
+
+        <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 border-border/60 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-0">
+            <div 
+              className="aspect-video md:aspect-auto relative overflow-hidden cursor-pointer"
+              onClick={() => onViewPost(latestPost.id)}
+            >
+              <ImageWithFallback
+                src={latestPost.image}
+                alt={latestPost.title}
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+              <Badge className="absolute top-4 left-4 shadow-lg bg-primary">
+                Nuevo
+              </Badge>
+            </div>
+            <div className="p-8 flex flex-col justify-between">
+              <div>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {latestPost.tags.slice(0, 3).map((tag) => (
+                    <Badge key={tag} variant="outline">{tag}</Badge>
+                  ))}
+                </div>
+                <h3 className="text-3xl mb-4">{latestPost.title}</h3>
+                <p className="text-muted-foreground mb-6 line-clamp-3">
+                  {latestPost.excerpt}
+                </p>
+                <div className="flex items-center gap-6 text-sm text-muted-foreground mb-6">
+                  <div className="flex items-center gap-2">
+                    <User className="h-4 w-4" />
+                    <span>{latestPost.author}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Calendar className="h-4 w-4" />
+                    <span>{latestPost.date}</span>
+                  </div>
+                  <div>
+                    {latestPost.readTime} {t.readTime[language]}
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <Button 
+                  className="gap-2 flex-1"
+                  onClick={() => onViewPost(latestPost.id)}
+                >
+                  {t.viewPost[language]} <ArrowRight className="h-4 w-4" />
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="gap-2"
+                  onClick={onViewAllPosts}
+                >
+                  {t.viewAll[language]}
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Card>
+      </div>
+    </section>
+  );
+}

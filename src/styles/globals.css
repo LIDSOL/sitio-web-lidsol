@@ -1,0 +1,213 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  /* Libadwaita Light Theme Colors */
+  --background: #fafafa;
+  --foreground: #2e3436;
+  --card: #ffffff;
+  --card-foreground: #2e3436;
+  --popover: #ffffff;
+  --popover-foreground: #2e3436;
+  --primary: #1c71d8;
+  --primary-foreground: #ffffff;
+  --secondary: #deddda;
+  --secondary-foreground: #2e3436;
+  --muted: #f6f5f4;
+  --muted-foreground: #5e5c64;
+  --accent: #deddda;
+  --accent-foreground: #2e3436;
+  --destructive: #e01b24;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;
+  --input-background: #f6f5f4;
+  --switch-background: #deddda;
+  --font-weight-medium: 600;
+  --font-weight-normal: 400;
+  --ring: #1c71d8;
+  --chart-1: #1c71d8;
+  --chart-2: #26a269;
+  --chart-3: #e66100;
+  --chart-4: #a51d2d;
+  --chart-5: #613583;
+  --radius: 12px;
+  --sidebar: #fafafa;
+  --sidebar-foreground: #2e3436;
+  --sidebar-primary: #1c71d8;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f6f5f4;
+  --sidebar-accent-foreground: #2e3436;
+  --sidebar-border: rgba(0, 0, 0, 0.1);
+  --sidebar-ring: #1c71d8;
+}
+
+.dark {
+  /* Libadwaita Dark Theme Colors */
+  --background: #242424;
+  --foreground: #ffffff;
+  --card: #303030;
+  --card-foreground: #ffffff;
+  --popover: #303030;
+  --popover-foreground: #ffffff;
+  --primary: #62a0ea;
+  --primary-foreground: #ffffff;
+  --secondary: #3d3846;
+  --secondary-foreground: #ffffff;
+  --muted: #2a2a2a;
+  --muted-foreground: #deddda;
+  --accent: #3d3846;
+  --accent-foreground: #ffffff;
+  --destructive: #ff6c6c;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #62a0ea;
+  --font-weight-medium: 600;
+  --font-weight-normal: 400;
+  --chart-1: #62a0ea;
+  --chart-2: #57e389;
+  --chart-3: #ffa348;
+  --chart-4: #ed333b;
+  --chart-5: #9141ac;
+  --sidebar: #1e1e1e;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #62a0ea;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #3d3846;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #62a0ea;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=' text-']), :not(:has([class^='text-'])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* Custom animations */
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-2deg);
+  }
+  75% {
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

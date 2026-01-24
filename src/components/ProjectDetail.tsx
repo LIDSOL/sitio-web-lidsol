@@ -1,0 +1,137 @@
+import { ArrowLeft, Github, ExternalLink, Star, Users, CheckCircle } from "lucide-react";
+import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
+import { useLanguage } from "./LanguageProvider";
+import { Project } from "../data/projects";
+
+interface ProjectDetailProps {
+  project: Project;
+  onBack: () => void;
+}
+
+export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
+  const { language } = useLanguage();
+
+  const t = {
+    back: { en: "Back to Projects", es: "Volver a Proyectos" },
+    description: { en: "Description", es: "Descripción" },
+    features: { en: "Key Features", es: "Características Clave" },
+    stats: { en: "Project Stats", es: "Estadísticas del Proyecto" },
+    stars: { en: "Stars", es: "Estrellas" },
+    contributors: { en: "Contributors", es: "Contribuidores" },
+    status: { en: "Status", es: "Estado" },
+    language: { en: "Language", es: "Lenguaje" },
+    tags: { en: "Tags", es: "Etiquetas" },
+    sourceCode: { en: "View Source Code", es: "Ver Código Fuente" },
+    visitWebsite: { en: "Visit Website", es: "Visitar Sitio Web" },
+  };
+
+  return (
+    <div className="min-h-screen bg-background py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+        {/* Back Button */}
+        <Button
+          variant="ghost"
+          className="mb-8 gap-2"
+          onClick={onBack}
+        >
+          <ArrowLeft className="h-4 w-4" />
+          {t.back[language]}
+        </Button>
+
+        {/* Project Header */}
+        <div className="mb-12">
+          <div className="flex items-start justify-between mb-6">
+            <div>
+              <h1 className="text-5xl sm:text-6xl mb-4">{project.title[language]}</h1>
+              <p className="text-xl text-muted-foreground">
+                {project.shortDescription[language]}
+              </p>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-wrap gap-3">
+            {project.github && (
+              <Button size="lg" className="gap-2">
+                <Github className="h-5 w-5" />
+                {t.sourceCode[language]}
+              </Button>
+            )}
+            {project.website && (
+              <Button size="lg" variant="outline" className="gap-2">
+                <ExternalLink className="h-5 w-5" />
+                {t.visitWebsite[language]}
+              </Button>
+            )}
+          </div>
+        </div>
+
+        {/* Stats Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+          <div className="bg-card rounded-2xl p-6 border border-border/50">
+            <div className="flex items-center gap-3 mb-2">
+              <Star className="h-5 w-5 text-yellow-500" />
+              <span className="text-sm text-muted-foreground">{t.stars[language]}</span>
+            </div>
+            <div className="text-3xl">{project.stars}</div>
+          </div>
+          <div className="bg-card rounded-2xl p-6 border border-border/50">
+            <div className="flex items-center gap-3 mb-2">
+              <Users className="h-5 w-5 text-primary" />
+              <span className="text-sm text-muted-foreground">{t.contributors[language]}</span>
+            </div>
+            <div className="text-3xl">{project.contributors}</div>
+          </div>
+          <div className="bg-card rounded-2xl p-6 border border-border/50">
+            <div className="flex items-center gap-3 mb-2">
+              <CheckCircle className="h-5 w-5 text-green-500" />
+              <span className="text-sm text-muted-foreground">{t.status[language]}</span>
+            </div>
+            <div className="text-xl">{project.status[language]}</div>
+          </div>
+          <div className="bg-card rounded-2xl p-6 border border-border/50">
+            <div className="flex items-center gap-3 mb-2">
+              <div className={`w-4 h-4 ${project.color} rounded-full`} />
+              <span className="text-sm text-muted-foreground">{t.language[language]}</span>
+            </div>
+            <div className="text-xl">{project.language}</div>
+          </div>
+        </div>
+
+        {/* Description */}
+        <div className="bg-card rounded-3xl p-8 md:p-12 border border-border/50 mb-8">
+          <h2 className="text-3xl mb-6">{t.description[language]}</h2>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            {project.fullDescription[language]}
+          </p>
+        </div>
+
+        {/* Features */}
+        <div className="bg-primary/5 border border-primary/10 rounded-3xl p-8 md:p-12 mb-8">
+          <h2 className="text-3xl mb-6">{t.features[language]}</h2>
+          <ul className="space-y-3">
+            {project.features[language].map((feature, index) => (
+              <li key={index} className="flex items-start gap-3">
+                <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                <span className="text-muted-foreground text-lg">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Tags */}
+        <div className="bg-card rounded-3xl p-8 border border-border/50">
+          <h2 className="text-2xl mb-4">{t.tags[language]}</h2>
+          <div className="flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <Badge key={tag} variant="secondary" className="text-sm px-4 py-2">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
