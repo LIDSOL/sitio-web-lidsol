@@ -115,10 +115,6 @@ export const members: Member[] = [
       en: "Academic mentor",
       es: "Mentor académico",
     },
-    bio: {
-      en: " ",
-      es: " ",
-    },
     image: tonejitoImg,
     joined: "2010",
     category: "academic",
@@ -283,10 +279,6 @@ export const members: Member[] = [
   {
     id: 10,
     name: "Juan Flores",
-    role: {
-      en: " ",
-      es: " ",
-    },
     bio: {
       en: "Self-taught software engineer and free-software developer since 1997.",
       es: "Ingeniero en software autodidacta y desarrollador de software libre desde 1997.",
