@@ -30,11 +30,12 @@ export interface MemberContact {
   facebook?: string;
 }
 
+
 export interface Member {
   id: number;
   name: string;
   role: { en: string; es: string };
-  bio: { en: string; es: string };
+  bio?: { en: string; es: string };
   image: string;
   joined: string;
   category: MemberCategory;
@@ -44,8 +45,12 @@ export interface Member {
     es: string[];
   };
 
-  contact?: MemberContact;
+  interests?: {
+    en: string[];
+    es: string[];
+  };
 
+  contact?: MemberContact;
   contributions?: MemberLink[];
   involvement?: MemberLink[];
 }
@@ -167,6 +172,19 @@ export const members: Member[] = [
     educatedAt: {
       en: ["National Autonomous University of Mexico (UNAM)"],
       es: ["Ingeniería Industrial (Facultad de Ingenieria y Arquitectura de la Universidad de Lima)"],
+    },
+
+    interests: {
+      en: [
+        "Free Software communities",
+        "Information security",
+        "Unix-like systems",
+      ],
+      es: [
+        "Comunidades de software libre",
+        "Seguridad informática",
+        "Sistemas tipo Unix",
+      ],
     },
 
     contact: {

@@ -112,6 +112,9 @@ export function AboutMember({ member, onBack }: AboutMemberProps) {
             </div>
           </div>
 
+
+
+
           {/* External Work */}
           {member.contributions?.length ? (
             <section className="pt-6">
@@ -194,6 +197,44 @@ export function AboutMember({ member, onBack }: AboutMemberProps) {
               </div>
             </section>
           )}
+
+{/* Interests */}
+{(() => {
+  const interests = member.interests?.[language] ?? [];
+
+  if (interests.length === 0) return null;
+
+  return (
+    <section className="pt-6">
+      <h3 className="text-lg mb-4">
+        {language === "en" ? "Interests" : "Intereses"}
+      </h3>
+
+      <div className="flex flex-wrap gap-2">
+        {interests.map((interest, idx) => (
+
+        <Badge
+          key={idx}
+          variant="secondary"
+          className="
+            bg-muted/40
+            text-muted-foreground
+            border border-border/40
+            font-normal
+            hover:bg-muted/50
+          "
+        >
+  {interest}
+</Badge>
+
+        ))}
+      </div>
+    </section>
+  );
+})()}
+
+
+
         </div>
       </div>
     </div>
