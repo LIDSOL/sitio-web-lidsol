@@ -1,9 +1,10 @@
 import { Card, CardContent } from "./ui/card";
-import { Users, Mail, Github, Linkedin } from "lucide-react";
+import { Mail, Github, Linkedin } from "lucide-react";
 import { Button } from "./ui/button";
 import { useLanguage } from "./LanguageProvider";
-import { members } from "../data/members";
+import { members, Member } from "../data/members";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { Timeline } from "./Timeline";
 
 interface AboutProps {
   onMemberClick: (memberId: number) => void;
@@ -14,128 +15,241 @@ export function About({ onMemberClick }: AboutProps) {
 
   const t = {
     title: { en: "About LIDSOL", es: "Acerca de LIDSOL" },
-    subtitle: { 
-      en: "Free Software Laboratory", 
-      es: "Laboratorio de Investigación y Desarrollo de Software Libre" 
+    subtitle: {
+      en: "Free Software Laboratory",
+      es: "Laboratorio de Investigación y Desarrollo de Software Libre",
     },
     description: {
-      en: "LIDSOL is a laboratory at the Faculty of Engineering, UNAM, dedicated to the research, development, and promotion of free and open-source software. We bring together students, alumni, and academics passionate about technology and committed to the principles of free software.",
-      es: "LIDSOL es un laboratorio de la Facultad de Ingeniería de la UNAM, dedicado a la investigación, desarrollo y promoción de software libre y de código abierto. Reunimos a estudiantes, exalumnos y académicos apasionados por la tecnología y comprometidos con los principios del software libre."
+      en: "LIDSoL is a laboratory of the Faculty of Engineering at UNAM. We aim to promote and drive research and development of free technologies by carrying out related projects in various fields, seeking progress and improving society.",
+      es: "LIDSoL es un laboratorio de la Facultad de Ingeniería de la UNAM. Buscamos promover e impulsar la investigación y desarrollo de tecnologías libres realizando proyectos afines en distintas áreas buscando el progreso y mejorando la sociedad. ",
     },
     historyTitle: { en: "Our History", es: "Nuestra Historia" },
     history: {
-      en: "Founded in 2002, LIDSOL emerged from the need to create a space within the Faculty of Engineering where students could learn, experiment, and contribute to free software projects. Over more than two decades, we have grown into a vibrant community that has contributed to numerous open-source projects and trained hundreds of engineers in free software technologies.",
-      es: "Fundado en 2002, LIDSOL surgió de la necesidad de crear un espacio dentro de la Facultad de Ingeniería donde los estudiantes pudieran aprender, experimentar y contribuir a proyectos de software libre. A lo largo de más de dos décadas, hemos crecido hasta convertirnos en una comunidad vibrante que ha contribuido a numerosos proyectos de código abierto y capacitado a cientos de ingenieros en tecnologías de software libre."
+      en: [
+        {
+          year: "1998 - 2001",
+          text: "Between 1998 and 2001, the precursor to LIDSoL was the Linux Users Group of the Faculty of Engineering (GULFI), founded by students who adopted the penguin’s operating system early on."
+        },
+        {
+          year: "2001 - Present",
+          text: "With the support of Engineer Juan Correón Granados, GULFI transformed into LIDSoL in 2001, under the umbrella of the Electrical Engineering Division, and moved into its current facilities on the second floor of Building P of the Engineering Annex."
+        },
+        {
+          year: "2019 - Present",
+          text: "In early 2019, LIDSoL members re-established the ACM student chapter at the Faculty of Engineering."
+        },
+        {
+          year: "2026",
+          text: "LIDSoL continues to promote free software and open technologies."
+        }
+      ],
+      es: [
+        {
+          year: "1998 - 2001",
+          text: "Entre 1998 y 2001, el antecedente de LIDSoL fue el Grupo de Usuarios de Linux de la Facultad de Ingeniería (GULFI), fundado por estudiantes que adoptaron temprano el sistema operativo del pingüino."
+        },
+        {
+          year: "2001 - Presente",
+          text: "Con el apoyo del Ing. Juan Correón Granados el GULFI se transformó en el LIDSOL en 2001, bajo el cobijo de la División de Ingeniería Eléctrica, y se alojó en sus instalaciones actuales en el segundo piso del edificio P del Anexo de Ingeniería."
+        },
+        {
+          year: "2019 - Presente",
+          text: "A principios de 2019, miembros de LIDSoL reconstituyeron el capítulo estudiantil de la ACM en la Facultad de Ingeniería."
+        },
+        {
+          year: "2026",
+          text: "LIDSOL continúa impulsando el software libre y tecnologías abiertas."
+        }
+      ],
     },
     activitiesTitle: { en: "Our Activities", es: "Nuestras Actividades" },
     activities: {
       en: [
-        "Development of open-source software projects",
-        "Technical workshops and training courses",
-        "Conferences and seminars on free software",
-        "Participation in national and international events",
-        "Technical support and consulting",
-        "Promotion of free software culture and philosophy"
+        "Courses and workshops.",
+        "Events and conferences.",
+        "Installation of free software and operating systems.",
+        "Advice on the use of free and open licenses.",
+        "Development of research projects.",
+        "Development of free and open technologies.",
       ],
       es: [
-        "Desarrollo de proyectos de software de código abierto",
-        "Talleres técnicos y cursos de capacitación",
-        "Conferencias y seminarios sobre software libre",
-        "Participación en eventos nacionales e internacionales",
-        "Soporte técnico y consultoría",
-        "Promoción de la cultura y filosofía del software libre"
-      ]
+        "Cursos y talleres.",
+        "Eventos y conferencias.",
+        "Instalación de software y sistemas operativos Libres.",
+        "Asesoría sobre el uso de licencias libres y abiertas.",
+        "Desarrollo de proyectos de investigación.",
+        "Desarrollo de tecnologías libres y abiertas.",
+      ],
     },
-    membersTitle: { en: "Our Team", es: "Nuestro Equipo" },
+    membersTitle: { en: "Members", es: "Integrantes" },
+    sections: {
+      academic: {
+        en: "Academic Coordinators",
+        es: "Responsables académicos",
+      },
+      student: {
+        en: "Students",
+        es: "Alumnos",
+      },
+      formerstudent: {
+        en: "Former Students",
+        es: "Exalumnos",
+      },
+    },
     membersCta: { en: "View Profile", es: "Ver Perfil" },
   };
 
+  const academics = members.filter(m => m.category === "academic");
+  const students = members.filter(m => m.category === "student");
+  const formerStudents = members.filter(m => m.category === "formerstudent");
+
+/* ------------------------------------------------------------------
+   renderMembers – muestra hasta 4 miembros y los centra cuando son <4
+   ------------------------------------------------------------------ */
+const renderMembers = (list: Member[]) => {
+  // 1️⃣ Tomamos solo los primeros 4 elementos (si hay menos, queda igual)
+  const displayed = list.slice(0, 4);
+
+  // 2️⃣ Cuántas tarjetas vamos a renderizar realmente
+  const count = displayed.length;
+
+  // 3️⃣ Clases de columnas según la cantidad
+  //    - Cuando hay 4 → 4 columnas en pantallas grandes
+  //    - Cuando hay 3 → 3 columnas en lg, 2 en md
+  //    - Cuando hay 2 → 2 columnas en md+lg
+  //    - Cuando hay 1 → 1 columna
+  const colsClass = (() => {
+    if (count === 4) return "lg:grid-cols-4";
+    if (count === 3) return "lg:grid-cols-3";
+    if (count === 2) return "lg:grid-cols-2";
+    return "lg:grid-cols-1";
+  })();
+
+  return (
+    /* Contenedor flex que siempre centra el grid */
+    <div className="flex justify-center">
+      {/* Grid que solo ocupa el ancho necesario */}
+      <div
+        className={`
+          grid md:grid-cols-2 ${colsClass} gap-6
+          ${count < 4 ? "auto-cols-max justify-items-center" : ""}
+          w-fit mx-auto               /* evita width:100% y centra dentro del flex */
+          max-w-5xl                   /* opcional: no crecer demasiado en pantallas muy anchas */
+        `}
+      >
+        {displayed.map((member) => (
+          <Card
+            key={member.id}
+            className={`
+              w-[320px] overflow-hidden hover:shadow-lg transition-all
+              duration-300 hover:scale-[1.02] group cursor-pointer
+            `}
+            onClick={() => onMemberClick(member.id)}
+          >
+            <div className="aspect-square overflow-hidden">
+              <ImageWithFallback
+                src={member.image}
+                alt={member.name}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+
+            <CardContent className="p-6">
+              <h3 className="text-xl mb-1 group-hover:text-primary transition-colors">
+                {member.name}
+              </h3>
+
+              <p className="text-sm text-primary mb-3">
+                {member.role[language]}
+              </p>
+
+              <p className="text-sm text-muted-foreground line-clamp-3 mb-4 min-h-[4.5rem]">
+                {member.bio[language] || "\u00A0"}
+              </p>
+
+              <Button
+                variant="outline"
+                className="w-full mt-4 group-hover:bg-primary group-hover:text-primary-foreground"
+              >
+                {t.membersCta[language]}
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+};
   return (
     <div className="min-h-screen bg-background py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h1 className="text-5xl sm:text-6xl mb-4">{t.title[language]}</h1>
           <p className="text-2xl text-primary mb-6">{t.subtitle[language]}</p>
-          <p className="text-lg text-muted-foreground leading-relaxed">
+          <p className="text-lg text-muted-foreground">
             {t.description[language]}
           </p>
         </div>
 
-        {/* History Section */}
+        {/* History */}
         <div className="max-w-4xl mx-auto mb-20">
-          <div className="bg-card rounded-3xl p-8 md:p-12 border border-border/50">
-            <h2 className="text-3xl mb-6">{t.historyTitle[language]}</h2>
-            <p className="text-muted-foreground leading-relaxed text-lg">
-              {t.history[language]}
-            </p>
+          <div className="bg-card rounded-3xl p-8 border">
+            <h2 className="text-3xl mb-6">
+              {t.historyTitle[language]}
+            </h2>
+
+            <Timeline items={t.history[language]} />
           </div>
         </div>
 
-        {/* Activities Section */}
+        {/* Activities */}
         <div className="max-w-4xl mx-auto mb-20">
-          <div className="bg-primary/5 border border-primary/10 rounded-3xl p-8 md:p-12">
+          <div className="bg-primary/5 rounded-3xl p-8">
             <h2 className="text-3xl mb-6">{t.activitiesTitle[language]}</h2>
             <ul className="space-y-3">
-              {t.activities[language].map((activity, index) => (
-                <li key={index} className="flex items-start gap-3 text-muted-foreground">
-                  <span className="text-primary mt-1.5">•</span>
-                  <span className="text-lg">{activity}</span>
+              {t.activities[language].map((a, i) => (
+                <li key={i} className="flex gap-3 text-muted-foreground">
+                  <span className="text-primary">•</span>
+                  <span>{a}</span>
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        {/* Team Members */}
-        <div className="mb-12">
-          <h2 className="text-4xl mb-12 text-center">{t.membersTitle[language]}</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {members.map((member) => (
-              <Card 
-                key={member.id}
-                className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group border-border/60 cursor-pointer"
-                onClick={() => onMemberClick(member.id)}
-              >
-                <div className="aspect-square relative overflow-hidden">
-                  <ImageWithFallback
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl mb-1 group-hover:text-primary transition-colors">
-                    {member.name}
-                  </h3>
-                  <p className="text-sm text-primary mb-3">{member.role[language]}</p>
-                  <p className="text-sm text-muted-foreground line-clamp-3 mb-4">
-                    {member.bio[language]}
-                  </p>
-                  <div className="flex gap-2">
-                    {member.github && (
-                      <div className="p-2 rounded-full bg-muted/50 hover:bg-muted transition-colors">
-                        <Github className="h-4 w-4" />
-                      </div>
-                    )}
-                    {member.linkedin && (
-                      <div className="p-2 rounded-full bg-muted/50 hover:bg-muted transition-colors">
-                        <Linkedin className="h-4 w-4" />
-                      </div>
-                    )}
-                    <div className="p-2 rounded-full bg-muted/50 hover:bg-muted transition-colors">
-                      <Mail className="h-4 w-4" />
-                    </div>
-                  </div>
-                  <Button variant="outline" className="w-full mt-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                    {t.membersCta[language]}
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+        {/* Members */}
+        <div className="mb-20">
+          <h2 className="text-4xl mb-16 text-center">
+            {t.membersTitle[language]}
+          </h2>
+
+          <section className="mb-16">
+            <h3 className="text-3xl mb-8 text-center">
+              {t.sections.academic[language]}
+            </h3>
+            {renderMembers(academics)}
+          </section>
+
+          <section className="mb-16">
+            <h3 className="text-3xl mb-8 text-center">
+              {t.sections.student[language]}
+            </h3>
+            {renderMembers(students)}
+          </section>
+
+          {formerStudents.length > 0 && (
+            <section>
+              <h3 className="text-3xl mb-8 text-center">
+                {t.sections.formerstudent[language]}
+              </h3>
+              {renderMembers(formerStudents)}
+            </section>
+          )}
         </div>
       </div>
     </div>
   );
 }
+

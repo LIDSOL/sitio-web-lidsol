@@ -1,4 +1,20 @@
-import { ArrowLeft, Mail, Github, Linkedin, Calendar, Briefcase } from "lucide-react";
+import {
+  ArrowLeft,
+  Calendar,
+  Link as LinkIcon,
+} from "lucide-react";
+
+import { FacebookIcon } from "./ui/source/icons/FacebookIcon";
+import { GithubIcon } from "./ui/source/icons/GithubIcon";
+import { GitlabIcon } from "./ui/source/icons/GitlabIcon";
+import { InstagramIcon } from "./ui/source/icons/InstagramIcon";
+import { LinkedinIcon } from "./ui/source/icons/linkedinIcon";
+import { MailOpenIcon } from "./ui/source/icons/MailOpenIcon";
+import { SendIcon } from "./ui/source/icons/SendIcon";
+import { TwitterIcon } from "./ui/source/icons/TwitterIcon";
+import { YoutubeIcon } from "./ui/source/icons/YoutubeIcon";
+import { GlobeIcon } from "./ui/source/icons/GlobeIcon";
+
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { useLanguage } from "./LanguageProvider";
@@ -16,30 +32,41 @@ export function AboutMember({ member, onBack }: AboutMemberProps) {
   const t = {
     back: { en: "Back to Team", es: "Volver al Equipo" },
     joined: { en: "Joined", es: "Se unió" },
-    specialties: { en: "Specialties", es: "Especialidades" },
-    projects: { en: "Projects", es: "Proyectos" },
+    educatedAt: { en: "Educated at", es: "Educado en" },
+    externalWork: { en: "External Work", es: "Trabajo Externo" },
+    lidsolInvolvement: {
+      en: "LIDSoL Participation",
+      es: "Participaciones en LIDSoL",
+    },
     contact: { en: "Contact", es: "Contacto" },
-  };
+  } as const;
+
+  const socialIcons = {
+    email: MailOpenIcon,
+    web: GlobeIcon,
+    twitter: TwitterIcon,
+    gitlab: GitlabIcon,
+    github: GithubIcon,
+    linkedin: LinkedinIcon,
+    youtube: YoutubeIcon,
+    instagram: InstagramIcon,
+    telegram: SendIcon,
+    facebook: FacebookIcon,
+  } as const;
 
   return (
     <div className="min-h-screen bg-background py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-        {/* Back Button */}
-        <Button
-          variant="ghost"
-          className="mb-8 gap-2"
-          onClick={onBack}
-        >
+      <div className="container mx-auto max-w-4xl px-4">
+        <Button variant="outline" onClick={onBack} className="mb-16 gap-2">
           <ArrowLeft className="h-4 w-4" />
           {t.back[language]}
         </Button>
 
-        {/* Member Profile */}
-        <div className="bg-card rounded-3xl border border-border/50 overflow-hidden">
-          <div className="grid md:grid-cols-5 gap-8 p-8">
-            {/* Profile Image */}
+        <div className="bg-card rounded-3xl border p-8 space-y-14">
+          {/* Header */}
+          <div className="grid md:grid-cols-5 gap-8">
             <div className="md:col-span-2">
-              <div className="aspect-square rounded-2xl overflow-hidden shadow-lg border border-border/50">
+              <div className="aspect-square rounded-2xl overflow-hidden">
                 <ImageWithFallback
                   src={member.image}
                   alt={member.name}
@@ -48,77 +75,128 @@ export function AboutMember({ member, onBack }: AboutMemberProps) {
               </div>
             </div>
 
-            {/* Profile Info */}
-            <div className="md:col-span-3 space-y-6">
-              <div>
-                <h1 className="text-4xl mb-2">{member.name}</h1>
-                <p className="text-xl text-primary">{member.role[language]}</p>
-              </div>
+            <div className="md:col-span-3">
+              <h1 className="text-4xl mb-6">{member.name}</h1>
 
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <p className="text-xl text-primary mb-4">
+                {member.role[language]}
+              </p>
+
+              {/* Joined */}
+              <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
                 <Calendar className="h-4 w-4" />
-                <span>{t.joined[language]} {member.joined}</span>
+                {t.joined[language]} {member.joined}
               </div>
 
-              <p className="text-muted-foreground leading-relaxed">
+              {/* Bio */}
+              <p className="text-muted-foreground leading-relaxed mb-6">
                 {member.bio[language]}
               </p>
 
-              {/* Specialties */}
-              <div>
-                <h3 className="text-lg mb-3 flex items-center gap-2">
-                  <Briefcase className="h-5 w-5 text-primary" />
-                  {t.specialties[language]}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {member.specialties.map((specialty) => (
-                    <Badge key={specialty} variant="secondary">
-                      {specialty}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-
-              {/* Projects */}
-              {member.projects && member.projects.length > 0 && (
-                <div>
-                  <h3 className="text-lg mb-3">{t.projects[language]}</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {member.projects.map((project) => (
-                      <Badge key={project} variant="outline" className="border-primary/30">
-                        {project}
-                      </Badge>
-                    ))}
-                  </div>
+              {/* Educated at — AHORA DEBAJO DE LA BIO Y CON DOTS */}
+              {member.educatedAt && (
+                <div className="text-sm text-muted-foreground">
+                  <p className="font-medium mb-2">
+                    {t.educatedAt[language]}:
+                  </p>
+            <ul className="space-y-2">
+              {member.educatedAt[language].map((item, idx) => (
+                <li key={idx} className="flex gap-2">
+                  <span className="mt-1 text-muted-foreground">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
                 </div>
               )}
-
-              {/* Contact */}
-              <div>
-                <h3 className="text-lg mb-3">{t.contact[language]}</h3>
-                <div className="flex flex-wrap gap-3">
-                  <Button variant="outline" size="sm" className="gap-2">
-                    <Mail className="h-4 w-4" />
-                    Email
-                  </Button>
-                  {member.github && (
-                    <Button variant="outline" size="sm" className="gap-2">
-                      <Github className="h-4 w-4" />
-                      GitHub
-                    </Button>
-                  )}
-                  {member.linkedin && (
-                    <Button variant="outline" size="sm" className="gap-2">
-                      <Linkedin className="h-4 w-4" />
-                      LinkedIn
-                    </Button>
-                  )}
-                </div>
-              </div>
             </div>
           </div>
+
+          {/* External Work */}
+          {member.contributions?.length ? (
+            <section className="pt-6">
+              <h3 className="text-lg mb-4">
+                {t.externalWork[language]}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {member.contributions.map((c) => (
+                  <a
+                    key={c.url}
+                    href={c.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Badge variant="secondary" className="gap-1">
+                      <LinkIcon className="h-3 w-3" />
+                      {c.label[language]}
+                    </Badge>
+                  </a>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          {/* LIDSoL Participation */}
+          {member.involvement?.length ? (
+            <section className="pt-6">
+              <h3 className="text-lg mb-4">
+                {t.lidsolInvolvement[language]}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {member.involvement.map((i) => (
+                  <a
+                    key={i.url}
+                    href={i.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Badge variant="outline">
+                      {i.label[language]}
+                    </Badge>
+                  </a>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          {/* Contact */}
+          {member.contact && (
+            <section className="pt-6">
+              <h3 className="text-lg mb-4">
+                {t.contact[language]}
+              </h3>
+
+              <div className="flex flex-wrap gap-3">
+                {Object.entries(member.contact).map(([key, value]) => {
+                  if (!value) return null;
+                  const Icon =
+                    socialIcons[key as keyof typeof socialIcons];
+                  if (!Icon) return null;
+
+                  return (
+                    <a
+                      key={key}
+                      href={value}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="gap-2 capitalize"
+                      >
+                        <Icon className="h-4 w-4" />
+                        {key}
+                      </Button>
+                    </a>
+                  );
+                })}
+              </div>
+            </section>
+          )}
         </div>
       </div>
     </div>
   );
 }
+
