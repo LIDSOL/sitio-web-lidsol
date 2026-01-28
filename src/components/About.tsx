@@ -159,13 +159,14 @@ const renderMembers = (list: Member[]) => {
                 {member.name}
               </h3>
 
-              <p className="text-sm text-primary mb-3">
-                {member.role[language]}
-              </p>
 
-              <p className="text-sm text-muted-foreground line-clamp-3 mb-4 min-h-[4.5rem]">
-                {member.bio[language] || "\u00A0"}
-              </p>
+            <p className="text-sm text-primary mb-3">
+              {member.role?.[language]?.trim() || "\u00A0"}
+            </p>
+
+            <p className="text-sm text-muted-foreground line-clamp-3 mb-4 min-h-[4.5rem]">
+              {member.bio?.[language]?.trim() || "\u00A0"}
+            </p>
 
               <Button
                 variant="outline"
