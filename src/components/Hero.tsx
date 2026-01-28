@@ -10,7 +10,7 @@ export function Hero() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const { language } = useLanguage();
-  
+
   const carouselImages = [
     {
       src: "https://images.unsplash.com/photo-1640552435388-a54879e72b28?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870",
@@ -60,9 +60,9 @@ export function Hero() {
 
   const t = {
     tagline: { en: "FI ● UNAM ● CDMX", es: "FI ● UNAM ● CDMX" },
-    description: { 
-      en: "We are a laboratory formed by volunteers, students, former students, and academics interested in the development of free and open technologies.", 
-      es: "Somos un laboratorio formado por voluntarios, estudiantes, ex-estudiantes y académicos interesados en el desarrollo de tecnologías libres y abiertas" 
+    description: {
+      en: "We are a laboratory formed by volunteers, students, former students, and academics interested in the development of free and open technologies.",
+      es: "Somos un laboratorio formado por voluntarios, estudiantes, ex-estudiantes y académicos interesados en el desarrollo de tecnologías libres y abiertas"
     },
     exploreProjects: { en: "Explore Projects", es: "Explorar Proyectos" },
     joinCommunity: { en: "Join Our Community", es: "Únete a la Comunidad" },
@@ -80,15 +80,15 @@ export function Hero() {
             <div className="inline-block px-5 py-2 bg-white/10 text-white rounded-full border border-white/20">
               {t.tagline[language]}
             </div>
-            
+
             <h1 className="text-5xl sm:text-6xl lg:text-7xl text-white">
               LIDSoL
             </h1>
-            
+
             <p className="text-xl text-white/90 max-w-2xl">
-              {t.description[language]} 🚀 ¡Estamos modificando en tiempo real!
+              {t.description[language]} 🚀
             </p>
-            
+
             <div className="flex flex-wrap gap-4">
             <Button
               asChild
@@ -109,8 +109,8 @@ export function Hero() {
               </Link>
             </Button>
 
-              <Button 
-                  size="lg" 
+              <Button
+                  size="lg"
                   variant="outline">
                   {t.joinCommunity[language]}
               </Button>
@@ -132,13 +132,13 @@ export function Hero() {
             </div>
           </div>
 
-          
-          
+
+
           {/* Image */}
           <div className="relative">
             {/* Blur effect around carousel */}
             <div className="absolute -inset-4 bg-gradient-to-r from-primary/10 to-primary/5 rounded-3xl blur-2xl" />
-            
+
             <div className="aspect-square rounded-3xl overflow-hidden shadow-lg border border-border/50 relative">
               <AnimatePresence initial={false} custom={direction} mode="popLayout">
                 <motion.div
@@ -147,7 +147,7 @@ export function Hero() {
                   initial={{ x: direction > 0 ? 300 : -300, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   exit={{ x: direction > 0 ? -300 : 300, opacity: 0 }}
-                  transition={{ 
+                  transition={{
                     x: { type: "spring", stiffness: 300, damping: 30 },
                     opacity: { duration: 0.2 }
                   }}
@@ -160,7 +160,7 @@ export function Hero() {
                   />
                 </motion.div>
               </AnimatePresence>
-              
+
               {/* Navigation buttons at bottom right */}
               <div className="absolute bottom-4 right-4 flex gap-2">
                 <button
