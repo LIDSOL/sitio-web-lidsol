@@ -101,15 +101,16 @@ export function About({ onMemberClick }: AboutProps) {
 
   const academics = members.filter(m => m.category === "academic");
   const students = members.filter(m => m.category === "student");
-  const formerStudents = members.filter(m => m.category === "formerstudent");
-
+  const formerStudents = members.filter(m => m.category === "formerStudents");
+//Así ya se muestran la categoría de formerStudents
+console.log("CATEGORIES:", members.map(m => m.category));
+console.log("FORMER:", formerStudents);
 /* ------------------------------------------------------------------
    renderMembers – muestra hasta 4 miembros y los centra cuando son <4
    ------------------------------------------------------------------ */
 const renderMembers = (list: Member[]) => {
-  // 1️⃣ Tomamos solo los primeros 4 elementos (si hay menos, queda igual)
-  const displayed = list.slice(0, 4);
 
+  const displayed = list;
   // 2️⃣ Cuántas tarjetas vamos a renderizar realmente
   const count = displayed.length;
 
@@ -122,21 +123,32 @@ const renderMembers = (list: Member[]) => {
     if (count === 4) return "lg:grid-cols-4";
     if (count === 3) return "lg:grid-cols-3";
     if (count === 2) return "lg:grid-cols-2";
-    return "lg:grid-cols-1";
+    return "lg:grid-cols-2";
   })();
+
+const gridCols =
+  count === 1
+    ? "lg:grid-cols-2"
+    : count === 2
+    ? "lg:grid-cols-2"
+    : "lg:grid-cols-3";
 
   return (
     /* Contenedor flex que siempre centra el grid */
-    <div className="flex justify-center">
-      {/* Grid que solo ocupa el ancho necesario */}
-      <div
-        className={`
-          grid md:grid-cols-2 ${colsClass} gap-6
-          ${count < 4 ? "auto-cols-max justify-items-center" : ""}
-          w-fit mx-auto               /* evita width:100% y centra dentro del flex */
-          max-w-5xl                   /* opcional: no crecer demasiado en pantallas muy anchas */
-        `}
-      >
+
+<div className="flex justify-center">
+  <div
+    className={`
+      grid
+      gap-6
+      max-w-5xl
+      justify-items-center
+      grid-cols-1
+      sm:grid-cols-2
+      ${gridCols}
+    `}
+  >
+
         {displayed.map((member) => (
           <Card
             key={member.id}
