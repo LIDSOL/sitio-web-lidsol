@@ -95,27 +95,25 @@ export function About({ onMemberClick }: AboutProps) {
 
   const renderMembers = (list: Member[]) => (
     <div className="flex justify-center">
-
-
-
-<div className="grid gap-6 max-w-5xl justify-items-center grid-cols-2 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-6 max-w-5xl justify-items-center grid-cols-2 sm:grid-cols-2 lg:grid-cols-3">
 
         {list.map(member => (
           <Card
             key={member.id}
             onClick={() => onMemberClick(member.id)}
             className="
-              w-[320px]
-              h-[460px]
-              flex
-              flex-col
-              overflow-hidden
-              cursor-pointer
-              transition-all
-              duration-300
-              hover:shadow-lg
-              hover:scale-[1.02]
-              group
+                w-full
+                max-w-[320px]
+                h-[460px]
+                flex
+                flex-col
+                overflow-hidden
+                cursor-pointer
+                transition-all
+                duration-300
+                hover:shadow-lg
+                hover:scale-[1.02]
+                group
             "
           >
             {/* Imagen */}
