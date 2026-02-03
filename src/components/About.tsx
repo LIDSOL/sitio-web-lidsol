@@ -19,8 +19,10 @@ export function About({ onMemberClick }: AboutProps) {
       es: "Laboratorio de Investigación y Desarrollo de Software Libre",
     },
     description: {
-      en: "LIDSoL is a laboratory of the Faculty of Engineering at UNAM. We aim to promote and drive research and development of free technologies by carrying out related projects in various fields, seeking progress and improving society.",
-      es: "LIDSoL es un laboratorio de la Facultad de Ingeniería de la UNAM. Buscamos promover e impulsar la investigación y desarrollo de tecnologías libres realizando proyectos afines en distintas áreas buscando el progreso y mejorando la sociedad.",
+      en:
+        "LIDSoL is a laboratory of the Faculty of Engineering at UNAM. We aim to promote and drive research and development of free technologies by carrying out related projects in various fields, seeking progress and improving society.",
+      es:
+        "LIDSoL es un laboratorio de la Facultad de Ingeniería de la UNAM. Buscamos promover e impulsar la investigación y desarrollo de tecnologías libres realizando proyectos afines en distintas áreas buscando el progreso y mejorando la sociedad.",
     },
     historyTitle: { en: "Our History", es: "Nuestra Historia" },
     history: {
@@ -89,31 +91,50 @@ export function About({ onMemberClick }: AboutProps) {
     membersCta: { en: "View Profile", es: "Ver Perfil" },
   };
 
+  // -----------------------------------------------------------------
+  // 1️⃣  Filtrado de categorías
+  // -----------------------------------------------------------------
   const academics = members.filter(m => m.category === "academic");
   const students = members.filter(m => m.category === "student");
   const formerStudents = members.filter(m => m.category === "formerStudents");
 
-  const renderMembers = (list: Member[]) => (
-    <div className="flex justify-center">
-    <div className="grid gap-6 max-w-5xl justify-items-center grid-cols-2 sm:grid-cols-2 lg:grid-cols-3">
 
+// -----------------------------------------------------------------
+// 2️⃣  Renderizado de miembros (centrado cuando hay pocas tarjetas)
+// -----------------------------------------------------------------
+const renderMembers = (list: Member[]) => {
+  const isFullRow = list.length >= 3;
+
+  return (
+    <div className="flex justify-center">
+      <div
+        className={`
+          grid gap-6 max-w-5xl mx-auto
+          grid-cols-2 sm:grid-cols-2
+          ${
+            isFullRow
+              ? "lg:grid-cols-3"
+              : "lg:grid-cols-[repeat(3,auto)] justify-center"
+          }
+        `}
+      >
         {list.map(member => (
           <Card
             key={member.id}
             onClick={() => onMemberClick(member.id)}
             className="
-                w-full
-                max-w-[320px]
-                h-[460px]
-                flex
-                flex-col
-                overflow-hidden
-                cursor-pointer
-                transition-all
-                duration-300
-                hover:shadow-lg
-                hover:scale-[1.02]
-                group
+              w-full
+              max-w-[320px]
+              h-[460px]
+              flex
+              flex-col
+              overflow-hidden
+              cursor-pointer
+              transition-all
+              duration-300
+              hover:shadow-lg
+              hover:scale-[1.02]
+              group
             "
           >
             {/* Imagen */}
@@ -126,9 +147,8 @@ export function About({ onMemberClick }: AboutProps) {
             </div>
 
             {/* Contenido */}
-            <CardContent className="p-6 flex flex-col flex-1">
-              {/* Texto */}
-              <div className="flex flex-col gap-1 min-h-[120px] mb-4">
+            <CardContent className="px-6 pt-3 pb-6 flex flex-col flex-1">
+              <div className="flex flex-col gap-1 min-h-[10px] mb-3">
                 <h3 className="text-xl truncate group-hover:text-primary transition-colors">
                   {member.name}
                 </h3>
@@ -142,13 +162,18 @@ export function About({ onMemberClick }: AboutProps) {
                 </p>
               </div>
 
-              {/* Spacer */}
               <div className="flex-1" />
 
-              {/* Botón */}
               <Button
                 variant="outline"
-                className="w-full group-hover:bg-primary group-hover:text-primary-foreground"
+                className="
+                    w-full
+                    transition-all
+                    hover:bg-primary
+                    hover:text-primary-foreground
+                    hover:border-primary
+                    hover:brightness-95
+                "
               >
                 {t.membersCta[language]}
               </Button>
@@ -158,7 +183,11 @@ export function About({ onMemberClick }: AboutProps) {
       </div>
     </div>
   );
+};
 
+  // -----------------------------------------------------------------
+  // 3️⃣  Render del componente completo
+  // -----------------------------------------------------------------
   return (
     <div className="min-h-screen bg-background py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -196,16 +225,19 @@ export function About({ onMemberClick }: AboutProps) {
         <div className="mb-20">
           <h2 className="text-4xl mb-16 text-center">{t.membersTitle[language]}</h2>
 
+          {/* Responsables académicos */}
           <section className="mb-16">
             <h3 className="text-3xl mb-8 text-center">{t.sections.academic[language]}</h3>
             {renderMembers(academics)}
           </section>
 
+          {/* Alumnos */}
           <section className="mb-16">
             <h3 className="text-3xl mb-8 text-center">{t.sections.student[language]}</h3>
             {renderMembers(students)}
           </section>
 
+          {/* Ex‑alumnos (solo si existen) */}
           {formerStudents.length > 0 && (
             <section>
               <h3 className="text-3xl mb-8 text-center">
@@ -219,4 +251,3 @@ export function About({ onMemberClick }: AboutProps) {
     </div>
   );
 }
-
