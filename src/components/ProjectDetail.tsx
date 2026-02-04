@@ -99,12 +99,29 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
           </div>
         </div>
 
+
         {/* Description */}
         <div className="bg-card rounded-3xl p-8 md:p-12 border border-border/50 mb-8">
           <h2 className="text-3xl mb-6">{t.description[language]}</h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
+
+          <p className="text-muted-foreground text-lg leading-relaxed mb-8">
             {project.fullDescription[language]}
           </p>
+          {project.image && (
+            <div className="overflow-hidden rounded-2xl border border-border/40 bg-muted">
+              <img
+                src={project.image}
+                alt={project.title[language]}
+                className="
+                  w-full
+                  object-cover
+                  max-h-[420px]
+                  transition
+                  duration-300
+                "
+              />
+            </div>
+          )}
         </div>
 
         {/* Features */}
