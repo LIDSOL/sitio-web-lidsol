@@ -3,6 +3,8 @@ import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { useLanguage } from "./LanguageProvider";
 import { Project } from "../data/projects";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 
 interface ProjectDetailProps {
@@ -105,23 +107,20 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
 
 
 
-    <div
-      lang={language}
-      className="
-        prose
-        prose-neutral
-        dark:prose-invert
-        max-w-none
-      "
-    >
-      {project.fullDescription[language]
-        .split("\n")
-        .filter(paragraph => paragraph.trim())
-        .map((paragraph, index) => (
-          <p key={index} className="text-justify text-justify hyphens-auto leading-relaxed mb-4" style={{textAlign: 'justify'}}>
-            {paragraph.trim()}
-          </p>
-        ))}
+    <div className="prose prose-neutral dark:prose-invert max-w-none">
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={{
+          p: ({children}) => <p className="text-justify hyphens-auto leading-relaxed mb-4" style={{textAlign: 'justify'}}>{children}</p>,
+          br: () => <br className="mb-2" />
+        }}
+      >
+        {project.fullDescription[language]
+          .split('\n')
+          .map(line => line.trim())
+          .filter(line => line.length > 0)
+          .join('\n\n')}
+      </ReactMarkdown>
     </div>
 </div>
 
