@@ -52,17 +52,8 @@ type SortDirection = "asc" | "desc";
 
 export function Projects({ onProjectClick }: ProjectsProps) {
   const { language } = useLanguage();
-  const [expandedProjects, setExpandedProjects] = useState<Set<number>>(new Set());
   const [sortField, setSortField] = useState<SortField>("id");
   const [sortDirection, setSortDirection] = useState<SortDirection>("desc");
-
-  const toggleExpanded = (projectId: number) => {
-    const newExpanded = new Set(expandedProjects);
-    newExpanded.has(projectId)
-      ? newExpanded.delete(projectId)
-      : newExpanded.add(projectId);
-    setExpandedProjects(newExpanded);
-  };
 
   const toggleSort = (field: SortField) => {
   if (field === sortField) {
@@ -94,8 +85,7 @@ export function Projects({ onProjectClick }: ProjectsProps) {
     sourceCode: { en: "Source Code", es: "Código Fuente" },
     viewDetails: { en: "View Details", es: "Ver Detalles" },
     contributors: { en: "contributors", es: "contribuidores" },
-    showMore: { en: "Show more", es: "Ver más" },
-    showLess: { en: "Show less", es: "Ver menos" },
+
     activity: { en: "Activity", es: "Actividad" },
     sortBy: { en: "Sort by:", es: "Ordenar por:" },
     sortAge: { en: "Age", es: "Antigüedad" },
@@ -141,7 +131,6 @@ export function Projects({ onProjectClick }: ProjectsProps) {
 
         <div className="space-y-4">
           {sortedProjects.map((project) => {
-            const isExpanded = expandedProjects.has(project.id);
 
             return (
               <div
@@ -163,18 +152,9 @@ export function Projects({ onProjectClick }: ProjectsProps) {
                         </span>
                       </div>
 
-                      <p className={`text-muted-foreground mb-3 ${isExpanded ? "" : "line-clamp-2"}`}>
-                        {isExpanded
-                          ? project.fullDescription[language]
-                          : project.shortDescription[language]}
+                      <p className="text-muted-foreground mb-3 line-clamp-2">
+                        {project.shortDescription[language]}
                       </p>
-
-                      <button
-                        onClick={() => toggleExpanded(project.id)}
-                        className="text-sm text-primary hover:underline mb-3"
-                      >
-                        {isExpanded ? t.showLess[language] : t.showMore[language]}
-                      </button>
 
                       <div className="mb-3">
                         <div className="text-xs text-muted-foreground mb-2">
