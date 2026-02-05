@@ -112,16 +112,15 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
         prose-neutral
         dark:prose-invert
         max-w-none
-        prose-p:text-justify
-        prose-p:hyphens-auto
-        prose-p:leading-relaxed
-        prose-p:mb-4
       "
     >
       {project.fullDescription[language]
-        .split("\n\n")
+        .split("\n")
+        .filter(paragraph => paragraph.trim())
         .map((paragraph, index) => (
-          <p key={index}>{paragraph}</p>
+          <p key={index} className="text-justify text-justify hyphens-auto leading-relaxed mb-4" style={{textAlign: 'justify'}}>
+            {paragraph.trim()}
+          </p>
         ))}
     </div>
 </div>
