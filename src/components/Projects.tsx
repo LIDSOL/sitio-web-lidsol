@@ -81,7 +81,7 @@ export function Projects({ onProjectClick }: ProjectsProps) {
   }, [sortField, sortDirection, language]);
 
   const t = {
-    title: { en: "Open Source Projects", es: "Proyectos de Código Abierto" },
+    title: { en: "Research & Open‑Source Contributions", es: "Proyectos y Contribuciones de Código Abierto" },
     sourceCode: { en: "Source Code", es: "Código Fuente" },
     viewDetails: { en: "View Details", es: "Ver Detalles" },
     contributors: { en: "contributors", es: "contribuidores" },
