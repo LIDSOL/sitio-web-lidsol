@@ -1,4 +1,4 @@
-import { Star, Users, Github } from "lucide-react";
+import { Star, Users, Github, ChevronUp, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { useLanguage } from "./LanguageProvider";
@@ -9,17 +9,14 @@ interface ProjectsProps {
   onProjectClick: (projectId: number) => void;
 }
 
-// Simple contribution graph component
 function ContributionGraph({ projectId }: { projectId: number }) {
-  // Generate contribution data once based on projectId (deterministic)
   const contributions = useMemo(() => {
     const weeks = 12;
     const days = 7;
-    // Use projectId as seed for consistent data
     const seed = projectId * 1000;
+
     return Array.from({ length: weeks }, (_, weekIndex) =>
       Array.from({ length: days }, (_, dayIndex) => {
-        // Deterministic "random" based on position and projectId
         const value = (seed + weekIndex * 7 + dayIndex) % 5;
         return value;
       })
@@ -42,7 +39,6 @@ function ContributionGraph({ projectId }: { projectId: number }) {
             <div
               key={dayIndex}
               className={`w-2 h-2 rounded-sm ${getColor(day)}`}
-              title={`${day} contributions`}
             />
           ))}
         </div>
@@ -51,19 +47,47 @@ function ContributionGraph({ projectId }: { projectId: number }) {
   );
 }
 
+type SortField = "id" | "name";
+type SortDirection = "asc" | "desc";
+
 export function Projects({ onProjectClick }: ProjectsProps) {
   const { language } = useLanguage();
   const [expandedProjects, setExpandedProjects] = useState<Set<number>>(new Set());
+  const [sortField, setSortField] = useState<SortField>("id");
+  const [sortDirection, setSortDirection] = useState<SortDirection>("desc");
 
   const toggleExpanded = (projectId: number) => {
     const newExpanded = new Set(expandedProjects);
-    if (newExpanded.has(projectId)) {
-      newExpanded.delete(projectId);
-    } else {
-      newExpanded.add(projectId);
-    }
+    newExpanded.has(projectId)
+      ? newExpanded.delete(projectId)
+      : newExpanded.add(projectId);
     setExpandedProjects(newExpanded);
   };
+
+  const toggleSort = (field: SortField) => {
+  if (field === sortField) {
+    setSortDirection(sortDirection === "asc" ? "desc" : "asc");
+  } else {
+    setSortField(field);
+    // mantenemos la dirección actual
+  }
+  };
+
+  const sortedProjects = useMemo(() => {
+    const copy = [...projects];
+
+    return copy.sort((a, b) => {
+      let result = 0;
+
+      if (sortField === "id") {
+        result = a.id - b.id;
+      } else {
+        result = a.title[language].localeCompare(b.title[language]);
+      }
+
+      return sortDirection === "asc" ? result : -result;
+    });
+  }, [sortField, sortDirection, language]);
 
   const t = {
     title: { en: "Open Source Projects", es: "Proyectos de Código Abierto" },
@@ -73,26 +97,62 @@ export function Projects({ onProjectClick }: ProjectsProps) {
     showMore: { en: "Show more", es: "Ver más" },
     showLess: { en: "Show less", es: "Ver menos" },
     activity: { en: "Activity", es: "Actividad" },
+    sortBy: { en: "Sort by:", es: "Ordenar por:" },
+    sortAge: { en: "Age", es: "Antigüedad" },
+    sortName: { en: "Name", es: "Nombre" },
   };
+
+  const Arrow = ({ active }: { active: boolean }) =>
+    sortDirection === "asc" ? (
+      <ChevronUp className={`h-4 w-4 ${active ? "" : "opacity-40"}`} />
+    ) : (
+      <ChevronDown className={`h-4 w-4 ${active ? "" : "opacity-40"}`} />
+    );
 
   return (
     <div className="min-h-screen bg-background py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-5xl sm:text-6xl mb-12">{t.title[language]}</h1>
+        <h1 className="text-5xl sm:text-6xl mb-2">{t.title[language]}</h1>
+
+        {/* Sort (Nautilus-style) */}
+        <div className="text-sm text-muted-foreground mb-8 flex items-center gap-4">
+          <span>{t.sortBy[language]}</span>
+
+          <button
+            onClick={() => toggleSort("id")}
+            className={`flex items-center gap-1 hover:underline ${
+              sortField === "id" ? "text-foreground" : ""
+            }`}
+          >
+            {t.sortAge[language]}
+            {sortField === "id" && <Arrow active />}
+          </button>
+
+          <button
+            onClick={() => toggleSort("name")}
+            className={`flex items-center gap-1 hover:underline ${
+              sortField === "name" ? "text-foreground" : ""
+            }`}
+          >
+            {t.sortName[language]}
+            {sortField === "name" && <Arrow active />}
+          </button>
+        </div>
+
         <div className="space-y-4">
-          {projects.map((project) => {
+          {sortedProjects.map((project) => {
             const isExpanded = expandedProjects.has(project.id);
+
             return (
               <div
                 key={project.id}
                 className="bg-card rounded-2xl p-6 border border-border/50 hover:border-primary/30 transition-all hover:shadow-md"
               >
                 <div className="flex flex-col gap-4">
-                  {/* Header */}
                   <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 
+                        <h3
                           className="text-xl hover:text-primary transition-colors cursor-pointer"
                           onClick={() => onProjectClick(project.id)}
                         >
@@ -102,11 +162,13 @@ export function Projects({ onProjectClick }: ProjectsProps) {
                           {project.category[language]}
                         </span>
                       </div>
+
                       <p className={`text-muted-foreground mb-3 ${isExpanded ? "" : "line-clamp-2"}`}>
-                        {isExpanded ? project.fullDescription[language] : project.shortDescription[language]}
+                        {isExpanded
+                          ? project.fullDescription[language]
+                          : project.shortDescription[language]}
                       </p>
-                      
-                      {/* Show More/Less Button */}
+
                       <button
                         onClick={() => toggleExpanded(project.id)}
                         className="text-sm text-primary hover:underline mb-3"
@@ -114,9 +176,10 @@ export function Projects({ onProjectClick }: ProjectsProps) {
                         {isExpanded ? t.showLess[language] : t.showMore[language]}
                       </button>
 
-                      {/* Contribution Graph */}
                       <div className="mb-3">
-                        <div className="text-xs text-muted-foreground mb-2">{t.activity[language]}</div>
+                        <div className="text-xs text-muted-foreground mb-2">
+                          {t.activity[language]}
+                        </div>
                         <ContributionGraph projectId={project.id} />
                       </div>
 
@@ -135,6 +198,7 @@ export function Projects({ onProjectClick }: ProjectsProps) {
                         </div>
                       </div>
                     </div>
+
                     <div className="flex gap-2">
                       {project.github && (
                         <Button variant="outline" size="sm" className="gap-2">
@@ -142,8 +206,8 @@ export function Projects({ onProjectClick }: ProjectsProps) {
                           {t.sourceCode[language]}
                         </Button>
                       )}
-                      <Button 
-                        size="sm" 
+                      <Button
+                        size="sm"
                         className="gap-2"
                         onClick={() => onProjectClick(project.id)}
                       >
@@ -160,3 +224,4 @@ export function Projects({ onProjectClick }: ProjectsProps) {
     </div>
   );
 }
+

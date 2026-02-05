@@ -1,4 +1,6 @@
-import  drawdbImg                from "../components/ui/source/imagesProjects/drawdb.png";
+import  drawdbImg   from "../components/ui/source/imagesProjects/drawdb.png";
+import  mirrorsImg  from "../components/ui/source/imagesProjects/mirrors.png";
+import  privanonImg from "../components/ui/source/imagesProjects/priv-anon.jpg";
 
 export interface Project {
   id: number;
@@ -21,44 +23,88 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    title: { en: "DrawDB", es: "DrawDB" },
+    title: {
+        en: "Development of educational materials for privacy and anonymity mechanisms in networks.",
+        es: "Desarrollo de materiales didácticos para los mecanismos de privacidad y anonimato en redes " },
     shortDescription: {
-      en: "A custom Linux kernel optimized for educational purposes and security research.",
-      es: "Un kernel Linux personalizado optimizado para fines educativos e investigación de seguridad."
+      en: "Development of educational and multimedia materials that explain and promote the use of privacy and anonymity technologies (primarily the Tor network) for technical, academic, and social‑science audiences.",
+      es: "Desarrollo de materiales didácticos y multimedia que explican y promueven el uso de tecnologías de privacidad y anonimato (principalmente la red Tor) para audiencias técnicas, académicas y de ciencias sociales."
     },
     fullDescription: {
-      en: "LibreKernel is an educational Linux kernel distribution designed to help students and researchers understand operating system internals. It includes extensive documentation, debugging tools, and security enhancements that make it perfect for learning and experimentation. The project focuses on code clarity and educational value while maintaining compatibility with standard Linux applications.",
-      es: "DrawDB es un editor robusto y fácil de usar para relaciones de entidad de bases de datos (DBER) directamente en tu navegador. Crea diagramas con unos pocos clics, exporta scripts SQL, personaliza tu editor y mucho más sin necesidad de crear una cuenta. Consulta aquí el conjunto completo de funciones."
+      en: "LIDSoL’s mirrors are replica servers that provide local, synchronized copies of the official packages for several GNU/Linux distributions—AlmaLinux, Arch, Debian (including Debian CD), and Linux Mint. The mirrors are accessible via both HTTPS and rsync, allowing GNU/Linux users to sync their own repositories or update their systems directly from this mirror.",
+      es:
+          "El presente proyecto plantea el diseño de actividades, material didáctico y publicaciones orientados a la siguiente progresión temática relacionada con la seguridad de la información personal en redes. El desarrollo del proyecto busca formar conjuntos diferentes de habilidades en dos segmentos muy distintos: Por un lado, para la población en general, usuarios finales (y con esto, tenemos que enfatizar, nos referimos a todo usuario, no únicamente a los tecnófilos), y por otro lado, para los alumnos de las ingenierías en computación, telecomunicaciones, y áreas relacionadas. \nPara el grupo poblacional más amplio, buscamos en un primer momento concientización acerca de las expectativas razonables de privacidad en línea, iniciando desde el concepto general (¿qué se comprende por privacidad en medios digitales? ¿Qué modelos de amenaza debe el usuario considerar? ¿Qué buenas prácticas pueden reducir los riesgos?), para transitar hacia el objeto medular del proyecto, y llevar a usuarios finales a la adopción de herramientas que les provean el uso seguro y anónimo de las redes de comunicaciones, particularmente de la red Tor. \nPara el grupo específico de las ingenierías, el proyecto busca generar material que ayude a una comprensión comprehensiva de la base tecnológica sobre la cual se fundamentan Tor y otras tecnologías anonimizadoras, para lo cual generaremos material que complemente a la actual enseñanza de las materias de “redes de datos seguras”, “redes de telecomunicaciones” y “tecnologías e interconexión de redes” fundamentándose en la criptografía. Buscamos también, por medio de experiencias prácticas, llevar a los alumnos a la instalación de un laboratorio de sistemas que, mediante distintas estrategias, permitan el uso, evaluación y monitoreo de recursos de estos mecanismos. \nSe agradece el apoyo otorgado para el desarrollo de este material a DGAPA-UNAM, PAPIME PE102718 Desarrollo de materiales didácticos para los mecanismos de privacidad y anonimato en redes."
     },
-    category: { en: "System", es: "Sistema" },
-    stars: 1,
-    contributors: 12,
-    language: "Javascript",
+    category: { en: "Privacy", es: "Privacidad" },
+    stars: 0,
+    contributors: 2,
+    language: "Bash",
     color: "bg-blue-500",
-    tags: ["Data base", "Web", "Operating Systems", "Education", "C"],
-    github: "https://github.com/lidsol/librekernel",
+    tags: ["Tor", "Privacy", "", "DevOps"],
+    github: "https://github.com/LIDSOL/servidor/tree/main/files/mirrors",
+    website: "https://lidsol.fi-b.unam.mx",
     features: {
       en: [
-        "Comprehensive inline documentation",
-        "Enhanced debugging capabilities",
-        "Security-focused design",
-        "Educational tutorials included",
-        "Compatible with x86-64 architecture"
-      ],
+          "Local, synchronized replicas of the official repositories for several GNU/Linux distributions (AlmaLinux, Arch, Debian, Linux Mint, etc.).",
+          "Dual access via HTTPS (secure download) and rsync (efficient synchronization).",
+          "Automation with Bash scripts and scheduled jobs (cron) that update the mirrors periodically from upstream servers.",
+          "Enhanced security with valid TLS certificates (Let’s Encrypt) and write restrictions on the rsync daemon.",
+          "Modular and scalable architecture: new distributions can be added by creating folders and rsync rules without altering the core system."
+],
       es: [
-        "Documentación en línea completa",
-        "Capacidades de depuración mejoradas",
-        "Diseño enfocado en seguridad",
-        "Tutoriales educativos incluidos",
-        "Compatible con arquitectura x86-64"
+        "Réplicas locales y sincronizadas de los repositorios oficiales de varias distribuciones GNU/Linux (AlmaLinux, Arch, Debian, Linux Mint, etc.).",
+        "Acceso dual mediante HTTPS (descarga segura) y rsync (sincronización eficiente).",
+        "Automatización con scripts Bash y trabajos programados (cron) que actualizan los mirrors periódicamente desde los servidores upstream.",
+        "Seguridad reforzada con certificados TLS válidos (Let’s Encrypt) y restricciones de escritura en el daemon rsync.",
+        "Arquitectura modular y escalable: nuevas distribuciones pueden añadirse creando carpetas y reglas de rsync sin cambiar el core del sistema."
       ]
     },
     status: { en: "Active Development", es: "Desarrollo Activo" },
-    image: drawdbImg,
+    image: privanonImg,
+  },
+
+    //---
+  {
+    id: 2,
+    title: { en: "LIDSoL Linux Mirrors", es: "Repositorios espejo de Linux LIDSoL" },
+    shortDescription: {
+      en: "LIDSoL hosts a mirror repository of several GNU/Linux distributions (AlmaLinux, Arch, Debian, and Mint).",
+      es: "LIDSoL aloja un repositorio espejo de varias distribuciones GNU/Linux (AlmaLinux, Arch, Debian y Mint)."
+    },
+    fullDescription: {
+      en: "LIDSoL’s mirrors are replica servers that provide local, synchronized copies of the official packages for several GNU/Linux distributions—AlmaLinux, Arch, Debian (including Debian CD), and Linux Mint. The mirrors are accessible via both HTTPS and rsync, allowing GNU/Linux users to sync their own repositories or update their systems directly from this mirror.",
+      es: "Los mirrors de LIDSoL son servidores de réplica que proporcionan copias locales y sincronizadas de los paquetes oficiales de diversas distribuciones GNU/Linux —AlmaLinux, Arch, Debian (incluido Debian CD) y Linux Mint—. Estos mirrors están disponibles tanto mediante HTTPS como mediante rsync, lo que permite a los usuarios de GNU/Linux sincronizar sus propios repositorios o actualizar sus sistemas directamente desde este espejo."
+    },
+    category: { en: "Mirrors", es: "Mirrors" },
+    stars: 0,
+    contributors: 2,
+    language: "Bash",
+    color: "bg-blue-500",
+    tags: ["Mirrors", "GNU/Linux", "Web", "DevOps"],
+    github: "https://github.com/LIDSOL/servidor/tree/main/files/mirrors",
+    website: "https://lidsol.fi-b.unam.mx",
+    features: {
+      en: [
+          "Local, synchronized replicas of the official repositories for several GNU/Linux distributions (AlmaLinux, Arch, Debian, Linux Mint, etc.).",
+          "Dual access via HTTPS (secure download) and rsync (efficient synchronization).",
+          "Automation with Bash scripts and scheduled jobs (cron) that update the mirrors periodically from upstream servers.",
+          "Enhanced security with valid TLS certificates (Let’s Encrypt) and write restrictions on the rsync daemon.",
+          "Modular and scalable architecture: new distributions can be added by creating folders and rsync rules without altering the core system."
+],
+      es: [
+        "Réplicas locales y sincronizadas de los repositorios oficiales de varias distribuciones GNU/Linux (AlmaLinux, Arch, Debian, Linux Mint, etc.).",
+        "Acceso dual mediante HTTPS (descarga segura) y rsync (sincronización eficiente).",
+        "Automatización con scripts Bash y trabajos programados (cron) que actualizan los mirrors periódicamente desde los servidores upstream.",
+        "Seguridad reforzada con certificados TLS válidos (Let’s Encrypt) y restricciones de escritura en el daemon rsync.",
+        "Arquitectura modular y escalable: nuevas distribuciones pueden añadirse creando carpetas y reglas de rsync sin cambiar el core del sistema."
+      ]
+    },
+    status: { en: "Active Development", es: "Desarrollo Activo" },
+    image: mirrorsImg,
   },
   //---
   {
-    id: 2,
+    id: 3,
     title: { en: "OpenDocs", es: "OpenDocs" },
     shortDescription: {
       en: "Collaborative documentation platform for open source projects with real-time editing.",
@@ -96,7 +142,7 @@ export const projects: Project[] = [
   },
   //---
   {
-    id: 3,
+    id: 4,
     title: { en: "SecureVPN", es: "SecureVPN" },
     shortDescription: {
       en: "Privacy-focused VPN solution built with modern cryptography standards.",
