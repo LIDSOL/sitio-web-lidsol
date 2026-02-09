@@ -1,7 +1,7 @@
-import  drawdbImg   from "../components/ui/source/imagesProjects/drawdb.png";
 import  mirrorsImg  from "../components/ui/source/imagesProjects/mirrors.png";
 import  privanonImg from "../components/ui/source/imagesProjects/priv-anon.jpg";
 
+import  drawdbImg   from "../components/ui/source/imagesProjects/drawdb.png";
 import papeadorImg  from "../components/ui/source/imagesProjects/papeador.png";
 import swayImg      from "../components/ui/source/imagesProjects/sway.png";
 
@@ -68,7 +68,7 @@ export const projects: Project[] = [
 
     //---
   {
-    id: 2,
+    id: 3,
     title: { en: "LIDSoL Linux Mirrors", es: "Repositorios espejo de Linux LIDSoL" },
     shortDescription: {
       en: "LIDSoL hosts a mirror repository of several GNU/Linux distributions (AlmaLinux, Arch, Debian, and Mint).",
@@ -102,46 +102,61 @@ export const projects: Project[] = [
         "Arquitectura modular y escalable: nuevas distribuciones pueden añadirse creando carpetas y reglas de rsync sin cambiar el core del sistema."
       ]
     },
-    status: { en: "Active Development", es: "Desarrollo Activo" },
+    status: { en: "Stable", es: "Estable" },
     image: mirrorsImg,
   },
   //---
   {
-    id: 3,
-    title: { en: "OpenDocs", es: "OpenDocs" },
+    id: 4,
+    title: { en: "Drawdb", es: "Drawdb" },
     shortDescription: {
-      en: "Collaborative documentation platform for open source projects with real-time editing.",
-      es: "Plataforma de documentación colaborativa para proyectos de código abierto con edición en tiempo real."
+      en: "Free, simple, and intuitive online database diagram editor and SQL generator. Fork by LIDSoL.",
+      es: "DrawDB es una herramienta libre, sencilla e intuitiva que permite editar diagramas de bases de datos en línea y generar sus scripts SQL (y viceversa). Un fork de LIDSoL."
     },
     fullDescription: {
-      en: "OpenDocs is a modern documentation platform built specifically for open source projects. It features real-time collaborative editing, version control integration, beautiful rendering of Markdown and code blocks, and automatic API documentation generation. The platform makes it easy for teams to maintain high-quality documentation alongside their code.",
-      es: "OpenDocs es una plataforma de documentación moderna construida específicamente para proyectos de código abierto. Cuenta con edición colaborativa en tiempo real, integración con control de versiones, renderizado hermoso de Markdown y bloques de código, y generación automática de documentación de API. La plataforma facilita que los equipos mantengan documentación de alta calidad junto con su código."
+      en: "DrawDB is a robust and user-friendly editor that allows you to create entity-relationship diagrams for databases directly in your browser. With just a few clicks, you can visually design database schemas, export SQL scripts, customize the editing environment, and much more — all without the need to create an account.",
+      es: "DrawDB es un editor robusto e intuitivo que permite crear diagramas entidad-relación para bases de datos directamente desde el navegador. Con unos pocos clics, puedes diseñar esquemas de forma visual, exportar scripts SQL, personalizar el entorno de edición y mucho más, todo sin necesidad de crear una cuenta."
     },
-    category: { en: "Web", es: "Web" },
-    stars: 189,
+    category: { en: "Database", es: "Bases de datos" },
+    stars: 1,
     contributors: 8,
-    language: "TypeScript",
-    color: "bg-cyan-500",
-    tags: ["Documentation", "Collaboration", "TypeScript", "React", "Real-time"],
-    github: "https://github.com/lidsol/opendocs",
-    website: "https://opendocs.lidsol.org",
+    language: "JavaScript",
+    color: "bg-yellow-500",
+    tags: ["Database Design", "Entity Relationship Diagram", "Schema Design", "Diagram Editor", "SQL", "Developer Tools", "Web Based"],
+    github: "https://github.com/LIDSOL/drawdb",
+    website: "https://db.lidsol.unam.mx",
     features: {
       en: [
-        "Real-time collaborative editing",
-        "Markdown and MDX support",
-        "GitHub integration",
-        "API documentation generator",
-        "Multi-language support"
+        "Export: Export diagrams as DDL scripts, JSON, or images.",
+        "Reverse engineering: Import existing DDL scripts to automatically generate diagrams.",
+        "Migrations: Version diagrams and generate migration scripts to update the database schema.",
+        "Configurable interface: Customize the UI and select visible components based on your needs.",
+        "Keyboard shortcuts: Use keyboard shortcuts to speed up the workflow.",
+        "Templates: Create diagrams from predefined templates.",
+        "Custom templates: Save reusable structures as templates and load them when needed.",
+        "Advanced editor: Support for undo, redo, copy, paste, duplicate, and advanced diagram editing.",
+        "Schema validation: Detect errors in diagrams to ensure the consistency of generated scripts.",
+        "Relational databases: Support for MySQL, PostgreSQL, SQLite, MariaDB, and SQL Server.",
+        "Object-relational databases: Support for custom types and JSON schemas.",
+        "Presentation mode: Display diagrams in full-screen mode for presentations and technical reviews."
       ],
       es: [
-        "Edición colaborativa en tiempo real",
-        "Soporte para Markdown y MDX",
-        "Integración con GitHub",
-        "Generador de documentación de API",
-        "Soporte multiidioma"
+        "Exportación: Exporta diagramas como scripts DDL, JSON o imágenes.",
+        "Genera Scripts a partir de diagramas y viceversa: Importa scripts DDL existentes para generar diagramas automáticamente.",
+        "Migraciones: Versiona diagramas y genera scripts de migración para actualizar el esquema de la base de datos.",
+        "Interfaz configurable: Ajusta la interfaz y selecciona los componentes visibles según tus necesidades.",
+        "Atajos de teclado: Utiliza atajos de teclado para acelerar el flujo de trabajo.",
+        "Plantillas: Crea diagramas a partir de plantillas predefinidas.",
+        "Plantillas personalizadas: Guarda estructuras reutilizables como plantillas y cárgalas cuando sea necesario.",
+        "Editor avanzado: Soporte para deshacer, rehacer, copiar, pegar, duplicar y edición avanzada de diagramas.",
+        "Validación de esquemas: Detecta errores en el diagrama para garantizar la consistencia de los scripts generados.",
+        "Bases de datos relacionales: Compatibilidad con MySQL, PostgreSQL, SQLite, MariaDB y SQL Server.",
+        "Bases de datos objeto-relacionales: Soporte para tipos personalizados y esquemas JSON.",
+        "Modo presentación: Visualiza diagramas en pantalla completa para presentaciones y revisiones técnicas."
       ]
     },
-    status: { en: "Beta", es: "Beta" }
+    status: { en: "Beta", es: "Beta" },
+    image: drawdbImg,
   },
   //---
   {
