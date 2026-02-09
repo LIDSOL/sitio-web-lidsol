@@ -2,7 +2,8 @@ import  drawdbImg   from "../components/ui/source/imagesProjects/drawdb.png";
 import  mirrorsImg  from "../components/ui/source/imagesProjects/mirrors.png";
 import  privanonImg from "../components/ui/source/imagesProjects/priv-anon.jpg";
 
-import  swayImg from "../components/ui/source/imagesProjects/sway.png";
+import papeadorImg  from "../components/ui/source/imagesProjects/papeador.png";
+import swayImg      from "../components/ui/source/imagesProjects/sway.png";
 
 export interface Project {
   id: number;
@@ -144,40 +145,45 @@ export const projects: Project[] = [
   },
   //---
   {
-    id: 4,
-    title: { en: "SecureVPN", es: "SecureVPN" },
+    id: 5,
+    title: { en: "Papeador", es: "Papeador" },
     shortDescription: {
-      en: "Privacy-focused VPN solution built with modern cryptography standards.",
-      es: "Solución VPN enfocada en privacidad construida con estándares modernos de criptografía."
+      en: "Papeador is a competitive programming online judge that automatically evaluates code solutions in a secure and isolated container-based environment.",
+      es: "Papeador es un juez virtual de programación competitiva que evalúa automáticamente soluciones de código en un entorno seguro y aislado mediante contenedores."
     },
     fullDescription: {
-      en: "SecureVPN is an open-source VPN solution that prioritizes user privacy and security. Built with Rust for memory safety and performance, it implements WireGuard protocol and modern cryptographic standards. The project includes both server and client applications, with a focus on ease of deployment and transparent operation.",
-      es: "SecureVPN es una solución VPN de código abierto que prioriza la privacidad y seguridad del usuario. Construida con Rust para seguridad de memoria y rendimiento, implementa el protocolo WireGuard y estándares criptográficos modernos. El proyecto incluye aplicaciones tanto de servidor como de cliente, con enfoque en facilidad de despliegue y operación transparente."
+      en: "Papeador is a platform designed to manage programming contests, problems, and users, and to automatically evaluate code submissions made by participants. The system follows a client–server architecture, where a centralized backend exposes an API consumed by the frontend. Code submissions are processed asynchronously through a queue, and each submission is executed inside an isolated container that includes only the tools required to compile and run the user’s program. \n During evaluation, the judge runs the code against a predefined set of test cases while enforcing time and memory limits. Once execution is complete, the system determines the corresponding verdict and stores the results for later consultation and leaderboard generation. Papeador is intended as a secure and extensible foundation for programming competitions, academic practice, or algorithm training, following the principles of modern online judges.",
+      es: "El papeador es una plataforma diseñada para administrar concursos de programación, problemas y usuarios, y para evaluar de forma automática, los envíos de código realizados por los participantes. El sistema sigue una arquitectura cliente-servidor, donde un backend central expone una API consumida por el frontend. Los envíos de código se procesan de manera asincrónica mediante una cola, y cada submission se ejecuta dentro de un contenedor aislado que contiene únicamente las herramientas necesarias para compilar y ejecutar el programa del usuario. \n Durante la evaluación, el juez ejecuta el código contra un conjunto de casos de prueba previamente definidos, controlando límites de tiempo y memoria. Una vez finalizada la ejecución, el sistema determina el veredicto correspondiente y almacena los resultados para su consulta posterior y para la generación de leaderboards. Papeador está pensado como una base extensible y segura para competencias de programación, prácticas académicas o entrenamiento en algoritmos, siguiendo los principios de jueces en línea modernos."
     },
-    category: { en: "Security", es: "Seguridad" },
-    stars: 567,
-    contributors: 15,
-    language: "Rust",
-    color: "bg-orange-500",
-    tags: ["VPN", "Security", "Privacy", "Rust", "WireGuard", "Cryptography"],
-    github: "https://github.com/lidsol/securevpn",
+    category: { en: "Competitive programming", es: "Programación competitiva" },
+    stars: 0,
+    contributors: 8,
+    language: "Go",
+    color: "bg-blue-500",
+    tags: ["Competitive Programming", "Online Judge", "Docker", "Containerization", "Sandbox", "Backend", "API"],
+    github: "https://github.com/LIDSOL/papeador",
     features: {
       en: [
-        "WireGuard protocol implementation",
-        "Cross-platform support",
-        "No-logs policy",
-        "Modern cryptography",
-        "Easy server deployment"
+        "Automatic code evaluation: Compilation and execution of solutions against predefined test cases.",
+        "Secure container-based execution: Each submission runs inside an isolated container that is created and destroyed per submission.",
+        "User and contest management: Support for multiple users, contests, and problems.",
+        "Modular architecture: Clear separation between the API, judge, submission queue, and database.",
+        "Multi-language support: Use of language-specific images and Dockerfiles.",
+        "Clear results and verdicts: Enforcement of time and memory limits during execution; Accepted, Wrong Answer, Time Limit Exceeded, Memory Limit Exceeded, Runtime Error, and Compilation Error.",
+        "Leaderboards: Ranking generation based on stored results."
       ],
       es: [
-        "Implementación del protocolo WireGuard",
-        "Soporte multiplataforma",
-        "Política de no registro",
-        "Criptografía moderna",
-        "Despliegue fácil del servidor"
+        "Evaluación automática de código: Compilación y ejecución de soluciones contra casos de prueba predefinidos.",
+        "Ejecución segura de contenedores: Cada envío se ejecuta en un contenedor aislado que se crea y destruye por submission.",
+        "Gestión de usuarios y concursos: Soporte para múltiples usuarios, concursos y problemas.",
+        "Soporte para múltiples lenguajes: Uso de imágenes y Dockerfile específicos por lenguaje.",
+        "Arquitectura modular: Separación clara entre API, juez, cola de envíos y base de datos.",
+        "Resultados y veredictos claros: Soporte para límites de tiempo y memoria durante la ejecución. Evalúa: accepted, Wrong Answer, Time Limit Exceeded, Memory Limit Exceeded, Runtime Error y Compilation Error.",
+        "Leaderboards: Generación de rankings a partir de los resultados almacenados."
       ]
     },
-    status: { en: "Stable", es: "Estable" }
+    status: { en: "In Development", es: "En desarrollo" },
+    image: papeadorImg,
   },
   //---
   {
