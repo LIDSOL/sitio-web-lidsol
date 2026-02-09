@@ -2,6 +2,8 @@ import  drawdbImg   from "../components/ui/source/imagesProjects/drawdb.png";
 import  mirrorsImg  from "../components/ui/source/imagesProjects/mirrors.png";
 import  privanonImg from "../components/ui/source/imagesProjects/priv-anon.jpg";
 
+import  swayImg from "../components/ui/source/imagesProjects/sway.png";
+
 export interface Project {
   id: number;
   title: { en: string; es: string };
@@ -176,6 +178,44 @@ export const projects: Project[] = [
       ]
     },
     status: { en: "Stable", es: "Estable" }
+  },
+  //---
+  {
+    id: 6,
+    title: { en: "Sway Layout Manager", es: "Sway Layout Manager" },
+    shortDescription: {
+      en: "Sway Layout Manager is an application that automates the process of saving and restoring window layouts and container arrangements in Sway. Save your current workspace arrangements as named presets and restore them when needed, eliminating the tedious task of manually reopening and positioning applications.",
+      es: "Sway Layout Manager es una aplicación que automatiza el proceso de guardar y restaurar los layouts de ventanas y la disposición de los contenedores en Sway. Guarda la organización actual de tus espacios de trabajo como pre ajustes con nombre y recupérala cuando la necesites, eliminando la tediosa tarea de volver a abrir y posicionar manualmente las aplicaciones."
+    },
+    fullDescription: {
+      en: "# Usage\n ### Save Current Layout\n```bash\nswaylayoutmgr save <name>\n```\n Captures the current state of all active workspaces and saves it as a named layout preset.\n### Load Saved Layout\n```bash\nswaylayoutmgr load <name>\n```\nRestores a previously saved layout, launching applications and positioning them according to the saved configuration.\n### List Available Presets\n```bash\nswaylayoutmgr list\n```\nDisplays all available layout presets with metadata including creation date, workspace count, and application summary.\n### Delete Preset\n```bash\nswaylayoutmgr delete <name>\n```\nRemoves a saved preset (with confirmation prompt).\n## Use Case Example\nA developer working with Visual Studio Code on the left half of the screen and two terminal windows stacked vertically on the right half can save this arrangement as `dev-workspace`. Later, they can instantly recreate this exact layout with:\n```bash\nswaylayoutmgr load dev-workspace\n```\n# Requirements\n- Operating System: GNU/Linux distribution with Wayland support\n- Window Manager: Sway (version 1.10 or higher)\n- Runtime: No additional dependencies for CLI usage\n# Installation\n> **Note**: This project is currently in development. Installation instructions will be provided once the first release is available.\n",
+      es: "# Uso\n\n### Guardar diseño actual\n```bash\nswaylayoutmgr save <name>\n```\n Captura el estado actual de todos los espacios de trabajo activos y lo guarda como un preset de diseño con nombre.\n ### Cargar un diseño guardado\n```bash\nswaylayoutmgr load <name>\n```\nRestaura un diseño previamente guardado, lanzando las aplicaciones y posicionándolas según la configuración almacenada.\n### Listar presets disponibles\n```bash\nswaylayoutmgr list\n```\nMuestra todos los presets de diseño disponibles junto con metadatos como la fecha de creación, el número de espacios de trabajo y un resumen de aplicaciones.\n### Eliminar un preset\n```bash\nswaylayoutmgr delete <name>\n```\nElimina un preset guardado (con solicitud de confirmación).\n## Ejemplo de caso de uso\nUn desarrollador que trabaja con Visual Studio Code en la mitad izquierda de la pantalla y dos ventanas de terminal apiladas verticalmente en la mitad derecha puede guardar esta disposición como `dev-workspace`. Más tarde, puede recrear instantáneamente este mismo diseño con: \n ```bash\nswaylayoutmgr load dev-workspace\n```\n# Requisitos\n- Sistema operativo: Distribución GNU/Linux con soporte para Wayland\n- Gestor de ventanas: Sway (versión 1.10 o superior)\n- Entorno de ejecución: No se requieren dependencias adicionales para el uso del CLI\n# Instalación\n> **Nota**: Este proyecto se encuentra actualmente en desarrollo. Las instrucciones de instalación se proporcionarán una vez que esté disponible la primera versión."
+    },
+    category: { en: "Window Manager Tiling", es: "Window Manager Tiling" },
+    stars: 1,
+    contributors: 3,
+    language: "Go",
+    color: "bg-blue-500",
+    tags: ["Sway", "Window Manager Tiling", "Customization", "Layouts"],
+    github: "https://github.com/LIDSOL/sway-layout-manager",
+    features: {
+      en: [
+        "Save Layout Presets: Get current window arrangements across multiple workspaces and outputs",
+        "Layout Loading: Load saved layouts restoring window positions and applications",
+        "Dual Interface: Command-line interface (CLI) for automation and scripting",
+        "Future GUI Support: Planned graphical interface for visual management",
+        "No Dependencies: Core CLI compiles to a single executable with no runtime dependencies"
+      ],
+      es: [
+        "Guardar presets de diseño: Obtiene la disposición actual de las ventanas a través de múltiples espacios de trabajo y salidas",
+        "Carga de diseños: Carga diseños guardados restaurando la posición de las ventanas y las aplicaciones",
+        "Interfaz dual: Interfaz de línea de comandos (CLI) para automatización y scripting",
+        "Soporte futuro para GUI: Interfaz gráfica planificada para la gestión visual",
+        "Sin dependencias: El CLI principal se compila como un único ejecutable sin dependencias en tiempo de ejecución"
+      ]
+    },
+    status: { en: "In Development", es: "En desarrollo" },
+    image: swayImg,
   },
   //---
 
