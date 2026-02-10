@@ -19,6 +19,7 @@ export interface Project {
   tags?: string[];
   github?: string;
   website?: string;
+  download?: string;
   features?: { en: string[]; es: string[] };
   status?: { en: string; es: string };
   image?: string;
@@ -47,6 +48,7 @@ export const projects: Project[] = [
     tags: ["Tor", "Privacy", "", "DevOps"],
     github: "https://github.com/LIDSOL/servidor/tree/main/files/mirrors",
     website: "https://lidsol.fi-b.unam.mx",
+    download: "/downloads/priv-anon.pdf",
     features: {
       en: [
           "Local, synchronized replicas of the official repositories for several GNU/Linux distributions (AlmaLinux, Arch, Debian, Linux Mint, etc.).",
