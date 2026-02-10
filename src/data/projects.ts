@@ -1,25 +1,26 @@
-import  mirrorsImg  from "../components/ui/source/imagesProjects/mirrors.png";
-import  privanonImg from "../components/ui/source/imagesProjects/priv-anon.jpg";
-
-import  drawdbImg   from "../components/ui/source/imagesProjects/drawdb.png";
+import privanonImg  from "../components/ui/source/imagesProjects/priv-anon.jpg";
+import torImg       from "../components/ui/source/imagesProjects/tor.png"
+import mirrorsImg   from "../components/ui/source/imagesProjects/mirrors.png";
+import drawdbImg    from "../components/ui/source/imagesProjects/drawdb.png";
 import papeadorImg  from "../components/ui/source/imagesProjects/papeador.png";
 import swayImg      from "../components/ui/source/imagesProjects/sway.png";
+import swayyImg     from "../components/ui/source/imagesProjects/sway2.png";
 
 export interface Project {
   id: number;
   title: { en: string; es: string };
-  shortDescription: { en: string; es: string };
-  fullDescription: { en: string; es: string };
-  category: { en: string; es: string };
-  stars: number;
-  contributors: number;
-  language: string;
+  shortDescription?: { en: string; es: string };
+  fullDescription?: { en: string; es: string };
+  category?: { en: string; es: string };
+  stars?: number;
+  contributors?: number;
+  language?: string;
   color: string;
-  tags: string[];
+  tags?: string[];
   github?: string;
   website?: string;
-  features: { en: string[]; es: string[] };
-  status: { en: string; es: string };
+  features?: { en: string[]; es: string[] };
+  status?: { en: string; es: string };
   image?: string;
 }
 
@@ -34,15 +35,15 @@ export const projects: Project[] = [
       es: "Desarrollo de materiales didácticos y multimedia que explican y promueven el uso de tecnologías de privacidad y anonimato (principalmente la red Tor) para audiencias técnicas, académicas y de ciencias sociales."
     },
     fullDescription: {
-      en: "LIDSoL’s mirrors are replica servers that provide local, synchronized copies of the official packages for several GNU/Linux distributions—AlmaLinux, Arch, Debian (including Debian CD), and Linux Mint. The mirrors are accessible via both HTTPS and rsync, allowing GNU/Linux users to sync their own repositories or update their systems directly from this mirror.",
-      es:
-          "El presente proyecto plantea el diseño de actividades, material didáctico y publicaciones orientados a la siguiente progresión temática relacionada con la seguridad de la información personal en redes. El desarrollo del proyecto busca formar conjuntos diferentes de habilidades en dos segmentos muy distintos: Por un lado, para la población en general, usuarios finales (y con esto, tenemos que enfatizar, nos referimos a todo usuario, no únicamente a los tecnófilos), y por otro lado, para los alumnos de las ingenierías en computación, telecomunicaciones, y áreas relacionadas. \nPara el grupo poblacional más amplio, buscamos en un primer momento concientización acerca de las expectativas razonables de privacidad en línea, iniciando desde el concepto general (¿qué se comprende por privacidad en medios digitales? ¿Qué modelos de amenaza debe el usuario considerar? ¿Qué buenas prácticas pueden reducir los riesgos?), para transitar hacia el objeto medular del proyecto, y llevar a usuarios finales a la adopción de herramientas que les provean el uso seguro y anónimo de las redes de comunicaciones, particularmente **de** la red Tor. \nPara el grupo específico de las ingenierías, el proyecto busca generar material que ayude a una comprensión comprehensiva de la base tecnológica sobre la cual se fundamentan Tor y otras tecnologías anonimizadoras, para lo cual generaremos material que complemente a la actual enseñanza de las materias de “redes de datos seguras”, “redes de telecomunicaciones” y “tecnologías e interconexión de redes” fundamentándose en la criptografía. Buscamos también, por medio de experiencias prácticas, llevar a los alumnos a la instalación de un laboratorio de sistemas que, mediante distintas estrategias, permitan el uso, evaluación y monitoreo de recursos de estos mecanismos. \nSe agradece el apoyo otorgado para el desarrollo de este material a DGAPA-UNAM, PAPIME PE102718 Desarrollo de materiales didácticos para los mecanismos de privacidad y anonimato en redes."
+      en: "The present project proposes the design of activities, didactic materials, and publications oriented toward the following thematic progression related to personal information security on networks. The development of the project aims to build different sets of skills in two very distinct segments: on the one hand, the general population, end users (and it is important to emphasize that this refers to all users, not only technophiles), and on the other hand, students of computer engineering, telecommunications, and related fields. \nFor the broader population group, we initially seek to raise awareness about reasonable expectations of online privacy, starting from the general concept (what is meant by privacy in digital media? What threat models should users consider? What best practices can reduce risks?), and then moving toward the core objective of the project: guiding end users toward the adoption of tools that provide secure and anonymous use of communication networks, particularly of the Tor network. \nFor the specific group of engineering students, the project seeks to generate material that supports a comprehensive understanding of the technological foundations on which Tor and other anonymizing technologies are built. To this end, we will develop materials that complement current teaching in courses such as “secure data networks,” “telecommunications networks,” and “network technologies and interconnection,” grounded in cryptography. We also aim, through hands-on experiences, to guide students in setting up a systems laboratory that, through different strategies, enables the use, evaluation, and monitoring of resources provided by these mechanisms. \nWe acknowledge the support provided for the development of this material by DGAPA-UNAM, PAPIME PE102718, Development of didactic materials for privacy and anonymity mechanisms in networks.",
+      es: "El presente proyecto plantea el diseño de actividades, material didáctico y publicaciones orientados a la siguiente progresión temática relacionada con la seguridad de la información personal en redes. El desarrollo del proyecto busca formar conjuntos diferentes de habilidades en dos segmentos muy distintos: Por un lado, para la población en general, usuarios finales (y con esto, tenemos que enfatizar, nos referimos a todo usuario, no únicamente a los tecnófilos), y por otro lado, para los alumnos de las ingenierías en computación, telecomunicaciones, y áreas relacionadas. \nPara el grupo poblacional más amplio, buscamos en un primer momento concientización acerca de las expectativas razonables de privacidad en línea, iniciando desde el concepto general (¿qué se comprende por privacidad en medios digitales? ¿Qué modelos de amenaza debe el usuario considerar? ¿Qué buenas prácticas pueden reducir los riesgos?), para transitar hacia el objeto medular del proyecto, y llevar a usuarios finales a la adopción de herramientas que les provean el uso seguro y anónimo de las redes de comunicaciones, particularmente **de** la red Tor. \nPara el grupo específico de las ingenierías, el proyecto busca generar material que ayude a una comprensión comprehensiva de la base tecnológica sobre la cual se fundamentan Tor y otras tecnologías anonimizadoras, para lo cual generaremos material que complemente a la actual enseñanza de las materias de “redes de datos seguras”, “redes de telecomunicaciones” y “tecnologías e interconexión de redes” fundamentándose en la criptografía. Buscamos también, por medio de experiencias prácticas, llevar a los alumnos a la instalación de un laboratorio de sistemas que, mediante distintas estrategias, permitan el uso, evaluación y monitoreo de recursos de estos mecanismos. \nSe agradece el apoyo otorgado para el desarrollo de este material a DGAPA-UNAM, PAPIME PE102718 Desarrollo de materiales didácticos para los mecanismos de privacidad y anonimato en redes."
     },
+
     category: { en: "Privacy", es: "Privacidad" },
     stars: 0,
-    contributors: 2,
-    language: "Bash",
-    color: "bg-blue-500",
+    contributors: 0,
+    language: "Multiple",
+    color: "bg-pink-500",
     tags: ["Tor", "Privacy", "", "DevOps"],
     github: "https://github.com/LIDSOL/servidor/tree/main/files/mirrors",
     website: "https://lidsol.fi-b.unam.mx",
@@ -65,8 +66,66 @@ export const projects: Project[] = [
     status: { en: "Active Development", es: "Desarrollo Activo" },
     image: privanonImg,
   },
+//---
+  {
+  id: 2,
+  title: {
+    en: "LIDSoL Tor Node",
+    es: "Nodo Tor de LIDSoL"
+  },
+  shortDescription: {
+    en: "LIDSoL operates a Tor node to support anonymous communication and strengthen the Tor network.",
+    es: "LIDSoL opera un nodo Tor para apoyar la comunicación anónima y fortalecer la red Tor."
+  },
+  fullDescription: {
+    en: "The LIDSoL Tor Node is a Tor relay operated by the Free Software Laboratory (LIDSoL) to contribute bandwidth, reliability, and geographic diversity to the Tor network. By running a Tor relay, LIDSoL helps improve anonymity, censorship resistance, and privacy for users worldwide. The node is managed using automated configuration and monitoring tools, following Tor Project best practices to ensure stability, security, and compliance.",
+    es: "El nodo Tor de LIDSoL es un relay de Tor operado por el Laboratorio de Investigación y Desarrollo de Software Libre (LIDSoL) con el objetivo de aportar ancho de banda, confiabilidad y diversidad geográfica a la red Tor. Al operar un relay, LIDSoL contribuye a mejorar el anonimato y la privacidad de usuarios en todo el mundo. El nodo se administra mediante configuraciones y herramientas de monitoreo automatizadas, siguiendo las mejores prácticas del Proyecto Tor para garantizar estabilidad, seguridad y cumplimiento."
+  },
 
-    //---
+  category: {
+    en: "Privacy & Security",
+    es: "Privacidad y Seguridad"
+  },
+  stars: 0,
+  contributors: 2,
+  language: "Bash",
+  color: "bg-purple-600",
+  tags: [
+    "Tor",
+    "Privacy",
+    "Anonymity",
+    "Security",
+    "Networking",
+    "GNU/Linux",
+    "DevOps"
+  ],
+  github: "https://github.com/LIDSOL/servidor/tree/main/files/tor",
+  website: "https://lidsol.fi-b.unam.mx",
+  features: {
+    en: [
+      "Tor relay node contributing bandwidth and availability to the Tor network.",
+      "Supports anonymous communication and censorship resistance for Tor users.",
+      "Automated setup and management using Bash scripts.",
+      "Configuration aligned with Tor Project best practices.",
+      "Monitoring and logging for operational visibility and reliability.",
+      "Deployed on GNU/Linux servers with a focus on security and stability."
+    ],
+    es: [
+      "Nodo relay de Tor que aporta ancho de banda y disponibilidad a la red Tor.",
+      "Soporte para comunicación anónima y resistencia a la censura.",
+      "Configuración y gestión automatizadas mediante scripts Bash.",
+      "Configuración alineada con las mejores prácticas del Proyecto Tor.",
+      "Monitoreo y registro para visibilidad operativa y confiabilidad.",
+      "Desplegado en servidores GNU/Linux con énfasis en seguridad y estabilidad."
+    ]
+  },
+  status: {
+    en: "Stable",
+    es: "Estable"
+  },
+  image: torImg,
+},
+//---
   {
     id: 3,
     title: { en: "LIDSoL Linux Mirrors", es: "Repositorios espejo de Linux LIDSoL" },
@@ -105,7 +164,7 @@ export const projects: Project[] = [
     status: { en: "Stable", es: "Estable" },
     image: mirrorsImg,
   },
-  //---
+//---
   {
     id: 4,
     title: { en: "Drawdb", es: "Drawdb" },
@@ -158,7 +217,7 @@ export const projects: Project[] = [
     status: { en: "Beta", es: "Beta" },
     image: drawdbImg,
   },
-  //---
+//---
   {
     id: 5,
     title: { en: "Papeador", es: "Papeador" },
@@ -200,7 +259,7 @@ export const projects: Project[] = [
     status: { en: "In Development", es: "En desarrollo" },
     image: papeadorImg,
   },
-  //---
+//---
   {
     id: 6,
     title: { en: "Sway Layout Manager", es: "Sway Layout Manager" },
@@ -236,8 +295,8 @@ export const projects: Project[] = [
       ]
     },
     status: { en: "In Development", es: "En desarrollo" },
-    image: swayImg,
+    image: swayyImg,
   },
-  //---
+//---
 
   ];
