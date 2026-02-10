@@ -181,7 +181,12 @@ export function Projects({ onProjectClick }: ProjectsProps) {
 
                     <div className="flex gap-2">
                       {project.github && (
-                        <Button variant="outline" size="sm" className="gap-2">
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          className="gap-2"
+                          onClick={() => window.open(project.github, '_blank')}
+                        >
                           <Github className="h-4 w-4" />
                           {t.sourceCode[language]}
                         </Button>
