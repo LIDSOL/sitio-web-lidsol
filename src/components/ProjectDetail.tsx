@@ -1,4 +1,4 @@
-import { ArrowLeft, Github, ExternalLink, Star, Users, CheckCircle } from "lucide-react";
+import { ArrowLeft, Github, ExternalLink, Star, Users, CheckCircle, Download } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { useLanguage } from "./LanguageProvider";
@@ -27,6 +27,7 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
     tags: { en: "Tags", es: "Etiquetas" },
     sourceCode: { en: "View Source Code", es: "Ver Código Fuente" },
     visitWebsite: { en: "Visit Website", es: "Visitar Sitio Web" },
+    download: { en: "Download", es: "Descargar" },
   };
 
   return (
@@ -79,6 +80,20 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
                 >
                   <ExternalLink className="h-5 w-5" />
                   {t.visitWebsite[language]}
+                </a>
+              </Button>
+            )}
+
+            {project.download && (
+              <Button asChild size="lg" variant="secondary" className="gap-2">
+                <a
+                  href={project.download}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                >
+                  <Download className="h-5 w-5" />
+                  {t.download[language]}
                 </a>
               </Button>
             )}
