@@ -5,6 +5,8 @@ import { Star, Users, ArrowRight } from "lucide-react";
 import { useState, useMemo } from "react";
 import { projects } from "../data/projects";
 import { useLanguage } from "./LanguageProvider";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 // Simple contribution graph component
 function ContributionGraph({ projectId }: { projectId: number }) {
@@ -119,7 +121,34 @@ export function FeaturedProjects() {
                       <CardTitle className="mb-2">{project.title[language]}</CardTitle>
 
                       <CardDescription className={isExpanded ? "" : "line-clamp-2"}>
-                        {isExpanded ? project.fullDescription[language] : project.shortDescription[language]}
+                        {isExpanded ? (
+                          <div className="prose prose-neutral dark:prose-invert max-w-none">
+                            <ReactMarkdown
+                              remarkPlugins={[remarkGfm]}
+                              components={{
+                                p: ({children}) => <p className="text-justify hyphens-auto leading-relaxed mb-4" style={{textAlign: 'justify'}}>{children}</p>,
+                                br: () => <br className="mb-2" />
+                              }}
+                            >
+                              {project.fullDescription[language]
+                                .split('\n')
+                                .map(line => line.trim())
+                                .filter(line => line.length > 0)
+                                .join('\n\n')}
+                            </ReactMarkdown>
+                          </div>
+                        ) : (
+                          <div className="prose prose-neutral dark:prose-invert max-w-none">
+                            <ReactMarkdown
+                              remarkPlugins={[remarkGfm]}
+                              components={{
+                                p: ({children}) => <p className="inline">{children}</p>,
+                              }}
+                            >
+                              {project.shortDescription[language]}
+                            </ReactMarkdown>
+                          </div>
+                        )}
                       </CardDescription>
                     </div>
                   </div>
