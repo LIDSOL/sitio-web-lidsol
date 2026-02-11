@@ -142,7 +142,7 @@ export function Projects({ onProjectClick }: ProjectsProps) {
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.08 }}
+                  transition={{ delay: index * 0.05 }}
                   className="flex flex-col gap-4"
                 >
                   <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
@@ -152,16 +152,20 @@ export function Projects({ onProjectClick }: ProjectsProps) {
                           className="text-xl hover:text-primary transition-colors cursor-pointer"
                           onClick={() => onProjectClick(project.id)}
                         >
-                          {project.title[language]}
+                          {project.title?.[language] || 'Untitled Project'}
                         </h3>
-                        <span className="text-xs px-3 py-1 bg-muted rounded-full">
-                          {project.category[language]}
-                        </span>
+                        {project.category && (
+                          <span className="text-xs px-3 py-1 bg-muted rounded-full">
+                            {project.category[language]}
+                          </span>
+                        )}
                       </div>
 
-                      <p className="text-muted-foreground mb-3 line-clamp-2">
-                        {project.shortDescription[language]}
-                      </p>
+                      {project.shortDescription && (
+                        <p className="text-muted-foreground mb-3 line-clamp-2">
+                          {project.shortDescription[language]}
+                        </p>
+                      )}
 
                       <div className="mb-3">
                         <div className="text-xs text-muted-foreground mb-2">
@@ -171,18 +175,24 @@ export function Projects({ onProjectClick }: ProjectsProps) {
                       </div>
 
                       <div className="flex items-center gap-4 text-sm text-muted-foreground flex-wrap">
-                        <div className="flex items-center gap-1">
-                          <Star className="h-4 w-4 text-yellow-500" />
-                          {project.stars}
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Users className="h-4 w-4 text-primary" />
-                          {project.contributors} {t.contributors[language]}
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <div className={`w-3 h-3 ${project.color} rounded-full`} />
-                          {project.language}
-                        </div>
+                        {project.stars !== undefined && (
+                          <div className="flex items-center gap-1">
+                            <Star className="h-4 w-4 text-yellow-500" />
+                            {project.stars}
+                          </div>
+                        )}
+                        {project.contributors !== undefined && (
+                          <div className="flex items-center gap-1">
+                            <Users className="h-4 w-4 text-primary" />
+                            {project.contributors} {t.contributors[language]}
+                          </div>
+                        )}
+                        {project.language && (
+                          <div className="flex items-center gap-1">
+                            <div className={`w-3 h-3 ${project.color || 'bg-gray-500'} rounded-full`} />
+                            {project.language}
+                          </div>
+                        )}
                       </div>
                     </div>
 
