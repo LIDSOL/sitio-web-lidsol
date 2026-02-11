@@ -51,9 +51,16 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
                 {project.title?.[language] || 'Untitled Project'}
               </h1>
               {project.shortDescription && (
-                <p className="text-xl text-muted-foreground">
-                  {project.shortDescription[language]}
-                </p>
+                <div className="text-xl text-muted-foreground prose prose-neutral dark:prose-invert max-w-none">
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    components={{
+                      p: ({children}) => <p className="inline">{children}</p>,
+                    }}
+                  >
+                    {project.shortDescription[language]}
+                  </ReactMarkdown>
+                </div>
               )}
             </div>
           </div>

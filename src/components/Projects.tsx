@@ -5,6 +5,8 @@ import { useLanguage } from "./LanguageProvider";
 import { projects } from "../data/projects";
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface ProjectsProps {
   onProjectClick: (projectId: number) => void;
@@ -158,9 +160,16 @@ export function Projects({ onProjectClick }: ProjectsProps) {
                       </div>
 
                       {project.shortDescription && (
-                        <p className="text-muted-foreground mb-3 line-clamp-2">
-                          {project.shortDescription[language]}
-                        </p>
+                        <div className="text-muted-foreground mb-3 line-clamp-2 prose prose-neutral dark:prose-invert max-w-none">
+                          <ReactMarkdown
+                            remarkPlugins={[remarkGfm]}
+                            components={{
+                              p: ({children}) => <p className="inline">{children}</p>,
+                            }}
+                          >
+                            {project.shortDescription[language]}
+                          </ReactMarkdown>
+                        </div>
                       )}
 
                       <div className="mb-3">
