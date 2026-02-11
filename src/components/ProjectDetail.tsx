@@ -1,4 +1,4 @@
-import { ArrowLeft, Github, ExternalLink, Star, Users, CheckCircle, Download } from "lucide-react";
+import { ArrowLeft, Github, ExternalLink, Star, Users, CheckCircle, Download, Construction, Skull, ShieldQuestion } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { useLanguage } from "./LanguageProvider";
@@ -14,6 +14,28 @@ interface ProjectDetailProps {
 
 export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
   const { language } = useLanguage();
+
+  const getStatusIcon = (statusText: string) => {
+    const status = statusText.toLowerCase();
+    
+    // Check for development-related terms (both English and Spanish)
+    if (status.includes('desarrollo') || status.includes('development') || status.includes('en desarrollo') || status.includes('in development')) {
+      return <Construction className="h-5 w-5 text-orange-500" />;
+    }
+    
+    // Check for stable-related terms
+    if (status.includes('estable') || status.includes('stable')) {
+      return <CheckCircle className="h-5 w-5 text-green-500" />;
+    }
+    
+    // Check for deprecated-related terms
+    if (status.includes('deprecado') || status.includes('deprecate') || status.includes('deprecated') || status.includes('obsoleto') || status.includes('obsolete')) {
+      return <Skull className="h-5 w-5 text-red-500" />;
+    }
+    
+    // Default icon for any other status
+    return <ShieldQuestion className="h-5 w-5 text-blue-500" />;
+  };
 
   const t = {
     back: { en: "Back to Projects", es: "Volver a Proyectos" },
@@ -198,7 +220,7 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
             {project.status && (
               <div className="bg-card rounded-2xl p-6 border border-border/50">
                 <div className="flex items-center gap-3 mb-2">
-                  <CheckCircle className="h-5 w-5 text-green-500" />
+                  {getStatusIcon(project.status[language])}
                   <span className="text-sm text-muted-foreground">
                     {t.status[language]}
                   </span>
