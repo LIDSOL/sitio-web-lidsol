@@ -48,11 +48,13 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
           <div className="flex items-start justify-between mb-6">
             <div>
               <h1 className="text-5xl sm:text-6xl mb-4">
-                {project.title[language]}
+                {project.title?.[language] || 'Untitled Project'}
               </h1>
-              <p className="text-xl text-muted-foreground">
-                {project.shortDescription[language]}
-              </p>
+              {project.shortDescription && (
+                <p className="text-xl text-muted-foreground">
+                  {project.shortDescription[language]}
+                </p>
+              )}
             </div>
           </div>
 
@@ -101,118 +103,134 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
         </div>
 
     {/* Description */}
-        <div className="bg-card rounded-3xl p-8 md:p-12 border border-border/50 mb-8">
-        <h2 className="text-3xl mb-6">{t.description[language]}</h2>
+        {(project.fullDescription || project.image) && (
+          <div className="bg-card rounded-3xl p-8 md:p-12 border border-border/50 mb-8">
+            <h2 className="text-3xl mb-6">{t.description[language]}</h2>
 
-      {project.image && (
-        <div className="mt-4 mb-8 overflow-hidden rounded-2xl border border-border/40 bg-muted">
-          <img
-            src={project.image}
-            alt={project.title[language]}
-            className="
-              w-full
-              object-cover
-              max-h-[420px]
-              transition
-              duration-300
-            "
-          />
-        </div>
-    )}
+            {project.image && (
+              <div className="mt-4 mb-8 overflow-hidden rounded-2xl border border-border/40 bg-muted">
+                <img
+                  src={project.image}
+                  alt={project.title?.[language] || 'Project image'}
+                  className="
+                    w-full
+                    object-cover
+                    max-h-[420px]
+                    transition
+                    duration-300
+                  "
+                />
+              </div>
+            )}
 
-
-
-    <div className="prose prose-neutral dark:prose-invert max-w-none">
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        components={{
-          p: ({children}) => <p className="text-justify hyphens-auto leading-relaxed mb-4" style={{textAlign: 'justify'}}>{children}</p>,
-          br: () => <br className="mb-2" />
-        }}
-      >
-        {project.fullDescription[language]
-          .split('\n')
-          .map(line => line.trim())
-          .filter(line => line.length > 0)
-          .join('\n\n')}
-      </ReactMarkdown>
-    </div>
-</div>
+            {project.fullDescription && (
+              <div className="prose prose-neutral dark:prose-invert max-w-none">
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  components={{
+                    p: ({children}) => <p className="text-justify hyphens-auto leading-relaxed mb-4" style={{textAlign: 'justify'}}>{children}</p>,
+                    br: () => <br className="mb-2" />
+                  }}
+                >
+                  {project.fullDescription[language]
+                    .split('\n')
+                    .map(line => line.trim())
+                    .filter(line => line.length > 0)
+                    .join('\n\n')}
+                </ReactMarkdown>
+              </div>
+            )}
+          </div>
+        )}
 
 
         {/* Features */}
-        <div className="bg-primary/5 border border-primary/10 rounded-3xl p-8 md:p-12 mb-8">
-          <h2 className="text-3xl mb-6">{t.features[language]}</h2>
-          <ul className="space-y-3">
-            {project.features[language].map((feature, index) => (
-              <li key={index} className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground text-lg">
-                  {feature}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {project.features && (
+          <div className="bg-primary/5 border border-primary/10 rounded-3xl p-8 md:p-12 mb-8">
+            <h2 className="text-3xl mb-6">{t.features[language]}</h2>
+            <ul className="space-y-3">
+              {project.features[language]?.map((feature, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-muted-foreground text-lg">
+                    {feature}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {/* Stats Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          <div className="bg-card rounded-2xl p-6 border border-border/50">
-            <div className="flex items-center gap-3 mb-2">
-              <Star className="h-5 w-5 text-yellow-500" />
-              <span className="text-sm text-muted-foreground">
-                {t.stars[language]}
-              </span>
-            </div>
-            <div className="text-3xl">{project.stars}</div>
-          </div>
+        {(project.stars !== undefined || project.contributors !== undefined || project.status || project.language) && (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+            {project.stars !== undefined && (
+              <div className="bg-card rounded-2xl p-6 border border-border/50">
+                <div className="flex items-center gap-3 mb-2">
+                  <Star className="h-5 w-5 text-yellow-500" />
+                  <span className="text-sm text-muted-foreground">
+                    {t.stars[language]}
+                  </span>
+                </div>
+                <div className="text-3xl">{project.stars}</div>
+              </div>
+            )}
 
-          <div className="bg-card rounded-2xl p-6 border border-border/50">
-            <div className="flex items-center gap-3 mb-2">
-              <Users className="h-5 w-5 text-primary" />
-              <span className="text-sm text-muted-foreground">
-                {t.contributors[language]}
-              </span>
-            </div>
-            <div className="text-3xl">{project.contributors}</div>
-          </div>
+            {project.contributors !== undefined && (
+              <div className="bg-card rounded-2xl p-6 border border-border/50">
+                <div className="flex items-center gap-3 mb-2">
+                  <Users className="h-5 w-5 text-primary" />
+                  <span className="text-sm text-muted-foreground">
+                    {t.contributors[language]}
+                  </span>
+                </div>
+                <div className="text-3xl">{project.contributors}</div>
+              </div>
+            )}
 
-          <div className="bg-card rounded-2xl p-6 border border-border/50">
-            <div className="flex items-center gap-3 mb-2">
-              <CheckCircle className="h-5 w-5 text-green-500" />
-              <span className="text-sm text-muted-foreground">
-                {t.status[language]}
-              </span>
-            </div>
-            <div className="text-xl">{project.status[language]}</div>
-          </div>
+            {project.status && (
+              <div className="bg-card rounded-2xl p-6 border border-border/50">
+                <div className="flex items-center gap-3 mb-2">
+                  <CheckCircle className="h-5 w-5 text-green-500" />
+                  <span className="text-sm text-muted-foreground">
+                    {t.status[language]}
+                  </span>
+                </div>
+                <div className="text-xl">{project.status[language]}</div>
+              </div>
+            )}
 
-          <div className="bg-card rounded-2xl p-6 border border-border/50">
-            <div className="flex items-center gap-3 mb-2">
-              <div className={`w-4 h-4 ${project.color} rounded-full`} />
-              <span className="text-sm text-muted-foreground">
-                {t.language[language]}
-              </span>
-            </div>
-            <div className="text-xl">{project.language}</div>
+            {project.language && (
+              <div className="bg-card rounded-2xl p-6 border border-border/50">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className={`w-4 h-4 ${project.color || 'bg-gray-500'} rounded-full`} />
+                  <span className="text-sm text-muted-foreground">
+                    {t.language[language]}
+                  </span>
+                </div>
+                <div className="text-xl">{project.language}</div>
+              </div>
+            )}
           </div>
-        </div>
+        )}
 
         {/* Tags */}
-        <div className="bg-card rounded-3xl p-8 border border-border/50">
-          <h2 className="text-2xl mb-4">{t.tags[language]}</h2>
-          <div className="flex flex-wrap gap-2">
-            {project.tags.map((tag) => (
-              <Badge
-                key={tag}
-                variant="secondary"
-                className="text-sm px-4 py-2"
-              >
-                {tag}
-              </Badge>
-            ))}
+        {project.tags && project.tags.length > 0 && (
+          <div className="bg-card rounded-3xl p-8 border border-border/50">
+            <h2 className="text-2xl mb-4">{t.tags[language]}</h2>
+            <div className="flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <Badge
+                  key={tag}
+                  variant="secondary"
+                  className="text-sm px-4 py-2"
+                >
+                  {tag}
+                </Badge>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
