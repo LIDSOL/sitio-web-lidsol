@@ -35,7 +35,7 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
         {/* Back Button */}
         <Button
-          variant="ghost"
+          variant="outline"
           className="mb-8 gap-2"
           onClick={onBack}
         >
