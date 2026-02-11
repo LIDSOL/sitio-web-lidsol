@@ -11,7 +11,7 @@ export interface Project {
   title: { en: string; es: string };
   shortDescription?: { en: string; es: string };
   fullDescription?: { en: string; es: string };
-  category?: { en: string; es: string };
+
   stars?: number;
   contributors?: number;
   language?: string;
@@ -40,7 +40,7 @@ export const projects: Project[] = [
       es: "_El presente_ proyecto plantea el diseño de actividades, material didáctico y publicaciones orientados a la siguiente progresión temática relacionada con la seguridad de la información personal en redes. El desarrollo del proyecto busca formar conjuntos diferentes de habilidades en dos segmentos muy distintos: Por un lado, para la población en general, usuarios finales (y con esto, tenemos que enfatizar, nos referimos a todo usuario, no únicamente a los tecnófilos), y por otro lado, para los alumnos de las ingenierías en computación, telecomunicaciones, y áreas relacionadas. \nPara el grupo poblacional más amplio, buscamos en un primer momento concientización acerca de las expectativas razonables de privacidad en línea, iniciando desde el concepto general (¿qué se comprende por privacidad en medios digitales? ¿Qué modelos de amenaza debe el usuario considerar? ¿Qué buenas prácticas pueden reducir los riesgos?), para transitar hacia el objeto medular del proyecto, y llevar a usuarios finales a la adopción de herramientas que les provean el uso seguro y anónimo de las redes de comunicaciones, particularmente **de** la red Tor. \nPara el grupo específico de las ingenierías, el proyecto busca generar material que ayude a una comprensión comprehensiva de la base tecnológica sobre la cual se fundamentan Tor y otras tecnologías anonimizadoras, para lo cual generaremos material que complemente a la actual enseñanza de las materias de “redes de datos seguras”, “redes de telecomunicaciones” y “tecnologías e interconexión de redes” fundamentándose en la criptografía. Buscamos también, por medio de experiencias prácticas, llevar a los alumnos a la instalación de un laboratorio de sistemas que, mediante distintas estrategias, permitan el uso, evaluación y monitoreo de recursos de estos mecanismos. \nSe agradece el apoyo otorgado para el desarrollo de este material a DGAPA-UNAM, PAPIME PE102718 Desarrollo de materiales didácticos para los mecanismos de privacidad y anonimato en redes."
     },
 
-    category: { en: "Privacy", es: "Privacidad" },
+    
     stars: 0,
     contributors: 0,
     language: "Multiple",
@@ -79,10 +79,7 @@ export const projects: Project[] = [
     en: "LIDSoL operates a Tor node to support anonymous communication and strengthen the Tor network.",
     es: "LIDSoL opera un nodo Tor para apoyar la comunicación anónima y fortalecer la red Tor."
   },
-  category: {
-    en: "Privacy & Security",
-    es: "Privacidad y Seguridad"
-  },
+  
   stars: 0,
   contributors: 2,
   language: "Bash",
@@ -134,7 +131,7 @@ export const projects: Project[] = [
       en: "LIDSoL’s mirrors are replica servers that provide local, synchronized copies of the official packages for several GNU/Linux distributions—AlmaLinux, Arch, Debian (including Debian CD), and Linux Mint. The mirrors are accessible via both HTTPS and rsync, allowing GNU/Linux users to sync their own repositories or update their systems directly from this mirror.",
       es: "Los mirrors de LIDSoL son servidores de réplica que proporcionan copias locales y sincronizadas de los paquetes oficiales de diversas distribuciones GNU/Linux —AlmaLinux, Arch, Debian (incluido Debian CD) y Linux Mint—. Estos mirrors están disponibles tanto mediante HTTPS como mediante rsync, lo que permite a los usuarios de GNU/Linux sincronizar sus propios repositorios o actualizar sus sistemas directamente desde este espejo."
     },
-    category: { en: "Mirrors", es: "Mirrors" },
+    
     stars: 0,
     contributors: 2,
     language: "Bash",
@@ -173,7 +170,7 @@ export const projects: Project[] = [
       en: "DrawDB is a robust and user-friendly editor that allows you to create entity-relationship diagrams for databases directly in your browser. With just a few clicks, you can visually design database schemas, export SQL scripts, customize the editing environment, and much more — all without the need to create an account.",
       es: "DrawDB es un editor robusto e intuitivo que permite crear diagramas entidad-relación para bases de datos directamente desde el navegador. Con unos pocos clics, puedes diseñar esquemas de forma visual, exportar scripts SQL, personalizar el entorno de edición y mucho más, todo sin necesidad de crear una cuenta."
     },
-    category: { en: "Database", es: "Bases de datos" },
+    
     stars: 1,
     contributors: 8,
     language: "JavaScript",
@@ -226,7 +223,7 @@ export const projects: Project[] = [
       en: "Papeador is a platform designed to manage programming contests, problems, and users, and to automatically evaluate code submissions made by participants. The system follows a client–server architecture, where a centralized backend exposes an API consumed by the frontend. Code submissions are processed asynchronously through a queue, and each submission is executed inside an isolated container that includes only the tools required to compile and run the user’s program. \n During evaluation, the judge runs the code against a predefined set of test cases while enforcing time and memory limits. Once execution is complete, the system determines the corresponding verdict and stores the results for later consultation and leaderboard generation. Papeador is intended as a secure and extensible foundation for programming competitions, academic practice, or algorithm training, following the principles of modern online judges.",
       es: "El papeador es una plataforma diseñada para administrar concursos de programación, problemas y usuarios, y para evaluar de forma automática, los envíos de código realizados por los participantes. El sistema sigue una arquitectura cliente-servidor, donde un backend central expone una API consumida por el frontend. Los envíos de código se procesan de manera asincrónica mediante una cola, y cada submission se ejecuta dentro de un contenedor aislado que contiene únicamente las herramientas necesarias para compilar y ejecutar el programa del usuario. \n Durante la evaluación, el juez ejecuta el código contra un conjunto de casos de prueba previamente definidos, controlando límites de tiempo y memoria. Una vez finalizada la ejecución, el sistema determina el veredicto correspondiente y almacena los resultados para su consulta posterior y para la generación de leaderboards. Papeador está pensado como una base extensible y segura para competencias de programación, prácticas académicas o entrenamiento en algoritmos, siguiendo los principios de jueces en línea modernos."
     },
-    category: { en: "Competitive programming", es: "Programación competitiva" },
+    
     stars: 0,
     contributors: 8,
     language: "Go",
@@ -268,7 +265,7 @@ export const projects: Project[] = [
       en: "# Usage\n ### Save Current Layout\n```bash\nswaylayoutmgr save <name>\n```\n Captures the current state of all active workspaces and saves it as a named layout preset.\n### Load Saved Layout\n```bash\nswaylayoutmgr load <name>\n```\nRestores a previously saved layout, launching applications and positioning them according to the saved configuration.\n### List Available Presets\n```bash\nswaylayoutmgr list\n```\nDisplays all available layout presets with metadata including creation date, workspace count, and application summary.\n### Delete Preset\n```bash\nswaylayoutmgr delete <name>\n```\nRemoves a saved preset (with confirmation prompt).\n## Use Case Example\nA developer working with Visual Studio Code on the left half of the screen and two terminal windows stacked vertically on the right half can save this arrangement as `dev-workspace`. Later, they can instantly recreate this exact layout with:\n```bash\nswaylayoutmgr load dev-workspace\n```\n# Requirements\n- Operating System: GNU/Linux distribution with Wayland support\n- Window Manager: Sway (version 1.10 or higher)\n- Runtime: No additional dependencies for CLI usage\n# Installation\n> **Note**: This project is currently in development. Installation instructions will be provided once the first release is available.\n",
       es: "# Uso\n\n### Guardar diseño actual\n```bash\nswaylayoutmgr save <name>\n```\n Captura el estado actual de todos los espacios de trabajo activos y lo guarda como un preset de diseño con nombre.\n ### Cargar un diseño guardado\n```bash\nswaylayoutmgr load <name>\n```\nRestaura un diseño previamente guardado, lanzando las aplicaciones y posicionándolas según la configuración almacenada.\n### Listar presets disponibles\n```bash\nswaylayoutmgr list\n```\nMuestra todos los presets de diseño disponibles junto con metadatos como la fecha de creación, el número de espacios de trabajo y un resumen de aplicaciones.\n### Eliminar un preset\n```bash\nswaylayoutmgr delete <name>\n```\nElimina un preset guardado (con solicitud de confirmación).\n## Ejemplo de caso de uso\nUn desarrollador que trabaja con Visual Studio Code en la mitad izquierda de la pantalla y dos ventanas de terminal apiladas verticalmente en la mitad derecha puede guardar esta disposición como `dev-workspace`. Más tarde, puede recrear instantáneamente este mismo diseño con: \n ```bash\nswaylayoutmgr load dev-workspace\n```\n# Requisitos\n- Sistema operativo: Distribución GNU/Linux con soporte para Wayland\n- Gestor de ventanas: Sway (versión 1.10 o superior)\n- Entorno de ejecución: No se requieren dependencias adicionales para el uso del CLI\n# Instalación\n> **Nota**: Este proyecto se encuentra actualmente en desarrollo. Las instrucciones de instalación se proporcionarán una vez que esté disponible la primera versión."
     },
-    category: { en: "Window Manager Tiling", es: "Window Manager Tiling" },
+    
     stars: 1,
     contributors: 3,
     language: "Go",
