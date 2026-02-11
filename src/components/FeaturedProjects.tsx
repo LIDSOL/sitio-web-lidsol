@@ -117,7 +117,7 @@ export function FeaturedProjects() {
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div className="flex-1">
                       <CardTitle className="mb-2">{project.title[language]}</CardTitle>
-                      <Badge variant="secondary" className="mb-3">{project.category[language]}</Badge>
+
                       <CardDescription className={isExpanded ? "" : "line-clamp-2"}>
                         {isExpanded ? project.fullDescription[language] : project.shortDescription[language]}
                       </CardDescription>

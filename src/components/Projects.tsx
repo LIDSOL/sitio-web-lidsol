@@ -154,11 +154,7 @@ export function Projects({ onProjectClick }: ProjectsProps) {
                         >
                           {project.title?.[language] || 'Untitled Project'}
                         </h3>
-                        {project.category && (
-                          <span className="text-xs px-3 py-1 bg-muted rounded-full">
-                            {project.category[language]}
-                          </span>
-                        )}
+
                       </div>
 
                       {project.shortDescription && (
