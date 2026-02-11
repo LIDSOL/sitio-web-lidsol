@@ -300,5 +300,4 @@ export const projects: Project[] = [
     image: swayyImg,
   },
 //---
-
   ];

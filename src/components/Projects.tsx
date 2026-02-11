@@ -4,6 +4,7 @@ import { Badge } from "./ui/badge";
 import { useLanguage } from "./LanguageProvider";
 import { projects } from "../data/projects";
 import { useState, useMemo } from "react";
+import { motion } from "framer-motion";
 
 interface ProjectsProps {
   onProjectClick: (projectId: number) => void;
@@ -130,14 +131,20 @@ export function Projects({ onProjectClick }: ProjectsProps) {
         </div>
 
         <div className="space-y-4">
-          {sortedProjects.map((project) => {
+          {sortedProjects.map((project, index) => {
 
             return (
               <div
                 key={project.id}
                 className="bg-card rounded-2xl p-6 border border-border/50 hover:border-primary/30 transition-all hover:shadow-md"
               >
-                <div className="flex flex-col gap-4">
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08 }}
+                  className="flex flex-col gap-4"
+                >
                   <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
@@ -181,9 +188,9 @@ export function Projects({ onProjectClick }: ProjectsProps) {
 
                     <div className="flex gap-2">
                       {project.github && (
-                        <Button 
-                          variant="outline" 
-                          size="sm" 
+                        <Button
+                          variant="outline"
+                          size="sm"
                           className="gap-2"
                           onClick={() => window.open(project.github, '_blank')}
                         >
@@ -200,7 +207,7 @@ export function Projects({ onProjectClick }: ProjectsProps) {
                       </Button>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </div>
             );
           })}
