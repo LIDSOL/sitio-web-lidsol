@@ -37,35 +37,39 @@ export const projects: Project[] = [
     },
     fullDescription: {
       en: "The present project proposes the design of activities, didactic materials, and publications oriented toward the following thematic progression related to personal information security on networks. The development of the project aims to build different sets of skills in two very distinct segments: on the one hand, the general population, end users (and it is important to emphasize that this refers to all users, not only technophiles), and on the other hand, students of computer engineering, telecommunications, and related fields. \nFor the broader population group, we initially seek to raise awareness about reasonable expectations of online privacy, starting from the general concept (what is meant by privacy in digital media? What threat models should users consider? What best practices can reduce risks?), and then moving toward the core objective of the project: guiding end users toward the adoption of tools that provide secure and anonymous use of communication networks, particularly of the Tor network. \nFor the specific group of engineering students, the project seeks to generate material that supports a comprehensive understanding of the technological foundations on which Tor and other anonymizing technologies are built. To this end, we will develop materials that complement current teaching in courses such as “secure data networks,” “telecommunications networks,” and “network technologies and interconnection,” grounded in cryptography. We also aim, through hands-on experiences, to guide students in setting up a systems laboratory that, through different strategies, enables the use, evaluation, and monitoring of resources provided by these mechanisms. \nWe acknowledge the support provided for the development of this material by DGAPA-UNAM, PAPIME PE102718, Development of didactic materials for privacy and anonymity mechanisms in networks.",
-      es: "_El presente_ proyecto plantea el diseño de actividades, material didáctico y publicaciones orientados a la siguiente progresión temática relacionada con la seguridad de la información personal en redes. El desarrollo del proyecto busca formar conjuntos diferentes de habilidades en dos segmentos muy distintos: Por un lado, para la población en general, usuarios finales (y con esto, tenemos que enfatizar, nos referimos a todo usuario, no únicamente a los tecnófilos), y por otro lado, para los alumnos de las ingenierías en computación, telecomunicaciones, y áreas relacionadas. \nPara el grupo poblacional más amplio, buscamos en un primer momento concientización acerca de las expectativas razonables de privacidad en línea, iniciando desde el concepto general (¿qué se comprende por privacidad en medios digitales? ¿Qué modelos de amenaza debe el usuario considerar? ¿Qué buenas prácticas pueden reducir los riesgos?), para transitar hacia el objeto medular del proyecto, y llevar a usuarios finales a la adopción de herramientas que les provean el uso seguro y anónimo de las redes de comunicaciones, particularmente **de** la red Tor. \nPara el grupo específico de las ingenierías, el proyecto busca generar material que ayude a una comprensión comprehensiva de la base tecnológica sobre la cual se fundamentan Tor y otras tecnologías anonimizadoras, para lo cual generaremos material que complemente a la actual enseñanza de las materias de “redes de datos seguras”, “redes de telecomunicaciones” y “tecnologías e interconexión de redes” fundamentándose en la criptografía. Buscamos también, por medio de experiencias prácticas, llevar a los alumnos a la instalación de un laboratorio de sistemas que, mediante distintas estrategias, permitan el uso, evaluación y monitoreo de recursos de estos mecanismos. \nSe agradece el apoyo otorgado para el desarrollo de este material a DGAPA-UNAM, PAPIME PE102718 Desarrollo de materiales didácticos para los mecanismos de privacidad y anonimato en redes."
+      es: "El presente proyecto plantea el diseño de actividades, material didáctico y publicaciones orientados a la siguiente progresión temática relacionada con la seguridad de la información personal en redes. El desarrollo del proyecto busca formar conjuntos diferentes de habilidades en dos segmentos muy distintos: Por un lado, para la población en general, usuarios finales (y con esto, tenemos que enfatizar, nos referimos a todo usuario, no únicamente a los tecnófilos), y por otro lado, para los alumnos de las ingenierías en computación, telecomunicaciones, y áreas relacionadas. \nPara el grupo poblacional más amplio, buscamos en un primer momento concientización acerca de las expectativas razonables de privacidad en línea, iniciando desde el concepto general (¿qué se comprende por privacidad en medios digitales? ¿Qué modelos de amenaza debe el usuario considerar? ¿Qué buenas prácticas pueden reducir los riesgos?), para transitar hacia el objeto medular del proyecto, y llevar a usuarios finales a la adopción de herramientas que les provean el uso seguro y anónimo de las redes de comunicaciones, particularmente **de** la red Tor. \nPara el grupo específico de las ingenierías, el proyecto busca generar material que ayude a una comprensión comprehensiva de la base tecnológica sobre la cual se fundamentan Tor y otras tecnologías anonimizadoras, para lo cual generaremos material que complemente a la actual enseñanza de las materias de “redes de datos seguras”, “redes de telecomunicaciones” y “tecnologías e interconexión de redes” fundamentándose en la criptografía. Buscamos también, por medio de experiencias prácticas, llevar a los alumnos a la instalación de un laboratorio de sistemas que, mediante distintas estrategias, permitan el uso, evaluación y monitoreo de recursos de estos mecanismos. \nSe agradece el apoyo otorgado para el desarrollo de este material a DGAPA-UNAM, PAPIME PE102718 Desarrollo de materiales didácticos para los mecanismos de privacidad y anonimato en redes."
     },
-
-
-    stars: 0,
-    contributors: 0,
-    language: "Multiple",
-    color: "bg-pink-500",
-    tags: ["Tor", "Privacy", "", "DevOps"],
-    github: "https://github.com/LIDSOL/servidor/tree/main/files/mirrors",
-    website: "https://lidsol.fi-b.unam.mx",
+  tags: [
+    "Tor",
+    "Privacy",
+    "Anonymity",
+    "Security",
+  ],
+    github: "https://gitlab.com/lidsol/papime-pe102718-mecanismos-de-privacidad-y-anonimato",
+    website: "https://priv-anon.unam.mx/",
     download: "/downloads/priv-anon.pdf",
     features: {
-      en: [
-          "Local, synchronized replicas of the official repositories for several GNU/Linux distributions (AlmaLinux, Arch, Debian, Linux Mint, etc.).",
-          "Dual access via HTTPS (secure download) and rsync (efficient synchronization).",
-          "Automation with Bash scripts and scheduled jobs (cron) that update the mirrors periodically from upstream servers.",
-          "Enhanced security with valid TLS certificates (Let’s Encrypt) and write restrictions on the rsync daemon.",
-          "Modular and scalable architecture: new distributions can be added by creating folders and rsync rules without altering the core system."
-],
-      es: [
-        "Réplicas locales y sincronizadas de los repositorios oficiales de varias distribuciones GNU/Linux (AlmaLinux, Arch, Debian, Linux Mint, etc.).",
-        "Acceso dual mediante HTTPS (descarga segura) y rsync (sincronización eficiente).",
-        "Automatización con scripts Bash y trabajos programados (cron) que actualizan los mirrors periódicamente desde los servidores upstream.",
-        "Seguridad reforzada con certificados TLS válidos (Let’s Encrypt) y restricciones de escritura en el daemon rsync.",
-        "Arquitectura modular y escalable: nuevas distribuciones pueden añadirse creando carpetas y reglas de rsync sin cambiar el core del sistema."
-      ]
+    en: [
+      "Privacy awareness: Educational materials focused on reasonable expectations of online privacy.",
+      "Threat modeling: Introduction to common digital threat models for end users.",
+      "Best practices: Guidance on practices that reduce privacy and security risks.",
+      "Tor adoption: Promotion and training in the use of the Tor network for secure and anonymous communication.",
+      "Technical foundations: In-depth explanation of cryptographic and network principles behind anonymity systems.",
+      "Academic support: Materials designed to complement courses on secure networks and telecommunications.",
+      "Hands-on labs: Practical activities involving installation, evaluation, and monitoring of anonymity mechanisms.",
+      "Open educational resources: All materials are openly accessible and reusable."
+    ],
+    es: [
+      "Concientización en privacidad: Material educativo sobre expectativas razonables de privacidad en línea.",
+      "Modelos de amenaza: Introducción a los principales modelos de amenaza en entornos digitales.",
+      "Buenas prácticas: Recomendaciones para reducir riesgos de seguridad y privacidad.",
+      "Adopción de Tor: Capacitación y fomento del uso de la red Tor para comunicación segura y anónima.",
+      "Fundamentos técnicos: Explicación profunda de los principios criptográficos y de redes detrás de los sistemas de anonimato.",
+      "Apoyo académico: Material complementario para asignaturas de redes seguras y telecomunicaciones.",
+      "Laboratorios prácticos: Actividades para la instalación, evaluación y monitoreo de mecanismos de anonimato.",
+      "Recursos educativos abiertos: Todo el material es libre y reutilizable."
+    ]
     },
-    status: { en: "Active Development", es: "Desarrollo Activo" },
     image: privanonImg,
   },
 //---
@@ -79,35 +83,24 @@ export const projects: Project[] = [
     en: "LIDSoL operates a Tor node to support anonymous communication and strengthen the Tor network.",
     es: "LIDSoL opera un nodo Tor para apoyar la comunicación anónima y fortalecer la red Tor."
   },
-
-  stars: 0,
-  contributors: 2,
-  language: "Bash",
-  color: "bg-purple-600",
   tags: [
     "Tor",
     "Privacy",
     "Anonymity",
     "Security",
     "Networking",
-    "GNU/Linux",
-    "DevOps"
+    "GNU/Linux"
   ],
   github: "https://github.com/LIDSOL/servidor/tree/main/files/tor",
-  website: "https://lidsol.fi-b.unam.mx",
   features: {
     en: [
-      "Tor relay node contributing bandwidth and availability to the Tor network.",
-      "Supports anonymous communication and censorship resistance for Tor users.",
-      "Automated setup and management using Bash scripts.",
+      "Tor node contributing bandwidth and availability to the Tor network.",
       "Configuration aligned with Tor Project best practices.",
       "Monitoring and logging for operational visibility and reliability.",
       "Deployed on GNU/Linux servers with a focus on security and stability."
     ],
     es: [
-      "Nodo relay de Tor que aporta ancho de banda y disponibilidad a la red Tor.",
-      "Soporte para comunicación anónima y resistencia a la censura.",
-      "Configuración y gestión automatizadas mediante scripts Bash.",
+      "Nodo de Tor que aporta ancho de banda y disponibilidad a la red Tor.",
       "Configuración alineada con las mejores prácticas del Proyecto Tor.",
       "Monitoreo y registro para visibilidad operativa y confiabilidad.",
       "Desplegado en servidores GNU/Linux con énfasis en seguridad y estabilidad."
@@ -131,11 +124,6 @@ export const projects: Project[] = [
       en: "LIDSoL’s mirrors are replica servers that provide local, synchronized copies of the official packages for several GNU/Linux distributions—AlmaLinux, Arch, Debian (including Debian CD), and Linux Mint. The mirrors are accessible via both HTTPS and rsync, allowing GNU/Linux users to sync their own repositories or update their systems directly from this mirror.",
       es: "Los mirrors de LIDSoL son servidores de réplica que proporcionan copias locales y sincronizadas de los paquetes oficiales de diversas distribuciones GNU/Linux —AlmaLinux, Arch, Debian (incluido Debian CD) y Linux Mint—. Estos mirrors están disponibles tanto mediante HTTPS como mediante rsync, lo que permite a los usuarios de GNU/Linux sincronizar sus propios repositorios o actualizar sus sistemas directamente desde este espejo."
     },
-
-    stars: 0,
-    contributors: 2,
-    language: "Bash",
-    color: "bg-blue-500",
     tags: ["Mirrors", "GNU/Linux", "Web", "DevOps"],
     github: "https://github.com/LIDSOL/servidor/tree/main/files/mirrors",
     website: "https://lidsol.fi-b.unam.mx",
@@ -143,16 +131,12 @@ export const projects: Project[] = [
       en: [
           "Local, synchronized replicas of the official repositories for several GNU/Linux distributions (AlmaLinux, Arch, Debian, Linux Mint, etc.).",
           "Dual access via HTTPS (secure download) and rsync (efficient synchronization).",
-          "Automation with Bash scripts and scheduled jobs (cron) that update the mirrors periodically from upstream servers.",
-          "Enhanced security with valid TLS certificates (Let’s Encrypt) and write restrictions on the rsync daemon.",
-          "Modular and scalable architecture: new distributions can be added by creating folders and rsync rules without altering the core system."
+          "Enhanced security with valid TLS certificates (Let’s Encrypt) and write restrictions on the rsync daemon."
 ],
       es: [
         "Réplicas locales y sincronizadas de los repositorios oficiales de varias distribuciones GNU/Linux (AlmaLinux, Arch, Debian, Linux Mint, etc.).",
         "Acceso dual mediante HTTPS (descarga segura) y rsync (sincronización eficiente).",
-        "Automatización con scripts Bash y trabajos programados (cron) que actualizan los mirrors periódicamente desde los servidores upstream.",
-        "Seguridad reforzada con certificados TLS válidos (Let’s Encrypt) y restricciones de escritura en el daemon rsync.",
-        "Arquitectura modular y escalable: nuevas distribuciones pueden añadirse creando carpetas y reglas de rsync sin cambiar el core del sistema."
+        "Seguridad reforzada con certificados TLS válidos (Let’s Encrypt) y restricciones de escritura en el daemon rsync."
       ]
     },
     status: { en: "Stable", es: "Estable" },
@@ -170,7 +154,6 @@ export const projects: Project[] = [
       en: "DrawDB is a robust and user-friendly editor that allows you to create entity-relationship diagrams for databases directly in your browser. With just a few clicks, you can visually design database schemas, export SQL scripts, customize the editing environment, and much more — all without the need to create an account.",
       es: "DrawDB es un editor robusto e intuitivo que permite crear diagramas entidad-relación para bases de datos directamente desde el navegador. Con unos pocos clics, puedes diseñar esquemas de forma visual, exportar scripts SQL, personalizar el entorno de edición y mucho más, todo sin necesidad de crear una cuenta."
     },
-
     stars: 1,
     contributors: 8,
     language: "JavaScript",
