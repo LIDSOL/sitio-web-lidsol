@@ -8,40 +8,7 @@ import { useLanguage } from "./LanguageProvider";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-// Simple contribution graph component
-function ContributionGraph({ projectId }: { projectId: number }) {
-  // Generate contribution data once based on projectId (deterministic)
-  const contributions = useMemo(() => {
-    const weeks = 14; // 2 weeks * 7 days
-    // Use projectId as seed for consistent data
-    const seed = projectId * 1000;
-    return Array.from({ length: weeks }, (_, index) => {
-      // Deterministic "random" based on position and projectId
-      const value = (seed + index) % 5;
-      return value;
-    });
-  }, [projectId]);
 
-  const getColor = (level: number) => {
-    if (level === 0) return "bg-muted";
-    if (level === 1) return "bg-primary/20";
-    if (level === 2) return "bg-primary/40";
-    if (level === 3) return "bg-primary/60";
-    return "bg-primary/80";
-  };
-
-  return (
-    <div className="flex gap-0.5">
-      {contributions.map((value, index) => (
-        <div
-          key={index}
-          className={`w-2 h-2 rounded-sm ${getColor(value)}`}
-          title={`${value} contributions`}
-        />
-      ))}
-    </div>
-  );
-}
 
 export function FeaturedProjects() {
   const { language } = useLanguage();
@@ -170,11 +137,7 @@ export function FeaturedProjects() {
                 </CardHeader>
 
                 <CardContent className="relative z-10 space-y-4">
-                  {/* Contribution Graph */}
-                  <div className="border-t border-border/50 pt-4">
-                    <div className="text-xs text-muted-foreground mb-2">Activity</div>
-                    <ContributionGraph projectId={project.id} />
-                  </div>
+
 
                   {/* Stats */}
                   <div className="flex items-center gap-4">

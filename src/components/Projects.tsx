@@ -12,44 +12,6 @@ interface ProjectsProps {
   onProjectClick: (projectId: number) => void;
 }
 
-function ContributionGraph({ projectId }: { projectId: number }) {
-  const contributions = useMemo(() => {
-    const weeks = 2;
-    const days = 7;
-    const seed = projectId * 1000;
-
-    return Array.from({ length: weeks }, (_, weekIndex) =>
-      Array.from({ length: days }, (_, dayIndex) => {
-        const value = (seed + weekIndex * 7 + dayIndex) % 5;
-        return value;
-      })
-    );
-  }, [projectId]);
-
-  const getColor = (level: number) => {
-    if (level === 0) return "bg-muted";
-    if (level === 1) return "bg-primary/20";
-    if (level === 2) return "bg-primary/40";
-    if (level === 3) return "bg-primary/60";
-    return "bg-primary/80";
-  };
-
-  return (
-    <div className="flex flex-col gap-0.5 mb-4">
-      {contributions.map((week, weekIndex) => (
-        <div key={weekIndex} className="flex gap-0.5">
-          {week.map((day, dayIndex) => (
-            <div
-              key={dayIndex}
-              className={`w-2 h-2 rounded ${getColor(day)}`}
-            />
-          ))}
-        </div>
-      ))}
-    </div>
-  );
-}
-
 type SortField = "id" | "name";
 type SortDirection = "asc" | "desc";
 
@@ -89,7 +51,7 @@ export function Projects({ onProjectClick }: ProjectsProps) {
     viewDetails: { en: "View Details", es: "Ver Detalles" },
     contributors: { en: "contributors", es: "contribuidores" },
 
-    activity: { en: "Activity", es: "Actividad" },
+
     sortBy: { en: "Sort by:", es: "Ordenar por:" },
     sortAge: { en: "Age", es: "Antigüedad" },
     sortName: { en: "Name", es: "Nombre" },
@@ -172,12 +134,16 @@ export function Projects({ onProjectClick }: ProjectsProps) {
                         </div>
                       )}
 
-                      <div className="mb-3">
-                        <div className="text-xs text-muted-foreground mb-2">
-                          {t.activity[language]}
+                      {/* Tags */}
+                      {project.tags && project.tags.length > 0 && (
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          {project.tags.map((tag) => (
+                            <Badge key={tag} variant="secondary" className="text-xs">
+                              {tag}
+                            </Badge>
+                          ))}
                         </div>
-                        <ContributionGraph projectId={project.id} />
-                      </div>
+                      )}
 
                       <div className="flex items-center gap-4 text-sm text-muted-foreground flex-wrap">
                         {project.stars !== undefined && (
