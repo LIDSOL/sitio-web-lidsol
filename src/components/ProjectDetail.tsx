@@ -17,22 +17,22 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
 
   const getStatusIcon = (statusText: string) => {
     const status = statusText.toLowerCase();
-    
+
     // Check for development-related terms (both English and Spanish)
     if (status.includes('desarrollo') || status.includes('development') || status.includes('en desarrollo') || status.includes('in development')) {
       return <Construction className="h-5 w-5 text-orange-500" />;
     }
-    
+
     // Check for stable-related terms
     if (status.includes('estable') || status.includes('stable')) {
       return <CheckCircle className="h-5 w-5 text-green-500" />;
     }
-    
+
     // Check for deprecated-related terms
     if (status.includes('deprecado') || status.includes('deprecate') || status.includes('deprecated') || status.includes('obsoleto') || status.includes('obsolete')) {
       return <Skull className="h-5 w-5 text-red-500" />;
     }
-    
+
     // Default icon for any other status
     return <ShieldQuestion className="h-5 w-5 text-blue-500" />;
   };
