@@ -2,7 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Star, Users, ArrowRight } from "lucide-react";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { projects } from "../data/projects";
 import { useLanguage } from "./LanguageProvider";
 import ReactMarkdown from "react-markdown";
@@ -12,17 +12,14 @@ import remarkGfm from "remark-gfm";
 function ContributionGraph({ projectId }: { projectId: number }) {
   // Generate contribution data once based on projectId (deterministic)
   const contributions = useMemo(() => {
-    const weeks = 12;
-    const days = 7;
+    const weeks = 14; // 2 weeks * 7 days
     // Use projectId as seed for consistent data
     const seed = projectId * 1000;
-    return Array.from({ length: weeks }, (_, weekIndex) =>
-      Array.from({ length: days }, (_, dayIndex) => {
-        // Deterministic "random" based on position and projectId
-        const value = (seed + weekIndex * 7 + dayIndex) % 5;
-        return value;
-      })
-    );
+    return Array.from({ length: weeks }, (_, index) => {
+      // Deterministic "random" based on position and projectId
+      const value = (seed + index) % 5;
+      return value;
+    });
   }, [projectId]);
 
   const getColor = (level: number) => {
@@ -35,16 +32,12 @@ function ContributionGraph({ projectId }: { projectId: number }) {
 
   return (
     <div className="flex gap-0.5">
-      {contributions.map((week, weekIndex) => (
-        <div key={weekIndex} className="flex flex-col gap-0.5">
-          {week.map((day, dayIndex) => (
-            <div
-              key={dayIndex}
-              className={`w-2 h-2 rounded-sm ${getColor(day)}`}
-              title={`${day} contributions`}
-            />
-          ))}
-        </div>
+      {contributions.map((value, index) => (
+        <div
+          key={index}
+          className={`w-2 h-2 rounded-sm ${getColor(value)}`}
+          title={`${value} contributions`}
+        />
       ))}
     </div>
   );
@@ -54,14 +47,25 @@ export function FeaturedProjects() {
   const { language } = useLanguage();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [expandedProjects, setExpandedProjects] = useState<Set<number>>(new Set());
+  
+  // Debounce mouse movement to reduce updates
+  const debouncedSetMousePosition = useMemo(() => {
+    let timeoutId: NodeJS.Timeout;
+    return (x: number, y: number) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setMousePosition({ x, y });
+      }, 16); // ~60fps
+    };
+  }, []);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    setMousePosition({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-  };
+    debouncedSetMousePosition(
+      e.clientX - rect.left,
+      e.clientY - rect.top
+    );
+  }, [debouncedSetMousePosition]);
 
   const toggleExpanded = (projectId: number) => {
     const newExpanded = new Set(expandedProjects);
@@ -86,14 +90,17 @@ export function FeaturedProjects() {
   };
 
   return (
-    <section 
+    <section
       className="py-20 bg-muted relative overflow-hidden"
       onMouseMove={handleMouseMove}
     >
-      <div 
+      <div
         className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none"
         style={{
-          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(28, 113, 216, 0.08), transparent 40%)`,
+          background: useMemo(() => 
+            `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(28, 113, 216, 0.08), transparent 40%)`,
+            [mousePosition.x, mousePosition.y]
+          ),
         }}
       />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -108,13 +115,13 @@ export function FeaturedProjects() {
           {featuredProjects.map((project) => {
             const isExpanded = expandedProjects.has(project.id);
             return (
-              <Card 
-                key={project.id} 
+              <Card
+                key={project.id}
                 className="transition-all duration-300 hover:scale-105 hover:shadow-lg backdrop-blur-sm bg-card/95 group relative overflow-hidden border-border/60 flex flex-col"
               >
                 {/* Subtle glow effect on hover */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-primary/15 via-transparent to-primary/10" />
-                
+
                 <CardHeader className="relative z-10 flex-grow">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div className="flex-1">
@@ -152,7 +159,7 @@ export function FeaturedProjects() {
                       </CardDescription>
                     </div>
                   </div>
-                  
+
                   {/* Show More/Less Button */}
                   <button
                     onClick={() => toggleExpanded(project.id)}

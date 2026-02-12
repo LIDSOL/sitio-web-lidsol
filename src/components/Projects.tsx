@@ -14,7 +14,7 @@ interface ProjectsProps {
 
 function ContributionGraph({ projectId }: { projectId: number }) {
   const contributions = useMemo(() => {
-    const weeks = 12;
+    const weeks = 2;
     const days = 7;
     const seed = projectId * 1000;
 
@@ -35,13 +35,13 @@ function ContributionGraph({ projectId }: { projectId: number }) {
   };
 
   return (
-    <div className="flex gap-0.5 mb-4">
+    <div className="flex flex-col gap-0.5 mb-4">
       {contributions.map((week, weekIndex) => (
-        <div key={weekIndex} className="flex flex-col gap-0.5">
+        <div key={weekIndex} className="flex gap-0.5">
           {week.map((day, dayIndex) => (
             <div
               key={dayIndex}
-              className={`w-2 h-2 rounded-sm ${getColor(day)}`}
+              className={`w-2 h-2 rounded ${getColor(day)}`}
             />
           ))}
         </div>
