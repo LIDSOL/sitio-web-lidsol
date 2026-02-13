@@ -257,8 +257,8 @@ export const projects: Project[] = [
     language: "Go",
     color: "bg-blue-500",
     tags: {
-    en: ["Sway", "Window Manager Tiling", "Customization", "Layouts"],
-    es: ["Sway", "Gestor de Ventanas Tiling", "Personalización", "Diseños"],
+    en: ["Sway", "Window Manager Tiling", "Customization"],
+    es: ["Sway", "Gestor de Ventanas mosaico", "Personalización"],
   },
     github: "https://github.com/LIDSOL/sway-layout-manager",
     features: {
