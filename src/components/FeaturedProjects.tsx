@@ -157,7 +157,7 @@ export function FeaturedProjects() {
 
                   {/* Tags */}
                   <div className="flex flex-wrap gap-2">
-                    {project.tags.slice(0, 3).map((tag) => (
+                    {project.tags?.[language]?.slice(0, 3).map((tag) => (
                       <Badge key={tag} variant="outline" className="text-xs">
                         {tag}
                       </Badge>
