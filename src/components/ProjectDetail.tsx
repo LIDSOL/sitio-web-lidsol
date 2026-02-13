@@ -244,11 +244,11 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
         )}
 
         {/* Tags */}
-        {project.tags && project.tags.length > 0 && (
+        {project.tags && project.tags[language] && project.tags[language].length > 0 && (
           <div className="bg-card rounded-3xl p-8 border border-border/50">
             <h2 className="text-2xl mb-4">{t.tags[language]}</h2>
             <div className="flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
+              {project.tags[language].map((tag) => (
                 <Badge
                   key={tag}
                   variant="secondary"

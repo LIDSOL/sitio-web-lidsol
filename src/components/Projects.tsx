@@ -135,9 +135,9 @@ export function Projects({ onProjectClick }: ProjectsProps) {
                       )}
 
                       {/* Tags */}
-                      {project.tags && project.tags.length > 0 && (
+                      {project.tags && project.tags[language] && project.tags[language].length > 0 && (
                         <div className="flex flex-wrap gap-2 mb-3">
-                          {project.tags.map((tag) => (
+                          {project.tags[language].map((tag) => (
                             <Badge key={tag} variant="secondary" className="text-xs">
                               {tag}
                             </Badge>
