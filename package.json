@@ -57,14 +57,15 @@
             "@vitejs/plugin-react-swc": "^3.10.2",
             "vite": "^6.4.1"
       },
-      "scripts": {
-            "dev": "vite",
-            "build": "vite build",
-            "build:staging": "vite build --mode staging",
-            "preview": "vite preview --host",
-            "security:audit": "npm audit && npm audit fix",
-            "security:check": "npm ls --depth=0",
-            "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-            "type-check": "tsc --noEmit"
+"scripts": {
+        "dev": "vite",
+        "build": "node scripts/build-blog.js && vite build",
+        "build:staging": "vite build --mode staging",
+        "preview": "vite preview --host",
+        "security:audit": "npm audit && npm audit fix",
+        "security:check": "npm ls --depth=0",
+        "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "type-check": "tsc --noEmit",
+        "build:blog": "node scripts/build-blog.js"
       }
 }

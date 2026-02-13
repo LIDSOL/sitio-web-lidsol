@@ -2,6 +2,8 @@ import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Calendar, User, Clock, ArrowLeft } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface BlogPostProps {
   post: {
@@ -14,7 +16,7 @@ interface BlogPostProps {
     category: string;
     image: string;
     tags: string[];
-    content: string[];
+    content: string;
   };
   onBack: () => void;
 }
@@ -24,9 +26,9 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
     <section className="py-20 bg-background min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         {/* Back Button */}
-        <Button 
-          variant="ghost" 
-          className="mb-8 gap-2" 
+        <Button
+          variant="ghost"
+          className="mb-8 gap-2"
           onClick={onBack}
         >
           <ArrowLeft className="h-4 w-4" /> Volver al Blog
@@ -47,9 +49,9 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
               </div>
             </div>
           </div>
-          
+
           <h1 className="text-4xl sm:text-5xl lg:text-6xl mb-6">{post.title}</h1>
-          
+
           <div className="flex items-center gap-2 mb-6">
             <User className="h-5 w-5 text-muted-foreground" />
             <span className="text-muted-foreground">Por {post.author}</span>
@@ -73,11 +75,34 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
 
         {/* Content */}
         <article className="prose prose-lg max-w-none">
-          {post.content.map((paragraph, index) => (
-            <p key={index} className="text-foreground mb-6 leading-relaxed text-lg">
-              {paragraph}
-            </p>
-          ))}
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              p: ({children}) => <p className="text-foreground mb-6 leading-relaxed text-lg">{children}</p>,
+              img: ({src, alt}) => (
+                <figure className="my-8">
+                  <img src={src} alt={alt} className="rounded-lg w-full" />
+                  {alt && <figcaption className="text-center text-muted-foreground mt-2 text-sm">{alt}</figcaption>}
+                </figure>
+              ),
+              a: ({href, children}) => (
+                <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">{children}</a>
+              ),
+              h2: ({children}) => <h2 className="text-3xl font-bold mt-12 mb-4">{children}</h2>,
+              h3: ({children}) => <h3 className="text-2xl font-semibold mt-8 mb-3">{children}</h3>,
+              ul: ({children}) => <ul className="list-disc pl-6 mb-6 space-y-2">{children}</ul>,
+              ol: ({children}) => <ol className="list-decimal pl-6 mb-6 space-y-2">{children}</ol>,
+              li: ({children}) => <li className="text-muted-foreground">{children}</li>,
+              pre: ({children}) => <pre className="bg-muted p-4 rounded-lg overflow-x-auto mb-6">{children}</pre>,
+              code: ({className, children}) => {
+                const match = /language-(\w+)/.exec(className || '');
+                return !match ? <code className="bg-muted px-1 py-0.5 rounded text-sm">{children}</code> : <code className={className}>{children}</code>;
+              },
+              blockquote: ({children}) => <blockquote className="border-l-4 border-primary pl-4 italic my-6 text-muted-foreground">{children}</blockquote>,
+            }}
+          >
+            {post.content}
+          </ReactMarkdown>
         </article>
 
         {/* Divider */}
@@ -94,7 +119,7 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
               <div className="text-sm text-muted-foreground">Miembro de LIDSOL</div>
             </div>
           </div>
-          
+
           <Button onClick={onBack} className="gap-2">
             <ArrowLeft className="h-4 w-4" /> Volver al Blog
           </Button>

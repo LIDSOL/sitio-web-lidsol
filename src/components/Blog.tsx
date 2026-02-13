@@ -22,17 +22,24 @@ export function Blog({ onPostClick }: BlogProps) {
         </div>
 
         {/* Featured Post */}
+        {blogPosts.length > 0 && (
         <Card 
           className="mb-12 overflow-hidden hover:shadow-lg transition-all duration-300 border-border/60 cursor-pointer"
           onClick={() => onPostClick(blogPosts[0].id)}
         >
           <div className="grid md:grid-cols-2 gap-0">
             <div className="aspect-video md:aspect-auto relative overflow-hidden">
+              {blogPosts[0].image ? (
               <ImageWithFallback
                 src={blogPosts[0].image}
                 alt={blogPosts[0].title}
                 className="w-full h-full object-cover"
               />
+              ) : (
+              <div className="w-full h-full bg-muted flex items-center justify-center">
+                <span className="text-muted-foreground">Sin imagen</span>
+              </div>
+              )}
               <Badge className="absolute top-4 left-4 shadow-lg">Destacado</Badge>
             </div>
             <div className="p-8 flex flex-col justify-between">
@@ -57,7 +64,7 @@ export function Blog({ onPostClick }: BlogProps) {
                   <span className="text-sm text-muted-foreground">{blogPosts[0].author}</span>
                 </div>
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {blogPosts[0].tags.map((tag) => (
+                  {blogPosts[0].tags && blogPosts[0].tags.map((tag) => (
                     <Badge key={tag} variant="outline">{tag}</Badge>
                   ))}
                 </div>
@@ -68,6 +75,7 @@ export function Blog({ onPostClick }: BlogProps) {
             </div>
           </div>
         </Card>
+        )}
 
         {/* Blog Posts Grid */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -78,11 +86,17 @@ export function Blog({ onPostClick }: BlogProps) {
               onClick={() => onPostClick(post.id)}
             >
               <div className="aspect-video relative overflow-hidden">
+                {post.image ? (
                 <ImageWithFallback
                   src={post.image}
                   alt={post.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
+                ) : (
+                <div className="w-full h-full bg-muted flex items-center justify-center">
+                  <span className="text-muted-foreground">Sin imagen</span>
+                </div>
+                )}
               </div>
               <CardHeader>
                 <div className="flex items-center gap-3 mb-3">
@@ -105,7 +119,7 @@ export function Blog({ onPostClick }: BlogProps) {
                   <span className="text-sm text-muted-foreground">{post.date}</span>
                 </div>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {post.tags.map((tag) => (
+                  {post.tags && post.tags.map((tag) => (
                     <Badge key={tag} variant="outline">{tag}</Badge>
                   ))}
                 </div>
