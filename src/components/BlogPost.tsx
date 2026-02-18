@@ -4,24 +4,43 @@ import { Calendar, User, Clock, ArrowLeft } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { useLanguage } from "./LanguageProvider";
+
+interface BlogPostContent {
+  id: number;
+  title: { en: string; es: string };
+  excerpt: { en: string; es: string };
+  author: { en: string; es: string };
+  date: { en: string; es: string };
+  readTime: { en: string; es: string };
+  category: { en: string; es: string };
+  image: string;
+  tags: string[];
+  content: { en: string; es: string };
+}
 
 interface BlogPostProps {
-  post: {
-    id: number;
-    title: string;
-    excerpt: string;
-    author: string;
-    date: string;
-    readTime: string;
-    category: string;
-    image: string;
-    tags: string[];
-    content: string;
-  };
+  post: BlogPostContent;
   onBack: () => void;
 }
 
 export function BlogPost({ post, onBack }: BlogPostProps) {
+  const { language } = useLanguage();
+
+  const t = {
+    backToBlog: { en: "Back to Blog", es: "Volver al Blog" },
+    by: { en: "By", es: "Por" },
+    memberOf: { en: "LIDSOL Member", es: "Miembro de LIDSOL" },
+  };
+
+  const title = post.title[language] || post.title.es || '';
+  const excerpt = post.excerpt[language] || post.excerpt.es || '';
+  const author = post.author[language] || post.author.es || '';
+  const date = post.date[language] || post.date.es || '';
+  const readTime = post.readTime[language] || post.readTime.es || '';
+  const category = post.category[language] || post.category.es || '';
+  const content = post.content[language] || post.content.es || '';
+
   return (
     <section className="py-20 bg-background min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
@@ -31,30 +50,30 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
           className="mb-8 gap-2"
           onClick={onBack}
         >
-          <ArrowLeft className="h-4 w-4" /> Volver al Blog
+          <ArrowLeft className="h-4 w-4" /> {t.backToBlog[language]}
         </Button>
 
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <Badge variant="secondary">{post.category}</Badge>
+            <Badge variant="secondary">{category}</Badge>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-1">
                 <Calendar className="h-4 w-4" />
-                {post.date}
+                {date}
               </div>
               <div className="flex items-center gap-1">
                 <Clock className="h-4 w-4" />
-                {post.readTime}
+                {readTime}
               </div>
             </div>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl mb-6">{post.title}</h1>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl mb-6">{title}</h1>
 
           <div className="flex items-center gap-2 mb-6">
             <User className="h-5 w-5 text-muted-foreground" />
-            <span className="text-muted-foreground">Por {post.author}</span>
+            <span className="text-muted-foreground">{t.by[language]} {author}</span>
           </div>
 
           <div className="flex flex-wrap gap-2">
@@ -65,13 +84,15 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
         </div>
 
         {/* Featured Image */}
+        {post.image && (
         <div className="aspect-video rounded-2xl overflow-hidden shadow-lg border border-border/50 mb-12">
           <ImageWithFallback
             src={post.image}
-            alt={post.title}
+            alt={title}
             className="w-full h-full object-cover"
           />
         </div>
+        )}
 
         {/* Content */}
         <article className="prose prose-lg max-w-none">
@@ -101,7 +122,7 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
               blockquote: ({children}) => <blockquote className="border-l-4 border-primary pl-4 italic my-6 text-muted-foreground">{children}</blockquote>,
             }}
           >
-            {post.content}
+            {content}
           </ReactMarkdown>
         </article>
 
@@ -115,13 +136,13 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
               <User className="h-6 w-6 text-primary" />
             </div>
             <div>
-              <div className="font-medium">{post.author}</div>
-              <div className="text-sm text-muted-foreground">Miembro de LIDSOL</div>
+              <div className="font-medium">{author}</div>
+              <div className="text-sm text-muted-foreground">{t.memberOf[language]}</div>
             </div>
           </div>
 
           <Button onClick={onBack} className="gap-2">
-            <ArrowLeft className="h-4 w-4" /> Volver al Blog
+            <ArrowLeft className="h-4 w-4" /> {t.backToBlog[language]}
           </Button>
         </div>
       </div>
