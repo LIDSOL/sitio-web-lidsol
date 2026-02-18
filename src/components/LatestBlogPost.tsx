@@ -29,6 +29,7 @@ export function LatestBlogPost({ onViewPost, onViewAllPosts }: LatestBlogPostPro
   const author = latestPost.author[language] || latestPost.author.es || '';
   const date = latestPost.date[language] || latestPost.date.es || '';
   const readTime = latestPost.readTime[language] || latestPost.readTime.es || '';
+  const tags = latestPost.tags[language] || latestPost.tags.es || [];
 
   return (
     <section id="latest-blog" className="py-20 bg-background">
@@ -55,7 +56,7 @@ export function LatestBlogPost({ onViewPost, onViewAllPosts }: LatestBlogPostPro
             <div className="p-8 flex flex-col justify-between">
               <div>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {latestPost.tags.slice(0, 3).map((tag) => (
+                  {tags.slice(0, 3).map((tag) => (
                     <Badge key={tag} variant="outline">{tag}</Badge>
                   ))}
                 </div>
