@@ -95,7 +95,7 @@ export const blogPosts = [
     "title": "Etiquetador gramatical (POS) usando Conditional Random Fields",
     "excerpt": "Una brevísima introducción al etiquetado POS usando aprendizaje estructurado con CRFs",
     "author": "umoqnier",
-    "date": "13 de Febrero, 2026",
+    "date": "17 de Febrero, 2026",
     "readTime": "5 min",
     "category": "General",
     "image": "/blog-images/pos-using-crf/featured.jpg",
