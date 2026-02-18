@@ -3,13 +3,14 @@
 ** DONE Planeación de desarrollo
 ** IN-PROGRESS Desarrollo
 *** DONE Repositorio de github, versionado
+Se usa este flujo de trabajo:
 *** IN-PROGRESS Contenedor
 *** IN-PROGRESS Código
 Programar y mudar contenido
 **** DONE About
 **** DONE AboutMembers
 - [X] Sería bueno que la zona de "Educado en" esté con dots.
-- [X] ¿De dónde salió ese ícono de mail? ¿Nani Kore??
+- [X] ¿De dónde salió ese ícono de mail? ¿Nani Kore?? Borralo..
 - [X] Faltan los intereses... v2.1.1
 - [X] Si no hay cierto tipo de datos, se rompe el sitio 2.1.2
   - [X] Si no hay bio se rompe el sitio
@@ -67,25 +68,29 @@ DEADLINE: <2026-02-12 Thu>
   - [X] Verificar el estado de los proyectos (para que el ícono sea el adecuado)
 **** IN-PROGRESS Blog
 DEADLINE: <2026-02-19 Thu>
-- [ ] Hacer que el Blog y el BlogDetail soporten el multi-idioma
+- [X] Hacer que el Blog y el BlogDetail soporten el multi-idioma
+- [ ] Hay una _tag_, *general*, que se muestra tanto en el Blog como en BlogDetail, esta no respeta el multi-idioma. Mejorar esto, para que funcionen correctamente los tags (tomados desde los archivos de markdown)
 - Notas
-  - El sitio usa LenguajeProvider con un hook yseLanguage() que retorna language ( "en" | "es" ).
+  - El sitio usa LenguajeProvider con un hook y useLanguage() que retorna language ( "en" | "es" ).
   - Los datos tienen campos tipo: { en: string; es: string }
   - Los componentes usan const { language } = useLanguage() y se acceden con courses[0].title[language]
     - Para implementar el soporte multi-idioma:
       - Se modificará el directorio de cada post para contener versiones por idioma, un archivo por cada idioma (en este caso solo inglés-español, por ejemplo: index.es.md, index.en.md).
       - Se modificará el[[file:scripts/build-blog.js][ script]] que genera el[[file:src/data/blogPosts.ts][ archito ts]] con que usan los compontes que genran el blog. Deben detectar los archivos con sufijos .es.md o en.md y generar la estructura tipo json adecuada.
 ***** NEXT Blog
-- [ ] Implementar el sort (como en proyectos).
 - [ ] Hacer que el título esté alienado a la izquierda, y no centrado.
-- [ ] El botón de "leer más" está más arriba o abajo dependiendo de la cantidad de tags y de la longitud del título del post, esto hacer que se vea muy irregular. Pasaba algo simiar con las tarjetas de miembros, tal vez puedas apoyarte de ese código para solucionarlo.
+- [ ] Implementar el sort (como en proyectos).
 - [ ] Hay un botón hasta la parte inferior llamado "Cargar más artículos" que no tiene funcionalidad. Podría ser bueno limitar la cantidad de post que se muestran y darle uso, o bien, retirarlo y que quede como un scroll con todo el contenido sin más.
+- [ ] El botón de "leer más" está más arriba o abajo dependiendo de la cantidad de tags y de la longitud del título del post, esto hacer que se vea muy irregular. Pasaba algo simiar con las tarjetas de miembros, tal vez puedas apoyarte de ese código para solucionarlo.
 ***** NEXT BlogDetail
 - [ ] Corregir el formato de las fechas
+- [ ] Mejorar el aspecto de las tablas de markdown.
 - [ ] Hacer que el texto esté justificado (el contenido de un post del blog).
 - [ ] Hacer que las fotos tengan bordes redondeados.
 - [ ] Mejorar el aspecto de los bloques de código.
 - [ ] Que el BlogDetail enlace al perfil del miembro del lab que escribió el articulo
+- Notas:
+  - Me doy cuanta que el los separadores de markdown no son correctamente soportados (---)
 ***** NEXT Contenido
 - [X] Copiar los directorios..
 - [X] Hacer que se "parsé" autimáticamente con un script

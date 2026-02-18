@@ -369,8 +369,6 @@ Existen ciertos parámetros de configuración que son específicos del proveedor
   end
 ```
 
---------------------------------------------------------------------------------
-
 [vagrant]: https://www.vagrantup.com/
 [hashicorp]: https://www.hashicorp.com/
 [vagrantfile]: https://www.vagrantup.com/docs/vagrantfile
