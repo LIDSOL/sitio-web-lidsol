@@ -15,7 +15,7 @@ Instala todas las dependencias definidas en [[file:./package.json][package.json]
 npm run build
 #+END_SRC
 
-Este comando ejecuta el script [[file:./scripts/build-blog.js][build-blog]] que genera automáticamente el archivo [[file:./src/data/blogPosts.ts][blogPosts]] a partir del contenido del directorio [[file:./content/blog/][package.json]], y ejecuta `vite build`, que compila el proyecto para producción.
+Este comando ejecuta el script [[file:./scripts/build-blog.js][build-blog]] que genera automáticamente el archivo [[file:./src/data/blogPosts.ts][blogPosts]] a partir del contenido del directorio [[file:./content/blog/][blog]], y ejecuta `vite build`, que compila el proyecto para producción.
 El resultado es un sitio web estático listo para desplegar.
 ** Ejecuta el sitio con un contenedor de (Nginx + Podman)
 Eliminar el contenedor previo (si existe):
@@ -38,12 +38,12 @@ podman run -d \
 Ahora se puede acceder al sitio desde el navegador en:  http://localhost:8080
 
 ** Build automático al detectar cambios
-Instala inotify-tools y ejecuta el comando:
+Instala inotify-tools y ejecuta:
 #+BEGIN_SRC lenguaje
 while inotifywait -r -e modify,create,delete --exclude 'node_modules|build' src/; do
   npm run build
 done
 #+END_SRC
-Esto:
+Este comando hace:
 - Observa los cambios del directorio src/
 - Ejecuta automáticamente el build cuando detecta modificaciones.
