@@ -1,0 +1,135 @@
+* PROJ [#A] Sitio web de LIDSoL
+** DONE Prototipo de fima
+** DONE Planeación de desarrollo
+** IN-PROGRESS Desarrollo
+*** DONE Repositorio de github, versionado
+*** IN-PROGRESS Contenedor
+*** IN-PROGRESS Código
+Programar y mudar contenido
+**** DONE About
+**** DONE AboutMembers
+- [X] Sería bueno que la zona de "Educado en" esté con dots.
+- [X] ¿De dónde salió ese ícono de mail? ¿Nani Kore??
+- [X] Faltan los intereses... v2.1.1
+- [X] Si no hay cierto tipo de datos, se rompe el sitio 2.1.2
+  - [X] Si no hay bio se rompe el sitio
+  - [X] Si no hay rol se rompe el sitio
+- [X] Mudar el contenido 2.1.3
+- [X] Detalles visuales 2.1.4
+  - [X] Mostrar dos tarjetas en horizontal si el contenido se ve desde movil o desde una ventana pequeña.
+  - [X] Ocultar la bio, creo que no aporta tanto, y provoca que la tarjeta crezca demasiado en vertical.
+  - [X] Hacer que el botón de ver perfil se vea correcto.
+  - [X] Regularizar el tamaño de todas las tarjetas
+  - [X] Centrar el contenido sin cambiar su tamaño.
+  - [X] Subir la resolución de las imágenes con upscaler
+  - [X] Mejorar el color del botón cuando el cursor está sobré él en tema claro
+- Tal vez en el futuro sea bueno añadir paginación, si crece mucho el número de miembros. Igual intentar con una base de datos... (si hay más de 50 miembros, tal vea hora de dejar el "json").
+**** DONE ProjectDetail y Projects
+DEADLINE: <2026-02-12 Thu>
+- [X] 2.2.0 Detalles de la página de proyectos [100%]
+  - [X] Hacer que acepte imágenes
+  - [X] Hacer que los botones del github y el sitio funcionen correctamente
+  - [X] Hacer que la sección de Estrellas, contribuidores, estado y lenguaje estén abajo de la sección de características clave
+  - [X] Tener una opción para ordenar los proyectos según su ID o su nombre.
+  - [X] Hacer que el texto esté justificado, hacer que acepte saltos de línea.
+  - [X] Quitar el "ver más" de la vista de proyectos
+  - [X] Hacer que soporte markdown
+  - [X] Cambiar el título...
+- [X] Mudar el contenido actual y añadir nuevo 2.2.2 [100%]
+  - Notas
+    - Recuerda lo de las comillas y saltos de línea
+    - Recuerda \n
+    - ¿Qué proyectos están en desarrollo y cuales son estables?
+  - [X] Sobre sway id=6
+  - [X] Sobre el papeador id=5
+  - [X] Sobre drawdb id=4
+  - [X] Sobre los mirrors id=3
+  - [X] Sobre el nodo de tor id=2
+  - [X] Sobre mecanismos de seguridad y privacidad id=1
+  - [X] Tal vez sobre apache beam id=7?
+- [X] Mejoras varias 2.2.1 [100%]
+  - [X] El botón de ver código de la sección projects no funciona.
+  - [X] Añadir un botón para descargar un archivo
+  - [X] Sería bueno ver una animación al entrar a la sección de proyectos, como la hay en About.
+  - [X] Hacer que la info que pide el json sea opcional (y no se rompa si falta info, como pasaba con el AboutMembers)
+  - [X] Borrar la "categoría" del proyecto, al final mejor me quedaré con los tags.
+  - [X] La descripción corta debe aceptar markdown.
+  - [X] Cambiar el color del botón a regresar
+  - [X] El estado del proyecto debe tener diferente ícono dependiendo del estado.
+  - [X] Colocar los tags (en donde antes estaba el gráfico de contribuciones).
+  - [X] Hacer las correciones pertinentes a la información de los proyectos.
+  - [X] Que los tags soporten multi-idioma
+    Los cambios realizados:
+    - src/data/projects.ts: Cambié el tipo de tags?: string[] a tags?: { en: string[]; es: string[] } y actualicé todos los tags con sus traducciones al español.
+    - src/components/Projects.tsx: Actualizado para usar project.tags[language]
+    - src/components/ProjectDetail.tsx: Actualizado para usar project.tags[language]
+    - src/components/FeaturedProjects.tsx: Actualizado para usar project.tags?.[language]
+  - [X] Verificar el estado de los proyectos (para que el ícono sea el adecuado)
+**** IN-PROGRESS Blog
+DEADLINE: <2026-02-19 Thu>
+- [ ] Hacer que el Blog y el BlogDetail soporten el multi-idioma
+***** NEXT Blog
+- [ ] Implementar el sort (como en proyectos).
+- [ ] Hacer que el título esté alienado a la izquierda, y no centrado.
+- [ ] El botón de "leer más" está más arriba o abajo dependiendo de la cantidad de tags y de la longitud del título del post, esto hacer que se vea muy irregular. Pasaba algo simiar con las tarjetas de miembros, tal vez puedas apoyarte de ese código para solucionarlo.
+- [ ] Hay un botón hasta la parte inferior llamado "Cargar más artículos" que no tiene funcionalidad. Podría ser bueno limitar la cantidad de post que se muestran y darle uso, o bien, retirarlo y que quede como un scroll con todo el contenido sin más.
+***** NEXT BlogDetail
+- [ ] Hacer que el texto esté justificado (el contenido de un post del blog).
+- [ ] Hacer que las fotos tengan bordes redondeados.
+- [ ] Mejorar el aspecto de los bloques de código.
+- [ ] Que el BlogDetail enlace al perfil del miembro del lab que escribió el articulo
+***** NEXT Contenido
+- [X] Copiar los directorios..
+- [X] Hacer que se "parsé" autimáticamente con un script
+- [ ] Añadir imágenes a los post que no tienen.
+- [ ] Sería bueno reducir la calidad de algunas de las imágenes, pues son muy pesadas y provocan que el sitio tarde en cargar, o en su defecto, hacer que se cargue una  versión reducida en el Blog y en BlogDetail, pero en este último, al dar click en la imágen, verla en tamaño completo a modo de galería.
+***** Notas
+Se usarán archivos de markdown para el blog, cada [[file:content/][subdirectorio de content]] será un post de blog. Hasta ahora se habían usado archivos .ts, pero para el escribir una artículo de blog, sería muy tedioso.
+
+- Separación clara. Esto es contenido y no código.
+- Es convencional: SSGs como Hugo, Jekyll usan carpetas similares
+
+Se elige este directorio por:
+El archivo src/data/blogPosts.ts se sigue usando, este genera los componentes [[file:src/components/Blog.tsx][Blog.tsx]] y [[file:src/components/BlogPost.tsx][BlogPost.tsx]]. Para no editarlo manualmente se añadió un [[file:scripts/build-blog.js][script]]  que genera automáticamente el contenido desde [[file:content/blog/][el directorio content/blog]]
+**** TODO Events y EventDetail
+DEADLINE: <2026-02-23 Mon>
+***** Implementar una función de calendario
+Sería divertido poder exportar un archivo que se pueda cargar a una app de calendario..
+**** TODO CourseDetail y CourseDetail
+DEADLINE: <2026-02-26 Thu>
+**** TODO Publications
+DEADLINE: <2026-02-28 Sat>
+**** IN-PROGRESS Header
+DEADLINE: <2026-02-28 Sat>
+**** IN-PROGRESS Footer
+DEADLINE: <2026-02-28 Sat>
+- [ ] Hacer que al dar click se abra en una pestaña nueva y no en la actual
+- [ ] Debe ser compatible con el selector de idioma
+- ¿Qué hacer con la parte de licencias?
+**** IN-PROGRESS Home
+DEADLINE: <2026-03-03 Tue>
+***** FeaturedProjects
+- [ ] 2.2.2 Mejorar la sección de projects del home
+  - [ ] Quitar la opción de "ver más" o mejorarla.
+  - [ ] Mejorar la responsibidad
+  - [ ] Mostrar más proyectos
+***** NEXT Community
+***** Hero
+***** Values
+***** LatestBlogPost
+***** LatestCourse
+***** LatestEvent
+*** Documentar
+DEADLINE: <2026-03-06 Fri>
+*** Bugs/Test
+DEADLINE: <2026-03-06 Fri>
+**** Hacer que los íconos sean tomados de un svg local
+**** Cuando regreso a una página anterior, que no me regrese hasta el inicio, si no que se quede en el mismo sitio antes de dar click.
+**** Colocar la información correcta en la fecha de inicio de los miembros.
+**** CursorEffect
+Al estar en dispositivos móviles, el efecto de brillo que sigue al cursos se queda pillado.
+**** Responsibidad
+Hay un problema con las tarjetas de "Último curso, Último post de blog" en dispositivos móviels el contenido no se ve completo.
+**** Auditoría de ciberseguridad
+** Deploy Final
+DEADLINE: <2026-03-09 Mon>
