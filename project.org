@@ -68,12 +68,20 @@ DEADLINE: <2026-02-12 Thu>
 **** IN-PROGRESS Blog
 DEADLINE: <2026-02-19 Thu>
 - [ ] Hacer que el Blog y el BlogDetail soporten el multi-idioma
+- Notas
+  - El sitio usa LenguajeProvider con un hook yseLanguage() que retorna language ( "en" | "es" ).
+  - Los datos tienen campos tipo: { en: string; es: string }
+  - Los componentes usan const { language } = useLanguage() y se acceden con courses[0].title[language]
+    - Para implementar el soporte multi-idioma:
+      - Se modificará el directorio de cada post para contener versiones por idioma, un archivo por cada idioma (en este caso solo inglés-español, por ejemplo: index.es.md, index.en.md).
+      - Se modificará el[[file:scripts/build-blog.js][ script]] que genera el[[file:src/data/blogPosts.ts][ archito ts]] con que usan los compontes que genran el blog. Deben detectar los archivos con sufijos .es.md o en.md y generar la estructura tipo json adecuada.
 ***** NEXT Blog
 - [ ] Implementar el sort (como en proyectos).
 - [ ] Hacer que el título esté alienado a la izquierda, y no centrado.
 - [ ] El botón de "leer más" está más arriba o abajo dependiendo de la cantidad de tags y de la longitud del título del post, esto hacer que se vea muy irregular. Pasaba algo simiar con las tarjetas de miembros, tal vez puedas apoyarte de ese código para solucionarlo.
 - [ ] Hay un botón hasta la parte inferior llamado "Cargar más artículos" que no tiene funcionalidad. Podría ser bueno limitar la cantidad de post que se muestran y darle uso, o bien, retirarlo y que quede como un scroll con todo el contenido sin más.
 ***** NEXT BlogDetail
+- [ ] Corregir el formato de las fechas
 - [ ] Hacer que el texto esté justificado (el contenido de un post del blog).
 - [ ] Hacer que las fotos tengan bordes redondeados.
 - [ ] Mejorar el aspecto de los bloques de código.

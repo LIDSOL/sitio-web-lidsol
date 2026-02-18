@@ -14,7 +14,6 @@ interface LatestBlogPostProps {
 export function LatestBlogPost({ onViewPost, onViewAllPosts }: LatestBlogPostProps) {
   const { language } = useLanguage();
   
-  // Get the latest blog post (first one)
   const latestPost = blogPosts[0];
 
   const t = {
@@ -22,7 +21,14 @@ export function LatestBlogPost({ onViewPost, onViewAllPosts }: LatestBlogPostPro
     viewPost: { en: "Read Full Article", es: "Leer Artículo Completo" },
     viewAll: { en: "View All Posts", es: "Ver Todos los Posts" },
     readTime: { en: "min read", es: "min de lectura" },
+    new: { en: "New", es: "Nuevo" },
   };
+
+  const title = latestPost.title[language] || latestPost.title.es || '';
+  const excerpt = latestPost.excerpt[language] || latestPost.excerpt.es || '';
+  const author = latestPost.author[language] || latestPost.author.es || '';
+  const date = latestPost.date[language] || latestPost.date.es || '';
+  const readTime = latestPost.readTime[language] || latestPost.readTime.es || '';
 
   return (
     <section id="latest-blog" className="py-20 bg-background">
@@ -34,16 +40,16 @@ export function LatestBlogPost({ onViewPost, onViewAllPosts }: LatestBlogPostPro
         <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 border-border/60 max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-0">
             <div 
-              className="aspect-video md:aspect-auto relative overflow-hidden cursor-pointer"
-              onClick={() => onViewPost(latestPost.id)}
+                className="aspect-video md:aspect-auto relative overflow-hidden cursor-pointer"
+                onClick={() => onViewPost(latestPost.id)}
             >
               <ImageWithFallback
                 src={latestPost.image}
-                alt={latestPost.title}
+                alt={title}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
               <Badge className="absolute top-4 left-4 shadow-lg bg-primary">
-                Nuevo
+                {t.new[language]}
               </Badge>
             </div>
             <div className="p-8 flex flex-col justify-between">
@@ -53,21 +59,21 @@ export function LatestBlogPost({ onViewPost, onViewAllPosts }: LatestBlogPostPro
                     <Badge key={tag} variant="outline">{tag}</Badge>
                   ))}
                 </div>
-                <h3 className="text-3xl mb-4">{latestPost.title}</h3>
+                <h3 className="text-3xl mb-4">{title}</h3>
                 <p className="text-muted-foreground mb-6 line-clamp-3">
-                  {latestPost.excerpt}
+                  {excerpt}
                 </p>
                 <div className="flex items-center gap-6 text-sm text-muted-foreground mb-6">
                   <div className="flex items-center gap-2">
                     <User className="h-4 w-4" />
-                    <span>{latestPost.author}</span>
+                    <span>{author}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Calendar className="h-4 w-4" />
-                    <span>{latestPost.date}</span>
+                    <span>{date}</span>
                   </div>
                   <div>
-                    {latestPost.readTime} {t.readTime[language]}
+                    {readTime} {t.readTime[language]}
                   </div>
                 </div>
               </div>

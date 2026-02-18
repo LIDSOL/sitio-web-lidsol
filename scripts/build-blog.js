@@ -5,6 +5,8 @@ const CONTENT_DIR = path.join(__dirname, '..', 'content', 'blog');
 const OUTPUT_FILE = path.join(__dirname, '..', 'src', 'data', 'blogPosts.ts');
 const PUBLIC_IMAGES_DIR = path.join(__dirname, '..', 'public', 'blog-images');
 
+const SUPPORTED_LANGUAGES = ['es', 'en'];
+
 function parseFrontmatter(content) {
   const frontmatterRegex = /^---\n([\s\S]*?)\n---\n([\s\S]*)$/;
   const match = content.match(frontmatterRegex);
@@ -118,14 +120,32 @@ function getPostFiles(dir) {
     const ext = path.extname(e.name).toLowerCase();
     return e.isFile() && ['.png', '.jpg', '.jpeg', '.gif', '.webp', '.svg'].includes(ext);
   });
-  
-  let mainMdFile = mdFiles.find(f => f.name === 'index.md');
-  if (!mainMdFile) {
-    mainMdFile = mdFiles[0];
+
+  const langFiles = {};
+  for (const lang of SUPPORTED_LANGUAGES) {
+    const indexFile = mdFiles.find(f => f.name === `index.${lang}.md`);
+    if (indexFile) {
+      langFiles[lang] = path.join(dir, indexFile.name);
+    } else {
+      const genericFile = mdFiles.find(f => f.name === `${lang}.md`);
+      if (genericFile) {
+        langFiles[lang] = path.join(dir, genericFile.name);
+      }
+    }
   }
-  
+
+  if (Object.keys(langFiles).length === 0) {
+    let mainMdFile = mdFiles.find(f => f.name === 'index.md');
+    if (!mainMdFile) {
+      mainMdFile = mdFiles[0];
+    }
+    if (mainMdFile) {
+      langFiles['es'] = path.join(dir, mainMdFile.name);
+    }
+  }
+
   return {
-    mdFile: mainMdFile ? path.join(dir, mainMdFile.name) : null,
+    langFiles: langFiles,
     images: images.map(i => path.join(dir, i.name))
   };
 }
@@ -158,16 +178,14 @@ function copyImages(postDir, postSlug) {
 }
 
 function processContent(content, postSlug, copiedImages) {
-  // Process Hugo shortcodes: {{< figure src="..." title="..." >}} -> ![title](/blog-images/...)
   content = content.replace(/{{<\s*figure\s+src="([^"]+)"\s+title="([^"]+)"[^>]*>}}/g, (match, src, title) => {
     return `![${title}](/blog-images/${postSlug}/${src})`;
   });
   
-  // Handle shortcodes without title
   content = content.replace(/{{<\s*figure\s+src="([^"]+)"[^>]*>}}/g, (match, src) => {
     return `![${src}](/blog-images/${postSlug}/${src})`;
   });
-  
+
   if (copiedImages.length > 0) {
     for (const image of copiedImages) {
       const regex = new RegExp(`\\(${image}\\)`, 'g');
@@ -179,6 +197,32 @@ function processContent(content, postSlug, copiedImages) {
     }
   }
   return content;
+}
+
+function getPostTitleFromMetadata(metadata, lang) {
+  if (metadata.title) {
+    if (typeof metadata.title === 'object') {
+      return metadata.title[lang] || metadata.title.es || Object.values(metadata.title)[0] || 'Untitled';
+    }
+    return metadata.title;
+  }
+  return 'Untitled';
+}
+
+function getPostFieldFromMetadata(metadata, field, lang, defaultValue = '') {
+  if (metadata[field]) {
+    if (typeof metadata[field] === 'object') {
+      return metadata[field][lang] || metadata[field].es || Object.values(metadata[field])[0] || defaultValue;
+    }
+    return metadata[field];
+  }
+  if (metadata[field + 's']) {
+    const arr = metadata[field + 's'];
+    if (Array.isArray(arr)) {
+      return arr[0] || defaultValue;
+    }
+  }
+  return defaultValue;
 }
 
 function buildBlogPosts() {
@@ -194,22 +238,28 @@ function buildBlogPosts() {
   for (const entry of entries) {
     const entryPath = path.join(CONTENT_DIR, entry.name);
     
-    let mdFile = null;
+    let langFiles = {};
     let postDir = null;
     let postSlug = entry.name;
     
     if (entry.isDirectory()) {
-      const { mdFile: foundMd, images } = getPostFiles(entryPath);
-      if (foundMd) {
-        mdFile = foundMd;
+      const { langFiles: foundLangFiles, images } = getPostFiles(entryPath);
+      if (Object.keys(foundLangFiles).length > 0) {
+        langFiles = foundLangFiles;
         postDir = entryPath;
       }
     } else if (entry.isFile() && entry.name.endsWith('.md')) {
-      mdFile = entryPath;
-      postSlug = entry.name.replace('.md', '');
+      const lang = entry.name.replace('.md', '');
+      if (SUPPORTED_LANGUAGES.includes(lang)) {
+        langFiles[lang] = entryPath;
+        postSlug = lang;
+      } else {
+        langFiles['es'] = entryPath;
+        postSlug = entry.name.replace('.md', '');
+      }
     }
     
-    if (!mdFile) {
+    if (Object.keys(langFiles).length === 0) {
       continue;
     }
     
@@ -218,50 +268,77 @@ function buildBlogPosts() {
       copiedImages = copyImages(postDir, postSlug);
     }
     
-    const fileContent = fs.readFileSync(mdFile, 'utf8');
-    let { metadata, content } = parseFrontmatter(fileContent);
+    const postData = {
+      id: id++,
+      title: {},
+      excerpt: {},
+      author: {},
+      date: {},
+      readTime: {},
+      category: {},
+      image: '',
+      tags: [],
+      content: {}
+    };
     
-    content = processContent(content, postSlug, copiedImages);
+    for (const lang of SUPPORTED_LANGUAGES) {
+      if (!langFiles[lang]) continue;
+      
+      const fileContent = fs.readFileSync(langFiles[lang], 'utf8');
+      let { metadata, content } = parseFrontmatter(fileContent);
+      
+      content = processContent(content, postSlug, copiedImages);
+      
+      postData.title[lang] = getPostTitleFromMetadata(metadata, lang);
+      postData.excerpt[lang] = getPostFieldFromMetadata(metadata, 'excerpt', lang) || getPostFieldFromMetadata(metadata, 'summary', lang);
+      postData.author[lang] = getPostFieldFromMetadata(metadata, 'author', lang, 'LIDSOL');
+      postData.date[lang] = getPostFieldFromMetadata(metadata, 'date', lang);
+      postData.readTime[lang] = getPostFieldFromMetadata(metadata, 'readTime', lang, '5 min');
+      postData.category[lang] = getPostFieldFromMetadata(metadata, 'category', lang) || 'General';
+      postData.content[lang] = content;
+    }
     
-    let author = metadata.author || metadata.authors?.[0] || 'Unknown';
-    if (Array.isArray(author)) {
-      author = author[0];
+    if (postData.title.es && !postData.title.en) {
+      postData.title.en = postData.title.es;
+      postData.excerpt.en = postData.excerpt.es;
+      postData.author.en = postData.author.es;
+      postData.date.en = postData.date.es;
+      postData.readTime.en = postData.readTime.es;
+      postData.category.en = postData.category.es;
+      postData.content.en = postData.content.es;
     }
     
     let image = '';
-    if (metadata.image) {
-      if (typeof metadata.image === 'string') {
-        image = metadata.image;
-      } else if (metadata.image.caption) {
-        image = '';
-      }
-    }
-    
-    if (!image) {
+    if (postDir) {
       const possibleImageNames = ['featured.png', 'featured.jpg', 'featured.jpeg', 'featured.gif'];
-      if (postDir) {
-        for (const imgName of possibleImageNames) {
-          const imgPath = path.join(postDir, imgName);
-          if (fs.existsSync(imgPath)) {
-            image = `/blog-images/${postSlug}/${imgName}`;
-            break;
-          }
+      for (const imgName of possibleImageNames) {
+        const imgPath = path.join(postDir, imgName);
+        if (fs.existsSync(imgPath)) {
+          image = `/blog-images/${postSlug}/${imgName}`;
+          break;
         }
       }
     }
+    postData.image = image;
     
-    posts.push({
-      id: id++,
-      title: metadata.title || 'Untitled',
-      excerpt: metadata.excerpt || metadata.summary || '',
-      author: author,
-      date: formatDate(metadata.date || new Date().toISOString()),
-      readTime: metadata.readTime || '5 min',
-      category: metadata.category || metadata.categories?.[0] || 'General',
-      image: image,
-      tags: metadata.tags || [],
-      content: content
-    });
+    if (!postData.date.es) {
+      const dateMatch = postData.content.es ? postData.content.es.match(/date:\s*(\d{4}-\d{2}-\d{2})/) : null;
+      if (dateMatch) {
+        postData.date.es = formatDate(dateMatch[1]);
+        postData.date.en = formatDate(dateMatch[1]);
+      } else {
+        const now = new Date();
+        postData.date.es = formatDate(now.toISOString());
+        postData.date.en = formatDate(now.toISOString());
+      }
+    }
+    
+    if (typeof postData.author.es === 'string') {
+      const authorEs = postData.author.es;
+      postData.author = { es: authorEs, en: authorEs };
+    }
+    
+    posts.push(postData);
   }
   
   if (posts.length === 0) {
@@ -269,7 +346,7 @@ function buildBlogPosts() {
     return;
   }
   
-  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  posts.sort((a, b) => new Date(b.date.es) - new Date(a.date.es));
   
   const tsContent = `export const blogPosts = ${JSON.stringify(posts, null, 2)};
 `;
