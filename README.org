@@ -1,0 +1,49 @@
+[[file:./project.org][Aqui el archivo para organizar el desarrollo del proyecto]]
+* Build del proyecto.
+** Cambia a la rama de desarrollo
+Despues de clonar el repositorio, cambia a la rama donde se encuentra la nueva versión del sitio (en construcción).
+#+BEGIN_SRC bash
+git switch rewrite/lidsol-web-v2
+#+END_SRC
+** Instala las dependencias
+#+BEGIN_SRC bash
+npm install
+#+END_SRC
+Instala todas las dependencias definidas en [[file:./package.json][package.json]].
+** Construye el proyecto
+#+BEGIN_SRC bash
+npm run build
+#+END_SRC
+
+Este comando ejecuta el script [[file:./scripts/build-blog.js][build-blog]] que genera automáticamente el archivo [[file:./src/data/blogPosts.ts][blogPosts]] a partir del contenido del directorio [[file:./content/blog/][package.json]], y ejecuta `vite build`, que compila el proyecto para producción.
+El resultado es un sitio web estático listo para desplegar.
+** Ejecuta el sitio con un contenedor de (Nginx + Podman)
+Eliminar el contenedor previo (si existe):
+#+BEGIN_SRC lenguaje
+podman rm -f lidsol-react 2>/dev/null || true
+#+END_SRC
+
+Levanta un nuevo contenedor:
+#+BEGIN_SRC lenguaje
+podman run -d \
+  --name lidsol-react \
+  -p 8080:80 \
+  -v "$(pwd)/build:/usr/share/nginx/html:ro" \
+  nginx:alpine
+#+END_SRC
+
+- Usa la imagen oficial nginx:alpine.
+- Expone el puerto 8080.
+- Monta la carpeta build/ como contenido estático.
+Ahora se puede acceder al sitio desde el navegador en:  http://localhost:8080
+
+** Build automático al detectar cambios
+Instala inotify-tools y ejecuta el comando:
+#+BEGIN_SRC lenguaje
+while inotifywait -r -e modify,create,delete --exclude 'node_modules|build' src/; do
+  npm run build
+done
+#+END_SRC
+Esto:
+- Observa los cambios del directorio src/
+- Ejecuta automáticamente el build cuando detecta modificaciones.
