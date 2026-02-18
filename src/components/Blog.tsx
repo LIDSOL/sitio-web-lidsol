@@ -15,9 +15,9 @@ export function Blog({ onPostClick }: BlogProps) {
 
   const t = {
     title: { en: "Blog", es: "Blog" },
-    subtitle: { 
-      en: "Articles, tutorials and news about free software, security and open technology", 
-      es: "Artículos, tutoriales y noticias sobre software libre, seguridad y tecnología abierta" 
+    subtitle: {
+      en: "Articles, tutorials and news about free software, security and open technology",
+      es: "Artículos, tutoriales y noticias sobre software libre, seguridad y tecnología abierta"
     },
     featured: { en: "Featured", es: "Destacado" },
     readMore: { en: "Read more", es: "Leer más" },
@@ -35,6 +35,7 @@ export function Blog({ onPostClick }: BlogProps) {
     readTime: post.readTime[language] || post.readTime.es || '',
     category: post.category[language] || post.category.es || '',
     content: post.content[language] || post.content.es || '',
+    tags: post.tags[language] || post.tags.es || [],
   });
 
   return (
@@ -50,7 +51,7 @@ export function Blog({ onPostClick }: BlogProps) {
 
         {/* Featured Post */}
         {blogPosts.length > 0 && (
-        <Card 
+        <Card
           className="mb-12 overflow-hidden hover:shadow-lg transition-all duration-300 border-border/60 cursor-pointer"
           onClick={() => onPostClick(blogPosts[0].id)}
         >
@@ -91,7 +92,7 @@ export function Blog({ onPostClick }: BlogProps) {
                   <span className="text-sm text-muted-foreground">{getLocalizedPost(blogPosts[0]).author}</span>
                 </div>
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {blogPosts[0].tags && blogPosts[0].tags.map((tag) => (
+                  {getLocalizedPost(blogPosts[0]).tags.map((tag) => (
                     <Badge key={tag} variant="outline">{tag}</Badge>
                   ))}
                 </div>
@@ -109,8 +110,8 @@ export function Blog({ onPostClick }: BlogProps) {
           {blogPosts.slice(1).map((post) => {
             const localizedPost = getLocalizedPost(post);
             return (
-            <Card 
-              key={post.id} 
+            <Card
+              key={post.id}
               className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group border-border/60 cursor-pointer"
               onClick={() => onPostClick(post.id)}
             >
@@ -148,7 +149,7 @@ export function Blog({ onPostClick }: BlogProps) {
                   <span className="text-sm text-muted-foreground">{localizedPost.date}</span>
                 </div>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {post.tags && post.tags.map((tag) => (
+                  {localizedPost.tags.map((tag) => (
                     <Badge key={tag} variant="outline">{tag}</Badge>
                   ))}
                 </div>

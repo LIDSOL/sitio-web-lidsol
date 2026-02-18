@@ -63,13 +63,30 @@ function parseFrontmatter(content) {
         currentKey = key;
         
         if (value.endsWith(']')) {
-          const arrContent = value.slice(1, -1);
-          if (arrContent.trim()) {
-            metadata[key] = arrContent.split(',').map(s => {
-              let item = s.trim().replace(/^"(.*)"$/, '$1');
+          let arrContent = value.slice(1, -1);
+          arrContent = arrContent.trim();
+          
+          if (arrContent) {
+            let items = [];
+            const firstQuote = arrContent.match(/^["']/);
+            
+            if (firstQuote) {
+              const quoteChar = firstQuote[0];
+              if (arrContent.endsWith(quoteChar) && arrContent.length > 1) {
+                const inner = arrContent.slice(1, -1);
+                items = inner.split(',').map(s => s.trim());
+              } else {
+                items = arrContent.split(',').map(s => s.trim());
+              }
+            } else {
+              items = arrContent.split(',').map(s => s.trim());
+            }
+            
+            metadata[key] = items.map(item => {
+              item = item.replace(/^"(.*)"$/, '$1');
               item = item.replace(/^'(.*)'$/, '$1');
               return item;
-            });
+            }).filter(s => s);
           } else {
             metadata[key] = [];
           }
@@ -277,7 +294,7 @@ function buildBlogPosts() {
       readTime: {},
       category: {},
       image: '',
-      tags: [],
+      tags: { es: [], en: [] },
       content: {}
     };
     
@@ -296,6 +313,10 @@ function buildBlogPosts() {
       postData.readTime[lang] = getPostFieldFromMetadata(metadata, 'readTime', lang, '5 min');
       postData.category[lang] = getPostFieldFromMetadata(metadata, 'category', lang) || 'General';
       postData.content[lang] = content;
+      
+      if (metadata.tags && Array.isArray(metadata.tags)) {
+        postData.tags[lang] = metadata.tags;
+      }
     }
     
     if (postData.title.es && !postData.title.en) {
@@ -306,6 +327,15 @@ function buildBlogPosts() {
       postData.readTime.en = postData.readTime.es;
       postData.category.en = postData.category.es;
       postData.content.en = postData.content.es;
+    }
+    
+    if (postData.tags.es.length > 0 && postData.tags.en.length === 0) {
+      postData.tags.en = postData.tags.es;
+    } else if (postData.tags.en.length > 0 && postData.tags.es.length === 0) {
+      postData.tags.es = postData.tags.en;
+    } else if (postData.tags.es.length === 0 && postData.tags.en.length === 0) {
+      postData.tags.es = ['General'];
+      postData.tags.en = ['General'];
     }
     
     let image = '';

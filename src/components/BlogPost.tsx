@@ -15,7 +15,7 @@ interface BlogPostContent {
   readTime: { en: string; es: string };
   category: { en: string; es: string };
   image: string;
-  tags: string[];
+  tags: { en: string[]; es: string[] };
   content: { en: string; es: string };
 }
 
@@ -40,6 +40,7 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
   const readTime = post.readTime[language] || post.readTime.es || '';
   const category = post.category[language] || post.category.es || '';
   const content = post.content[language] || post.content.es || '';
+  const tags = post.tags[language] || post.tags.es || [];
 
   return (
     <section className="py-20 bg-background min-h-screen">
@@ -77,7 +78,7 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
           </div>
 
           <div className="flex flex-wrap gap-2">
-            {post.tags.map((tag) => (
+            {tags.map((tag) => (
               <Badge key={tag} variant="outline">{tag}</Badge>
             ))}
           </div>
