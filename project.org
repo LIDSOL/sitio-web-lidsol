@@ -66,17 +66,19 @@ DEADLINE: <2026-02-12 Thu>
     - src/components/ProjectDetail.tsx: Actualizado para usar project.tags[language]
     - src/components/FeaturedProjects.tsx: Actualizado para usar project.tags?.[language]
   - [X] Verificar el estado de los proyectos (para que el ícono sea el adecuado)
-**** IN-PROGRESS Blog
+**** IN-PROGRESS Blog [20%]
 DEADLINE: <2026-02-19 Thu>
 - [X] Hacer que el Blog y el BlogDetail soporten el multi-idioma
-- [X] Hay una _tag_, *general*, que se muestra tanto en el Blog como en BlogDetail, esta no respeta el multi-idioma. Mejorar esto, para que funcionen correctamente los tags (tomados desde los archivos de markdown)
-***** NEXT Blog
-- [ ] Hacer que el título esté alienado a la izquierda, y no centrado.
-- [ ] Implementar el sort (como en proyectos).
-- [ ] Hay un botón hasta la parte inferior llamado "Cargar más artículos" que no tiene funcionalidad. Podría ser bueno limitar la cantidad de post que se muestran y darle uso, o bien, retirarlo y que quede como un scroll con todo el contenido sin más.
-- [ ] El botón de "leer más" está más arriba o abajo dependiendo de la cantidad de tags y de la longitud del título del post, esto hacer que se vea muy irregular. Pasaba algo simiar con las tarjetas de miembros, tal vez puedas apoyarte de ese código para solucionarlo.
-***** NEXT BlogDetail
-- [ ] Corregir el formato de las fechas
+- [X] Hay una _Tag_, *general*, que se muestra tanto en el Blog como en BlogDetail, esta no respeta el multi-idioma. Mejorar esto, para que funcionen correctamente los tags (tomados desde los archivos de markdown)
+- [ ] Hacer que el botón Read More esté a la misma altura. Si el título es muy largo o hay más o menos tags, se ve más arriba o abajo, no se ve uniforme
+- [ ] Separar más el autor, de la fecha del tiempo de lectura.
+- [ ] Reducir el espacio entre la imágen y el título del post.
+- [ ] Cuando se ve en pantalla pequeña, sería mejor que la descripción o los tags se oculten.
+- [ ] Cambiar el bg de los tags a secondary
+- [ ] Mover el Titulo de la página a la izquierda.
+- [ ] El botón de Cargar más artículos no tiene función, hay que eliminarlo o darle uso.
+***** NEXT BlogDetail [16%]
+- [X] Corregir el formato de las fechas
 - [ ] Mejorar el aspecto de las tablas de markdown.
 - [ ] Hacer que el texto esté justificado (el contenido de un post del blog).
 - [ ] Hacer que las fotos tengan bordes redondeados.
@@ -87,8 +89,13 @@ DEADLINE: <2026-02-19 Thu>
 ***** NEXT Contenido
 - [X] Copiar los directorios..
 - [X] Hacer que se "parsé" autimáticamente con un script
-- [ ] Añadir imágenes a los post que no tienen.
 - [ ] Sería bueno reducir la calidad de algunas de las imágenes, pues son muy pesadas y provocan que el sitio tarde en cargar, o en su defecto, hacer que se cargue una  versión reducida en el Blog y en BlogDetail, pero en este último, al dar click en la imágen, verla en tamaño completo a modo de galería.
+- [ ] Añadir imágenes a los post que no tienen.
+******* NEXT Blog
+- [ ] Hacer que el título esté alienado a la izquierda, y no centrado.
+- [ ] Implementar el sort (como en proyectos).
+- [ ] Hay un botón hasta la parte inferior llamado "Cargar más artículos" que no tiene funcionalidad. Podría ser bueno limitar la cantidad de post que se muestran y darle uso, o bien, retirarlo y que quede como un scroll con todo el contenido sin más.
+- [ ] El botón de "leer más" está más arriba o abajo dependiendo de la cantidad de tags y de la longitud del título del post, esto hacer que se vea muy irregular. Pasaba algo simiar con las tarjetas de miembros, tal vez puedas apoyarte de ese código para solucionarlo.
 ***** Notas
 Se usarán archivos de markdown para el blog, cada [[file:content/][subdirectorio de content]] será un post de blog. Hasta ahora se habían usado archivos .ts, pero para el escribir una artículo de blog, sería muy tedioso.
 

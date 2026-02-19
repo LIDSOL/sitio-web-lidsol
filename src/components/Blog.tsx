@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { User, Clock, ArrowRight } from "lucide-react";
+import { User, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { blogPosts } from "../data/blogPosts";
@@ -32,7 +32,6 @@ export function Blog({ onPostClick }: BlogProps) {
     author: post.author[language] || post.author.es || '',
     date: post.date[language] || post.date.es || '',
     readTime: post.readTime[language] || post.readTime.es || '',
-    category: post.category[language] || post.category.es || '',
     content: post.content[language] || post.content.es || '',
     tags: post.tags[language] || post.tags.es || [],
   });
@@ -71,25 +70,22 @@ export function Blog({ onPostClick }: BlogProps) {
                 </div>
                 )}
               </div>
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-3">
-                  <Badge variant="secondary">{localizedPost.category}</Badge>
-                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                    <Clock className="h-3.5 w-3.5" />
-                    {localizedPost.readTime}
-                  </div>
-                </div>
+              <CardHeader className="pb-2">
                 <CardTitle className="group-hover:text-primary transition-colors">
                   {localizedPost.title}
                 </CardTitle>
-                <CardDescription className="mt-2">{localizedPost.excerpt}</CardDescription>
+                <CardDescription className="mt-1">{localizedPost.excerpt}</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="flex items-center gap-2 mb-4">
-                  <User className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-sm text-muted-foreground">{localizedPost.author}</span>
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mb-3">
+                  <div className="flex items-center gap-1">
+                    <User className="h-4 w-4 text-muted-foreground" />
+                    <span className="text-sm text-muted-foreground">{localizedPost.author}</span>
+                  </div>
                   <span className="text-muted-foreground">•</span>
                   <span className="text-sm text-muted-foreground">{localizedPost.date}</span>
+                  <span className="text-muted-foreground">•</span>
+                  <span className="text-sm text-muted-foreground">{localizedPost.readTime}</span>
                 </div>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {localizedPost.tags.map((tag) => (

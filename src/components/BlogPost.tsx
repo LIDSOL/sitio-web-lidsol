@@ -13,7 +13,6 @@ interface BlogPostContent {
   author: { en: string; es: string };
   date: { en: string; es: string };
   readTime: { en: string; es: string };
-  category: { en: string; es: string };
   image: string;
   tags: { en: string[]; es: string[] };
   content: { en: string; es: string };
@@ -38,7 +37,7 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
   const author = post.author[language] || post.author.es || '';
   const date = post.date[language] || post.date.es || '';
   const readTime = post.readTime[language] || post.readTime.es || '';
-  const category = post.category[language] || post.category.es || '';
+  const category = '';
   const content = post.content[language] || post.content.es || '';
   const tags = post.tags[language] || post.tags.es || [];
 
@@ -56,17 +55,14 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
 
         {/* Header */}
         <div className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <Badge variant="secondary">{category}</Badge>
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-1">
-                <Calendar className="h-4 w-4" />
-                {date}
-              </div>
-              <div className="flex items-center gap-1">
-                <Clock className="h-4 w-4" />
-                {readTime}
-              </div>
+          <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
+            <div className="flex items-center gap-1">
+              <Calendar className="h-4 w-4" />
+              {date}
+            </div>
+            <div className="flex items-center gap-1">
+              <Clock className="h-4 w-4" />
+              {readTime}
             </div>
           </div>
 

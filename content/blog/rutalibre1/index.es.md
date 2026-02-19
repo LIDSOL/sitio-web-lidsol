@@ -5,8 +5,8 @@ summary: Un recorrido por el mundo del software libre desde la perspectiva de un
 authors: ['barrionomia']
 tags: ["Software Libre,  Linux,  Sysadmin,  FLOSS, Automatización, Infraestructura, Ingenieria"]
 categories: []
-date: 2024-10-24T12:53:44-05:00
-lastmod: 2024-10-24T12:53:44-05:00
+date: 2024/10/24
+lastmod: 2024-10-24
 featured: false
 draft: false
 image:

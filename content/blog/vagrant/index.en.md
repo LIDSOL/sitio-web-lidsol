@@ -4,8 +4,8 @@ summary: "Vagrant: meta manager of virtual machines and containers"
 authors: [tonejito]
 tags: [open source, blog, post, vagrant, virtual machine, virtualbox, linux, macos]
 categories: []
-date: 2021-07-23T13:14:15-05:00
-lastmod: 2019-07-23T14:15:16-05:00
+date: 2021/07/23
+lastmod: 2019-07-23
 featured: false
 draft: false
 

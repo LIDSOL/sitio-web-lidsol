@@ -5,8 +5,8 @@ summary: The free software operating system
 authors: ["orfer"]
 tags: ["Free Software, Linux, Unix, Richard Stallman, GNU"]
 categories: []
-date: 2024-08-13T12:53:44-05:00
-lastmod: 2020-08-15T12:53:44-05:00
+date: 2024/08/13
+lastmod: 2020-08-15
 featured: false
 draft: false
 image:

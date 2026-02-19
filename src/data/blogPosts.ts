@@ -14,16 +14,12 @@ export const blogPosts = [
       "en": "LIDSOL"
     },
     "date": {
-      "es": "2025-02-03T10:00:00Z",
-      "en": "2025-02-03T10:00:00Z"
+      "es": "2025/02/03",
+      "en": "2025/02/03"
     },
     "readTime": {
       "es": "5 min",
       "en": "5 min"
-    },
-    "category": {
-      "es": "General",
-      "en": "General"
     },
     "image": "/blog-images/reclu/featured.png",
     "tags": {
@@ -35,7 +31,7 @@ export const blogPosts = [
       ]
     },
     "content": {
-      "es": "\n![LIDSOL](/blog-images/reclu/reclu1.png)\n\n## 🚀 Reclutamiento LIDSOL\n\nEl **Laboratorio de Investigación y Desarrollo de Software Libre (LIDSOL) UNAM** está buscando estudiantes desde **segundo semestre** para unirse a nuestro equipo. Somos un equipo de estudiantes e ingenieros que busca promover el software libre y dar oportunidades de desarrollo a estudiantes de la UNAM.  \n\n🔗 Más info: [lidsol.unam.mx](http://lidsol.unam.mx)  \n\n## 🔥 Beneficios\n\n✅ Participa desarrollando software utilizado por miles de personas.  \n  ◦ Escoge tu área de enfoque: Desarrollo y verificación de software, manejo y monitoreo de infraestructura, desarrollo de comunidades y eventos.  \n  ◦ Trabajamos con proyectos como [beam.apache.org](https://beam.apache.org), [debian.org](https://www.debian.org), [archlinux.org](https://archlinux.org), [fedoraproject.org](https://fedoraproject.org), [drawdb.app](https://www.drawdb.app) y más.  \n✅ Recibe mentoría de ingenieros en la industria y de todo el mundo.  \n✅ Conéctate con comunidades de software libre como **Apache, Fedora México, Red Hat y GitHub**.  \n✅ Crea un portafolio para tu búsqueda de trabajo.  \n\n## 📌 Programa\n\nForma parte de uno o varios de los equipos dentro de los laboratorios (software, infraestructura o comunidad). Crea, desarrolla, publica y comparte tu trabajo.  \n\nContamos con dos modalidades:  \n1️⃣ **Voluntariado**: Un semestre con alta flexibilidad (~8 horas a la semana).  \n2️⃣ **Servicio social**: De uno a dos semestres (~10-20 horas a la semana).  \n   - Es posible utilizar el trabajo del laboratorio para tu **tesis** (*consultar con un profesor*).  \n\n## 📍 Requisitos\n\nPara participar, envía la siguiente información por correo a [lidsol-info@proton.me](mailto:lidsol-info@proton.me) antes del **28 de febrero de 2025**:  \n\n📌 **Información personal**: Nombre, No. de Cuenta, Generación y Carrera.  \n📌 **Carta de presentación** (1-3 párrafos) explicando:  \n   ◦ ¿Por qué te interesa ser parte de LIDSOL?  \n   ◦ ¿Por qué crees que serías la persona correcta para unirte?  \n   ◦ Convéncenos de que tienes las habilidades y/o la determinación para ayudarnos.  \n📌 **(Opcional)** Portafolio o currículum: Muéstranos tus proyectos (incluso de clase), habilidades (Linux, Python, malabares, natación, inglés) o experiencia anterior.  \n\n## 📝 Proceso de selección\n\n📩 **1. Envía tu solicitud** a [lidsol-info@proton.me](mailto:lidsol-info@proton.me) antes del **28 de febrero de 2025**.  \n🗓️ **2. Entrevistas** del **3 al 7 de marzo de 2025**.  \n🎉 **3. Invitaciones finales** el **9 de marzo de 2025**.  \n\n📜 **Consulta todas las bases aquí:** [cloud.lidsol.unam.mx/s/siaz3jqeoKx6rBq](https://cloud.lidsol.unam.mx/s/siaz3jqeoKx6rBq)  \n\n## 💬 ¿Tienes dudas?\n\n- [Telegram](https://t.me/lidsol)  \n- Correo: [lidsol-info@proton.me](mailto:lidsol-info@proton.me)  \n\n#SoftwareLibre #UNAM #LIDSOL #OpenSource #CódigoAbierto\n",
+      "es": "\n![LIDSOL](/blog-images/reclu/reclu1.png)\n\n## 🚀 Reclutamiento LIDSOL\n\nEl **Laboratorio de Investigación y Desarrollo de Software Libre (LIDSOL) UNAM** está buscando estudiantes desde **segundo semestre** para unirse a nuestro equipo. Somos un equipo de estudiantes e ingenieros que busca promover el software libre y dar oportunidades de desarrollo a estudiantes de la UNAM.\n\n🔗 Más info: [lidsol.unam.mx](http://lidsol.unam.mx)\n\n## 🔥 Beneficios\n\n✅ Participa desarrollando software utilizado por miles de personas.\n  ◦ Escoge tu área de enfoque: Desarrollo y verificación de software, manejo y monitoreo de infraestructura, desarrollo de comunidades y eventos.\n  ◦ Trabajamos con proyectos como [beam.apache.org](https://beam.apache.org), [debian.org](https://www.debian.org), [archlinux.org](https://archlinux.org), [fedoraproject.org](https://fedoraproject.org), [drawdb.app](https://www.drawdb.app) y más.\n✅ Recibe mentoría de ingenieros en la industria y de todo el mundo.\n✅ Conéctate con comunidades de software libre como **Apache, Fedora México, Red Hat y GitHub**.\n✅ Crea un portafolio para tu búsqueda de trabajo.\n\n## 📌 Programa\n\nForma parte de uno o varios de los equipos dentro de los laboratorios (software, infraestructura o comunidad). Crea, desarrolla, publica y comparte tu trabajo.\n\nContamos con dos modalidades:\n1️⃣ **Voluntariado**: Un semestre con alta flexibilidad (~8 horas a la semana).\n2️⃣ **Servicio social**: De uno a dos semestres (~10-20 horas a la semana).\n   - Es posible utilizar el trabajo del laboratorio para tu **tesis** (*consultar con un profesor*).\n\n## 📍 Requisitos\n\nPara participar, envía la siguiente información por correo a [lidsol-info@proton.me](mailto:lidsol-info@proton.me) antes del **28 de febrero de 2025**:\n\n📌 **Información personal**: Nombre, No. de Cuenta, Generación y Carrera.\n📌 **Carta de presentación** (1-3 párrafos) explicando:\n   ◦ ¿Por qué te interesa ser parte de LIDSOL?\n   ◦ ¿Por qué crees que serías la persona correcta para unirte?\n   ◦ Convéncenos de que tienes las habilidades y/o la determinación para ayudarnos.\n📌 **(Opcional)** Portafolio o currículum: Muéstranos tus proyectos (incluso de clase), habilidades (Linux, Python, malabares, natación, inglés) o experiencia anterior.\n\n## 📝 Proceso de selección\n\n📩 **1. Envía tu solicitud** a [lidsol-info@proton.me](mailto:lidsol-info@proton.me) antes del **28 de febrero de 2025**.\n🗓️ **2. Entrevistas** del **3 al 7 de marzo de 2025**.\n🎉 **3. Invitaciones finales** el **9 de marzo de 2025**.\n\n📜 **Consulta todas las bases aquí:** [cloud.lidsol.unam.mx/s/siaz3jqeoKx6rBq](https://cloud.lidsol.unam.mx/s/siaz3jqeoKx6rBq)\n\n## 💬 ¿Tienes dudas?\n\n- [Telegram](https://t.me/lidsol)\n- Correo: [lidsol-info@proton.me](mailto:lidsol-info@proton.me)\n\n#SoftwareLibre #UNAM #LIDSOL #OpenSource #CódigoAbierto\n",
       "en": "\n![LIDSOL](/blog-images/reclu/reclu1.png)\n\n## 🚀 LIDSOL Recruitment\n\nThe **Free Software Research and Development Laboratory (LIDSOL) UNAM** is looking for students starting from their **second semester** to join our team. We are a group of students and engineers who aim to promote free software and provide development opportunities to UNAM students.\n\n🔗 More info: http://lidsol.unam.mx\n\n## 🔥 Benefits\n\n✅ Contribute to software used by thousands of people.\n  ◦ Choose your focus area: Software development and verification, infrastructure management and monitoring, community development and events.\n  ◦ We collaborate on projects such as https://beam.apache.org, https://www.debian.org, https://archlinux.org, https://fedoraproject.org, https://www.drawdb.app and more.\n✅ Receive mentorship from industry engineers from around the world.\n✅ Connect with free software communities such as Apache, Fedora México, Red Hat, and GitHub.\n✅ Build a portfolio for your job search.\n\n## 📌 Program\n\nBecome part of one or more teams within the laboratory (software, infrastructure, or community). Create, develop, publish, and share your work.\n\nWe offer two modalities:\n\n1️⃣ **Volunteer Program**: One semester with high flexibility (~8 hours per week).\n2️⃣ **Social Service**: One to two semesters (~10–20 hours per week).\n   - It is possible to use your laboratory work for your **thesis** (*consult with a professor*).\n\n## 📍 Requirements\n\nTo apply, send the following information by email to lidsol-info@proton.me before **February 28, 2025**:\n\n📌 **Personal information**: Full name, Student ID number, Cohort year, and Degree program.\n📌 **Cover letter** (1–3 paragraphs) explaining:\n   ◦ Why are you interested in being part of LIDSOL?\n   ◦ Why do you think you are the right person to join?\n   ◦ Convince us that you have the skills and/or determination to help us.\n📌 **(Optional)** Portfolio or résumé: Show us your projects (even class projects), skills (Linux, Python, juggling, swimming, English), or previous experience.\n\n## 📝 Selection Process\n\n📩 **1. Submit your application** to lidsol-info@proton.me before **February 28, 2025**.\n🗓️ **2. Interviews** from **March 3 to March 7, 2025**.\n🎉 **3. Final invitations** on **March 9, 2025**.\n\n📜 **Full details available at:** https://cloud.lidsol.unam.mx/s/siaz3jqeoKx6rBq\n\n## 💬 Questions?\n\n- Telegram: https://t.me/lidsol\n- Email: lidsol-info@proton.me\n\n#FreeSoftware #UNAM #LIDSOL #OpenSource #OpenCode\n\n"
     }
   },
@@ -54,16 +50,12 @@ export const blogPosts = [
       "en": "barrionomia"
     },
     "date": {
-      "es": "2024-10-24T12:53:44-05:00",
-      "en": "2024-10-24T12:53:44-05:00"
+      "es": "2024/10/24",
+      "en": "2024/10/24"
     },
     "readTime": {
       "es": "5 min",
       "en": "5 min"
-    },
-    "category": {
-      "es": "General",
-      "en": "General"
     },
     "image": "/blog-images/rutalibre1/featured.png",
     "tags": {
@@ -106,16 +98,12 @@ export const blogPosts = [
       "en": "quique"
     },
     "date": {
-      "es": "2024-09-14T12:53:44-05:00",
-      "en": "2024-09-14T12:53:44-05:00"
+      "es": "2024/09/14",
+      "en": "2024/09/14"
     },
     "readTime": {
       "es": "5 min",
       "en": "5 min"
-    },
-    "category": {
-      "es": "General",
-      "en": "General"
     },
     "image": "",
     "tags": {
@@ -156,16 +144,12 @@ export const blogPosts = [
       "en": "orfer"
     },
     "date": {
-      "es": "2024-08-13T12:53:44-05:00",
-      "en": "2024-08-13T12:53:44-05:00"
+      "es": "2024/08/13",
+      "en": "2024/08/13"
     },
     "readTime": {
       "es": "5 min",
       "en": "5 min"
-    },
-    "category": {
-      "es": "General",
-      "en": "General"
     },
     "image": "/blog-images/linux/featured.png",
     "tags": {
@@ -185,7 +169,7 @@ export const blogPosts = [
       ]
     },
     "content": {
-      "es": "\nHola, Bienvenidos a la capsula del dia.\n\nEn esta recordaremos el pasado de Linux y como revoluciono la tecnologia en mas de un aspecto. \n\n![Capsule1](/blog-images/linux/capsuleOfTheDay_1.png)\n\n\n## Un poco de historia...\n\n### 1969 - Surgimiendo de Unix\n\nHace unos ayeres, en el estado de New Jersey casa de los paseos maritimos en Atlantic City,pretzels blandos y helados de agua. En los Laboratios Bell se encontraba Ken Thompson, quien estaba involucrado en el desarrollo de un sistema operativo llamado Multics. \n\nMultics (Multiplexed Information and Computing Service) fue uno de los PRIMEROS sistemas operativos, el cual fue concebido como producto comercial de General Electrics, y aunque no tuvo un gran exito al implementar un unico nivel de almacenamiento para el acceso de datos, fue escencial para generar nuevas ideas.\n\nAsi en 1969 junto Dennis Ritchie desarrollan el sistema operativo UNIX, reescrito en C para mayor portabilidad, originalmente Unics \"UNIplexed information and Computing Service\" en referencia a Multics \"MULTIplexed Computer and Information Service\", este buscaba ser ameno, flexible y sobre todo no poner limites.\n\n\n### 1983 - GNU No es UNIX\n\nAsi es como Richard Stallman inicio en 1983 el proyecto GNU(); cuyo objetivo era crear un sistema operativo completamente libre, que no fuera Unix.\nGNU tenia una una base solida pero el  nucleo \"Hurd\" nunca se finalizo, allando el camino para el desarrollo de otros kernels.\n\n![Capsule2](/blog-images/linux/capsuleOfTheDay_2.png)\n\n### Importancia del Kernel\n\nEl núcleo de cualquier sustema operativo es el kernel y es el medio por donde se comunica el hardware y el software. BSD y Minx fueron los primeros sistemas Unix pero ninguno tenia un nucleo unificado y resistente que los convirtiera en sustitutos legitimos.\n\n\n![Capsule3](/blog-images/linux/capsuleOfTheDay_3.png)\n\n### 1991 - Asi surgue Linux\n\nLinus Torvalds fue un estudiante Finlandés y por 1991 comenzo a trabajar en el nucleo de Linux. Que realmente al inicio fue un proyecto pequeño, pero rapidamente llamo la atencion de muchas personas dentro de la comunidad global de desarrolladores. Kernel era un sistema operativo libre y sento las bases de Linux\n\n\n### El cambio y el desarrollo\n\nLinux ha evolucionado desde un simple núcleo de sistema operativo a algo mas. Es la variedad de sistemas operativos utilizados en servidores, dispositivos moviles, supercomputadoras, misiones aeroespaciales.\n\n![Capsule4](/blog-images/linux/capsuleOfTheDay_4.png)",
+      "es": "\nHola, Bienvenidos a la capsula del dia.\n\nEn esta recordaremos el pasado de Linux y como revoluciono la tecnologia en mas de un aspecto.\n\n![Capsule1](/blog-images/linux/capsuleOfTheDay_1.png)\n\n\n## Un poco de historia...\n\n### 1969 - Surgimiendo de Unix\n\nHace unos ayeres, en el estado de New Jersey casa de los paseos maritimos en Atlantic City,pretzels blandos y helados de agua. En los Laboratios Bell se encontraba Ken Thompson, quien estaba involucrado en el desarrollo de un sistema operativo llamado Multics.\n\nMultics (Multiplexed Information and Computing Service) fue uno de los PRIMEROS sistemas operativos, el cual fue concebido como producto comercial de General Electrics, y aunque no tuvo un gran exito al implementar un unico nivel de almacenamiento para el acceso de datos, fue escencial para generar nuevas ideas.\n\nAsi en 1969 junto Dennis Ritchie desarrollan el sistema operativo UNIX, reescrito en C para mayor portabilidad, originalmente Unics \"UNIplexed information and Computing Service\" en referencia a Multics \"MULTIplexed Computer and Information Service\", este buscaba ser ameno, flexible y sobre todo no poner limites.\n\n\n### 1983 - GNU No es UNIX\n\nAsi es como Richard Stallman inicio en 1983 el proyecto GNU(); cuyo objetivo era crear un sistema operativo completamente libre, que no fuera Unix.\nGNU tenia una una base solida pero el  nucleo \"Hurd\" nunca se finalizo, allando el camino para el desarrollo de otros kernels.\n\n![Capsule2](/blog-images/linux/capsuleOfTheDay_2.png)\n\n### Importancia del Kernel\n\nEl núcleo de cualquier sustema operativo es el kernel y es el medio por donde se comunica el hardware y el software. BSD y Minx fueron los primeros sistemas Unix pero ninguno tenia un nucleo unificado y resistente que los convirtiera en sustitutos legitimos.\n\n\n![Capsule3](/blog-images/linux/capsuleOfTheDay_3.png)\n\n### 1991 - Asi surgue Linux\n\nLinus Torvalds fue un estudiante Finlandés y por 1991 comenzo a trabajar en el nucleo de Linux. Que realmente al inicio fue un proyecto pequeño, pero rapidamente llamo la atencion de muchas personas dentro de la comunidad global de desarrolladores. Kernel era un sistema operativo libre y sento las bases de Linux\n\n\n### El cambio y el desarrollo\n\nLinux ha evolucionado desde un simple núcleo de sistema operativo a algo mas. Es la variedad de sistemas operativos utilizados en servidores, dispositivos moviles, supercomputadoras, misiones aeroespaciales.\n\n![Capsule4](/blog-images/linux/capsuleOfTheDay_4.png)\n",
       "en": "\nHello, welcome to today’s capsule.\n\nIn this one, we will remember the past of Linux and how it revolutionized technology in more than one aspect.\n\n![Capsule1](/blog-images/linux/capsuleOfTheDay_1.png)\n\n## A bit of history...\n\n### 1969 - The Emergence of Unix\n\nSome years ago, in the state of New Jersey, home of the boardwalks in Atlantic City, soft pretzels, and water ice. At Bell Laboratories, Ken Thompson was involved in the development of an operating system called Multics.\n\nMultics (Multiplexed Information and Computing Service) was one of the FIRST operating systems, conceived as a commercial product of General Electric. Although it did not achieve great success when implementing a single-level storage system for data access, it was essential in generating new ideas.\n\nThus, in 1969, together with Dennis Ritchie, they developed the UNIX operating system, rewritten in C for greater portability. Originally called Unics (\"UNIplexed Information and Computing Service\") in reference to Multics (\"MULTIplexed Computer and Information Service\"), it aimed to be friendly, flexible, and above all, without limits.\n\n### 1983 - GNU is Not UNIX\n\nThis is how Richard Stallman started the GNU() project in 1983, whose goal was to create a completely free operating system that was not Unix.\n\nGNU had a solid foundation, but the \"Hurd\" kernel was never finished, paving the way for the development of other kernels.\n\n![Capsule2](/blog-images/linux/capsuleOfTheDay_2.png)\n\n### Importance of the Kernel\n\nThe core of any operating system is the kernel, and it is the medium through which hardware and software communicate. BSD and Minix were early Unix systems, but neither had a unified and robust kernel that would make them legitimate substitutes.\n\n![Capsule3](/blog-images/linux/capsuleOfTheDay_3.png)\n\n### 1991 - The Birth of Linux\n\nLinus Torvalds was a Finnish student who, in 1991, began working on the Linux kernel. What truly started as a small project quickly caught the attention of many people within the global developer community. The kernel was free software and laid the foundations of Linux.\n\n### Change and Development\n\nLinux has evolved from a simple operating system kernel into much more. It powers a wide variety of systems used in servers, mobile devices, supercomputers, and even aerospace missions.\n\n![Capsule4](/blog-images/linux/capsuleOfTheDay_4.png)\n"
     }
   },
@@ -204,16 +188,12 @@ export const blogPosts = [
       "en": "tonejito"
     },
     "date": {
-      "es": "2021-07-23T13:14:15-05:00",
-      "en": "2021-07-23T13:14:15-05:00"
+      "es": "2021/07/23",
+      "en": "2021/07/23"
     },
     "readTime": {
       "es": "5 min",
       "en": "5 min"
-    },
-    "category": {
-      "es": "General",
-      "en": "General"
     },
     "image": "/blog-images/vagrant/featured.png",
     "tags": {
@@ -258,16 +238,12 @@ export const blogPosts = [
       "en": "umoqnier"
     },
     "date": {
-      "es": "2020-07-13T12:53:44-05:00",
-      "en": "2020-07-13T12:53:44-05:00"
+      "es": "2020/07/12",
+      "en": "2020/07/12"
     },
     "readTime": {
       "es": "5 min",
       "en": "5 min"
-    },
-    "category": {
-      "es": "General",
-      "en": "General"
     },
     "image": "/blog-images/esquite/featured.png",
     "tags": {
@@ -310,16 +286,12 @@ export const blogPosts = [
       "en": "emilio1625"
     },
     "date": {
-      "es": "2020-06-06T11:22:06-05:00",
-      "en": "2020-06-06T11:22:06-05:00"
+      "es": "2020/06/06",
+      "en": "2020/06/06"
     },
     "readTime": {
       "es": "5 min",
       "en": "5 min"
-    },
-    "category": {
-      "es": "General",
-      "en": "General"
     },
     "image": "/blog-images/invitacion-a-instalar-nodos-de-tor/featured.png",
     "tags": {
@@ -356,16 +328,12 @@ export const blogPosts = [
       "en": "emilio1625"
     },
     "date": {
-      "es": "2019-12-22T13:42:27-06:00",
-      "en": "2019-12-22T13:42:27-06:00"
+      "es": "2019/12/22",
+      "en": "2019/12/22"
     },
     "readTime": {
       "es": "5 min",
       "en": "5 min"
-    },
-    "category": {
-      "es": "General",
-      "en": "General"
     },
     "image": "/blog-images/ros-debootstrap/featured.png",
     "tags": {
@@ -402,16 +370,12 @@ export const blogPosts = [
       "en": "umoqnier"
     },
     "date": {
-      "es": "2019-09-21T22:06:25-05:00",
-      "en": "2019-09-21T22:06:25-05:00"
+      "es": "2019/09/21",
+      "en": "2019/09/21"
     },
     "readTime": {
       "es": "5 min",
       "en": "5 min"
-    },
-    "category": {
-      "es": "General",
-      "en": "General"
     },
     "image": "/blog-images/ccoss/featured.jpg",
     "tags": {
@@ -429,7 +393,7 @@ export const blogPosts = [
       ]
     },
     "content": {
-      "es": "\nEl equipo de LIDSOL tuvo la oportunidad de ser parte de la Cumbre de\nContribuidores de Open Source Software (CCOSS) que se llevó acabo en\nGuadalajara, Jalisco el 14 a 15 de Septiembre. En esta entrada\nqueremos contarles las vivencias, experiencias, aprendizajes, dimes y diretes.\n\n## ¿Qué es el COSS? \n\nEl CCOSS es un evento que se enfoca en resolver el problema de las \ncontribuciones a proyectos open source. A pesar de que el uso de open source es\n[basto en América\nLatina](https://hipertextual.com/2015/04/politicas-de-software-libre-en-latinoamerica),\nlas contribuciones son mínimas. Para ello, se han dado a la tarea de juntar\na una gran cantidad de comunidades de open source y\nsoftware libre que se encuentran alrededor del país.\n\nEntre los organizadores se encuentra gente de *[Software\nGuru](https://sg.com.mx/)*, *Google*,\n*Wizeland*, *Helix Re* y el *[Laboratorio de Software Libre de\nZacatecas](https://cozcyt.gob.mx/labsol/)*. Con lo anterior, ya nos damos una\nidea de lo grande que fue el evento. Hubo un\nambiente enriquecedor para el desarrollo del open source y el software libre\nen México. Notamos gustosos la presencia de muches estudiantes universitaries\ninteresados en el tema y eso nos parece fabuloso.\n\n![Firefox](/blog-images/ccoss/firefox.jpg)\n\nEn LIDSOL creemos que una parte fundamental del ecosistema son las\ncomunidades y la sangre joven siempre le viene bien al medio. Sobre todo,\ncuando existe un rezago importante en el desarrollo de tecnologías con dichas\nideologías en toda América Latina.\n\nComo se mencionó, el evento constó de dos días. El primero fue enteramente\ndedicado a charlas por parte de personas que contribuyen activamente a \nproyectos de los cuales rescatamos la presencia de Federíco Mena (Cofundador\ndel projecto GNOME), Andréa Gómez (Go y Cloud developer), Jacóbo Najera (May\nFirst Movement Technology) y Alejandro Calleja (Red Hat) por mencionar algunos.\n\n## Presencia de LIDSOL en el CCOSS\n\nAsistimos a diversas charlas donde se tocaban temas de suma importancia como\nla diferencia entre open source y software libre, los proyectos que se llevan\na cabo en diversas instituciones, [la red Tor en América\nLatina](https://www.youtube.com/watch?v=EHp-BNL7UnE), la economía del open\nsource, desarrollo de robots inteligentes con ROS y AWS y\nel estado del open source en América Latína. Además, Gunnar Wolf habló del\nlaboratorio en las charlas inaugurales donde hablamos brevemente de los\nproyectos que estamos desarrollando. \n\nPor ejemplo, el proyecto sobre mecanismos de privacidad y anonimato, el avance\nen la gestión del capítulo de la ACM en la UNAM, pasantes que elaboran su tesis\nen el laboratorio y los talleres pasado y futuros que los integrantes de LIDSOL\nhan impartido.\n\n![Lidsol](/blog-images/ccoss/lidsol-ccoss.jpg)\n\nFuimos parte del evento con la intención de conocer cual era el estado del\nactual en temas de contribución, convivir gente que quisiera colaborar\ny sobre todo a aprender cosas nuevas. Por ello fuimos participes de varios\ntalleres impartidos. Los talleres mencionados son CPython, Tensorflow, Firefox\ny GNOME.\n\nPor otra parte, tuvimos la oportunidad de extender la agenda del primer día\nabriendo un panel de privacidad y anonimato. En este, expusimos la importancia\nde la privacidad, funcionamiento de la red TOR y consejos generales para una\nvida digital más saludable. \n\n![Emilio](/blog-images/ccoss/lidsol-1.jpg)\n\n## ¿Qué aprendimos?\n\nAcudimos a los talleres del segundo día en donde nos orientaron para poder\nrealizar contribuciones a diferentes proyectos de software y, sobre todo, nos\nayudaron a superar el miedo a subir nuestro primer\n*[pull request](https://help.github.com/en/articles/about-pull-requests)*.\nDebido a que el público estaba compuesto por estudiantes, académicos y gente de\ndiversas industrias en la mayoría de los talleres se vieron con conceptos\nelementales, como el uso de terminal, [GitHub](https://github.com/), para\nobtener los proyectos, y [git](https://git-scm.com/) para poder contribuir como\nse hace actualmente.\n\nA continuación compartimos un vistazo general del taller de `CPython` que fue\nuno de los que pudimos tomar. Además, dejamos la lista de los talleres a los\nque asistimos como laboratorio. Si quieres profundizar en alguna herramienta\npuedes acercarte a nosotrxs.\n\n### Lista de talleres\n\n* GNOME\n* Firefox\n* Tensorflow\n\n\n### CPython\n\n![CPython](/blog-images/ccoss/cpython.png)\n\nEl taller comenzó con unos cuantos prerequisitos desde el día anterior. Los\norganizadores recomendaron obtener el código fuente de `CPython` que se\nencuentra oficialmente en un\n[repositorio de github](https://github.com/python/cpython). Para poder bajarlo\nse requieren conocimientos básicos de la herramienta\n[git](https://git-scm.com/). Avanzando y ya con el código fuente dimos\nun vistazo a la estructura de carpetas que compone el proyecto y posteriormente\npasamos a compilar el fuente para crear nuestro propio ejecutable. \n\nNos orientaron para saber cual es camino más amigable para comenzar a\ncontribuir en el código fuente de `CPython`. También se comentó que no es necesario\nser desarrolladora para poder contribur. Siempre hay `issues` relacionados con\ndocumentación, localización (traducción) y de diversos tópicos que no necesariamente\nrequieren de un perfil técnico.\n\nPor último, vimos diferentes tipos de necesidades para el proyecto en su [página\nde contribución](https://bugs.python.org/) para posteriormente realizar alguna\nmodificación al código fuente y mandar nuestro *pull request :D*\n\n\n## Conclusiones\n\nSin duda hemos adquirido una experiencia enriquecedora en este evento dada la\ndiversidad de visiones, contextos y personas con las que nos pudimos relacionar. \nPara el laboratorio fue una gran oportunidad de compartir con la comunidad del\nCCOSS el trabajo que realizamos y, por otra parte, es importante para nosotrxs\ncompartir con ustedes todo el conocimiento adquirido.\n\nQueremos remarcar que si están interesadxs en contribur a algún proyecto\nmencionado con anterioridad o cualquier otro proyecto open source o de sostware\nlibre se pueden acercar al LIDSOL. **¡¡¡Aquí podemos ayudarles!!!**\n",
+      "es": "\nEl equipo de LIDSOL tuvo la oportunidad de ser parte de la Cumbre de\nContribuidores de Open Source Software (CCOSS) que se llevó acabo en\nGuadalajara, Jalisco el 14 a 15 de Septiembre. En esta entrada\nqueremos contarles las vivencias, experiencias, aprendizajes, dimes y diretes.\n\n## ¿Qué es el COSS?\n\nEl CCOSS es un evento que se enfoca en resolver el problema de las\ncontribuciones a proyectos open source. A pesar de que el uso de open source es\n[basto en América\nLatina](https://hipertextual.com/2015/04/politicas-de-software-libre-en-latinoamerica),\nlas contribuciones son mínimas. Para ello, se han dado a la tarea de juntar\na una gran cantidad de comunidades de open source y\nsoftware libre que se encuentran alrededor del país.\n\nEntre los organizadores se encuentra gente de *[Software\nGuru](https://sg.com.mx/)*, *Google*,\n*Wizeland*, *Helix Re* y el *[Laboratorio de Software Libre de\nZacatecas](https://cozcyt.gob.mx/labsol/)*. Con lo anterior, ya nos damos una\nidea de lo grande que fue el evento. Hubo un\nambiente enriquecedor para el desarrollo del open source y el software libre\nen México. Notamos gustosos la presencia de muches estudiantes universitaries\ninteresados en el tema y eso nos parece fabuloso.\n\n![Firefox](/blog-images/ccoss/firefox.jpg)\n\nEn LIDSOL creemos que una parte fundamental del ecosistema son las\ncomunidades y la sangre joven siempre le viene bien al medio. Sobre todo,\ncuando existe un rezago importante en el desarrollo de tecnologías con dichas\nideologías en toda América Latina.\n\nComo se mencionó, el evento constó de dos días. El primero fue enteramente\ndedicado a charlas por parte de personas que contribuyen activamente a\nproyectos de los cuales rescatamos la presencia de Federíco Mena (Cofundador\ndel projecto GNOME), Andréa Gómez (Go y Cloud developer), Jacóbo Najera (May\nFirst Movement Technology) y Alejandro Calleja (Red Hat) por mencionar algunos.\n\n## Presencia de LIDSOL en el CCOSS\n\nAsistimos a diversas charlas donde se tocaban temas de suma importancia como\nla diferencia entre open source y software libre, los proyectos que se llevan\na cabo en diversas instituciones, [la red Tor en América\nLatina](https://www.youtube.com/watch?v=EHp-BNL7UnE), la economía del open\nsource, desarrollo de robots inteligentes con ROS y AWS y\nel estado del open source en América Latína. Además, Gunnar Wolf habló del\nlaboratorio en las charlas inaugurales donde hablamos brevemente de los\nproyectos que estamos desarrollando.\n\nPor ejemplo, el proyecto sobre mecanismos de privacidad y anonimato, el avance\nen la gestión del capítulo de la ACM en la UNAM, pasantes que elaboran su tesis\nen el laboratorio y los talleres pasado y futuros que los integrantes de LIDSOL\nhan impartido.\n\n![Lidsol](/blog-images/ccoss/lidsol-ccoss.jpg)\n\nFuimos parte del evento con la intención de conocer cual era el estado del\nactual en temas de contribución, convivir gente que quisiera colaborar\ny sobre todo a aprender cosas nuevas. Por ello fuimos participes de varios\ntalleres impartidos. Los talleres mencionados son CPython, Tensorflow, Firefox\ny GNOME.\n\nPor otra parte, tuvimos la oportunidad de extender la agenda del primer día\nabriendo un panel de privacidad y anonimato. En este, expusimos la importancia\nde la privacidad, funcionamiento de la red TOR y consejos generales para una\nvida digital más saludable.\n\n![Emilio](/blog-images/ccoss/lidsol-1.jpg)\n\n## ¿Qué aprendimos?\n\nAcudimos a los talleres del segundo día en donde nos orientaron para poder\nrealizar contribuciones a diferentes proyectos de software y, sobre todo, nos\nayudaron a superar el miedo a subir nuestro primer\n*[pull request](https://help.github.com/en/articles/about-pull-requests)*.\nDebido a que el público estaba compuesto por estudiantes, académicos y gente de\ndiversas industrias en la mayoría de los talleres se vieron con conceptos\nelementales, como el uso de terminal, [GitHub](https://github.com/), para\nobtener los proyectos, y [git](https://git-scm.com/) para poder contribuir como\nse hace actualmente.\n\nA continuación compartimos un vistazo general del taller de `CPython` que fue\nuno de los que pudimos tomar. Además, dejamos la lista de los talleres a los\nque asistimos como laboratorio. Si quieres profundizar en alguna herramienta\npuedes acercarte a nosotrxs.\n\n### Lista de talleres\n\n* GNOME\n* Firefox\n* Tensorflow\n\n\n### CPython\n\n![CPython](/blog-images/ccoss/cpython.png)\n\nEl taller comenzó con unos cuantos prerequisitos desde el día anterior. Los\norganizadores recomendaron obtener el código fuente de `CPython` que se\nencuentra oficialmente en un\n[repositorio de github](https://github.com/python/cpython). Para poder bajarlo\nse requieren conocimientos básicos de la herramienta\n[git](https://git-scm.com/). Avanzando y ya con el código fuente dimos\nun vistazo a la estructura de carpetas que compone el proyecto y posteriormente\npasamos a compilar el fuente para crear nuestro propio ejecutable.\n\nNos orientaron para saber cual es camino más amigable para comenzar a\ncontribuir en el código fuente de `CPython`. También se comentó que no es necesario\nser desarrolladora para poder contribur. Siempre hay `issues` relacionados con\ndocumentación, localización (traducción) y de diversos tópicos que no necesariamente\nrequieren de un perfil técnico.\n\nPor último, vimos diferentes tipos de necesidades para el proyecto en su [página\nde contribución](https://bugs.python.org/) para posteriormente realizar alguna\nmodificación al código fuente y mandar nuestro *pull request :D*\n\n\n## Conclusiones\n\nSin duda hemos adquirido una experiencia enriquecedora en este evento dada la\ndiversidad de visiones, contextos y personas con las que nos pudimos relacionar.\nPara el laboratorio fue una gran oportunidad de compartir con la comunidad del\nCCOSS el trabajo que realizamos y, por otra parte, es importante para nosotrxs\ncompartir con ustedes todo el conocimiento adquirido.\n\nQueremos remarcar que si están interesadxs en contribur a algún proyecto\nmencionado con anterioridad o cualquier otro proyecto open source o de sostware\nlibre se pueden acercar al LIDSOL. **¡¡¡Aquí podemos ayudarles!!!**\n",
       "en": "\nThe LIDSOL team had the opportunity to be part of the Open Source Software Contributors Summit (CCOSS), which took place in Guadalajara, Jalisco from September 14 to 15. In this post, we want to share our experiences, insights, lessons learned, and behind-the-scenes moments.\n\n## What is CCOSS?\n\nCCOSS is an event focused on addressing the issue of contributions to open source projects. Even though the use of open source is\n[widespread in Latin America](https://hipertextual.com/2015/04/politicas-de-software-libre-en-latinoamerica),\nactual contributions remain minimal. To tackle this, the organizers brought together a large number of open source and free software communities from across the country.\n\nAmong the organizers were people from *[Software Guru](https://sg.com.mx/)*, *Google*,\n*Wizeline*, *Helix Re*, and the *[Free Software Laboratory of Zacatecas](https://cozcyt.gob.mx/labsol/)*. From this alone, we could tell how significant the event was. There was an enriching atmosphere for the development of open source and free software in Mexico. We were especially glad to see many university students interested in the topic, which we find wonderful.\n\n![Firefox](/blog-images/ccoss/firefox.jpg)\n\nAt LIDSOL, we believe that communities are a fundamental part of the ecosystem, and young blood is always beneficial. Especially considering the significant lag in the development of technologies aligned with these ideologies throughout Latin America.\n\nAs mentioned, the event lasted two days. The first day was entirely dedicated to talks by people who actively contribute to projects. We highlight the presence of Federico Mena (Co-founder of the GNOME project), Andréa Gómez (Go and Cloud developer), Jacobo Najera (May First Movement Technology), and Alejandro Calleja (Red Hat), among others.\n\n## LIDSOL’s Presence at CCOSS\n\nWe attended various talks covering highly relevant topics such as the difference between open source and free software, projects being developed in different institutions, [the Tor network in Latin America](https://www.youtube.com/watch?v=EHp-BNL7UnE), the open source economy, intelligent robot development with ROS and AWS, and the state of open source in Latin America. Additionally, Gunnar Wolf spoke about the laboratory during the opening talks, where we briefly discussed the projects we are developing.\n\nFor example, the project on privacy and anonymity mechanisms, progress in managing the ACM chapter at UNAM, interns working on their theses in the lab, and past and future workshops delivered by LIDSOL members.\n\n![Lidsol](/blog-images/ccoss/lidsol-ccoss.jpg)\n\nWe attended the event with the intention of understanding the current state of contributions, meeting people interested in collaborating, and above all, learning new things. For that reason, we participated in several workshops, including CPython, TensorFlow, Firefox, and GNOME.\n\nOn the other hand, we had the opportunity to extend the first day’s agenda by hosting a privacy and anonymity panel. In it, we discussed the importance of privacy, how the TOR network works, and general advice for a healthier digital life.\n\n![Emilio](/blog-images/ccoss/lidsol-1.jpg)\n\n## What Did We Learn?\n\nWe attended the second day’s workshops, where we were guided on how to contribute to different software projects and, above all, helped overcome the fear of submitting our first\n*[pull request](https://help.github.com/en/articles/about-pull-requests)*.\nSince the audience included students, academics, and professionals from various industries, most workshops covered fundamental concepts such as using the terminal, [GitHub](https://github.com/) to obtain projects, and [git](https://git-scm.com/) to contribute in the current standard way.\n\nBelow we share a general overview of the `CPython` workshop, which was one of the ones we attended. We also include the list of workshops we joined as a lab. If you would like to dive deeper into any of these tools, feel free to reach out to us.\n\n### Workshop List\n\n* GNOME\n* Firefox\n* TensorFlow\n\n\n### CPython\n\n![CPython](/blog-images/ccoss/cpython.png)\n\nThe workshop began with a few prerequisites from the previous day. The organizers recommended obtaining the `CPython` source code, which is officially hosted in a\n[GitHub repository](https://github.com/python/cpython). Downloading it requires basic knowledge of the\n[git](https://git-scm.com/) tool. Once we had the source code, we explored the project’s folder structure and then proceeded to compile the source to create our own executable.\n\nWe were guided on the most beginner-friendly path to start contributing to the `CPython` source code. It was also mentioned that you do not need to be a developer to contribute. There are always `issues` related to documentation, localization (translation), and other topics that do not necessarily require a technical profile.\n\nFinally, we reviewed different project needs on its [contribution page](https://bugs.python.org/), made some modifications to the source code, and submitted our *pull request :D*\n\n\n## Conclusions\n\nWithout a doubt, we gained a very enriching experience at this event thanks to the diversity of perspectives, contexts, and people we were able to engage with. For the lab, it was a great opportunity to share our work with the CCOSS community and, at the same time, important for us to share with you all the knowledge we acquired.\n\nWe want to emphasize that if you are interested in contributing to any of the projects mentioned above—or to any other open source or free software project—you can reach out to LIDSOL. **We’re here to help you!!!**\n"
     }
   },
@@ -448,16 +412,12 @@ export const blogPosts = [
       "en": "umoqnier"
     },
     "date": {
-      "es": "18 de Febrero, 2026",
-      "en": "18 de Febrero, 2026"
+      "es": "NaN/NaN/NaN",
+      "en": "NaN/NaN/NaN"
     },
     "readTime": {
       "es": "5 min",
       "en": "5 min"
-    },
-    "category": {
-      "es": "General",
-      "en": "General"
     },
     "image": "/blog-images/pos-using-crf/featured.jpg",
     "tags": {

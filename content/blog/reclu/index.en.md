@@ -5,8 +5,8 @@ summary: Join the Free Software Research and Development Laboratory 🚀
 
 # Page metadata.
 title: LIDSOL UNAM Recruitment
-date: "2025-02-03T10:00:00Z"
-lastmod: "2025-02-03T14:59:00Z"
+date: "2025/02/03"
+lastmod: "2025-02-03"
 draft: false
 toc: true
 type: docs

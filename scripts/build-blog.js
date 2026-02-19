@@ -126,8 +126,10 @@ function parseFrontmatter(content) {
 
 function formatDate(dateStr) {
   const date = new Date(dateStr);
-  const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-  return `${date.getDate()} de ${months[date.getMonth()]}, ${date.getFullYear()}`;
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}/${month}/${day}`;
 }
 
 function getPostFiles(dir) {
@@ -292,7 +294,6 @@ function buildBlogPosts() {
       author: {},
       date: {},
       readTime: {},
-      category: {},
       image: '',
       tags: { es: [], en: [] },
       content: {}
@@ -309,9 +310,8 @@ function buildBlogPosts() {
       postData.title[lang] = getPostTitleFromMetadata(metadata, lang);
       postData.excerpt[lang] = getPostFieldFromMetadata(metadata, 'excerpt', lang) || getPostFieldFromMetadata(metadata, 'summary', lang);
       postData.author[lang] = getPostFieldFromMetadata(metadata, 'author', lang, 'LIDSOL');
-      postData.date[lang] = getPostFieldFromMetadata(metadata, 'date', lang);
+      postData.date[lang] = formatDate(getPostFieldFromMetadata(metadata, 'date', lang));
       postData.readTime[lang] = getPostFieldFromMetadata(metadata, 'readTime', lang, '5 min');
-      postData.category[lang] = getPostFieldFromMetadata(metadata, 'category', lang) || 'General';
       postData.content[lang] = content;
       
       if (metadata.tags && Array.isArray(metadata.tags)) {
@@ -323,9 +323,8 @@ function buildBlogPosts() {
       postData.title.en = postData.title.es;
       postData.excerpt.en = postData.excerpt.es;
       postData.author.en = postData.author.es;
-      postData.date.en = postData.date.es;
+      postData.date.en = formatDate(postData.date.es);
       postData.readTime.en = postData.readTime.es;
-      postData.category.en = postData.category.es;
       postData.content.en = postData.content.es;
     }
     
