@@ -1,4 +1,10 @@
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "./ui/card";
 import { Badge } from "./ui/badge";
 import { User, ArrowRight, Calendar, Clock } from "lucide-react";
 import { Button } from "./ui/button";
@@ -17,7 +23,7 @@ export function Blog({ onPostClick }: BlogProps) {
     title: { en: "Blog", es: "Blog" },
     subtitle: {
       en: "Articles, tutorials and news about free software, security and open technology",
-      es: "Artículos, tutoriales y noticias sobre software libre, seguridad y tecnología abierta"
+      es: "Artículos, tutoriales y noticias sobre software libre, seguridad y tecnología abierta",
     },
     readMore: { en: "Read more", es: "Leer más" },
     backToBlog: { en: "Back to Blog", es: "Volver al Blog" },
@@ -27,12 +33,12 @@ export function Blog({ onPostClick }: BlogProps) {
 
   const getLocalizedPost = (post: typeof blogPosts[0]) => ({
     ...post,
-    title: post.title[language] || post.title.es || '',
-    excerpt: post.excerpt[language] || post.excerpt.es || '',
-    author: post.author[language] || post.author.es || '',
-    date: post.date[language] || post.date.es || '',
-    readTime: post.readTime[language] || post.readTime.es || '',
-    content: post.content[language] || post.content.es || '',
+    title: post.title[language] || post.title.es || "",
+    excerpt: post.excerpt[language] || post.excerpt.es || "",
+    author: post.author[language] || post.author.es || "",
+    date: post.date[language] || post.date.es || "",
+    readTime: post.readTime[language] || post.readTime.es || "",
+    content: post.content[language] || post.content.es || "",
     tags: post.tags[language] || post.tags.es || [],
   });
 
@@ -41,7 +47,9 @@ export function Blog({ onPostClick }: BlogProps) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center space-y-4 mb-16">
-          <h1 className="text-5xl sm:text-6xl">{t.title[language]}</h1>
+          <h1 className="text-5xl sm:text-6xl">
+            {t.title[language]}
+          </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             {t.subtitle[language]}
           </p>
@@ -51,60 +59,84 @@ export function Blog({ onPostClick }: BlogProps) {
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {blogPosts.map((post) => {
             const localizedPost = getLocalizedPost(post);
+
             return (
-            <Card
-              key={post.id}
-              className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group border-border/60 cursor-pointer"
-              onClick={() => onPostClick(post.id)}
-            >
-              <div className="aspect-video relative overflow-hidden">
-                {post.image ? (
-                <ImageWithFallback
-                  src={post.image}
-                  alt={localizedPost.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                ) : (
-                <div className="w-full h-full bg-muted flex items-center justify-center">
-                  <span className="text-muted-foreground">{t.noImage[language]}</span>
+              <Card
+                key={post.id}
+                className="flex flex-col overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group border-border/60 cursor-pointer"
+                onClick={() => onPostClick(post.id)}
+              >
+                {/* Image */}
+                <div className="aspect-video relative overflow-hidden">
+                  {post.image ? (
+                    <ImageWithFallback
+                      src={post.image}
+                      alt={localizedPost.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-muted flex items-center justify-center">
+                      <span className="text-muted-foreground">
+                        {t.noImage[language]}
+                      </span>
+                    </div>
+                  )}
                 </div>
-                )}
-              </div>
-              <CardHeader className="pt-3 pb-2">
-                <CardTitle className="text-xl leading-snug tracking-tight group-hover:text-primary transition-colors">
-                  {localizedPost.title}
-                </CardTitle>
-                <CardDescription className="mt-1">{localizedPost.excerpt}</CardDescription>
-              </CardHeader>
-              <CardContent>
 
+                {/* Header */}
+                <CardHeader className="pt-3 pb-2">
+                  <CardTitle className="text-xl leading-snug tracking-tight group-hover:text-primary transition-colors">
+                    {localizedPost.title}
+                  </CardTitle>
+                  <CardDescription className="mt-1">
+                    {localizedPost.excerpt}
+                  </CardDescription>
+                </CardHeader>
 
-            <div className="flex flex-wrap items-center gap-6 mb-4 text-sm text-muted-foreground">
-              {/* Author */}
-              <div className="flex items-center gap-2">
-                <User className="h-4 w-4" />
-                <span>{localizedPost.author}</span>
-              </div>
+                {/* Content */}
+                <CardContent className="flex flex-col flex-1">
+                  {/* Meta */}
+                  <div className="flex flex-wrap items-center gap-6 mb-4 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <User className="h-4 w-4" />
+                      <span>{localizedPost.author}</span>
+                    </div>
 
-              {/* Date */}
-              <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                <span>{localizedPost.date}</span>
-              </div>
+                    <div className="flex items-center gap-2">
+                      <Calendar className="h-4 w-4" />
+                      <span>{localizedPost.date}</span>
+                    </div>
 
-              {/* Read Time */}
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>{localizedPost.readTime}</span>
-              </div>
-            </div>
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-4 w-4" />
+                      <span>{localizedPost.readTime}</span>
+                    </div>
+                  </div>
 
-                <Button variant="ghost" className="w-full gap-2 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  {t.readMore[language]} <ArrowRight className="h-4 w-4" />
-                </Button>
-              </CardContent>
-            </Card>
-          );
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {localizedPost.tags.map((tag) => (
+                      <Badge
+                        key={tag}
+                        variant="outline"
+                        className="text-xs"
+                      >
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  {/* Button */}
+                  <Button
+                    variant="ghost"
+                    className="mt-auto w-full gap-2 group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                  >
+                    {t.readMore[language]}
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </CardContent>
+              </Card>
+            );
           })}
         </div>
 
