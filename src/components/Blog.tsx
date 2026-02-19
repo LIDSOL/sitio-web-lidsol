@@ -1,9 +1,6 @@
 import {
   Card,
   CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
 } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { User, ArrowRight, Calendar, Clock } from "lucide-react";
@@ -83,18 +80,18 @@ export function Blog({ onPostClick }: BlogProps) {
                   )}
                 </div>
 
-                {/* Header */}
-                <CardHeader className="pt-3 pb-2">
-                  <CardTitle className="text-xl leading-snug tracking-tight group-hover:text-primary transition-colors">
-                    {localizedPost.title}
-                  </CardTitle>
-                  <CardDescription className="mt-1">
-                    {localizedPost.excerpt}
-                  </CardDescription>
-                </CardHeader>
-
                 {/* Content */}
-                <CardContent className="flex flex-col flex-1">
+                <CardContent className="flex flex-col flex-1 pt-3">
+                  {/* Title */}
+                  <h3 className="text-xl leading-snug tracking-tight group-hover:text-primary transition-colors mb-2">
+                    {localizedPost.title}
+                  </h3>
+
+                  {/* Excerpt */}
+                  <p className="text-muted-foreground text-sm mt-1 mb-4">
+                    {localizedPost.excerpt}
+                  </p>
+
                   {/* Meta */}
                   <div className="flex flex-wrap items-center gap-6 mb-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2">
@@ -114,11 +111,11 @@ export function Blog({ onPostClick }: BlogProps) {
                   </div>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="hidden lg:flex flex-wrap gap-2 mb-4">
                     {localizedPost.tags.map((tag) => (
                       <Badge
                         key={tag}
-                        variant="outline"
+                        variant="secondary"
                         className="text-xs"
                       >
                         {tag}
@@ -126,10 +123,12 @@ export function Blog({ onPostClick }: BlogProps) {
                     ))}
                   </div>
 
+                  <div className="flex-1" />
+
                   {/* Button */}
                   <Button
                     variant="ghost"
-                    className="mt-auto w-full gap-2 group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                    className="w-full gap-2 group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
                   >
                     {t.readMore[language]}
                     <ArrowRight className="h-4 w-4" />
