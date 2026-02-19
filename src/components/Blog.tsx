@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { User, ArrowRight } from "lucide-react";
+import { User, ArrowRight, Calendar, Clock } from "lucide-react";
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { blogPosts } from "../data/blogPosts";
@@ -70,28 +70,35 @@ export function Blog({ onPostClick }: BlogProps) {
                 </div>
                 )}
               </div>
-              <CardHeader className="pb-2">
-                <CardTitle className="group-hover:text-primary transition-colors">
+              <CardHeader className="pt-3 pb-2">
+                <CardTitle className="text-xl leading-snug tracking-tight group-hover:text-primary transition-colors">
                   {localizedPost.title}
                 </CardTitle>
                 <CardDescription className="mt-1">{localizedPost.excerpt}</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mb-3">
-                  <div className="flex items-center gap-1">
-                    <User className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm text-muted-foreground">{localizedPost.author}</span>
-                  </div>
-                  <span className="text-muted-foreground">•</span>
-                  <span className="text-sm text-muted-foreground">{localizedPost.date}</span>
-                  <span className="text-muted-foreground">•</span>
-                  <span className="text-sm text-muted-foreground">{localizedPost.readTime}</span>
-                </div>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {localizedPost.tags.map((tag) => (
-                    <Badge key={tag} variant="outline">{tag}</Badge>
-                  ))}
-                </div>
+
+
+            <div className="flex flex-wrap items-center gap-6 mb-4 text-sm text-muted-foreground">
+              {/* Author */}
+              <div className="flex items-center gap-2">
+                <User className="h-4 w-4" />
+                <span>{localizedPost.author}</span>
+              </div>
+
+              {/* Date */}
+              <div className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                <span>{localizedPost.date}</span>
+              </div>
+
+              {/* Read Time */}
+              <div className="flex items-center gap-2">
+                <Clock className="h-4 w-4" />
+                <span>{localizedPost.readTime}</span>
+              </div>
+            </div>
+
                 <Button variant="ghost" className="w-full gap-2 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                   {t.readMore[language]} <ArrowRight className="h-4 w-4" />
                 </Button>
