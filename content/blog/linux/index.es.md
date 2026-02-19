@@ -1,12 +1,12 @@
 ---
 title: Historia sobre linux
-subtitle: 
+subtitle:
 summary: El sistema operativo de software libre
 authors: ["orfer"]
 tags: ["Software Libre,  Linux,  Unix,  Richard Stallman,  GNU"]
 categories: []
-date: 2024-08-13T12:53:44-05:00
-lastmod: 2020-08-15T12:53:44-05:00
+date: 2024/08/13
+lastmod: 2020-08-15
 featured: false
 draft: false
 image:
@@ -20,7 +20,7 @@ projects: []
 
 Hola, Bienvenidos a la capsula del dia.
 
-En esta recordaremos el pasado de Linux y como revoluciono la tecnologia en mas de un aspecto. 
+En esta recordaremos el pasado de Linux y como revoluciono la tecnologia en mas de un aspecto.
 
 ![Capsule1](capsuleOfTheDay_1.png)
 
@@ -29,7 +29,7 @@ En esta recordaremos el pasado de Linux y como revoluciono la tecnologia en mas 
 
 ### 1969 - Surgimiendo de Unix
 
-Hace unos ayeres, en el estado de New Jersey casa de los paseos maritimos en Atlantic City,pretzels blandos y helados de agua. En los Laboratios Bell se encontraba Ken Thompson, quien estaba involucrado en el desarrollo de un sistema operativo llamado Multics. 
+Hace unos ayeres, en el estado de New Jersey casa de los paseos maritimos en Atlantic City,pretzels blandos y helados de agua. En los Laboratios Bell se encontraba Ken Thompson, quien estaba involucrado en el desarrollo de un sistema operativo llamado Multics.
 
 Multics (Multiplexed Information and Computing Service) fue uno de los PRIMEROS sistemas operativos, el cual fue concebido como producto comercial de General Electrics, y aunque no tuvo un gran exito al implementar un unico nivel de almacenamiento para el acceso de datos, fue escencial para generar nuevas ideas.
 

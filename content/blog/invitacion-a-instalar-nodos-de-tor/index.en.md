@@ -2,8 +2,8 @@
 authors:
 - emilio1625
 - telior
-date: '2020-06-06T11:22:06-05:00'
-lastmod: '2020-06-06T11:22:06-05:00'
+date: '2020/06/06'
+lastmod: '2020-06-06'
 summary: TELMEX has unblocked access to Tor directory authorities. We encourage everyone to install a Tor node.
 tags:
 - tor

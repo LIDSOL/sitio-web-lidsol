@@ -5,8 +5,8 @@ summary: A journey through the world of free software from the perspective of a 
 authors: ['barrionomia']
 tags: ["Free Software, Linux, Sysadmin, FLOSS, Automation, Infrastructure, Engineering"]
 categories: []
-date: 2024-10-24T12:53:44-05:00
-lastmod: 2024-10-24T12:53:44-05:00
+date: 2024/10/24
+lastmod: 2024-10-24
 featured: false
 draft: false
 image:

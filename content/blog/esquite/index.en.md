@@ -12,8 +12,8 @@ tags:
   - "free software"
   - "indigenous languages"
 categories: []
-date: 2020-07-13T12:53:44-05:00
-lastmod: 2020-07-13T12:53:44-05:00
+date: 2020-07-13
+lastmod: 2020-07-13
 featured: false
 draft: false
 image:

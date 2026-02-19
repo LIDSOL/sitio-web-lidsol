@@ -2,8 +2,8 @@
 authors:
 - emilio1625
 - telior
-date: '2020-06-06T11:22:06-05:00'
-lastmod: '2020-06-06T11:22:06-05:00'
+date: '2020/06/06'
+lastmod: '2020-06-06'
 summary: TELMEX ha desbloqueado a las autoridades directorio de la red
   Tor. Animamos a todas las personas a instalar un nodo de Tor.
 tags:

@@ -6,8 +6,8 @@ summary: "This is how LIDSOL experienced the Open Source Software Contributors S
 authors: [umoqnier]
 tags: [community, open source, events, ccoss]
 categories: []
-date: 2019-09-21T22:06:25-05:00
-lastmod: 2019-09-21T22:06:25-05:00
+date: 2019/09/21
+lastmod: 2019-09-21
 featured: false
 draft: false
 

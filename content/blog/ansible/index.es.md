@@ -5,8 +5,8 @@ summary: Ansible es una herramienta que permite automatizar la configuración de
 authors: ["quique"]
 tags: ["Software Libre,  Linux,  Sysadmin,  Ansible, Automatización, Infraestructura"]
 categories: []
-date: 2024-09-14T12:53:44-05:00
-lastmod: 2024-09-14T12:53:44-05:00
+date: 2024/09/14
+lastmod: 2024-09-14
 featured: false
 draft: false
 image:

@@ -4,8 +4,8 @@ summary: "ROS es asombroso, por desgracia solo se distribuye para Debian :c "
 authors: ['emilio1625']
 tags: ['ROS', 'hardware', 'debian', 'proot']
 categories: []
-date: 2019-12-22T13:42:27-06:00
-lastmod: 2019-12-22T13:42:27-06:00
+date: 2019/12/22
+lastmod: 2019-12-22
 featured: false
 draft: false
 

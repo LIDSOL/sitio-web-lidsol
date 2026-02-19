@@ -2,13 +2,13 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Memorias del CCOSS"
-summary: "Así fue como LIDSOL vivió la Cumbre de Contribuidores de 
+summary: "Así fue como LIDSOL vivió la Cumbre de Contribuidores de
 Open Source Software en su primera edición"
 authors: [umoqnier]
 tags: [comunidad, open source, eventos, ccoss]
 categories: []
-date: 2019-09-21T22:06:25-05:00
-lastmod: 2019-09-21T22:06:25-05:00
+date: 2019/09/21
+lastmod: 2019-09-21
 featured: false
 draft: false
 
@@ -33,9 +33,9 @@ Contribuidores de Open Source Software (CCOSS) que se llevó acabo en
 Guadalajara, Jalisco el 14 a 15 de Septiembre. En esta entrada
 queremos contarles las vivencias, experiencias, aprendizajes, dimes y diretes.
 
-## ¿Qué es el COSS? 
+## ¿Qué es el COSS?
 
-El CCOSS es un evento que se enfoca en resolver el problema de las 
+El CCOSS es un evento que se enfoca en resolver el problema de las
 contribuciones a proyectos open source. A pesar de que el uso de open source es
 [basto en América
 Latina](https://hipertextual.com/2015/04/politicas-de-software-libre-en-latinoamerica),
@@ -60,7 +60,7 @@ cuando existe un rezago importante en el desarrollo de tecnologías con dichas
 ideologías en toda América Latina.
 
 Como se mencionó, el evento constó de dos días. El primero fue enteramente
-dedicado a charlas por parte de personas que contribuyen activamente a 
+dedicado a charlas por parte de personas que contribuyen activamente a
 proyectos de los cuales rescatamos la presencia de Federíco Mena (Cofundador
 del projecto GNOME), Andréa Gómez (Go y Cloud developer), Jacóbo Najera (May
 First Movement Technology) y Alejandro Calleja (Red Hat) por mencionar algunos.
@@ -74,7 +74,7 @@ Latina](https://www.youtube.com/watch?v=EHp-BNL7UnE), la economía del open
 source, desarrollo de robots inteligentes con ROS y AWS y
 el estado del open source en América Latína. Además, Gunnar Wolf habló del
 laboratorio en las charlas inaugurales donde hablamos brevemente de los
-proyectos que estamos desarrollando. 
+proyectos que estamos desarrollando.
 
 Por ejemplo, el proyecto sobre mecanismos de privacidad y anonimato, el avance
 en la gestión del capítulo de la ACM en la UNAM, pasantes que elaboran su tesis
@@ -92,7 +92,7 @@ y GNOME.
 Por otra parte, tuvimos la oportunidad de extender la agenda del primer día
 abriendo un panel de privacidad y anonimato. En este, expusimos la importancia
 de la privacidad, funcionamiento de la red TOR y consejos generales para una
-vida digital más saludable. 
+vida digital más saludable.
 
 ![Emilio](lidsol-1.jpg)
 
@@ -131,7 +131,7 @@ encuentra oficialmente en un
 se requieren conocimientos básicos de la herramienta
 [git](https://git-scm.com/). Avanzando y ya con el código fuente dimos
 un vistazo a la estructura de carpetas que compone el proyecto y posteriormente
-pasamos a compilar el fuente para crear nuestro propio ejecutable. 
+pasamos a compilar el fuente para crear nuestro propio ejecutable.
 
 Nos orientaron para saber cual es camino más amigable para comenzar a
 contribuir en el código fuente de `CPython`. También se comentó que no es necesario
@@ -147,7 +147,7 @@ modificación al código fuente y mandar nuestro *pull request :D*
 ## Conclusiones
 
 Sin duda hemos adquirido una experiencia enriquecedora en este evento dada la
-diversidad de visiones, contextos y personas con las que nos pudimos relacionar. 
+diversidad de visiones, contextos y personas con las que nos pudimos relacionar.
 Para el laboratorio fue una gran oportunidad de compartir con la comunidad del
 CCOSS el trabajo que realizamos y, por otra parte, es importante para nosotrxs
 compartir con ustedes todo el conocimiento adquirido.
