@@ -69,14 +69,7 @@ DEADLINE: <2026-02-12 Thu>
 **** IN-PROGRESS Blog
 DEADLINE: <2026-02-19 Thu>
 - [X] Hacer que el Blog y el BlogDetail soporten el multi-idioma
-- [ ] Hay una _tag_, *general*, que se muestra tanto en el Blog como en BlogDetail, esta no respeta el multi-idioma. Mejorar esto, para que funcionen correctamente los tags (tomados desde los archivos de markdown)
-- Notas
-  - El sitio usa LenguajeProvider con un hook y useLanguage() que retorna language ( "en" | "es" ).
-  - Los datos tienen campos tipo: { en: string; es: string }
-  - Los componentes usan const { language } = useLanguage() y se acceden con courses[0].title[language]
-    - Para implementar el soporte multi-idioma:
-      - Se modificará el directorio de cada post para contener versiones por idioma, un archivo por cada idioma (en este caso solo inglés-español, por ejemplo: index.es.md, index.en.md).
-      - Se modificará el[[file:scripts/build-blog.js][ script]] que genera el[[file:src/data/blogPosts.ts][ archito ts]] con que usan los compontes que genran el blog. Deben detectar los archivos con sufijos .es.md o en.md y generar la estructura tipo json adecuada.
+- [X] Hay una _tag_, *general*, que se muestra tanto en el Blog como en BlogDetail, esta no respeta el multi-idioma. Mejorar esto, para que funcionen correctamente los tags (tomados desde los archivos de markdown)
 ***** NEXT Blog
 - [ ] Hacer que el título esté alienado a la izquierda, y no centrado.
 - [ ] Implementar el sort (como en proyectos).
@@ -104,6 +97,12 @@ Se usarán archivos de markdown para el blog, cada [[file:content/][subdirectori
 
 Se elige este directorio por:
 El archivo src/data/blogPosts.ts se sigue usando, este genera los componentes [[file:src/components/Blog.tsx][Blog.tsx]] y [[file:src/components/BlogPost.tsx][BlogPost.tsx]]. Para no editarlo manualmente se añadió un [[file:scripts/build-blog.js][script]]  que genera automáticamente el contenido desde [[file:content/blog/][el directorio content/blog]]
+  - El sitio usa LenguajeProvider con un hook y useLanguage() que retorna language ( "en" | "es" ).
+  - Los datos tienen campos tipo: { en: string; es: string }
+  - Los componentes usan const { language } = useLanguage() y se acceden con courses[0].title[language]
+    - Para implementar el soporte multi-idioma:
+      - Se modificará el directorio de cada post para contener versiones por idioma, un archivo por cada idioma (en este caso solo inglés-español, por ejemplo: index.es.md, index.en.md).
+      - Se modificará el[[file:scripts/build-blog.js][ script]] que genera el[[file:src/data/blogPosts.ts][ archito ts]] con que usan los compontes que genran el blog. Deben detectar los archivos con sufijos .es.md o en.md y generar la estructura tipo json adecuada.
 **** TODO Events y EventDetail
 DEADLINE: <2026-02-23 Mon>
 ***** Implementar una función de calendario

@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { Calendar, User, Clock, ArrowRight } from "lucide-react";
+import { User, Clock, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { blogPosts } from "../data/blogPosts";
@@ -19,7 +19,6 @@ export function Blog({ onPostClick }: BlogProps) {
       en: "Articles, tutorials and news about free software, security and open technology",
       es: "Artículos, tutoriales y noticias sobre software libre, seguridad y tecnología abierta"
     },
-    featured: { en: "Featured", es: "Destacado" },
     readMore: { en: "Read more", es: "Leer más" },
     backToBlog: { en: "Back to Blog", es: "Volver al Blog" },
     noImage: { en: "No image", es: "Sin imagen" },
@@ -49,65 +48,9 @@ export function Blog({ onPostClick }: BlogProps) {
           </p>
         </div>
 
-        {/* Featured Post */}
-        {blogPosts.length > 0 && (
-        <Card
-          className="mb-12 overflow-hidden hover:shadow-lg transition-all duration-300 border-border/60 cursor-pointer"
-          onClick={() => onPostClick(blogPosts[0].id)}
-        >
-          <div className="grid md:grid-cols-2 gap-0">
-            <div className="aspect-video md:aspect-auto relative overflow-hidden">
-              {blogPosts[0].image ? (
-              <ImageWithFallback
-                src={blogPosts[0].image}
-                alt={getLocalizedPost(blogPosts[0]).title}
-                className="w-full h-full object-cover"
-              />
-              ) : (
-              <div className="w-full h-full bg-muted flex items-center justify-center">
-                <span className="text-muted-foreground">{t.noImage[language]}</span>
-              </div>
-              )}
-              <Badge className="absolute top-4 left-4 shadow-lg">{t.featured[language]}</Badge>
-            </div>
-            <div className="p-8 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <Badge variant="secondary">{getLocalizedPost(blogPosts[0]).category}</Badge>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-4 w-4" />
-                      {getLocalizedPost(blogPosts[0]).date}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
-                      {getLocalizedPost(blogPosts[0]).readTime}
-                    </div>
-                  </div>
-                </div>
-                <h2 className="text-3xl mb-4">{getLocalizedPost(blogPosts[0]).title}</h2>
-                <p className="text-muted-foreground mb-6">{getLocalizedPost(blogPosts[0]).excerpt}</p>
-                <div className="flex items-center gap-2 mb-6">
-                  <User className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-sm text-muted-foreground">{getLocalizedPost(blogPosts[0]).author}</span>
-                </div>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {getLocalizedPost(blogPosts[0]).tags.map((tag) => (
-                    <Badge key={tag} variant="outline">{tag}</Badge>
-                  ))}
-                </div>
-              </div>
-              <Button className="w-fit gap-2">
-                {t.readMore[language]} <ArrowRight className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-        </Card>
-        )}
-
         {/* Blog Posts Grid */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {blogPosts.slice(1).map((post) => {
+          {blogPosts.map((post) => {
             const localizedPost = getLocalizedPost(post);
             return (
             <Card
