@@ -48,24 +48,27 @@
             "recharts": "^2.15.2",
             "rehype-highlight": "^7.0.2",
             "remark-gfm": "^4.0.1",
+            "sharp": "^0.34.5",
             "sonner": "^2.0.3",
+            "svgo": "^4.0.0",
             "tailwind-merge": "*",
             "vaul": "^1.1.2"
       },
       "devDependencies": {
             "@types/node": "^20.10.0",
             "@vitejs/plugin-react-swc": "^3.10.2",
-            "vite": "^6.4.1"
+            "vite": "^6.4.1",
+            "vite-plugin-image-optimizer": "^2.0.3"
       },
-"scripts": {
-        "dev": "vite",
-        "build": "node scripts/build-blog.js && vite build",
-        "build:staging": "vite build --mode staging",
-        "preview": "vite preview --host",
-        "security:audit": "npm audit && npm audit fix",
-        "security:check": "npm ls --depth=0",
-        "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-        "type-check": "tsc --noEmit",
-        "build:blog": "node scripts/build-blog.js"
+      "scripts": {
+            "dev": "vite",
+            "build": "node scripts/build-blog.js && vite build",
+            "build:staging": "vite build --mode staging",
+            "preview": "vite preview --host",
+            "security:audit": "npm audit && npm audit fix",
+            "security:check": "npm ls --depth=0",
+            "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+            "type-check": "tsc --noEmit",
+            "build:blog": "node scripts/build-blog.js"
       }
 }

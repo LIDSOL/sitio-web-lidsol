@@ -66,9 +66,9 @@ DEADLINE: <2026-02-12 Thu>
     - src/components/ProjectDetail.tsx: Actualizado para usar project.tags[language]
     - src/components/FeaturedProjects.tsx: Actualizado para usar project.tags?.[language]
   - [X] Verificar el estado de los proyectos (para que el ícono sea el adecuado)
-**** IN-PROGRESS Blog y BlogDetail [0%]
+**** IN-PROGRESS Blog y BlogDetail [50%]
 DEADLINE: <2026-02-20 Fri>
-- [-] Blog [71%]
+- [X] Blog [100%]
   - [X] Hacer que el Blog y el BlogDetail soporten el multi-idioma
   - [X] Hay una _Tag_, *general*, que se muestra tanto en el Blog como en BlogDetail, esta no respeta el multi-idioma. Mejorar esto, para que funcionen correctamente los tags (tomados desde los archivos de markdown)
   - [X] Mejoras en la responsividad
@@ -77,19 +77,19 @@ DEADLINE: <2026-02-20 Fri>
     - [X] Aumentar el espacio del título cuando hay salto de línea.
     - [X] Cuando se ve en pantalla pequeña, sería mejor que la descripción o los tags se oculten.
   - [X] El botón de "leer más" está más arriba o abajo dependiendo de la cantidad de tags y de la longitud del título del post, esto hacer que se vea muy irregular. Pasaba algo simiar con las tarjetas de miembros, tal vez puedas apoyarte de ese código para solucionarlo.
-  - [-] Mejoras visuales
+  - [X] Mejoras visuales
     - [X] Cambiar el bg en el boton readMore
     - [X] Cambiar el bg en los tags
-    - [ ] Añadir la misma animación que tiene la sección de proyectos
-    - [ ] Hacer las tarjetas más pequeñas
+    - [X] Añadir la misma animación que tiene la sección de proyectos
+    - [X] Hacer las tarjetas más pequeñas
   - [X] Hay un botón hasta la parte inferior "Cargar más artículos" que no tiene funcionalidad. Podría ser bueno limitar la cantidad de post que se muestran y darle uso, o bien, retirarlo y que quede como un scroll con todo el contenido sin más.
+- [ ] BlogDetail [0%]
+  - [ ] Sería bueno reducir la calidad de algunas de las imágenes, pues son muy pesadas y provocan que el sitio tarde en cargar, o en su defecto, hacer que se cargue una  versión reducida en el Blog y en BlogDetail, pero en este último, al dar click en la imágen, verla en tamaño completo a modo de galería. Hacer lazy loading
   - [ ] Mejorar los meta-datos del sitio
     - [ ] Corrección al formato de fechas
     - [ ] Tiempo de lectura
-- [ ] BlogDetail [0%]
-  - [ ] Sería bueno reducir la calidad de algunas de las imágenes, pues son muy pesadas y provocan que el sitio tarde en cargar, o en su defecto, hacer que se cargue una  versión reducida en el Blog y en BlogDetail, pero en este último, al dar click en la imágen, verla en tamaño completo a modo de galería.
-  - [ ] Que el BlogDetail enlace al perfil del miembro del lab que escribió el articulo
-  - [ ] Añadir imágenes de portada a los post que no tienen.
+    - [ ] Añadir imágenes de portada a los post que no tienen.
+    - [ ] Que el BlogDetail enlace al perfil del miembro del lab que escribió el articulo
   - [ ] Añadir formateo matemático...
   - [ ] Cambiar el color del botón de "volver al blog".
   - [ ] Cambiar el color de los tags a secondary.

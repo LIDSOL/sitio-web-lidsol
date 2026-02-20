@@ -9,7 +9,6 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { blogPosts } from "../data/blogPosts";
 import { useLanguage } from "./LanguageProvider";
 import { useState } from "react";
-import { motion } from "framer-motion";
 
 interface BlogProps {
   onPostClick: (postId: number) => void;
@@ -63,20 +62,13 @@ export function Blog({ onPostClick }: BlogProps) {
 
         {/* Blog Posts Grid */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {visiblePostsList.map((post, index) => {
+          {visiblePostsList.map((post) => {
             const localizedPost = getLocalizedPost(post);
 
             return (
-              <motion.div
+              <Card
                 key={post.id}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.02 }}
-                className="h-full"
-              >
-                <Card
-                className="flex flex-col overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group border-border/60 cursor-pointer h-full"
+                className="flex flex-col overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group border-border/60 cursor-pointer"
                 onClick={() => onPostClick(post.id)}
               >
                 {/* Image */}
@@ -86,6 +78,8 @@ export function Blog({ onPostClick }: BlogProps) {
                       src={post.image}
                       alt={localizedPost.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                      decoding="async"
                     />
                   ) : (
                     <div className="w-full h-full bg-muted flex items-center justify-center">
@@ -151,7 +145,6 @@ export function Blog({ onPostClick }: BlogProps) {
                   </Button>
                 </CardContent>
               </Card>
-              </motion.div>
             );
           })}
         </div>
