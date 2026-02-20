@@ -87,6 +87,8 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
             src={post.image}
             alt={title}
             className="w-full h-full object-cover"
+            loading="eager"
+            decoding="async"
           />
         </div>
         )}
@@ -99,7 +101,7 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
               p: ({children}) => <p className="text-foreground mb-6 leading-relaxed text-lg">{children}</p>,
               img: ({src, alt}) => (
                 <figure className="my-8">
-                  <img src={src} alt={alt} className="rounded-lg w-full" />
+                  <img src={src} alt={alt} className="rounded-lg w-full" loading="lazy" decoding="async" />
                   {alt && <figcaption className="text-center text-muted-foreground mt-2 text-sm">{alt}</figcaption>}
                 </figure>
               ),
