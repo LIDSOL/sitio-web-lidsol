@@ -5,6 +5,8 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { useLanguage } from "./LanguageProvider";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 interface BlogPostContent {
   id: number;
@@ -75,7 +77,7 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
 
           <div className="flex flex-wrap gap-2">
             {tags.map((tag) => (
-              <Badge key={tag} variant="outline">{tag}</Badge>
+              <Badge key={tag} variant="secondary">{tag}</Badge>
             ))}
           </div>
         </div>
@@ -113,10 +115,64 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
               ul: ({children}) => <ul className="list-disc pl-6 mb-6 space-y-2">{children}</ul>,
               ol: ({children}) => <ol className="list-decimal pl-6 mb-6 space-y-2">{children}</ol>,
               li: ({children}) => <li className="text-muted-foreground">{children}</li>,
-              pre: ({children}) => <pre className="bg-muted p-4 rounded-lg overflow-x-auto mb-6">{children}</pre>,
+              pre: ({children}) => {
+                const codeChild = children as React.ReactElement;
+                const className = codeChild?.props?.className || '';
+                const match = /language-(\w+)/.exec(className);
+                const language = match ? match[1] : '';
+                
+                if (language) {
+                  const codeContent = codeChild?.props?.children || '';
+                  return (
+                    <SyntaxHighlighter
+                      style={materialDark}
+                      language={language}
+                      showLineNumbers={true}
+                      customStyle={{
+                        borderRadius: '1rem',
+                        border: '1px solid hsl(var(--border) / 0.5)',
+                        padding: '1.5rem',
+                        marginBottom: '1.5rem',
+                        fontSize: '1rem',
+                      }}
+                      codeTagProps={{
+                        style: {
+                          fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+                        }
+                      }}
+                    >
+                      {String(codeContent).replace(/\n$/, '')}
+                    </SyntaxHighlighter>
+                  );
+                }
+                return <pre className="bg-muted p-4 rounded-lg overflow-x-auto mb-6">{children}</pre>;
+              },
               code: ({className, children}) => {
                 const match = /language-(\w+)/.exec(className || '');
-                return !match ? <code className="bg-muted px-1 py-0.5 rounded text-sm">{children}</code> : <code className={className}>{children}</code>;
+                const language = match ? match[1] : '';
+                return !match ? (
+                  <code className="bg-muted px-1 py-0.5 rounded text-sm">{children}</code>
+                ) : (
+                  <SyntaxHighlighter
+                    style={materialDark}
+                    language={language}
+                    showLineNumbers={true}
+                    customStyle={{
+                      borderRadius: '1rem',
+                      border: '1px solid hsl(var(--border) / 0.5)',
+                      padding: '1.5rem',
+                      marginBottom: '1.5rem',
+                      fontSize: '1rem',
+                    }}
+                    codeTagProps={{
+                      style: {
+                        fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+                      }
+                    }}
+                  >
+                    {String(children).replace(/\n$/, '')}
+                  </SyntaxHighlighter>
+                );
               },
               blockquote: ({children}) => <blockquote className="border-l-4 border-primary pl-4 italic my-6 text-muted-foreground">{children}</blockquote>,
             }}
