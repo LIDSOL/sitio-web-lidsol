@@ -9,6 +9,7 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { blogPosts } from "../data/blogPosts";
 import { useLanguage } from "./LanguageProvider";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 interface BlogProps {
   onPostClick: (postId: number) => void;
@@ -62,13 +63,20 @@ export function Blog({ onPostClick }: BlogProps) {
 
         {/* Blog Posts Grid */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {visiblePostsList.map((post) => {
+          {visiblePostsList.map((post, index) => {
             const localizedPost = getLocalizedPost(post);
 
             return (
-              <Card
+              <motion.div
                 key={post.id}
-                className="flex flex-col overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group border-border/60 cursor-pointer"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.02 }}
+                className="h-full"
+              >
+                <Card
+                className="flex flex-col overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group border-border/60 cursor-pointer h-full"
                 onClick={() => onPostClick(post.id)}
               >
                 {/* Image */}
@@ -89,7 +97,7 @@ export function Blog({ onPostClick }: BlogProps) {
                 </div>
 
                 {/* Content */}
-                <CardContent className="flex flex-col flex-1 pt-3">
+                <CardContent className="flex flex-col flex-1 pt-2 px-4 pb-4">
                   {/* Title */}
                   <h3 className="text-xl leading-snug tracking-tight group-hover:text-primary transition-colors mb-2">
                     {localizedPost.title}
@@ -143,6 +151,7 @@ export function Blog({ onPostClick }: BlogProps) {
                   </Button>
                 </CardContent>
               </Card>
+              </motion.div>
             );
           })}
         </div>
