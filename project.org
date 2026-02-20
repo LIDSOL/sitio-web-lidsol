@@ -83,20 +83,23 @@ DEADLINE: <2026-02-20 Fri>
     - [X] Añadir la misma animación que tiene la sección de proyectos
     - [X] Hacer las tarjetas más pequeñas
   - [X] Hay un botón hasta la parte inferior "Cargar más artículos" que no tiene funcionalidad. Podría ser bueno limitar la cantidad de post que se muestran y darle uso, o bien, retirarlo y que quede como un scroll con todo el contenido sin más.
-- [ ] BlogDetail [0%]
+- [-] BlogDetail [0%]
   - [ ] Sería bueno reducir la calidad de algunas de las imágenes, pues son muy pesadas y provocan que el sitio tarde en cargar, o en su defecto, hacer que se cargue una  versión reducida en el Blog y en BlogDetail, pero en este último, al dar click en la imágen, verla en tamaño completo a modo de galería. Hacer lazy loading
   - [ ] Mejorar los meta-datos del sitio
     - [ ] Corrección al formato de fechas
     - [ ] Tiempo de lectura
     - [ ] Añadir imágenes de portada a los post que no tienen.
     - [ ] Que el BlogDetail enlace al perfil del miembro del lab que escribió el articulo
-  - [ ] Añadir formateo matemático...
-  - [ ] Cambiar el color del botón de "volver al blog".
-  - [ ] Cambiar el color de los tags a secondary.
-  - [ ] Hacer que el texto tenga justificación completa.
-  - [ ] Las imágenes deben tener bordes redondeados. Como la imagen de portada.
-  - [ ] Mejorar el aspecto de las tablas markdown
-  - [ ] Mejorar el aspecto de los bloques de código de markdown.
+  - [-] Mejora en la presentación del post [57%]
+    - [X] Hacer que el texto tenga justificación completa.
+      apliqué la misma solución que en ProjectDetail.tsx:- text-justify hyphens-auto en las clases, style={{textAlign: 'justify'}} inline
+    - [X] Las imágenes deben tener bordes redondeados. Como la imagen de portada.
+      El borde redondeado de las imágenes del markdown se cambió de rounded-lg a rounded-2xl, que es el mismo estilo que usa la imagen de portada. La intención es que el estilo sea "muy libadwaita".
+    - [X] Cambiar el color del botón de "volver al blog".
+    - [X] Cambiar el color de los tags a secondary.
+    - [ ] Mejorar el aspecto de las tablas markdown.
+    - [ ] Mejorar el aspecto de los bloques de código de markdown.
+    - [ ] Añadir formateo matemático...
 ***** Notas
 - Me doy cuanta que el los separadores de markdown no son correctamente soportados (---) en BlogDetail
 
