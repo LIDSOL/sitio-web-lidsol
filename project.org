@@ -77,10 +77,12 @@ DEADLINE: <2026-02-20 Fri>
     - [X] Aumentar el espacio del título cuando hay salto de línea.
     - [X] Cuando se ve en pantalla pequeña, sería mejor que la descripción o los tags se oculten.
   - [X] El botón de "leer más" está más arriba o abajo dependiendo de la cantidad de tags y de la longitud del título del post, esto hacer que se vea muy irregular. Pasaba algo simiar con las tarjetas de miembros, tal vez puedas apoyarte de ese código para solucionarlo.
-  - [X] Mejoras visuales
+  - [-] Mejoras visuales
     - [X] Cambiar el bg en el boton readMore
     - [X] Cambiar el bg en los tags
-  - [ ] Hay un botón hasta la parte inferior "Cargar más artículos" que no tiene funcionalidad. Podría ser bueno limitar la cantidad de post que se muestran y darle uso, o bien, retirarlo y que quede como un scroll con todo el contenido sin más.
+    - [ ] Añadir la misma animación que tiene la sección de proyectos
+    - [ ] Hacer las tarjetas más pequeñas
+  - [X] Hay un botón hasta la parte inferior "Cargar más artículos" que no tiene funcionalidad. Podría ser bueno limitar la cantidad de post que se muestran y darle uso, o bien, retirarlo y que quede como un scroll con todo el contenido sin más.
   - [ ] Hacer que el título esté alienado a la izquierda, y no centrado.
   - [ ] Implementar una función sort (como en la página de proyectos).
   - [ ] Mejorar los meta-datos del sitio
