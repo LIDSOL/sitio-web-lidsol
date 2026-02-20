@@ -46,7 +46,7 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         {/* Back Button */}
         <Button
-          variant="ghost"
+          variant="outline"
           className="mb-8 gap-2"
           onClick={onBack}
         >
@@ -94,14 +94,14 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
         )}
 
         {/* Content */}
-        <article className="prose prose-lg max-w-none">
+        <article className="prose prose-lg prose-justify max-w-none">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
-              p: ({children}) => <p className="text-foreground mb-6 leading-relaxed text-lg">{children}</p>,
+              p: ({children}) => <p className="text-foreground mb-6 leading-relaxed text-lg text-justify hyphens-auto" style={{textAlign: 'justify'}}>{children}</p>,
               img: ({src, alt}) => (
                 <figure className="my-8">
-                  <img src={src} alt={alt} className="rounded-lg w-full" loading="lazy" decoding="async" />
+                  <img src={src} alt={alt} className="rounded-2xl w-full" loading="lazy" decoding="async" />
                   {alt && <figcaption className="text-center text-muted-foreground mt-2 text-sm">{alt}</figcaption>}
                 </figure>
               ),
