@@ -8,13 +8,17 @@ import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { blogPosts } from "../data/blogPosts";
 import { useLanguage } from "./LanguageProvider";
+import { useState } from "react";
 
 interface BlogProps {
   onPostClick: (postId: number) => void;
 }
 
+const INITIAL_POSTS = 4;
+
 export function Blog({ onPostClick }: BlogProps) {
   const { language } = useLanguage();
+  const [visiblePosts, setVisiblePosts] = useState(INITIAL_POSTS);
 
   const t = {
     title: { en: "Blog", es: "Blog" },
@@ -26,6 +30,7 @@ export function Blog({ onPostClick }: BlogProps) {
     backToBlog: { en: "Back to Blog", es: "Volver al Blog" },
     noImage: { en: "No image", es: "Sin imagen" },
     loadMore: { en: "Load more articles", es: "Cargar más artículos" },
+    showLess: { en: "Show less", es: "Mostrar menos" },
   };
 
   const getLocalizedPost = (post: typeof blogPosts[0]) => ({
@@ -38,6 +43,9 @@ export function Blog({ onPostClick }: BlogProps) {
     content: post.content[language] || post.content.es || "",
     tags: post.tags[language] || post.tags.es || [],
   });
+
+  const visiblePostsList = blogPosts.slice(0, visiblePosts);
+  const hasMore = visiblePosts < blogPosts.length;
 
   return (
     <section id="blog" className="py-20 bg-background min-h-screen">
@@ -54,7 +62,7 @@ export function Blog({ onPostClick }: BlogProps) {
 
         {/* Blog Posts Grid */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {blogPosts.map((post) => {
+          {visiblePostsList.map((post) => {
             const localizedPost = getLocalizedPost(post);
 
             return (
@@ -140,11 +148,31 @@ export function Blog({ onPostClick }: BlogProps) {
         </div>
 
         {/* Load More Button */}
-        <div className="text-center">
-          <Button size="lg" variant="outline" className="gap-2">
-            {t.loadMore[language]}
-          </Button>
-        </div>
+        {hasMore && (
+          <div className="text-center">
+            <Button
+              size="lg"
+              variant="outline"
+              className="gap-2"
+              onClick={() => setVisiblePosts(blogPosts.length)}
+            >
+              {t.loadMore[language]}
+            </Button>
+          </div>
+        )}
+
+        {visiblePosts > INITIAL_POSTS && (
+          <div className="text-center mt-4">
+            <Button
+              size="lg"
+              variant="outline"
+              className="gap-2"
+              onClick={() => setVisiblePosts(INITIAL_POSTS)}
+            >
+              {t.showLess[language]}
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
