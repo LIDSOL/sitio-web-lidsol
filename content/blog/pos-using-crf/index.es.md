@@ -16,7 +16,7 @@ image:
 
 ### Etiquetado gramatical
 
-En lingüistica computacional el etiquetado gramatical o *Part of Speech (POS)* 
+En lingüistica computacional el etiquetado gramatical o *Part of Speech (POS)*
 se refiere al proceso de asignar a cada palabra de un texto su categoría
 gramatical. Para el correcto etiquetado se hace uso de la definición de la
 palabra y del contexto al que pertenece. La complejidad de esta tarea aumenta
@@ -119,6 +119,7 @@ for t in tagged_sentence[0]:
   print('{:>12} -> {:>5}'.format(t[0], t[1]))
 ```
 
+```
     Número de sentencias etiquetadas:  3914
     Total de palabras etiquetadas:  100676
     Vocabulario del Corpus:  12408
@@ -144,6 +145,7 @@ for t in tagged_sentence[0]:
             Nov. ->  NOUN
               29 ->   NUM
                . ->     .
+```
 
 ## Preprocesamiento de datos
 
