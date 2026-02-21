@@ -90,7 +90,7 @@ DEADLINE: <2026-02-20 Fri>
     - [ ] Tiempo de lectura
     - [ ] Añadir imágenes de portada a los post que no tienen.
     - [ ] Que el BlogDetail enlace al perfil del miembro del lab que escribió el articulo
-  - [-] Mejora en la presentación del post [62%]
+  - [-] Mejora en la presentación del post [75%]
     - [X] Hacer que el texto tenga justificación completa.
       apliqué la misma solución que en ProjectDetail.tsx:- text-justify hyphens-auto en las clases, style={{textAlign: 'justify'}} inline
     - [X] Las imágenes deben tener bordes redondeados. Como la imagen de portada.
@@ -98,8 +98,14 @@ DEADLINE: <2026-02-20 Fri>
     - [X] Cambiar el color del botón de "volver al blog".
     - [X] Cambiar el color de los tags a secondary.
     - [X] Mejorar el aspecto de los bloques de código de markdown
-      Encontré este "plugin" llamado, react-syntax-highlighter que puede ayudarme con el  formateo de sintaxis.
-    - [ ] Añadir formateo matemático...
+        Encontré este "plugin" llamado, react-syntax-highlighter que puede ayudarme con el  formateo de sintaxis.
+        Ahora el componente pre también maneja los fenced code blocks. Extrae el className del componente code hijo y lo usa para renderizar con SyntaxHighlighter.
+        El componente pre se modificó para que cuando no tenga lenguaje, aun así use SyntaxHighlighter pero sin especificar el lenguaje (o usando un lenguaje genérico como "text"). Se modifica el caso if (language) para que también maneje el caso sin lenguaje, mostrando el bloque con el mismo estilo pero sin highlighting específico.
+    - [X] Añadir formateo matemático
+        - Se instaló rehype-katex, remark-math y katex
+        - Se importaron los plugins y el CSS de KaTeX
+        - Se agregó remarkMath y rehypeKatex a ReactMarkdown
+        - Se agreguó el CSS de KaTeX desde CDN en el HTML.
     - [ ] Mejorar el aspecto de las tablas markdown.
     - [ ] {{% alert warning %}} ¿NANI KORE!
 ***** Notas

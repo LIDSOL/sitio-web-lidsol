@@ -4,6 +4,8 @@ import { Calendar, User, Clock, ArrowLeft } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import { useLanguage } from "./LanguageProvider";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -98,7 +100,8 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
         {/* Content */}
         <article className="prose prose-lg prose-justify max-w-none">
           <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
+            remarkPlugins={[remarkGfm, remarkMath]}
+            rehypePlugins={[rehypeKatex]}
             components={{
               p: ({children}) => <p className="text-foreground mb-6 leading-relaxed text-lg text-justify hyphens-auto" style={{textAlign: 'justify'}}>{children}</p>,
               img: ({src, alt}) => (
@@ -119,33 +122,30 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
                 const codeChild = children as React.ReactElement;
                 const className = codeChild?.props?.className || '';
                 const match = /language-(\w+)/.exec(className);
-                const language = match ? match[1] : '';
+                const language = match ? match[1] : 'text';
+                const codeContent = codeChild?.props?.children || '';
                 
-                if (language) {
-                  const codeContent = codeChild?.props?.children || '';
-                  return (
-                    <SyntaxHighlighter
-                      style={materialDark}
-                      language={language}
-                      showLineNumbers={true}
-                      customStyle={{
-                        borderRadius: '1rem',
-                        border: '1px solid hsl(var(--border) / 0.5)',
-                        padding: '1.5rem',
-                        marginBottom: '1.5rem',
-                        fontSize: '1rem',
-                      }}
-                      codeTagProps={{
-                        style: {
-                          fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
-                        }
-                      }}
-                    >
-                      {String(codeContent).replace(/\n$/, '')}
-                    </SyntaxHighlighter>
-                  );
-                }
-                return <pre className="bg-muted p-4 rounded-lg overflow-x-auto mb-6">{children}</pre>;
+                return (
+                  <SyntaxHighlighter
+                    style={materialDark}
+                    language={language}
+                    showLineNumbers={true}
+                    customStyle={{
+                      borderRadius: '1rem',
+                      border: '1px solid hsl(var(--border) / 0.5)',
+                      padding: '1.5rem',
+                      marginBottom: '1.5rem',
+                      fontSize: '1rem',
+                    }}
+                    codeTagProps={{
+                      style: {
+                        fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+                      }
+                    }}
+                  >
+                    {String(codeContent).replace(/\n$/, '')}
+                  </SyntaxHighlighter>
+                );
               },
               code: ({className, children}) => {
                 const match = /language-(\w+)/.exec(className || '');
