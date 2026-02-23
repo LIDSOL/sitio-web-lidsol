@@ -1,16 +1,16 @@
 ---
-authors:
-- emilio1625
-- telior
-date: '2020/06/06'
-lastmod: '2020-06-06'
-summary: TELMEX has unblocked access to Tor directory authorities. We encourage everyone to install a Tor node.
-tags:
-- tor
-- privacy
-- anonymity
-- pe102718
 title: Invitation to Install New Tor Nodes
+excerpt: TELMEX has unblocked access to Tor directory authorities. We encourage everyone to install a Tor node.
+authors:
+  - "emilio1625"
+  - "telior"
+date: "2020-06-06"
+readTime: "5 min"
+tags:
+  - "tor"
+  - "privacy"
+  - "anonymity"
+  - "pe102718"
 ---
 
 Over the past 4 years, TELMEX blocked access to the *directory authorities* of the Tor network[^1][^2], which prevented the creation of Tor nodes within TELMEX’s network.

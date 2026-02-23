@@ -1,21 +1,16 @@
 ---
 title: Ansible for a Better World
-subtitle: Automating systems and configurations with Ansible
-summary: Ansible is a tool that allows you to automate the configuration of systems and applications, making infrastructure management easier.
+excerpt: Ansible is a tool that allows you to automate the configuration of systems and applications, making infrastructure management easier.
 authors: ["quique"]
-tags: ["Free Software, Linux, Sysadmin, Ansible, Automation, Infrastructure"]
-categories: []
-date: 2024/09/14
-lastmod: 2024-09-14
-featured: false
-draft: false
-image:
-  caption: ""
-  focal_point: ""
-  preview_only: true
-
-projects: []
-
+date: "2024-09-14"
+readTime: "5 min"
+tags:
+  - "Free Software"
+  - "Linux"
+  - "Sysadmin"
+  - "Ansible"
+  - "Automation"
+  - "Infrastructure"
 ---
 
 Today I was thinking about what this post could be about. I wanted to share some technology that has truly helped me do the things I enjoy, something that, without even realizing it, became part of my workflow because of how good it is. That’s why today I want to talk to you about Ansible.

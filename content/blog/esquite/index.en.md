@@ -1,8 +1,9 @@
 ---
 title: Esquite
-subtitle: "A *framework* for managing parallel corpora"
-summary: We present the Esquite framework designed for people who want to manage a parallel corpus
+excerpt: We present the Esquite framework designed for people who want to manage a parallel corpus
 authors: ["umoqnier"]
+date: "2020-07-13"
+readTime: "5 min"
 tags:
   - "nlp"
   - "parallel corpus"
@@ -11,16 +12,6 @@ tags:
   - "python"
   - "free software"
   - "indigenous languages"
-categories: []
-date: 2020-07-13
-lastmod: 2020-07-13
-featured: false
-draft: false
-image:
-  caption: "Elotl Community logo"
-  focal_point: "Smart"
-  preview_only: true
-projects: []
 ---
 
 ## Elotl Community

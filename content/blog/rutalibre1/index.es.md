@@ -1,21 +1,17 @@
 ---
 title: Ruta Libre 1
-subtitle: Experiencias en el mundo de código libre desde un usuario no programador
-summary: Un recorrido por el mundo del software libre desde la perspectiva de un usuario no programador.
+excerpt: Un recorrido por el mundo del software libre desde la perspectiva de un usuario no programador.
 authors: ['barrionomia']
-tags: ["Software Libre,  Linux,  Sysadmin,  FLOSS, Automatización, Infraestructura, Ingenieria"]
-categories: []
-date: 2024/10/24
-lastmod: 2024-10-24
-featured: false
-draft: false
-image:
-  caption: "Explorando el mundo del software libre"
-  focal_point: ""
-  preview_only: true
-
-projects: []
-
+date: "2024-10-24"
+readTime: "10 min"
+tags:
+  - "Software Libre"
+  - "Linux"
+  - "Sysadmin"
+  - "FLOSS"
+  - "Automatización"
+  - "Infraestructura"
+  - "Ingenieria"
 ---
 ![Capsule1](2.png)
 

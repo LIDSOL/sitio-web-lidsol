@@ -1,21 +1,17 @@
 ---
 title: Free Route 1
-subtitle: Experiences in the world of open-source code from a non-programmer user
-summary: A journey through the world of free software from the perspective of a non-programmer user.
+excerpt: A journey through the world of free software from the perspective of a non-programmer user.
 authors: ['barrionomia']
-tags: ["Free Software, Linux, Sysadmin, FLOSS, Automation, Infrastructure, Engineering"]
-categories: []
-date: 2024/10/24
-lastmod: 2024-10-24
-featured: false
-draft: false
-image:
-  caption: "Exploring the world of free software"
-  focal_point: ""
-  preview_only: true
-
-projects: []
-
+date: "2024-10-24"
+readTime: "10 min"
+tags:
+  - "Free Software"
+  - "Linux"
+  - "Sysadmin"
+  - "FLOSS"
+  - "Automation"
+  - "Infrastructure"
+  - "Engineering"
 ---
 ![Capsule1](2.png)
 

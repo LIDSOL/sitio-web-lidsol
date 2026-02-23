@@ -1,30 +1,14 @@
 ---
-# Documentation: https://sourcethemes.com/academic/docs/managing-content/
-
 title: "CCOSS Memories"
-summary: "This is how LIDSOL experienced the Open Source Software Contributors Summit in its first edition"
+excerpt: "This is how LIDSOL experienced the Open Source Software Contributors Summit in its first edition"
 authors: [umoqnier]
-tags: [community, open source, events, ccoss]
-categories: []
-date: 2019/09/21
-lastmod: 2019-09-21
-featured: false
-draft: false
-
-# Featured image
-# To use, add an image named `featured.jpg/png` to your page's folder.
-# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
-image:
-  caption: "CCOSS 2019"
-  focal_point: ""
-  preview_only: false
-
-# Projects (optional).
-#   Associate this post with one or more of your projects.
-#   Simply enter your project's folder or file name without extension.
-#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
-#   Otherwise, set `projects = []`.
-projects: []
+date: "2019-09-21"
+readTime: "5 min"
+tags:
+  - "community"
+  - "open source"
+  - "events"
+  - "ccoss"
 ---
 
 The LIDSOL team had the opportunity to be part of the Open Source Software Contributors Summit (CCOSS), which took place in Guadalajara, Jalisco from September 14 to 15. In this post, we want to share our experiences, insights, lessons learned, and behind-the-scenes moments.

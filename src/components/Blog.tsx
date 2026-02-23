@@ -9,12 +9,13 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { blogPosts } from "../data/blogPosts";
 import { useLanguage } from "./LanguageProvider";
 import { useState } from "react";
+import { LatestBlogPost } from "./LatestBlogPost";
 
 interface BlogProps {
   onPostClick: (postId: number) => void;
 }
 
-const INITIAL_POSTS = 4;
+const INITIAL_POSTS = 2;
 
 export function Blog({ onPostClick }: BlogProps) {
   const { language } = useLanguage();
@@ -44,14 +45,27 @@ export function Blog({ onPostClick }: BlogProps) {
     tags: post.tags[language] || post.tags.es || [],
   });
 
-  const visiblePostsList = blogPosts.slice(0, visiblePosts);
-  const hasMore = visiblePosts < blogPosts.length;
+  const featuredPost = blogPosts[0];
+  const gridPosts = blogPosts.slice(1, 1 + visiblePosts);
+  const hasMore = blogPosts.length > 1 + visiblePosts;
+
+  const handleLoadMore = () => {
+    setVisiblePosts(blogPosts.length - 1);
+  };
+
+  const handleShowLess = () => {
+    setVisiblePosts(INITIAL_POSTS);
+  };
+
+  const handleViewPost = (postId: number) => {
+    onPostClick(postId);
+  };
 
   return (
     <section id="blog" className="py-20 bg-background min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center space-y-4 mb-16">
+        <div className="text-center space-y-4 mb-12 mt-8">
           <h1 className="text-5xl sm:text-6xl">
             {t.title[language]}
           </h1>
@@ -60,9 +74,16 @@ export function Blog({ onPostClick }: BlogProps) {
           </p>
         </div>
 
-        {/* Blog Posts Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {visiblePostsList.map((post) => {
+        {/* Featured Post */}
+        <LatestBlogPost
+          onViewPost={handleViewPost}
+          showHeader={false}
+          showViewAll={false}
+        />
+
+        {/* Blog Posts Grid - Next 2 posts after featured */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12 mt-8">
+          {gridPosts.map((post) => {
             const localizedPost = getLocalizedPost(post);
 
             return (
@@ -156,7 +177,7 @@ export function Blog({ onPostClick }: BlogProps) {
               size="lg"
               variant="outline"
               className="gap-2"
-              onClick={() => setVisiblePosts(blogPosts.length)}
+              onClick={handleLoadMore}
             >
               {t.loadMore[language]}
             </Button>
@@ -169,7 +190,7 @@ export function Blog({ onPostClick }: BlogProps) {
               size="lg"
               variant="outline"
               className="gap-2"
-              onClick={() => setVisiblePosts(INITIAL_POSTS)}
+              onClick={handleShowLess}
             >
               {t.showLess[language]}
             </Button>

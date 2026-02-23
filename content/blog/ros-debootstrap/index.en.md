@@ -1,23 +1,14 @@
 ---
 title: "Install ROS on Any Distro Using debootstrap and proot"
-summary: "ROS is awesome, unfortunately it is only distributed for Debian :c "
+excerpt: "ROS is awesome, unfortunately it is only distributed for Debian :c "
 authors: ['emilio1625']
-tags: ['ROS', 'hardware', 'debian', 'proot']
-categories: []
-date: 2019/12/22
-lastmod: 2019-12-22
-featured: false
-draft: false
-
-# Featured image
-# To use, add an image named `featured.jpg/png` to your page's folder.
-# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
-image:
-  caption: ""
-  focal_point: ""
-  preview_only: false
-
-projects: []
+date: "2019-12-22"
+readTime: "5 min"
+tags:
+  - "ROS"
+  - "hardware"
+  - "debian"
+  - "proot"
 ---
 
 ## Introduction

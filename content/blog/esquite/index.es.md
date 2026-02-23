@@ -1,8 +1,9 @@
 ---
 title: Esquite
-subtitle: "Un *framework* para administrar corpus paralelos"
-summary: Presentamos el framework Esquite pensado para personas que quieren administrar un corpus paralelo
+excerpt: Presentamos el framework Esquite pensado para personas que quieren administrar un corpus paralelo
 authors: ["umoqnier"]
+date: "2020-07-13"
+readTime: "5 min"
 tags:
   - "nlp"
   - "corpus paralelo"
@@ -11,16 +12,6 @@ tags:
   - "python"
   - "software libre"
   - "lenguas indigenas"
-categories: []
-date: 2020-07-13
-lastmod: 2020-07-13
-featured: false
-draft: false
-image:
-  caption: "Logo de comunidad Elotl"
-  focal_point: "Smart"
-  preview_only: true
-projects: []
 ---
 
 ## Comunidad Elotl

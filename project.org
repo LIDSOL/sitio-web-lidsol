@@ -1,4 +1,4 @@
-* PROJ [#A] Sitio web de LIDSoL
+* Organización del desarrollo
 ** DONE Prototipo de fima
 ** DONE Planeación de desarrollo
 ** IN-PROGRESS Desarrollo
@@ -83,14 +83,15 @@ DEADLINE: <2026-02-20 Fri>
     - [X] Añadir la misma animación que tiene la sección de proyectos
     - [X] Hacer las tarjetas más pequeñas
   - [X] Hay un botón hasta la parte inferior "Cargar más artículos" que no tiene funcionalidad. Podría ser bueno limitar la cantidad de post que se muestran y darle uso, o bien, retirarlo y que quede como un scroll con todo el contenido sin más.
-- [-] BlogDetail [0%]
-  - [ ] Sería bueno reducir la calidad de algunas de las imágenes, pues son muy pesadas y provocan que el sitio tarde en cargar, o en su defecto, hacer que se cargue una  versión reducida en el Blog y en BlogDetail, pero en este último, al dar click en la imágen, verla en tamaño completo a modo de galería. Hacer lazy loading
-  - [ ] Mejorar los meta-datos del sitio
-    - [ ] Corrección al formato de fechas
-    - [ ] Tiempo de lectura
-    - [ ] Añadir imágenes de portada a los post que no tienen.
+- [-] BlogDetail [33%]
+  - [X] Sería bueno reducir la calidad de algunas de las imágenes, pues son muy pesadas y provocan que el sitio tarde en cargar, o en su defecto, hacer que se cargue una  versión reducida en el Blog y en BlogDetail, pero en este último, al dar click en la imágen, verla en tamaño completo a modo de galería. Hacer lazy loading
+  - [-] Mejorar los meta-datos del sitio [40%]
+    - [X] Eliminar los metadatos no necesarios de los .md
+    - [X] Corrección al formato de fechas
     - [ ] Que el BlogDetail enlace al perfil del miembro del lab que escribió el articulo
-  - [-] Mejora en la presentación del post [75%]
+    - [ ] Tiempo de lectura
+    - [ ] Añadir imágenes de portada a los post que no tienen. Mejorar aquellas que chocan con la estética del sitio.
+  - [-] Mejora en la presentación del post [66%]
     - [X] Hacer que el texto tenga justificación completa.
       apliqué la misma solución que en ProjectDetail.tsx:- text-justify hyphens-auto en las clases, style={{textAlign: 'justify'}} inline
     - [X] Las imágenes deben tener bordes redondeados. Como la imagen de portada.
@@ -102,11 +103,12 @@ DEADLINE: <2026-02-20 Fri>
         Ahora el componente pre también maneja los fenced code blocks. Extrae el className del componente code hijo y lo usa para renderizar con SyntaxHighlighter.
         El componente pre se modificó para que cuando no tenga lenguaje, aun así use SyntaxHighlighter pero sin especificar el lenguaje (o usando un lenguaje genérico como "text"). Se modifica el caso if (language) para que también maneje el caso sin lenguaje, mostrando el bloque con el mismo estilo pero sin highlighting específico.
     - [X] Añadir formateo matemático
-        - Se instaló rehype-katex, remark-math y katex
-        - Se importaron los plugins y el CSS de KaTeX
-        - Se agregó remarkMath y rehypeKatex a ReactMarkdown
-        - Se agreguó el CSS de KaTeX desde CDN en el HTML.
+      - Se instaló rehype-katex, remark-math y katex
+      - Se importaron los plugins y el CSS de KaTeX
+      - Se agregó remarkMath y rehypeKatex a ReactMarkdown
+      - Se agreguó el CSS de KaTeX desde CDN en el HTML.
     - [ ] Mejorar el aspecto de las tablas markdown.
+    - [ ] Mejorar las imágenes de portada
     - [ ] {{% alert warning %}} ¿NANI KORE!
 ***** Notas
 - Me doy cuanta que el los separadores de markdown no son correctamente soportados (---) en BlogDetail
@@ -141,7 +143,10 @@ DEADLINE: <2026-02-28 Sat>
 - ¿Qué hacer con la parte de licencias?
 **** IN-PROGRESS Home
 DEADLINE: <2026-03-03 Tue>
-***** FeaturedProjects
+***** DONE LatestBlogPost
+- [X] Título
+- [X] Botón de ver más post.
+***** IN-PROGRESS FeaturedProjects
 - [ ] 2.2.2 Mejorar la sección de projects del home
   - [ ] Quitar la opción de "ver más" o mejorarla.
   - [ ] Mejorar la responsibidad
@@ -149,7 +154,6 @@ DEADLINE: <2026-03-03 Tue>
 ***** NEXT Community
 ***** Hero
 ***** Values
-***** LatestBlogPost
 ***** LatestCourse
 ***** LatestEvent
 *** Documentar
@@ -167,3 +171,222 @@ Hay un problema con las tarjetas de "Último curso, Último post de blog" en dis
 **** Auditoría de ciberseguridad
 ** Deploy Final
 DEADLINE: <2026-03-09 Mon>
+* Arquitectura
+
+** Stack Tecnológico
+
+El sitio web de LIDSoL está construido sobre una arquitectura moderna de aplicaciones web de una sola página (SPA) utilizando las siguientes tecnologías principales:
+
+- *Framework frontend*: React 18.3.1 con TypeScript para tipado estático
+- *Build tool*: Vite 6.4.1 para desarrollo rápido y construcción optimizada
+- *Estilos*: Tailwind CSS 4.x con plugin @tailwindcss/typography para contenido markdown
+- *Componentes UI*: Radix UI (suite completa de primitivas accesibles) + shadcn/ui pattern
+- *Iconos*: Lucide React
+- *Markdown*: react-markdown con remark-gfm, remark-math, rehype-katex, react-syntax-highlighter
+- *Gráficos*: Recharts para visualizaciones de datos
+- *Formularios*: React Hook Form
+- *Animaciones*: Motion (anteriormente Framer Motion)
+- *Procesamiento de imágenes*: Sharp + vite-plugin-image-optimizer
+- *SVG*: SVGO para optimización
+
+** Estructura del Proyecto
+
+#+BEGIN_SRC
+sitio-web-lidsol/
+├── src/
+│   ├── components/
+│   │   ├── ui/                    # Componentes UI reutilizables (Radix-based)
+│   │   │   ├── button.tsx
+│   │   │   ├── card.tsx
+│   │   │   ├── dialog.tsx
+│   │   │   ├── dropdown-menu.tsx
+│   │   │   ├── navigation-menu.tsx
+│   │   │   ├── tabs.tsx
+│   │   │   ├── tooltip.tsx
+│   │   │   ├── carousel.tsx
+│   │   │   ├── chart.tsx
+│   │   │   └── [50+ componentes UI]
+│   │   ├── Header.tsx             # Navegación principal
+│   │   ├── Footer.tsx             # Pie de página
+│   │   ├── Hero.tsx               # Sección hero de homepage
+│   │   ├── Values.tsx             # Valores institucionales
+│   │   ├── Community.tsx          # Sección comunidad
+│   │   ├── FeaturedProjects.tsx   # Proyectos destacados
+│   │   ├── Blog.tsx              # Listado de artículos
+│   │   ├── BlogPost.tsx          # Vista individual de artículo
+│   │   ├── Projects.tsx          # Catálogo de proyectos
+│   │   ├── ProjectDetail.tsx     # Detalle de proyecto
+│   │   ├── About.tsx             # Página nosotros
+│   │   ├── AboutMember.tsx       # Perfil de miembro
+│   │   ├── Events.tsx            # Calendario de eventos
+│   │   ├── EventDetail.tsx       # Detalle de evento
+│   │   ├── Courses.tsx           # Catálogo de cursos
+│   │   ├── CourseDetail.tsx      # Detalle de curso
+│   │   ├── Publications.tsx      # Publicaciones académicas
+│   │   ├── LanguageSelector.tsx  # Selector de idioma
+│   │   ├── ThemeProvider.tsx     # Provider de temas
+│   │   ├── LanguageProvider.tsx   # Provider de i18n
+│   │   ├── CursorEffect.tsx      # Efecto visual cursor
+│   │   └── Timeline.tsx          # Componente timeline
+│   ├── data/                      # Datos estáticos tipados
+│   │   ├── projects.ts           # Catálogo de proyectos
+│   │   ├── members.ts            # Miembros del laboratorio
+│   │   ├── events.ts             # Eventos/cursos/talleres
+│   │   ├── courses.ts            # Cursos disponibles
+│   │   └── blogPosts.ts         # Artículos del blog (generado)
+│   ├── styles/
+│   │   └── globals.css           # Estilos globales
+│   ├── main.tsx                  # Entry point
+│   └── App.tsx                   # Componente raíz + routing
+├── content/
+│   └── blog/                     # Artículos en Markdown
+│       └── [slug]/
+│           ├── index.es.md        # Versión española
+│           ├── index.en.md        # Versión inglesa
+│           └── featured.png       # Imagen de portada
+├── scripts/
+│   └── build-blog.js             # Generador de blogPosts.ts desde markdown
+├── public/                       # Assets estáticos
+├── build/                        # Output de producción
+├── vite.config.ts                # Configuración de Vite
+├── tailwind.config.js            # Configuración de Tailwind
+├── package.json                  # Dependencias y scripts
+├── Containerfile                 # Definición de contenedor Docker
+└── .gitlab-ci.yml               # Pipeline CI/CD (Hugo legacy)
+#+END_SRC
+
+** Arquitectura de Componentes
+
+*** Patrón de Routing
+El proyecto utiliza un sistema de *hash-based routing* implementado manualmente en =App.tsx= sin necesidad de libraries como React Router. El estado =currentView= determina qué componente renderizar basado en el hash de la URL:
+
+- =#home= - Homepage
+- =#blog= / =#blog/:id= - Blog y artículos
+- =#projects= / =#projects/:id= - Proyectos
+- =#about= / =#about/member/:id= - Nosotros y miembros
+- =#events= / =#events/:id= - Eventos
+- =#courses= / =#courses/:id= - Cursos
+- =#publications= - Publicaciones
+- =#contact= - Scroll al footer
+
+*** Providers de Estado
+- *ThemeProvider*: Integración con =next-themes= para soporte de temas oscuro/claro. Persiste la preferencia en localStorage.
+- *LanguageProvider*: Implementación custom de i18n con soporte para =es= y =en=. Provee =useLanguage()= hook y contexto para todos los componentes.
+
+*** Arquitectura de Datos
+Los datos están almacenados como objetos TypeScript en =src/data/= con interfaces tipadas:
+
+- *Projects*: Arreglo de objetos Project con soporte multiidioma en todos los campos de texto
+- *Members*: Miembros categorizados (academic, student, formerStudents) con información de contacto
+- *Events/Courses*: Eventos con fechas, descripciones y metadatos
+- *BlogPosts*: Generado dinámicamente desde archivos Markdown
+
+** Sistema de Blog con Markdown
+
+El sistema de blog utiliza un pipeline de build custom:
+
+1. *Contenido*: Archivos Markdown en =content/blog/[slug]/= con frontmatter YAML
+2. *Generación*: =scripts/build-blog.js= parsea directorios y genera =src/data/blogPosts.ts=
+3. *Multilenguaje*: Detecta archivos =index.es.md= e =index.en.md= para cada post
+4. *Imágenes*: Copia automáticamente imágenes del directorio del post a =public/blog-images/[slug]/=
+5. *Renderizado*: ReactMarkdown con plugins para:
+   - GFM (GitHub Flavored Markdown)
+   - Math (KaTeX para fórmulas)
+   - Syntax highlighting (react-syntax-highlighter)
+   - Custom image handling
+
+** Pipeline de Build
+
+*** Build Script (=npm run build=)
+#+BEGIN_SRC bash
+node scripts/build-blog.js && vite build
+#+END_SRC
+
+1. Ejecuta =build-blog.js= para generar =blogPosts.ts=
+2. Vite compila el proyecto a =build/=
+3. Optimiza imágenes con =vite-plugin-image-optimizer=
+4. Code splitting: chunks separados para =vendor= (react, react-dom) y =ui= (lucide, recharts)
+5. Minificación con esbuild
+6. Sourcemaps deshabilitados en producción (seguridad)
+
+*** Contenedor Docker
+=Containerfile= usa multi-stage build:
+
+1. *Stage builder*: Node 20 Alpine, instala dependencias, ejecuta build
+2. *Stage runtime*: Nginx Alpine sirve archivos estáticos desde =build/=
+3. Configuración custom de Nginx en =container/nginx.conf=
+
+** Seguridad
+
+*** Headers HTTP
+Vite configura headers de seguridad en modo desarrollo:
+- =X-Content-Type-Options: nosniff=
+- =X-Frame-Options: DENY=
+- =X-XSS-Protection: 1; mode=block=
+
+*** Protección en Build
+- Sourcemaps deshabilitados en producción
+- Dependencias auditadas con =npm audit=
+- Aliasing de packages en Vite para evitar conflictos de versiones
+
+** Configuración de Vite
+
+=vite.config.ts= incluye:
+- Plugin React SWC para fast refresh
+- Image optimizer con calidad 80% para PNG, JPEG, WebP, AVIF
+- Alias =@= pointing to =./src=
+- Code splitting manual (vendor, ui)
+- Servidor en puerto 3000 con headers de seguridad
+
+** Características Visuales
+
+- *CursorEffect*: Efecto de brillo que sigue al cursor implementado en =CursorEffect.tsx=
+- *Diseño*: Inspirado en libadwaita (bordes redondeados, colores específicos)
+- *Responsividad*: Mobile-first con Tailwind
+- *Transiciones*: Animaciones con Motion library
+- *Tipografía*: Tailwind typography plugin para contenido markdown
+
+** Futuras Mejoras Arquitecturales
+
+- Actualizar .gitlab-ci.yml para construir con Vite y desplegar contenedor
+- Implementar Service Worker para PWA/offline
+- Agregar tests unitarios y de integración
+- Migrar datos estáticos a CMS headless o base de datos
+- Implementar SEO con meta tags dinámicos
+- Agregar analytics y tracking
+
+** Dependencias UI
+
+El proyecto usa una suite comprehensiva de componentes Radix UI:
+- @radix-ui/react-accordion
+- @radix-ui/react-dialog
+- @radix-ui/react-dropdown-menu
+- @radix-ui/react-navigation-menu
+- @radix-ui/react-popover
+- @radix-ui/react-select
+- @radix-ui/react-tabs
+- @radix-ui/react-tooltip
+- @radix-ui/react-switch
+- @radix-ui/react-slider
+- @radix-ui/react-checkbox
+- @radix-ui/react-radio-group
+- Y 20+ más
+
+Adicionalmente:
+- embla-carousel-react (carousel)
+- cmdk (command palette)
+- input-otp (one-time password)
+- react-day-picker (date picker)
+- react-resizable-panels
+- vaul (drawer)
+- sonner (toast notifications)
+
+** Deployment
+
+*** Estado Actual
+- Build output en =build/=
+- Servido estáticamente via Nginx
+- Docker container definido pero no integrado con CI/CD
+
+*** GitLab CI
+El archivo =.gitlab-ci.yml= está configurado para Hugo (legacy), necesita actualización para el stack actual de Vite/React.

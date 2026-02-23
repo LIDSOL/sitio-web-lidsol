@@ -1,20 +1,18 @@
 ---
 title: "Vagrant"
-summary: "Vagrant: meta manager of virtual machines and containers"
+excerpt: "Vagrant: meta manager of virtual machines and containers"
 authors: [tonejito]
-tags: [open source, blog, post, vagrant, virtual machine, virtualbox, linux, macos]
-categories: []
-date: 2021/07/23
-lastmod: 2019-07-23
-featured: false
-draft: false
-
-image:
-  caption: "Vagrant"
-  focal_point: ""
-  preview_only: false
-
-projects: []
+date: "2021-07-23"
+readTime: "5 min"
+tags:
+  - "open source"
+  - "blog"
+  - "post"
+  - "vagrant"
+  - "virtual machine"
+  - "virtualbox"
+  - "linux"
+  - "macos"
 ---
 
 The network configuration provided by Vagrant is not transparent and may take new users by surprise.
