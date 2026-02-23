@@ -5,6 +5,14 @@ export function CursorEffect() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const isTouchDevice = () => {
+      return "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    };
+
+    if (isTouchDevice()) {
+      return;
+    }
+
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
       setIsVisible(true);
@@ -14,24 +22,33 @@ export function CursorEffect() {
       setIsVisible(false);
     };
 
+    const handleMouseEnter = () => {
+      setIsVisible(true);
+    };
+
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("mouseenter", handleMouseEnter);
 
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("mouseenter", handleMouseEnter);
     };
   }, []);
+
+  if (!isVisible) {
+    return null;
+  }
 
   return (
     <>
       {/* Main cursor glow effect */}
       <div
-        className="fixed pointer-events-none z-50 transition-opacity duration-300"
+        className="fixed pointer-events-none z-50"
         style={{
           left: `${mousePosition.x}px`,
           top: `${mousePosition.y}px`,
-          opacity: isVisible ? 1 : 0,
         }}
       >
         {/* Outer glow */}

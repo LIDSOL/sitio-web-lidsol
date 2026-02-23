@@ -1,31 +1,14 @@
 ---
-# Documentation: https://sourcethemes.com/academic/docs/managing-content/
-
 title: "Memorias del CCOSS"
-summary: "Así fue como LIDSOL vivió la Cumbre de Contribuidores de
-Open Source Software en su primera edición"
+excerpt: "Así fue como LIDSOL vivió la Cumbre de Contribuidores de Open Source Software en su primera edición"
 authors: [umoqnier]
-tags: [comunidad, open source, eventos, ccoss]
-categories: []
-date: 2019/09/21
-lastmod: 2019-09-21
-featured: false
-draft: false
-
-# Featured image
-# To use, add an image named `featured.jpg/png` to your page's folder.
-# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
-image:
-  caption: "CCOSS 2019"
-  focal_point: ""
-  preview_only: false
-
-# Projects (optional).
-#   Associate this post with one or more of your projects.
-#   Simply enter your project's folder or file name without extension.
-#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
-#   Otherwise, set `projects = []`.
-projects: []
+date: "2019-09-21"
+readTime: "5 min"
+tags:
+  - "comunidad"
+  - "open source"
+  - "eventos"
+  - "ccoss"
 ---
 
 El equipo de LIDSOL tuvo la oportunidad de ser parte de la Cumbre de

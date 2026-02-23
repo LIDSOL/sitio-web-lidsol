@@ -265,7 +265,7 @@ export default function App() {
               <Values />
               <FeaturedProjects />
               <LatestEvent onViewEvent={handleEventClick} onViewAllEvents={handleViewAllEvents} />
-              <LatestBlogPost onViewPost={handlePostClick} onViewAllPosts={handleViewAllPosts} />
+              <LatestBlogPost onViewPost={handlePostClick} />
               <LatestCourse onViewCourse={handleCourseClick} onViewAllCourses={handleViewAllCourses} />
               <Community />
             </>

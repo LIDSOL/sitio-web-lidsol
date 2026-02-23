@@ -1,15 +1,14 @@
 ---
 title: "Part-of-Speech (POS) Tagger Using Conditional Random Fields"
-subtitle: "A very brief introduction to POS tagging using structured learning with CRFs"
-summary: "A very brief introduction to POS tagging using structured learning with CRFs"
+excerpt: "A very brief introduction to POS tagging using structured learning with CRFs"
 authors:
-- umoqnier
-tags: ["nlp", "crf", "pos"]
-categories: []
-math: true
-
-image:
-  preview_only: false
+  - "umoqnier"
+date: "2020-07-12"
+readTime: "5 min"
+tags:
+  - "nlp"
+  - "crf"
+  - "pos"
 ---
 
 ## Introduction

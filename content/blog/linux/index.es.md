@@ -1,21 +1,15 @@
 ---
 title: Historia sobre linux
-subtitle:
-summary: El sistema operativo de software libre
+excerpt: El sistema operativo de software libre
 authors: ["orfer"]
-tags: ["Software Libre,  Linux,  Unix,  Richard Stallman,  GNU"]
-categories: []
-date: 2024/08/13
-lastmod: 2020-08-15
-featured: false
-draft: false
-image:
-  caption: ""
-  focal_point: ""
-  preview_only: true
-
-projects: []
-
+date: "2024-08-13"
+readTime: "5 min"
+tags:
+  - "Software Libre"
+  - "Linux"
+  - "Unix"
+  - "Richard Stallman"
+  - "GNU"
 ---
 
 Hola, Bienvenidos a la capsula del dia.

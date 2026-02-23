@@ -1,17 +1,16 @@
 ---
-authors:
-- emilio1625
-- telior
-date: '2020/06/06'
-lastmod: '2020-06-06'
-summary: TELMEX ha desbloqueado a las autoridades directorio de la red
-  Tor. Animamos a todas las personas a instalar un nodo de Tor.
-tags:
-- tor
-- privacidad
-- anonimato
-- pe102718
 title: Invitación a instalar nuevos nodos de Tor
+excerpt: TELMEX ha desbloqueado a las autoridades directorio de la red Tor. Animamos a todas las personas a instalar un nodo de Tor.
+authors:
+  - "emilio1625"
+  - "telior"
+date: "2020-06-06"
+readTime: "5 min"
+tags:
+  - "tor"
+  - "privacidad"
+  - "anonimato"
+  - "pe102718"
 ---
 
 Durante los últimos 4 años TELMEX mantuvo bloqueadas a las *autoridades

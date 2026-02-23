@@ -1,20 +1,11 @@
 ---
-# Course title, summary, and position.
-linktitle: LIDSOL UNAM Recruitment
-summary: Join the Free Software Research and Development Laboratory 🚀
-
-# Page metadata.
 title: LIDSOL UNAM Recruitment
-date: "2025/02/03"
-lastmod: "2025-02-03"
-draft: false
-toc: true
-type: docs
-
-menu:
-  lidsol:
-    name: Call for Applications
-    weight: 1
+excerpt: Join the Free Software Research and Development Laboratory 🚀
+authors: ["LIDSOL"]
+date: "2025-02-03"
+readTime: "5 min"
+tags:
+  - "General"
 ---
 
 ![LIDSOL](reclu1.png)

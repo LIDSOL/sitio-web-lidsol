@@ -1,21 +1,16 @@
 ---
 title: Ansible para un mundo mejor
-subtitle: Automatización de sistemas y configuraciones mediante Ansible
-summary: Ansible es una herramienta que permite automatizar la configuración de sistemas y aplicaciones, facilitando la administración de infraestructuras.
+excerpt: Ansible es una herramienta que permite automatizar la configuración de sistemas y aplicaciones, facilitando la administración de infraestructuras.
 authors: ["quique"]
-tags: ["Software Libre,  Linux,  Sysadmin,  Ansible, Automatización, Infraestructura"]
-categories: []
-date: 2024/09/14
-lastmod: 2024-09-14
-featured: false
-draft: false
-image:
-  caption: ""
-  focal_point: ""
-  preview_only: true
-
-projects: []
-
+date: "2024-09-14"
+readTime: "5 min"
+tags:
+  - "Software Libre"
+  - "Linux"
+  - "Sysadmin"
+  - "Ansible"
+  - "Automatización"
+  - "Infraestructura"
 ---
 
 El día de hoy pensaba, de que podría ser este post, quería compartir alguna tecnología que me hubiera realmente ayudado a realizar las cosas que me gustan, algo que sin darme cuenta se volvió parte de mi flujo de trabajo por lo bueno que es. Y es por eso que hoy les quiero hablar de Ansible.

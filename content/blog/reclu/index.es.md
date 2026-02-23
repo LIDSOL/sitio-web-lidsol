@@ -1,23 +1,11 @@
 ---
-# Course title, summary, and position.
-linktitle: Reclutamiento LIDSOL UNAM
-summary: Únete al Laboratorio de Investigación y Desarrollo de Software Libre 🚀
-
-# Page metadata.
 title: Reclutamiento LIDSOL UNAM
-date: "2025/02/03"
-lastmod: "2025-02-03"
-draft: false  # Is this a draft? true/false
-toc: true  # Show table of contents? true/false
-type: docs  # Do not modify.
-
-# Add menu entry to sidebar.
-# - name: Declare this menu item as a parent with ID `name`.
-# - weight: Position of link in menu.
-menu:
-  lidsol:
-    name: Convocatoria
-    weight: 1
+excerpt: Únete al Laboratorio de Investigación y Desarrollo de Software Libre 🚀
+authors: ["LIDSOL"]
+date: "2025-02-03"
+readTime: "5 min"
+tags:
+  - "General"
 ---
 
 ![LIDSOL](reclu1.png)

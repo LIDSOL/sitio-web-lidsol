@@ -1,15 +1,14 @@
 ---
 title: "Etiquetador gramatical (POS) usando Conditional Random Fields"
-subtitle: "Una brevísima introducción al etiquetado POS usando aprendizaje estructurado con CRFs"
-summary: "Una brevísima introducción al etiquetado POS usando aprendizaje estructurado con CRFs"
+excerpt: "Una brevísima introducción al etiquetado POS usando aprendizaje estructurado con CRFs"
 authors:
-- umoqnier
-tags: ["nlp", "crf", "pos"]
-categories: []
-math: true
-
-image:
-  preview_only: false
+  - "umoqnier"
+date: "2020-07-12"
+readTime: "5 min"
+tags:
+  - "nlp"
+  - "crf"
+  - "pos"
 ---
 
 ## Introducción
