@@ -38,7 +38,7 @@ export function Blog({ onPostClick }: BlogProps) {
     ...post,
     title: post.title[language] || post.title.es || "",
     excerpt: post.excerpt[language] || post.excerpt.es || "",
-    author: post.author[language] || post.author.es || "",
+    authors: post.authors[language] || post.authors.es || [],
     date: post.date[language] || post.date.es || "",
     readTime: post.readTime[language] || post.readTime.es || "",
     content: post.content[language] || post.content.es || "",
@@ -127,7 +127,7 @@ export function Blog({ onPostClick }: BlogProps) {
                   <div className="flex flex-wrap items-center gap-6 mb-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2">
                       <User className="h-4 w-4" />
-                      <span>{localizedPost.author}</span>
+                      <span>{localizedPost.authors[0]}</span>
                     </div>
 
                     <div className="flex items-center gap-2">

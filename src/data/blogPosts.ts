@@ -9,9 +9,13 @@ export const blogPosts = [
       "es": "Únete al Laboratorio de Investigación y Desarrollo de Software Libre 🚀",
       "en": "Join the Free Software Research and Development Laboratory 🚀"
     },
-    "author": {
-      "es": "LIDSOL",
-      "en": "LIDSOL"
+    "authors": {
+      "es": [
+        "LIDSOL"
+      ],
+      "en": [
+        "LIDSOL"
+      ]
     },
     "date": {
       "es": "2025/02/02",
@@ -45,9 +49,13 @@ export const blogPosts = [
       "es": "Un recorrido por el mundo del software libre desde la perspectiva de un usuario no programador.",
       "en": "A journey through the world of free software from the perspective of a non-programmer user."
     },
-    "author": {
-      "es": "Martin Fulgueiras",
-      "en": "Martin Fulgueiras"
+    "authors": {
+      "es": [
+        "Martin Fulgueiras"
+      ],
+      "en": [
+        "Martin Fulgueiras"
+      ]
     },
     "date": {
       "es": "2024/10/23",
@@ -93,9 +101,13 @@ export const blogPosts = [
       "es": "Ansible es una herramienta que permite automatizar la configuración de sistemas y aplicaciones, facilitando la administración de infraestructuras.",
       "en": "Ansible is a tool that allows you to automate the configuration of systems and applications, making infrastructure management easier."
     },
-    "author": {
-      "es": "quique",
-      "en": "quique"
+    "authors": {
+      "es": [
+        "quique"
+      ],
+      "en": [
+        "quique"
+      ]
     },
     "date": {
       "es": "2024/09/13",
@@ -139,9 +151,13 @@ export const blogPosts = [
       "es": "El sistema operativo de software libre",
       "en": "The free software operating system"
     },
-    "author": {
-      "es": "Fernanda Ordoñez",
-      "en": "Fernanda Ordoñez"
+    "authors": {
+      "es": [
+        "Fernanda Ordoñez"
+      ],
+      "en": [
+        "Fernanda Ordoñez"
+      ]
     },
     "date": {
       "es": "2024/08/12",
@@ -183,9 +199,13 @@ export const blogPosts = [
       "es": "Vagrant: meta manejador de máquinas virtuales y contenedores",
       "en": "Vagrant: meta manager of virtual machines and containers"
     },
-    "author": {
-      "es": "tonejito",
-      "en": "tonejito"
+    "authors": {
+      "es": [
+        "tonejito"
+      ],
+      "en": [
+        "tonejito"
+      ]
     },
     "date": {
       "es": "2021/07/22",
@@ -233,9 +253,13 @@ export const blogPosts = [
       "es": "Presentamos el framework Esquite pensado para personas que quieren administrar un corpus paralelo",
       "en": "We present the Esquite framework designed for people who want to manage a parallel corpus"
     },
-    "author": {
-      "es": "umoqnier",
-      "en": "umoqnier"
+    "authors": {
+      "es": [
+        "umoqnier"
+      ],
+      "en": [
+        "umoqnier"
+      ]
     },
     "date": {
       "es": "2020/07/12",
@@ -281,9 +305,13 @@ export const blogPosts = [
       "es": "Una brevísima introducción al etiquetado POS usando aprendizaje estructurado con CRFs",
       "en": "A very brief introduction to POS tagging using structured learning with CRFs"
     },
-    "author": {
-      "es": "umoqnier",
-      "en": "umoqnier"
+    "authors": {
+      "es": [
+        "umoqnier"
+      ],
+      "en": [
+        "umoqnier"
+      ]
     },
     "date": {
       "es": "2020/07/11",
@@ -321,9 +349,15 @@ export const blogPosts = [
       "es": "TELMEX ha desbloqueado a las autoridades directorio de la red Tor. Animamos a todas las personas a instalar un nodo de Tor.",
       "en": "TELMEX has unblocked access to Tor directory authorities. We encourage everyone to install a Tor node."
     },
-    "author": {
-      "es": "emilio1625",
-      "en": "emilio1625"
+    "authors": {
+      "es": [
+        "emilio1625",
+        "Juan M.S. Rios"
+      ],
+      "en": [
+        "emilio1625",
+        "Juan M.S. Rios"
+      ]
     },
     "date": {
       "es": "2020/06/05",
@@ -363,9 +397,13 @@ export const blogPosts = [
       "es": "ROS es asombroso, por desgracia solo se distribuye para Debian :c ",
       "en": "ROS is awesome, unfortunately it is only distributed for Debian :c "
     },
-    "author": {
-      "es": "emilio1625",
-      "en": "emilio1625"
+    "authors": {
+      "es": [
+        "emilio1625"
+      ],
+      "en": [
+        "emilio1625"
+      ]
     },
     "date": {
       "es": "2019/12/21",
@@ -405,9 +443,13 @@ export const blogPosts = [
       "es": "Así fue como LIDSOL vivió la Cumbre de Contribuidores de Open Source Software en su primera edición",
       "en": "This is how LIDSOL experienced the Open Source Software Contributors Summit in its first edition"
     },
-    "author": {
-      "es": "umoqnier",
-      "en": "umoqnier"
+    "authors": {
+      "es": [
+        "umoqnier"
+      ],
+      "en": [
+        "umoqnier"
+      ]
     },
     "date": {
       "es": "2019/09/20",
