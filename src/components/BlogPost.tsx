@@ -1,6 +1,6 @@
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
-import { Calendar, User, Clock, ArrowLeft } from "lucide-react";
+import { Calendar, User, Clock, ArrowLeft, ExternalLink } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -9,6 +9,7 @@ import rehypeKatex from "rehype-katex";
 import { useLanguage } from "./LanguageProvider";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { members } from "../data/members";
 
 interface BlogPostContent {
   id: number;
@@ -25,15 +26,17 @@ interface BlogPostContent {
 interface BlogPostProps {
   post: BlogPostContent;
   onBack: () => void;
+  onMemberClick?: (memberId: number) => void;
 }
 
-export function BlogPost({ post, onBack }: BlogPostProps) {
+export function BlogPost({ post, onBack, onMemberClick }: BlogPostProps) {
   const { language } = useLanguage();
 
   const t = {
     backToBlog: { en: "Back to Blog", es: "Volver al Blog" },
     by: { en: "By", es: "Por" },
     memberOf: { en: "LIDSOL Member", es: "Miembro de LIDSOL" },
+    viewProfile: { en: "View profile", es: "Ver perfil" },
   };
 
   const title = post.title[language] || post.title.es || '';
@@ -44,6 +47,46 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
   const category = '';
   const content = post.content[language] || post.content.es || '';
   const tags = post.tags[language] || post.tags.es || [];
+
+  const findMemberByUsername = (authorName: string) => {
+    const search = authorName.toLowerCase().trim();
+    
+    // Direct mapping for known usernames that don't match GitHub usernames
+    const usernameToMemberId: Record<string, number> = {
+      'quique': 4,       // Quique Calderon - github is ksobrenat32
+      'barrionomia': 9,  // Diego Barriga - github is barriga
+    };
+
+    if (usernameToMemberId[search]) {
+      return members.find(m => m.id === usernameToMemberId[search]);
+    }
+
+    // Try to find by GitHub/GitLab username
+    const byGithub = members.find(member => {
+      const github = member.contact?.github?.toLowerCase() || '';
+      const gitlab = member.contact?.gitlab?.toLowerCase() || '';
+      const githubUsername = github.replace('https://github.com/', '').replace('http://github.com/', '');
+      const gitlabUsername = gitlab.replace('https://gitlab.com/', '').replace('http://gitlab.com/', '');
+      return githubUsername === search || gitlabUsername === search;
+    });
+    if (byGithub) return byGithub;
+
+    // Try to find by full name (case-insensitive)
+    return members.find(member => {
+      const name = member.name.toLowerCase();
+      return name === search || name.includes(search) || search.includes(name);
+    });
+  };
+
+  const member = findMemberByUsername(author);
+  const memberId = member?.id;
+  const displayAuthor = member?.name || author;
+
+  const handleAuthorClick = () => {
+    if (memberId && onMemberClick) {
+      onMemberClick(memberId);
+    }
+  };
 
   return (
     <section className="py-20 bg-background min-h-screen">
@@ -74,7 +117,7 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
 
           <div className="flex items-center gap-2 mb-6">
             <User className="h-5 w-5 text-muted-foreground" />
-            <span className="text-muted-foreground">{t.by[language]} {author}</span>
+            <span className="text-muted-foreground">{t.by[language]} {displayAuthor}</span>
           </div>
 
           <div className="flex flex-wrap gap-2">
@@ -186,12 +229,18 @@ export function BlogPost({ post, onBack }: BlogPostProps) {
 
         {/* Footer */}
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <div 
+            className={`flex items-center gap-3 ${memberId ? 'cursor-pointer hover:opacity-80' : ''}`}
+            onClick={handleAuthorClick}
+          >
             <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center border border-primary/20">
               <User className="h-6 w-6 text-primary" />
             </div>
             <div>
-              <div className="font-medium">{author}</div>
+              <div className="font-medium flex items-center gap-1">
+                {displayAuthor}
+                {memberId && <ExternalLink className="h-3 w-3 text-muted-foreground" />}
+              </div>
               <div className="text-sm text-muted-foreground">{t.memberOf[language]}</div>
             </div>
           </div>

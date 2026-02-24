@@ -85,13 +85,13 @@ DEADLINE: <2026-02-20 Fri>
   - [X] Hay un botón hasta la parte inferior "Cargar más artículos" que no tiene funcionalidad. Podría ser bueno limitar la cantidad de post que se muestran y darle uso, o bien, retirarlo y que quede como un scroll con todo el contenido sin más.
 - [-] BlogDetail [33%]
   - [X] Sería bueno reducir la calidad de algunas de las imágenes, pues son muy pesadas y provocan que el sitio tarde en cargar, o en su defecto, hacer que se cargue una  versión reducida en el Blog y en BlogDetail, pero en este último, al dar click en la imágen, verla en tamaño completo a modo de galería. Hacer lazy loading
-  - [-] Mejorar los meta-datos del sitio [40%]
+  - [-] Mejorar los meta-datos del sitio [60%]
     - [X] Eliminar los metadatos no necesarios de los .md
     - [X] Corrección al formato de fechas
-    - [ ] Que el BlogDetail enlace al perfil del miembro del lab que escribió el articulo
+    - [X] Que el BlogDetail enlace al perfil del miembro del lab que escribió el articulo
     - [ ] Tiempo de lectura
     - [ ] Añadir imágenes de portada a los post que no tienen. Mejorar aquellas que chocan con la estética del sitio.
-  - [-] Mejora en la presentación del post [66%]
+  - [-] Mejora en la presentación del post [75%]
     - [X] Hacer que el texto tenga justificación completa.
       apliqué la misma solución que en ProjectDetail.tsx:- text-justify hyphens-auto en las clases, style={{textAlign: 'justify'}} inline
     - [X] Las imágenes deben tener bordes redondeados. Como la imagen de portada.
@@ -108,9 +108,9 @@ DEADLINE: <2026-02-20 Fri>
       - Se agregó remarkMath y rehypeKatex a ReactMarkdown
       - Se agreguó el CSS de KaTeX desde CDN en el HTML.
     - [ ] Mejorar el aspecto de las tablas markdown.
-    - [ ] Mejorar las imágenes de portada
     - [ ] {{% alert warning %}} ¿NANI KORE!
 ***** Notas
+- *Más adelante, sería bueno añadir paginado*
 - Me doy cuanta que el los separadores de markdown no son correctamente soportados (---) en BlogDetail
 
 - Se usarán archivos de markdown para el blog, cada [[file:content/][subdirectorio de content]] será un post de blog. Hasta ahora se habían usado archivos .ts, pero para el escribir una artículo de blog, sería muy tedioso.

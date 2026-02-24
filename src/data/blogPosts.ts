@@ -46,8 +46,8 @@ export const blogPosts = [
       "en": "A journey through the world of free software from the perspective of a non-programmer user."
     },
     "author": {
-      "es": "barrionomia",
-      "en": "barrionomia"
+      "es": "Martin Fulgueiras",
+      "en": "Martin Fulgueiras"
     },
     "date": {
       "es": "2024/10/23",
@@ -140,8 +140,8 @@ export const blogPosts = [
       "en": "The free software operating system"
     },
     "author": {
-      "es": "orfer",
-      "en": "orfer"
+      "es": "Fernanda Ordoñez",
+      "en": "Fernanda Ordoñez"
     },
     "date": {
       "es": "2024/08/12",

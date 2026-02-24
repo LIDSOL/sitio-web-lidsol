@@ -1,7 +1,7 @@
 ---
 title: "Vagrant"
 excerpt: "Vagrant: meta manejador de máquinas virtuales y contenedores"
-authors: [tonejito]
+authors: ["tonejito"]
 date: "2021-07-23"
 readTime: "5 min"
 tags:

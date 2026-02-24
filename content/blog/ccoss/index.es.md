@@ -1,7 +1,7 @@
 ---
 title: "Memorias del CCOSS"
 excerpt: "Así fue como LIDSOL vivió la Cumbre de Contribuidores de Open Source Software en su primera edición"
-authors: [umoqnier]
+authors: ["umoqnier"]
 date: "2019-09-21"
 readTime: "5 min"
 tags:

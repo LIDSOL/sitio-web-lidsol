@@ -238,7 +238,7 @@ export default function App() {
           <CursorEffect />
           <Header />
           {currentView === "blogPost" && selectedPost ? (
-            <BlogPost post={selectedPost} onBack={handleBackToBlog} />
+            <BlogPost post={selectedPost} onBack={handleBackToBlog} onMemberClick={handleMemberClick} />
           ) : currentView === "blog" ? (
             <Blog onPostClick={handlePostClick} />
           ) : currentView === "eventDetail" && selectedEvent ? (

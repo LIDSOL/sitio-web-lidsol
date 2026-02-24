@@ -1,7 +1,7 @@
 ---
 title: Free Route 1
 excerpt: A journey through the world of free software from the perspective of a non-programmer user.
-authors: ['barrionomia']
+authors: ["Martin Fulgueiras"]
 date: "2024-10-24"
 readTime: "10 min"
 tags:

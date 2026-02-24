@@ -1,7 +1,7 @@
 ---
 title: History of Linux
 excerpt: The free software operating system
-authors: ["orfer"]
+authors: ["Fernanda Ordoñez"]
 date: "2024-08-13"
 readTime: "5 min"
 tags:
