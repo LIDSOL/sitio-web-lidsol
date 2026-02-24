@@ -233,9 +233,17 @@ export function BlogPost({ post, onBack, onMemberClick }: BlogPostProps) {
             className={`flex items-center gap-3 ${memberId ? 'cursor-pointer hover:opacity-80' : ''}`}
             onClick={handleAuthorClick}
           >
-            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center border border-primary/20">
-              <User className="h-6 w-6 text-primary" />
-            </div>
+            {member?.image ? (
+              <ImageWithFallback
+                src={member.image}
+                alt={displayAuthor}
+                className="w-12 h-12 rounded-full object-cover border border-primary/20"
+              />
+            ) : (
+              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center border border-primary/20">
+                <User className="h-6 w-6 text-primary" />
+              </div>
+            )}
             <div>
               <div className="font-medium flex items-center gap-1">
                 {displayAuthor}
