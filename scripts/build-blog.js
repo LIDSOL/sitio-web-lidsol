@@ -238,7 +238,7 @@ function getPostFieldFromMetadata(metadata, field, lang, defaultValue = '') {
   if (metadata[field + 's']) {
     const arr = metadata[field + 's'];
     if (Array.isArray(arr)) {
-      return arr[0] || defaultValue;
+      return arr; // Return full array for authors
     }
   }
   return defaultValue;
@@ -291,7 +291,7 @@ function buildBlogPosts() {
       id: id++,
       title: {},
       excerpt: {},
-      author: {},
+      authors: {},
       date: {},
       readTime: {},
       image: '',
@@ -309,7 +309,7 @@ function buildBlogPosts() {
       
       postData.title[lang] = getPostTitleFromMetadata(metadata, lang);
       postData.excerpt[lang] = getPostFieldFromMetadata(metadata, 'excerpt', lang) || getPostFieldFromMetadata(metadata, 'summary', lang);
-      postData.author[lang] = getPostFieldFromMetadata(metadata, 'author', lang, 'LIDSOL');
+      postData.authors[lang] = getPostFieldFromMetadata(metadata, 'author', lang, ['LIDSOL']);
       postData.date[lang] = formatDate(getPostFieldFromMetadata(metadata, 'date', lang));
       postData.readTime[lang] = getPostFieldFromMetadata(metadata, 'readTime', lang, '5 min');
       postData.content[lang] = content;
@@ -322,7 +322,7 @@ function buildBlogPosts() {
     if (postData.title.es && !postData.title.en) {
       postData.title.en = postData.title.es;
       postData.excerpt.en = postData.excerpt.es;
-      postData.author.en = postData.author.es;
+      postData.authors.en = postData.authors.es;
       postData.date.en = formatDate(postData.date.es);
       postData.readTime.en = postData.readTime.es;
       postData.content.en = postData.content.es;
@@ -362,9 +362,15 @@ function buildBlogPosts() {
       }
     }
     
-    if (typeof postData.author.es === 'string') {
-      const authorEs = postData.author.es;
-      postData.author = { es: authorEs, en: authorEs };
+    if (typeof postData.authors.es === 'string') {
+      postData.authors = { es: [postData.authors.es], en: [postData.authors.es] };
+    }
+    // Ensure authors is always an array
+    if (!Array.isArray(postData.authors.es)) {
+      postData.authors.es = postData.authors.es || ['LIDSOL'];
+    }
+    if (!Array.isArray(postData.authors.en)) {
+      postData.authors.en = postData.authors.en || ['LIDSOL'];
     }
     
     posts.push(postData);

@@ -28,7 +28,7 @@ export function LatestBlogPost({ onViewPost, showHeader = true, showViewAll = tr
 
   const title = latestPost.title[language] || latestPost.title.es || '';
   const excerpt = latestPost.excerpt[language] || latestPost.excerpt.es || '';
-  const author = latestPost.author[language] || latestPost.author.es || '';
+  const authors = latestPost.authors[language] || latestPost.authors.es || [];
   const date = latestPost.date[language] || latestPost.date.es || '';
   const readTime = latestPost.readTime[language] || latestPost.readTime.es || '';
   const tags = latestPost.tags[language] || latestPost.tags.es || [];
@@ -67,7 +67,7 @@ export function LatestBlogPost({ onViewPost, showHeader = true, showViewAll = tr
                 <div className="flex items-center gap-6 text-sm text-muted-foreground mb-4">
                   <div className="flex items-center gap-2">
                     <User className="h-4 w-4" />
-                    <span>{author}</span>
+                    <span>{authors[0]}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Calendar className="h-4 w-4" />

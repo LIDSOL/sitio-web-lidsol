@@ -15,7 +15,7 @@ interface BlogPostContent {
   id: number;
   title: { en: string; es: string };
   excerpt: { en: string; es: string };
-  author: { en: string; es: string };
+  authors: { en: string[]; es: string[] };
   date: { en: string; es: string };
   readTime: { en: string; es: string };
   image: string;
@@ -41,24 +41,35 @@ export function BlogPost({ post, onBack, onMemberClick }: BlogPostProps) {
 
   const title = post.title[language] || post.title.es || '';
   const excerpt = post.excerpt[language] || post.excerpt.es || '';
-  const author = post.author[language] || post.author.es || '';
   const date = post.date[language] || post.date.es || '';
   const readTime = post.readTime[language] || post.readTime.es || '';
   const category = '';
   const content = post.content[language] || post.content.es || '';
   const tags = post.tags[language] || post.tags.es || [];
+  const authors = post.authors[language] || post.authors.es || [];
 
-  const findMemberByUsername = (authorName: string) => {
+  interface AuthorMember {
+    name: string;
+    member?: typeof members[0];
+    memberId?: number;
+  }
+
+  const findMemberByUsername = (authorName: string): AuthorMember => {
     const search = authorName.toLowerCase().trim();
-    
+
     // Direct mapping for known usernames that don't match GitHub usernames
     const usernameToMemberId: Record<string, number> = {
       'quique': 4,       // Quique Calderon - github is ksobrenat32
       'barrionomia': 9,  // Diego Barriga - github is barriga
     };
 
+    let foundMember: AuthorMember = { name: authorName };
+
     if (usernameToMemberId[search]) {
-      return members.find(m => m.id === usernameToMemberId[search]);
+      const member = members.find(m => m.id === usernameToMemberId[search]);
+      if (member) {
+        return { name: member.name, member, memberId: member.id };
+      }
     }
 
     // Try to find by GitHub/GitLab username
@@ -69,20 +80,25 @@ export function BlogPost({ post, onBack, onMemberClick }: BlogPostProps) {
       const gitlabUsername = gitlab.replace('https://gitlab.com/', '').replace('http://gitlab.com/', '');
       return githubUsername === search || gitlabUsername === search;
     });
-    if (byGithub) return byGithub;
+    if (byGithub) {
+      return { name: byGithub.name, member: byGithub, memberId: byGithub.id };
+    }
 
     // Try to find by full name (case-insensitive)
-    return members.find(member => {
+    const byName = members.find(member => {
       const name = member.name.toLowerCase();
       return name === search || name.includes(search) || search.includes(name);
     });
+    if (byName) {
+      return { name: byName.name, member: byName, memberId: byName.id };
+    }
+
+    return { name: authorName };
   };
 
-  const member = findMemberByUsername(author);
-  const memberId = member?.id;
-  const displayAuthor = member?.name || author;
+  const authorMembers: AuthorMember[] = authors.map(findMemberByUsername);
 
-  const handleAuthorClick = () => {
+  const handleAuthorClick = (memberId?: number) => {
     if (memberId && onMemberClick) {
       onMemberClick(memberId);
     }
@@ -117,7 +133,21 @@ export function BlogPost({ post, onBack, onMemberClick }: BlogPostProps) {
 
           <div className="flex items-center gap-2 mb-6">
             <User className="h-5 w-5 text-muted-foreground" />
-            <span className="text-muted-foreground">{t.by[language]} {displayAuthor}</span>
+            <span className="text-muted-foreground">{t.by[language]}</span>
+            <div className="flex flex-wrap gap-2">
+              {authorMembers.map((author, idx) => (
+                <span key={idx} className="text-muted-foreground">
+                  {idx > 0 && (idx === authorMembers.length - 1 ? ` ${language === 'es' ? 'y' : 'and'} ` : ', ')}
+                  <span
+                    className={author.memberId ? "cursor-pointer hover:underline text-foreground font-medium" : ""}
+                    onClick={() => handleAuthorClick(author.memberId)}
+                  >
+                    {author.name}
+                    {author.memberId && <ExternalLink className="h-3 w-3 inline ml-1" />}
+                  </span>
+                </span>
+              ))}
+            </div>
           </div>
 
           <div className="flex flex-wrap gap-2">
@@ -167,7 +197,7 @@ export function BlogPost({ post, onBack, onMemberClick }: BlogPostProps) {
                 const match = /language-(\w+)/.exec(className);
                 const language = match ? match[1] : 'text';
                 const codeContent = codeChild?.props?.children || '';
-                
+
                 return (
                   <SyntaxHighlighter
                     style={materialDark}
@@ -229,28 +259,33 @@ export function BlogPost({ post, onBack, onMemberClick }: BlogPostProps) {
 
         {/* Footer */}
         <div className="flex items-center justify-between">
-          <div 
-            className={`flex items-center gap-3 ${memberId ? 'cursor-pointer hover:opacity-80' : ''}`}
-            onClick={handleAuthorClick}
-          >
-            {member?.image ? (
-              <ImageWithFallback
-                src={member.image}
-                alt={displayAuthor}
-                className="w-12 h-12 rounded-full object-cover border border-primary/20"
-              />
-            ) : (
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center border border-primary/20">
-                <User className="h-6 w-6 text-primary" />
+          <div className="flex flex-col gap-3">
+            {authorMembers.map((author, idx) => (
+              <div
+                key={idx}
+                className={`flex items-center gap-3 ${author.memberId ? 'cursor-pointer hover:opacity-80' : ''}`}
+                onClick={() => handleAuthorClick(author.memberId)}
+              >
+                {author.member?.image ? (
+                  <ImageWithFallback
+                    src={author.member.image}
+                    alt={author.name}
+                    className="w-12 h-12 rounded-full object-cover border border-primary/20"
+                  />
+                ) : (
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center border border-primary/20">
+                    <User className="h-6 w-6 text-primary" />
+                  </div>
+                )}
+                <div>
+                  <div className="font-medium flex items-center gap-1">
+                    {author.name}
+                    {author.memberId && <ExternalLink className="h-3 w-3 text-muted-foreground" />}
+                  </div>
+                  <div className="text-sm text-muted-foreground">{t.memberOf[language]}</div>
+                </div>
               </div>
-            )}
-            <div>
-              <div className="font-medium flex items-center gap-1">
-                {displayAuthor}
-                {memberId && <ExternalLink className="h-3 w-3 text-muted-foreground" />}
-              </div>
-              <div className="text-sm text-muted-foreground">{t.memberOf[language]}</div>
-            </div>
+            ))}
           </div>
 
           <Button onClick={onBack} className="gap-2">
