@@ -3,7 +3,7 @@ title: Invitación a instalar nuevos nodos de Tor
 excerpt: TELMEX ha desbloqueado a las autoridades directorio de la red Tor. Animamos a todas las personas a instalar un nodo de Tor.
 authors:
   - "emilio1625"
-  - "telior"
+  - "Juan M.S. Rios"
 date: "2020-06-06"
 readTime: "5 min"
 tags:

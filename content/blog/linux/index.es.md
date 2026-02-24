@@ -1,7 +1,7 @@
 ---
 title: Historia sobre linux
 excerpt: El sistema operativo de software libre
-authors: ["orfer"]
+authors: ["Fernanda Ordoñez"]
 date: "2024-08-13"
 readTime: "5 min"
 tags:

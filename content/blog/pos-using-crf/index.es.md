@@ -1,8 +1,7 @@
 ---
 title: "Etiquetador gramatical (POS) usando Conditional Random Fields"
 excerpt: "Una brevísima introducción al etiquetado POS usando aprendizaje estructurado con CRFs"
-authors:
-  - "umoqnier"
+authors: ["umoqnier"]
 date: "2020-07-12"
 readTime: "5 min"
 tags:

@@ -3,7 +3,7 @@ title: Invitation to Install New Tor Nodes
 excerpt: TELMEX has unblocked access to Tor directory authorities. We encourage everyone to install a Tor node.
 authors:
   - "emilio1625"
-  - "telior"
+  - "Juan M.S. Rios"
 date: "2020-06-06"
 readTime: "5 min"
 tags:

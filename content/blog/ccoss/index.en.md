@@ -1,7 +1,7 @@
 ---
 title: "CCOSS Memories"
 excerpt: "This is how LIDSOL experienced the Open Source Software Contributors Summit in its first edition"
-authors: [umoqnier]
+authors: ["umoqnier"]
 date: "2019-09-21"
 readTime: "5 min"
 tags:
