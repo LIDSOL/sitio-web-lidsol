@@ -171,7 +171,7 @@ export function BlogPost({ post, onBack, onMemberClick }: BlogPostProps) {
         )}
 
         {/* Content */}
-        <article className="prose prose-lg prose-justify max-w-none">
+        <article className="max-w-none">
           <ReactMarkdown
             remarkPlugins={[remarkGfm, remarkMath]}
             rehypePlugins={[rehypeKatex]}
@@ -191,6 +191,36 @@ export function BlogPost({ post, onBack, onMemberClick }: BlogPostProps) {
               ul: ({children}) => <ul className="list-disc pl-6 mb-6 space-y-2">{children}</ul>,
               ol: ({children}) => <ol className="list-decimal pl-6 mb-6 space-y-2">{children}</ol>,
               li: ({children}) => <li className="text-muted-foreground">{children}</li>,
+              table: ({children}) => (
+                <table className="min-w-full border-collapse my-6 rounded-lg overflow-hidden border border-border mb-8">
+                  {children}
+                </table>
+              ),
+              thead: ({children}) => (
+                <thead className="bg-muted">
+                  {children}
+                </thead>
+              ),
+              tbody: ({children}) => (
+                <tbody className="divide-y divide-border bg-background">
+                  {children}
+                </tbody>
+              ),
+              tr: ({children}) => (
+                <tr className="hover:bg-muted/50 transition-colors">
+                  {children}
+                </tr>
+              ),
+              th: ({children}) => (
+                <th className="px-4 py-3 text-left text-sm font-semibold text-foreground bg-muted sticky left-0">
+                  {children}
+                </th>
+              ),
+              td: ({children}) => (
+                <td className="px-4 py-3 text-sm text-muted-foreground">
+                  {children}
+                </td>
+              ),
               pre: ({children}) => {
                 const codeChild = children as React.ReactElement;
                 const className = codeChild?.props?.className || '';

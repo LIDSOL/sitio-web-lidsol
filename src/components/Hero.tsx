@@ -86,7 +86,7 @@ export function Hero() {
             </h1>
 
             <p className="text-xl text-white/90 max-w-2xl">
-              {t.description[language]} :P
+              {t.description[language]}
             </p>
 
             <div className="flex flex-wrap gap-4">

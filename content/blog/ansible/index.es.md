@@ -3,7 +3,7 @@ title: Ansible para un mundo mejor
 excerpt: Ansible es una herramienta que permite automatizar la configuración de sistemas y aplicaciones, facilitando la administración de infraestructuras.
 authors: ["quique"]
 date: "2024-09-14"
-readTime: "5 min"
+readTime: "3 min"
 tags:
   - "Software Libre"
   - "Linux"
