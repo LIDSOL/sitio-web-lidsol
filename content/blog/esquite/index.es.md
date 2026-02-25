@@ -218,11 +218,12 @@ Damos click en "Nuevo Documento", agregamos el nombre del documento, el archivo
 `csv` con nuestro corpus alineado y un archivo `pdf` asociado a nuestro documento.
 El formato de los archivos `csv` es la siguiente:
 
-| l1 | l2 | variante     |
-|----|----|--------------|
-Una vez una señora se emborrachó | xu̱tu̱ bimáyóhthó 'á ngŭ ra bésíno | Otomí del Estado de México (ots)
-Luego se fue a dormir a la casa del vecino | nándi na ra t'u̱xú bintí | Otomí del Estado de México (ots)
-Después que se durmió | despwés ya biyóbí | Otomí del Estado de México (ots)
+| l1                                        | l2                               | variante                         |
+|-------------------------------------------|----------------------------------|----------------------------------|
+|Una vez una señora se emborrachó           | xu̱tu̱ bimáyóhthó 'á ngŭ ra bésíno | Otomí del Estado de México (ots) |
+|Luego se fue a dormir a la casa del vecino | nándi na ra t'u̱xú bintí          | Otomí del Estado de México (ots) |
+|Después que se durmió                      | despwés ya biyóbí                | Otomí del Estado de México (ots) |
+
 
 El archivo tiene una cabecera[^3]. La primera columna es texto en español, la siguiente columna será la segunda
 lengua (en este ejemplo otomí) y la tercera columna[^4] es la variante (si esta está

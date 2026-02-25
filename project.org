@@ -85,13 +85,13 @@ DEADLINE: <2026-02-20 Fri>
   - [X] Hay un botón hasta la parte inferior "Cargar más artículos" que no tiene funcionalidad. Podría ser bueno limitar la cantidad de post que se muestran y darle uso, o bien, retirarlo y que quede como un scroll con todo el contenido sin más.
 - [-] BlogDetail [33%]
   - [X] Sería bueno reducir la calidad de algunas de las imágenes, pues son muy pesadas y provocan que el sitio tarde en cargar, o en su defecto, hacer que se cargue una  versión reducida en el Blog y en BlogDetail, pero en este último, al dar click en la imágen, verla en tamaño completo a modo de galería. Hacer lazy loading
-  - [-] Mejorar los meta-datos del sitio [60%]
+  - [-] Mejorar los meta-datos del sitio [80%]
     - [X] Eliminar los metadatos no necesarios de los .md
     - [X] Corrección al formato de fechas
     - [X] Que el BlogDetail enlace al perfil del miembro del lab que escribió el articulo
+    - [X] Añadir imágenes de portada a los post que no tienen. Mejorar aquellas que chocan con la estética del sitio.
     - [ ] Tiempo de lectura
-    - [ ] Añadir imágenes de portada a los post que no tienen. Mejorar aquellas que chocan con la estética del sitio.
-  - [-] Mejora en la presentación del post [75%]
+  - [-] Mejora en la presentación del post [87%]
     - [X] Hacer que el texto tenga justificación completa.
       apliqué la misma solución que en ProjectDetail.tsx:- text-justify hyphens-auto en las clases, style={{textAlign: 'justify'}} inline
     - [X] Las imágenes deben tener bordes redondeados. Como la imagen de portada.
@@ -107,7 +107,7 @@ DEADLINE: <2026-02-20 Fri>
       - Se importaron los plugins y el CSS de KaTeX
       - Se agregó remarkMath y rehypeKatex a ReactMarkdown
       - Se agreguó el CSS de KaTeX desde CDN en el HTML.
-    - [ ] Mejorar el aspecto de las tablas markdown.
+    - [X] Mejorar el aspecto de las tablas markdown.
     - [ ] {{% alert warning %}} ¿NANI KORE!
 ***** Notas
 - *Más adelante, sería bueno añadir paginado*
@@ -127,9 +127,9 @@ El archivo src/data/blogPosts.ts se sigue usando, este genera los componentes [[
       - Se modificará el directorio de cada post para contener versiones por idioma, un archivo por cada idioma (en este caso solo inglés-español, por ejemplo: index.es.md, index.en.md).
       - Se modificará el[[file:scripts/build-blog.js][ script]] que genera el[[file:src/data/blogPosts.ts][ archito ts]] con que usan los compontes que genran el blog. Deben detectar los archivos con sufijos .es.md o en.md y generar la estructura tipo json adecuada.
 **** TODO Events y EventDetail
-DEADLINE: <2026-02-23 Mon>
-***** Implementar una función de calendario
-Sería divertido poder exportar un archivo que se pueda cargar a una app de calendario..
+DEADLINE: <2026-02-25 Wed>
+- [ ] Mudar el contenido
+- [ ] Implementar una función de calendario. Sería divertido poder exportar un archivo que se pueda cargar a una app de calendario..
 **** TODO CourseDetail y CourseDetail
 DEADLINE: <2026-02-26 Thu>
 **** TODO Publications
@@ -163,6 +163,7 @@ DEADLINE: <2026-03-06 Fri>
 **** Hacer que los íconos sean tomados de un svg local
 en blog.tsx hay import { User, ArrowRight, Calendar, Clock } from "lucide-react";
 **** Cuando regreso a una página anterior, que no me regrese hasta el inicio, si no que se quede en el mismo sitio antes de dar click.
+**** Mejora el script del blog.
 **** Colocar la información correcta en la fecha de inicio de los miembros.
 **** CursorEffect
 Al estar en dispositivos móviles, el efecto de brillo que sigue al cursos se queda pillado.
