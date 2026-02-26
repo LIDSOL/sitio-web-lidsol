@@ -83,7 +83,7 @@ DEADLINE: <2026-02-20 Fri>
     - [X] Añadir la misma animación que tiene la sección de proyectos
     - [X] Hacer las tarjetas más pequeñas
   - [X] Hay un botón hasta la parte inferior "Cargar más artículos" que no tiene funcionalidad. Podría ser bueno limitar la cantidad de post que se muestran y darle uso, o bien, retirarlo y que quede como un scroll con todo el contenido sin más.
-- [-] BlogDetail [33%]
+- [-] BlogDetail [66%]
   - [X] Sería bueno reducir la calidad de algunas de las imágenes, pues son muy pesadas y provocan que el sitio tarde en cargar, o en su defecto, hacer que se cargue una  versión reducida en el Blog y en BlogDetail, pero en este último, al dar click en la imágen, verla en tamaño completo a modo de galería. Hacer lazy loading
   - [-] Mejorar los meta-datos del sitio [80%]
     - [X] Eliminar los metadatos no necesarios de los .md
@@ -91,7 +91,7 @@ DEADLINE: <2026-02-20 Fri>
     - [X] Que el BlogDetail enlace al perfil del miembro del lab que escribió el articulo
     - [X] Añadir imágenes de portada a los post que no tienen. Mejorar aquellas que chocan con la estética del sitio.
     - [ ] Tiempo de lectura
-  - [-] Mejora en la presentación del post [87%]
+  - [X] Mejora en la presentación del post [100%]
     - [X] Hacer que el texto tenga justificación completa.
       apliqué la misma solución que en ProjectDetail.tsx:- text-justify hyphens-auto en las clases, style={{textAlign: 'justify'}} inline
     - [X] Las imágenes deben tener bordes redondeados. Como la imagen de portada.
@@ -108,7 +108,7 @@ DEADLINE: <2026-02-20 Fri>
       - Se agregó remarkMath y rehypeKatex a ReactMarkdown
       - Se agreguó el CSS de KaTeX desde CDN en el HTML.
     - [X] Mejorar el aspecto de las tablas markdown.
-    - [ ] {{% alert warning %}} ¿NANI KORE!
+    - [X] {{% alert warning %}} ¿NANI KORE!
 ***** Notas
 - *Más adelante, sería bueno añadir paginado*
 - Me doy cuanta que el los separadores de markdown no son correctamente soportados (---) en BlogDetail
@@ -132,8 +132,12 @@ DEADLINE: <2026-02-25 Wed>
 - [ ] Implementar una función de calendario. Sería divertido poder exportar un archivo que se pueda cargar a una app de calendario..
 **** TODO CourseDetail y CourseDetail
 DEADLINE: <2026-02-26 Thu>
-**** TODO Publications
+**** TODO Publications [/]
 DEADLINE: <2026-02-28 Sat>
+- [ ] Mudar el contenido.
+- [ ] Funcionalidades
+    - [ ] Botón de Citar
+    - [ ] DOI
 **** IN-PROGRESS Header
 DEADLINE: <2026-02-28 Sat>
 **** IN-PROGRESS Footer

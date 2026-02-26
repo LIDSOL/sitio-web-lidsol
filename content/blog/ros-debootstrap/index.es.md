@@ -10,7 +10,6 @@ tags:
   - "debian"
   - "proot"
 ---
----
 
 ## Introducción
 

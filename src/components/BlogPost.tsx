@@ -2,6 +2,7 @@ import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Calendar, User, Clock, ArrowLeft, ExternalLink } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import React, { ReactChildren } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
@@ -277,7 +278,37 @@ export function BlogPost({ post, onBack, onMemberClick }: BlogPostProps) {
                   </SyntaxHighlighter>
                 );
               },
-              blockquote: ({children}) => <blockquote className="border-l-4 border-primary pl-4 italic my-6 text-muted-foreground">{children}</blockquote>,
+              blockquote: ({children}) => {
+                // Check if children contains alert indicators
+                const childrenStr = React.Children.toArray(children).map(child => {
+                  if (typeof child === 'string') return child;
+                  if (React.isValidElement(child)) return (child.props as { children?: React.ReactNode })?.children?.toString() || '';
+                  return '';
+                }).join('');
+
+                const isWarning = childrenStr.includes('⚠️') || childrenStr.includes('Advertencia') || childrenStr.includes('Warning');
+                const isInfo = childrenStr.includes('ℹ️') || childrenStr.includes('Información') || childrenStr.includes('Info');
+                const isError = childrenStr.includes('❌') || childrenStr.includes('Error');
+                const isSuccess = childrenStr.includes('✅') || childrenStr.includes('Éxito') || childrenStr.includes('Success');
+                const isNote = childrenStr.includes('📝') || childrenStr.includes('Nota');
+
+                const alertStyles: Record<string, string> = {
+                  warning: 'border-l-4 border-yellow-500 bg-yellow-50 dark:bg-yellow-900/20 p-4 my-4 rounded-r-lg text-yellow-800 dark:text-yellow-200 not-italic',
+                  info: 'border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/20 p-4 my-4 rounded-r-lg text-blue-800 dark:text-blue-200 not-italic',
+                  error: 'border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20 p-4 my-4 rounded-r-lg text-red-800 dark:text-red-200 not-italic',
+                  success: 'border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20 p-4 my-4 rounded-r-lg text-green-800 dark:text-green-200 not-italic',
+                  note: 'border-l-4 border-purple-500 bg-purple-50 dark:bg-purple-900/20 p-4 my-4 rounded-r-lg text-purple-800 dark:text-purple-200 not-italic',
+                };
+
+                let style = 'border-l-4 border-primary pl-4 italic my-6 text-muted-foreground';
+                if (isWarning) style = alertStyles.warning;
+                else if (isInfo) style = alertStyles.info;
+                else if (isError) style = alertStyles.error;
+                else if (isSuccess) style = alertStyles.success;
+                else if (isNote) style = alertStyles.note;
+
+                return <blockquote className={style}>{children}</blockquote>;
+              },
             }}
           >
             {content}
