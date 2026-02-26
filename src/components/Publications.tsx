@@ -53,12 +53,14 @@ export function Publications() {
                 </Badge>
               </div>
               <CardHeader className="flex-grow">
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {publication.tags[language].map((tag) => (
-                    <Badge key={tag} variant="outline" className="text-xs">{tag}</Badge>
-                  ))}
-                </div>
-                <CardTitle className="group-hover:text-primary transition-colors line-clamp-2">
+                {publication.tags && publication.tags[language] && (
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {publication.tags[language].map((tag) => (
+                      <Badge key={tag} variant="outline" className="text-xs">{tag}</Badge>
+                    ))}
+                  </div>
+                )}
+                <CardTitle className="group-hover:text-primary transition-colors line-clamp-2 leading-relaxed">
                   {publication.title[language]}
                 </CardTitle>
                 <CardDescription className="mt-2 line-clamp-3">{publication.abstract[language]}</CardDescription>
@@ -69,18 +71,22 @@ export function Publications() {
                     <Users className="h-3.5 w-3.5 text-muted-foreground mt-0.5 flex-shrink-0" />
                     <span className="text-muted-foreground line-clamp-1">{publication.authors.join(", ")}</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <FileText className="h-3.5 w-3.5 text-muted-foreground" />
-                    <span className="text-muted-foreground line-clamp-1">{publication.journal[language]}</span>
-                  </div>
+                  {publication.journal && (
+                    <div className="flex items-center gap-2">
+                      <FileText className="h-3.5 w-3.5 text-muted-foreground" />
+                      <span className="text-muted-foreground line-clamp-1">{publication.journal[language]}</span>
+                    </div>
+                  )}
                   <div className="flex items-center gap-2">
                     <Calendar className="h-3.5 w-3.5 text-muted-foreground" />
                     <span className="text-muted-foreground">{publication.year}</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Award className="h-3.5 w-3.5 text-muted-foreground" />
-                    <span className="text-muted-foreground">{publication.citations} {language === 'es' ? 'citaciones' : 'citations'}</span>
-                  </div>
+                  {publication.citations && (
+                    <div className="flex items-center gap-2">
+                      <Award className="h-3.5 w-3.5 text-muted-foreground" />
+                      <span className="text-muted-foreground">{publication.citations} {language === 'es' ? 'citaciones' : 'citations'}</span>
+                    </div>
+                  )}
                 </div>
                 <div className="flex gap-2">
                   <Button variant="outline" size="sm" className="flex-1 gap-1 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">

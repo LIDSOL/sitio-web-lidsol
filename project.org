@@ -132,12 +132,19 @@ DEADLINE: <2026-02-25 Wed>
 - [ ] Implementar una función de calendario. Sería divertido poder exportar un archivo que se pueda cargar a una app de calendario..
 **** TODO CourseDetail y CourseDetail
 DEADLINE: <2026-02-26 Thu>
-**** TODO Publications [/]
-DEADLINE: <2026-02-28 Sat>
-- [ ] Mudar el contenido.
+**** IN-PROGRESS Publications [0/4]
+DEADLINE: <2026-02-27 Fri>
+- [-] Mudar el contenido.
+  - [X] Añadir los "metadatos" a src/data/publications.tsx
+  - [ ] Añadir los contenidos descargables (pdf)
 - [ ] Funcionalidades
-    - [ ] Botón de Citar
-    - [ ] DOI
+  - [ ] Botón de Citar
+    Deber se un cuadro de diálogo
+  - [ ] DOI
+  - [ ] Hacer las subpáginas de las publicaciones tomando como base las del blog. O tal vez sea mejor hacer uno nuevo que se vea como un cuadro de dialogo estilo nautilus
+  - [ ] Si es que hace match con alguno de los miembros, redirigirlos a su
+- [ ] ¿Qué hacer con los botones inferiores?
+- [ ] ¿Qué hacer con la opción de mandar una propuesta de investigación?
 **** IN-PROGRESS Header
 DEADLINE: <2026-02-28 Sat>
 **** IN-PROGRESS Footer
