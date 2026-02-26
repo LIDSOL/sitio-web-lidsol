@@ -197,6 +197,7 @@ function copyImages(postDir, postSlug) {
 }
 
 function processContent(content, postSlug, copiedImages) {
+  // Process Hugo figure shortcodes
   content = content.replace(/{{<\s*figure\s+src="([^"]+)"\s+title="([^"]+)"[^>]*>}}/g, (match, src, title) => {
     return `![${title}](/blog-images/${postSlug}/${src})`;
   });
@@ -204,6 +205,52 @@ function processContent(content, postSlug, copiedImages) {
   content = content.replace(/{{<\s*figure\s+src="([^"]+)"[^>]*>}}/g, (match, src) => {
     return `![${src}](/blog-images/${postSlug}/${src})`;
   });
+
+  // Process Hugo alert shortcodes -> GFM blockquotes
+  const alertTypes = {
+    warning: { icon: '⚠️', label: '**Advertencia**' },
+    info: { icon: 'ℹ️', label: '**Información**' },
+    error: { icon: '❌', label: '**Error**' },
+    success: { icon: '✅', label: '**Éxito**' },
+    note: { icon: '📝', label: '**Nota**' },
+  };
+
+  for (const [type, { icon, label }] of Object.entries(alertTypes)) {
+    // Convert Hugo alert shortcode to GFM blockquote
+    // Support both {{% alert type %}} and {{< alert type >}} syntax
+    
+    // Percent syntax: {{% alert type }}
+    const percentStart = '{{% alert ' + type + ' %}}';
+    const percentEnd = '{{% /alert %}}';
+    
+    while (content.includes(percentStart)) {
+      const startIdx = content.indexOf(percentStart);
+      const endIdx = content.indexOf(percentEnd, startIdx);
+      if (endIdx === -1) break;
+      
+      const alertContent = content.substring(startIdx + percentStart.length, endIdx).trim();
+      const lines = alertContent.split('\n').filter(l => l.trim()).map(line => `> ${line}`).join('\n');
+      const blockquote = `> ${icon} ${label}\n${lines}`;
+      
+      content = content.substring(0, startIdx) + blockquote + content.substring(endIdx + percentEnd.length);
+    }
+    
+    // Angle syntax: {{< alert type >}} or {{ alert type }}
+    const angleStart = '{{< alert ' + type + ' >}}';
+    const angleEnd = '{{< /alert >}}';
+    
+    while (content.includes(angleStart)) {
+      const startIdx = content.indexOf(angleStart);
+      const endIdx = content.indexOf(angleEnd, startIdx);
+      if (endIdx === -1) break;
+      
+      const alertContent = content.substring(startIdx + angleStart.length, endIdx).trim();
+      const lines = alertContent.split('\n').filter(l => l.trim()).map(line => `> ${line}`).join('\n');
+      const blockquote = `> ${icon} ${label}\n${lines}`;
+      
+      content = content.substring(0, startIdx) + blockquote + content.substring(endIdx + angleEnd.length);
+    }
+  }
 
   if (copiedImages.length > 0) {
     for (const image of copiedImages) {
