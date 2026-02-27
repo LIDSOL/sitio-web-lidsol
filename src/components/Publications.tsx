@@ -5,9 +5,13 @@ import { Badge } from "./ui/badge";
 import { FileText, ExternalLink, Download, Users, Calendar, Award } from "lucide-react";
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { PublicationsDetail } from "./PublicationsDetail";
+import { useState } from "react";
+import { Publication } from "../data/publications";
 
 export function Publications() {
   const { language } = useLanguage();
+  const [selectedPublication, setSelectedPublication] = useState<Publication | null>(null);
 
   const getTypeColor = (type: { en: string; es: string }) => {
     switch (type.en) {
@@ -92,7 +96,7 @@ export function Publications() {
                   <Button variant="outline" size="sm" className="flex-1 gap-1 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                     <Download className="h-3.5 w-3.5" /> PDF
                   </Button>
-                  <Button variant="outline" size="sm" className="flex-1 gap-1">
+                  <Button variant="outline" size="sm" className="flex-1 gap-1" onClick={() => setSelectedPublication(publication)}>
                     <ExternalLink className="h-3.5 w-3.5" /> {language === 'es' ? 'Ver' : 'View'}
                   </Button>
                 </div>
@@ -138,6 +142,13 @@ export function Publications() {
             {language === 'es' ? 'Enviar Propuesta' : 'Submit Proposal'} <ExternalLink className="h-4 w-4" />
           </Button>
         </div>
+
+        {/* Detail Dialog */}
+        <PublicationsDetail 
+          publication={selectedPublication as Publication} 
+          open={selectedPublication !== null} 
+          onClose={() => setSelectedPublication(null)} 
+        />
       </div>
     </section>
   );
