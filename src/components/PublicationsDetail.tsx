@@ -102,10 +102,19 @@ export function PublicationsDetail({ publication, open, onClose }: PublicationsD
 
           {/* Actions */}
           <div className="flex gap-3 pt-2">
-            <Button className="gap-2">
-              <Download className="h-4 w-4" />
-              {language === 'es' ? 'Descargar PDF' : 'Download PDF'}
-            </Button>
+            {publication.pdf ? (
+              <Button className="gap-2" asChild>
+                <a href={publication.pdf} target="_blank" rel="noopener noreferrer">
+                  <Download className="h-4 w-4" />
+                  {language === 'es' ? 'Descargar PDF' : 'Download PDF'}
+                </a>
+              </Button>
+            ) : (
+              <Button className="gap-2" disabled>
+                <Download className="h-4 w-4" />
+                {language === 'es' ? 'Descargar PDF' : 'Download PDF'}
+              </Button>
+            )}
             <Button variant="outline" className="gap-2">
               <ExternalLink className="h-4 w-4" />
               {language === 'es' ? 'Ver en línea' : 'View online'}

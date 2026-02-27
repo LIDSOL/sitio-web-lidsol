@@ -45,7 +45,7 @@ export const projects: Project[] = [
   },
     github: "https://gitlab.com/lidsol/papime-pe102718-mecanismos-de-privacidad-y-anonimato",
     website: "https://priv-anon.unam.mx/",
-    download: "/downloads/priv-anon.pdf",
+    download: "/pdf/projects/priv-anon.pdf",
     features: {
     en: [
       "Privacy awareness: Educational materials focused on reasonable expectations of online privacy.",
