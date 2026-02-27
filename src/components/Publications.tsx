@@ -93,9 +93,17 @@ export function Publications() {
                   )}
                 </div>
                 <div className="flex gap-2">
-                  <Button variant="outline" size="sm" className="flex-1 gap-1 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                    <Download className="h-3.5 w-3.5" /> PDF
-                  </Button>
+                  {publication.pdf ? (
+                    <Button variant="outline" size="sm" className="flex-1 gap-1 group-hover:bg-primary group-hover:text-primary-foreground transition-colors" asChild>
+                      <a href={publication.pdf} target="_blank" rel="noopener noreferrer">
+                        <Download className="h-3.5 w-3.5" /> PDF
+                      </a>
+                    </Button>
+                  ) : (
+                    <Button variant="outline" size="sm" className="flex-1 gap-1 group-hover:bg-primary group-hover:text-primary-foreground transition-colors" disabled>
+                      <Download className="h-3.5 w-3.5" /> PDF
+                    </Button>
+                  )}
                   <Button variant="outline" size="sm" className="flex-1 gap-1" onClick={() => setSelectedPublication(publication)}>
                     <ExternalLink className="h-3.5 w-3.5" /> {language === 'es' ? 'Ver' : 'View'}
                   </Button>
