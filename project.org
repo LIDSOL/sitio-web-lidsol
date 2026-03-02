@@ -71,11 +71,14 @@ DEADLINE: <2026-03-03 Tue>
 - [X] Mudar el contenido.
   - [X] Añadir los "metadatos" a src/data/publications.tsx
   - [X] Añadir los contenidos descargables (pdf)
-- [ ] Funcionalidades
-  - [ ] "Ventana de diálogo" con maś información de los proyectos
+- [-] Funcionalidades y aspecto
+  - [-] Subpágina con detalles de las publicaciones
+    - [X] Texto con justificado completo
+    - [X] Soporte de sintaxis markdown
+    - [ ] Mostrar fotos de quienes escribieron la investigación y si tienen perfil en la página, que se pueda redirigir con un link.
   - [ ] Botón de Citar/área de citar
+  - [X] Animación en el contenido
   - [ ] DOI
-  - [ ] Si es que hace match con alguno de los miembros, redirigirlos a su perfíl
 - [ ] ¿Qué hacer con los botones inferiores?
 - [ ] ¿Qué hacer con la opción de mandar una propuesta de investigación?
 **** IN-PROGRESS Blog y BlogDetail [50%]

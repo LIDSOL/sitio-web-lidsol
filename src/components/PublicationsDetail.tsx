@@ -4,6 +4,8 @@ import { Badge } from "./ui/badge";
 import { useLanguage } from "./LanguageProvider";
 import { Publication } from "../data/publications";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface PublicationDetailProps {
   publication: Publication;
@@ -36,7 +38,7 @@ export function PublicationDetail({ publication, onBack }: PublicationDetailProp
           className="mb-8 gap-2"
           onClick={onBack}
         >
-          <ArrowLeft className="h-4 w-4" /> 
+          <ArrowLeft className="h-4 w-4" />
           {language === 'es' ? 'Volver a Publicaciones' : 'Back to Publications'}
         </Button>
 
@@ -59,11 +61,16 @@ export function PublicationDetail({ publication, onBack }: PublicationDetailProp
           ))}
         </div>
 
-        <h1 className="text-4xl sm:text-5xl mb-6">{publication.title[language]}</h1>
+        <h1 className="text-4xl sm:text-5xl mb-6" style={{ lineHeight: '1.3' }}>{publication.title[language]}</h1>
 
-        <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-          {publication.abstract[language]}
-        </p>
+        <div style={{ textAlign: 'justify', textJustify: 'inter-word' }} className="mb-8">
+          <ReactMarkdown 
+            remarkPlugins={[remarkGfm]}
+            className="text-xl text-muted-foreground leading-relaxed prose prose-xl dark:prose-invert max-w-none"
+          >
+            {publication.abstract[language]}
+          </ReactMarkdown>
+        </div>
 
         <div className="space-y-4 text-lg mb-8">
           <div className="flex items-start gap-3">
@@ -109,10 +116,7 @@ export function PublicationDetail({ publication, onBack }: PublicationDetailProp
               {language === 'es' ? 'Descargar PDF' : 'Download PDF'}
             </Button>
           )}
-          <Button variant="outline" className="gap-2">
-            <ExternalLink className="h-4 w-4" />
-            {language === 'es' ? 'Ver en línea' : 'View online'}
-          </Button>
+
         </div>
       </div>
     </section>
