@@ -66,8 +66,20 @@ DEADLINE: <2026-02-12 Thu>
     - src/components/ProjectDetail.tsx: Actualizado para usar project.tags[language]
     - src/components/FeaturedProjects.tsx: Actualizado para usar project.tags?.[language]
   - [X] Verificar el estado de los proyectos (para que el ícono sea el adecuado)
+**** IN-PROGRESS Publications [25%]
+DEADLINE: <2026-03-03 Tue>
+- [X] Mudar el contenido.
+  - [X] Añadir los "metadatos" a src/data/publications.tsx
+  - [X] Añadir los contenidos descargables (pdf)
+- [ ] Funcionalidades
+  - [ ] "Ventana de diálogo" con maś información de los proyectos
+  - [ ] Botón de Citar/área de citar
+  - [ ] DOI
+  - [ ] Si es que hace match con alguno de los miembros, redirigirlos a su perfíl
+- [ ] ¿Qué hacer con los botones inferiores?
+- [ ] ¿Qué hacer con la opción de mandar una propuesta de investigación?
 **** IN-PROGRESS Blog y BlogDetail [50%]
-DEADLINE: <2026-02-20 Fri>
+DEADLINE: <2026-03-05 Thu>
 - [X] Blog [100%]
   - [X] Hacer que el Blog y el BlogDetail soporten el multi-idioma
   - [X] Hay una _Tag_, *general*, que se muestra tanto en el Blog como en BlogDetail, esta no respeta el multi-idioma. Mejorar esto, para que funcionen correctamente los tags (tomados desde los archivos de markdown)
@@ -127,32 +139,20 @@ El archivo src/data/blogPosts.ts se sigue usando, este genera los componentes [[
       - Se modificará el directorio de cada post para contener versiones por idioma, un archivo por cada idioma (en este caso solo inglés-español, por ejemplo: index.es.md, index.en.md).
       - Se modificará el[[file:scripts/build-blog.js][ script]] que genera el[[file:src/data/blogPosts.ts][ archito ts]] con que usan los compontes que genran el blog. Deben detectar los archivos con sufijos .es.md o en.md y generar la estructura tipo json adecuada.
 **** TODO Events y EventDetail
-DEADLINE: <2026-02-25 Wed>
+DEADLINE: <2026-03-10 Tue>
 - [ ] Mudar el contenido
 - [ ] Implementar una función de calendario. Sería divertido poder exportar un archivo que se pueda cargar a una app de calendario..
 **** TODO CourseDetail y CourseDetail
-DEADLINE: <2026-02-26 Thu>
-**** IN-PROGRESS Publications [1/4]
-DEADLINE: <2026-02-27 Fri>
-- [X] Mudar el contenido.
-  - [X] Añadir los "metadatos" a src/data/publications.tsx
-  - [X] Añadir los contenidos descargables (pdf)
-- [ ] Funcionalidades
-  - [ ] "Ventana de diálogo" con maś información de los proyectos
-  - [ ] Botón de Citar
-  - [ ] DOI
-  - [ ] Si es que hace match con alguno de los miembros, redirigirlos a su
-- [ ] ¿Qué hacer con los botones inferiores?
-- [ ] ¿Qué hacer con la opción de mandar una propuesta de investigación?
+DEADLINE: <2026-03-13 Fri>
 **** IN-PROGRESS Header
-DEADLINE: <2026-02-28 Sat>
+DEADLINE: <2026-03-14 Sat>
 **** IN-PROGRESS Footer
-DEADLINE: <2026-02-28 Sat>
+DEADLINE: <2026-03-14 Sat>
 - [ ] Hacer que al dar click se abra en una pestaña nueva y no en la actual
 - [ ] Debe ser compatible con el selector de idioma
 - ¿Qué hacer con la parte de licencias?
 **** IN-PROGRESS Home
-DEADLINE: <2026-03-03 Tue>
+DEADLINE: <2026-03-14 Sat>
 ***** DONE LatestBlogPost
 - [X] Título
 - [X] Botón de ver más post.
@@ -167,9 +167,9 @@ DEADLINE: <2026-03-03 Tue>
 ***** LatestCourse
 ***** LatestEvent
 *** Documentar
-DEADLINE: <2026-03-06 Fri>
+DEADLINE: <2026-03-21 Sat>
 *** Bugs/Test
-DEADLINE: <2026-03-06 Fri>
+DEADLINE: <2026-03-21 Sat>
 **** Hacer que los íconos sean tomados de un svg local
 en blog.tsx hay import { User, ArrowRight, Calendar, Clock } from "lucide-react";
 **** Cuando regreso a una página anterior, que no me regrese hasta el inicio, si no que se quede en el mismo sitio antes de dar click.
@@ -181,7 +181,7 @@ Al estar en dispositivos móviles, el efecto de brillo que sigue al cursos se qu
 Hay un problema con las tarjetas de "Último curso, Último post de blog" en dispositivos móviels el contenido no se ve completo.
 **** Auditoría de ciberseguridad
 ** Deploy Final
-DEADLINE: <2026-03-09 Mon>
+DEADLINE: <2026-03-31 Tue>
 * Arquitectura
 
 ** Stack Tecnológico

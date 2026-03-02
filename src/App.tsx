@@ -14,6 +14,7 @@ import { EventDetail } from "./components/EventDetail";
 import { Courses } from "./components/Courses";
 import { CourseDetail } from "./components/CourseDetail";
 import { Publications } from "./components/Publications";
+import { PublicationDetail } from "./components/PublicationsDetail";
 import { Projects } from "./components/Projects";
 import { ProjectDetail } from "./components/ProjectDetail";
 import { About } from "./components/About";
@@ -27,6 +28,7 @@ import { projects } from "./data/projects";
 import { courses } from "./data/courses";
 import { events } from "./data/events";
 import { members } from "./data/members";
+import { publications } from "./data/publications";
 
 type ViewType = 
   | "home" 
@@ -37,6 +39,7 @@ type ViewType =
   | "courses" 
   | "courseDetail"
   | "publications" 
+  | "publicationDetail"
   | "projects"
   | "projectDetail"
   | "about"
@@ -49,6 +52,7 @@ export default function App() {
   const [selectedCourseId, setSelectedCourseId] = useState<number | null>(null);
   const [selectedEventId, setSelectedEventId] = useState<number | null>(null);
   const [selectedMemberId, setSelectedMemberId] = useState<number | null>(null);
+  const [selectedPublicationId, setSelectedPublicationId] = useState<number | null>(null);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -119,7 +123,15 @@ export default function App() {
       // Handle publications
       else if (hash === "#publications") {
         setCurrentView("publications");
+        setSelectedPublicationId(null);
         window.scrollTo(0, 0);
+      } else if (hash.startsWith("#publications/")) {
+        const publicationId = parseInt(hash.replace("#publications/", ""));
+        if (!isNaN(publicationId)) {
+          setCurrentView("publicationDetail");
+          setSelectedPublicationId(publicationId);
+          window.scrollTo(0, 0);
+        }
       }
       // Handle projects
       else if (hash === "#projects") {
@@ -182,6 +194,14 @@ export default function App() {
     window.location.hash = "#courses";
   };
 
+  const handlePublicationClick = (publicationId: number) => {
+    window.location.hash = `#publications/${publicationId}`;
+  };
+
+  const handleBackToPublications = () => {
+    window.location.hash = "#publications";
+  };
+
   const handleEventClick = (eventId: number) => {
     window.location.hash = `#events/${eventId}`;
   };
@@ -231,6 +251,10 @@ export default function App() {
     ? members.find(member => member.id === selectedMemberId)
     : null;
 
+  const selectedPublication = selectedPublicationId
+    ? publications.find(publication => publication.id === selectedPublicationId)
+    : null;
+
   return (
     <ThemeProvider>
       <LanguageProvider>
@@ -250,7 +274,9 @@ export default function App() {
           ) : currentView === "courses" ? (
             <Courses onCourseClick={handleCourseClick} />
           ) : currentView === "publications" ? (
-            <Publications />
+            <Publications onPublicationClick={handlePublicationClick} />
+          ) : currentView === "publicationDetail" && selectedPublication ? (
+            <PublicationDetail publication={selectedPublication} onBack={handleBackToPublications} />
           ) : currentView === "projectDetail" && selectedProject ? (
             <ProjectDetail project={selectedProject} onBack={handleBackToProjects} />
           ) : currentView === "projects" ? (
