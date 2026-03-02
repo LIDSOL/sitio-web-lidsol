@@ -5,13 +5,13 @@ import { Badge } from "./ui/badge";
 import { FileText, ExternalLink, Download, Users, Calendar, Award } from "lucide-react";
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { PublicationsDetail } from "./PublicationsDetail";
-import { useState } from "react";
-import { Publication } from "../data/publications";
 
-export function Publications() {
+interface PublicationsProps {
+  onPublicationClick: (publicationId: number) => void;
+}
+
+export function Publications({ onPublicationClick }: PublicationsProps) {
   const { language } = useLanguage();
-  const [selectedPublication, setSelectedPublication] = useState<Publication | null>(null);
 
   const getTypeColor = (type: { en: string; es: string }) => {
     switch (type.en) {
@@ -40,7 +40,7 @@ export function Publications() {
         </div>
 
         {/* Publications Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
           {publications.slice(0).map((publication) => (
             <Card
               key={publication.id}
@@ -104,7 +104,7 @@ export function Publications() {
                       <Download className="h-3.5 w-3.5" /> PDF
                     </Button>
                   )}
-                  <Button variant="outline" size="sm" className="flex-1 gap-1" onClick={() => setSelectedPublication(publication)}>
+                  <Button variant="outline" size="sm" className="flex-1 gap-1" onClick={() => onPublicationClick(publication.id)}>
                     <ExternalLink className="h-3.5 w-3.5" /> {language === 'es' ? 'Ver' : 'View'}
                   </Button>
                 </div>
@@ -150,13 +150,6 @@ export function Publications() {
             {language === 'es' ? 'Enviar Propuesta' : 'Submit Proposal'} <ExternalLink className="h-4 w-4" />
           </Button>
         </div>
-
-        {/* Detail Dialog */}
-        <PublicationsDetail 
-          publication={selectedPublication as Publication} 
-          open={selectedPublication !== null} 
-          onClose={() => setSelectedPublication(null)} 
-        />
       </div>
     </section>
   );
