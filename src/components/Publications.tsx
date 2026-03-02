@@ -5,6 +5,7 @@ import { Badge } from "./ui/badge";
 import { FileText, ExternalLink, Download, Users, Calendar, Award } from "lucide-react";
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { motion } from "framer-motion";
 
 interface PublicationsProps {
   onPublicationClick: (publicationId: number) => void;
@@ -39,14 +40,14 @@ export function Publications({ onPublicationClick }: PublicationsProps) {
           </p>
         </div>
 
-        {/* Publications Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
-          {publications.slice(0).map((publication) => (
+{/* Publications Grid */}
+<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {publications.slice(0).map((publication, index) => (
             <Card
               key={publication.id}
-              className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group border-border/60 flex flex-col"
+              className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group border-border/60 flex flex-col h-full"
             >
-              <div className="aspect-video relative overflow-hidden">
+              <div className="aspect-video relative overflow-hidden shrink-0">
                 <ImageWithFallback
                   src={publication.image}
                   alt={publication.title[language]}
@@ -56,20 +57,35 @@ export function Publications({ onPublicationClick }: PublicationsProps) {
                   {publication.type[language]}
                 </Badge>
               </div>
-              <CardHeader className="flex-grow">
-                {publication.tags && publication.tags[language] && (
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {publication.tags[language].map((tag) => (
-                      <Badge key={tag} variant="outline" className="text-xs">{tag}</Badge>
-                    ))}
-                  </div>
-                )}
-                <CardTitle className="group-hover:text-primary transition-colors line-clamp-2 leading-relaxed">
+                <CardHeader className="flex-grow pb-2 pt-2">
+                <div className="min-h-[24px]">
+                  {publication.tags && publication.tags[language] && (
+                    <div className="flex flex-wrap gap-2 mb-1">
+                      {publication.tags[language].map((tag) => (
+                        <Badge key={tag} variant="outline" className="text-xs">{tag}</Badge>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                >
+                <CardTitle className="group-hover:text-primary transition-colors line-clamp-2 leading-relaxed font-bold">
                   {publication.title[language]}
                 </CardTitle>
-                <CardDescription className="mt-2 line-clamp-3">{publication.abstract[language]}</CardDescription>
+                <CardDescription className="mt-1 line-clamp-3">{publication.abstract[language]}</CardDescription>
+                </motion.div>
               </CardHeader>
-              <CardContent>
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 + 0.1 }}
+              >
+              <CardContent className="mt-auto">
                 <div className="space-y-2 mb-4 text-sm">
                   <div className="flex items-start gap-2">
                     <Users className="h-3.5 w-3.5 text-muted-foreground mt-0.5 flex-shrink-0" />
@@ -109,6 +125,7 @@ export function Publications({ onPublicationClick }: PublicationsProps) {
                   </Button>
                 </div>
               </CardContent>
+              </motion.div>
             </Card>
           ))}
         </div>
