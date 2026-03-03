@@ -12,6 +12,7 @@ export interface Publication {
   category: string;
   doi: string;
   citations?: string;
+  citation?: string;
   image: string;
   tags?: { en: string[]; es: string[] };
   pdf?: string;
@@ -38,6 +39,25 @@ export const publications: Publication[] = [
     },
     category: "Educación",
     doi: "10.1234/rmte.2024.001",
+    citation: `@InProceedings{10.1007/978-3-030-16785-1_4,
+author="Vargas-Herrera, D.
+and Oropeza, L. A.
+and Cabrera, O. E.
+and Caldelas, I.
+and Brambila-Paz, F.
+and Mont{\'u}far-Chaveznava, R.",
+editor="Fardoun, Habib M.
+and Hassan, Ahlam A. M.
+and de la Gu{\'i}a, M. Elena",
+title="Exploring Virtual Reality for Neural Rehabilitation and Phobia Treatment",
+booktitle="New Technologies to Improve Patient Rehabilitation",
+year="2019",
+publisher="Springer International Publishing",
+address="Cham",
+pages="46--57",
+abstract="The principal objective of neural rehabilitation therapies is helping affected people to recover their mobility and reduce their dependency to other people in personal and occupational life. The way neural rehabilitation therapies are applied used to be based on the experience of the therapists and the epidemiological data available. Meanwhile, computer games (serious games), specially, based on virtual reality, are already used to treat exclusively certain types of phobia considering that an effective therapy consists on exposing patients to the source of their pathological fear within a controlled and safe environment. At present, at National Autonomous University of Mexico we are developing a set of applications based on videogames technology, programming them by the Unity SDK. The idea is helping patients to recover their mobility, which was lost by a neurological accident, or to confront their phobia. In this work we present the corresponding advances. In the case of neural rehabilitation, we focus the applications for ocular, head and neck recovery, developing some 3D scenarios for the Oculus Rift device. Respect to phobia treatment we consider attending arachnophobia, acrophobia and aviophobia, developing some 3D scenarios for Card Boards and also the Oculus Rift.",
+isbn="978-3-030-16785-1"
+}`,
     image: vrImg,
     tags: {
       en: ["Virtual Reality", "Videogames", "Phobia"],
@@ -64,6 +84,20 @@ export const publications: Publication[] = [
       },
       category: "Seguridad",
       doi: "10.1234/jcsr.2024.042",
+    citation: `@article{ruano_munoz_2017,
+title={La red Tor como elemento de privacidad en nuestras vidas},
+url={https://revista.seguridad.unam.mx/numero30/la-red-tor-como-elemento-de-privacidad-en-nuestras-vidas},
+journal={.SEGURIDAD},
+number={30}
+publisher={DIRECCIÓN GENERAL DE CÓMPUTO Y DE TECNOLOGÍAS DE LA INFORMACIÓN Y COMUNICACIÓN, UNAM},
+author={Ruano Muñoz, Marco Antonio},
+year={2017},
+month={Oct}}
+
+Este artículo se desarrolló vinculado con el proyecto PE102718
+PAPIME/DGAPA/UNAM.
+`,
+
       image: torBrowserImg,
       tags: {
         en: ["Tor", "Privacy", "Anonymity", "Networks", "Information"],
