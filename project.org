@@ -72,13 +72,20 @@ DEADLINE: <2026-03-03 Tue>
   - [X] Añadir los "metadatos" a src/data/publications.tsx
   - [X] Añadir los contenidos descargables (pdf)
 - [-] Funcionalidades y aspecto
-  - [X] Subpágina con detalles de las publicaciones
+  - [-] Subpágina con detalles de las publicaciones
     - [X] Texto con justificado completo
     - [X] Soporte de sintaxis markdown
     - [X] Mostrar enlace si tienen los autores de la publicación tienen perfil en la página.
-  - [ ] Botón de Citar/área de citar
+    - [-] Botones
+      - [ ] Código fuente
+      - [ ] DOI
+      - [X] PDF
+      - [ ] Citar
   - [X] Animación en el contenido
-  - [ ] DOI
+  - [ ] Botón de Citar/área de citar
+    - [ ] Que se pueda copiar al portapapeles
+    - [ ] Que puedas salir con ESC
+    - [ ] Que sea un modulo independiente para usarlo dentro de Publication y PublicationDetail
 - [ ] ¿Qué hacer con los botones inferiores?
 - [ ] ¿Qué hacer con la opción de mandar una propuesta de investigación?
 **** IN-PROGRESS Blog y BlogDetail [50%]

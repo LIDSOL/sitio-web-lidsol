@@ -1,11 +1,12 @@
 import { useLanguage } from "./LanguageProvider";
-import { publications } from "../data/publications";
+import { publications, Publication } from "../data/publications";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { FileText, ExternalLink, Download, Users, Calendar, Award } from "lucide-react";
+import { FileText, ExternalLink, Download, Users, Calendar, Award, Quote, X, Copy, Check } from "lucide-react";
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 interface PublicationsProps {
   onPublicationClick: (publicationId: number) => void;
@@ -13,6 +14,20 @@ interface PublicationsProps {
 
 export function Publications({ onPublicationClick }: PublicationsProps) {
   const { language } = useLanguage();
+  const [citePublication, setCitePublication] = useState<Publication | null>(null);
+  const [copied, setCopied] = useState(false);
+
+  const handleCite = (publication: Publication) => {
+    setCitePublication(publication);
+  };
+
+  const handleCopyCitation = () => {
+    if (citePublication?.citation) {
+      navigator.clipboard.writeText(citePublication.citation);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
 
   const getTypeColor = (type: { en: string; es: string }) => {
     switch (type.en) {
@@ -123,6 +138,11 @@ export function Publications({ onPublicationClick }: PublicationsProps) {
                   <Button variant="outline" size="sm" className="flex-1 gap-1" onClick={() => onPublicationClick(publication.id)}>
                     <ExternalLink className="h-3.5 w-3.5" /> {language === 'es' ? 'Ver' : 'View'}
                   </Button>
+                  {publication.citation && (
+                    <Button variant="outline" size="sm" className="flex-1 gap-1" onClick={() => handleCite(publication)}>
+                      <Quote className="h-3.5 w-3.5" /> {language === 'es' ? 'Citar' : 'Cite'}
+                    </Button>
+                  )}
                 </div>
               </CardContent>
               </motion.div>
@@ -167,6 +187,55 @@ export function Publications({ onPublicationClick }: PublicationsProps) {
             {language === 'es' ? 'Enviar Propuesta' : 'Submit Proposal'} <ExternalLink className="h-4 w-4" />
           </Button>
         </div>
+
+        {/* Cite Modal - GNOME Style */}
+        {citePublication && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div 
+              className="absolute inset-0 bg-black/50 backdrop-blur-sm" 
+              onClick={() => setCitePublication(null)}
+            />
+            <div className="relative w-1/2 max-w-2xl bg-card rounded-xl border shadow-2xl overflow-hidden">
+              <div className="flex items-center justify-between px-6 py-4 border-b bg-muted/50">
+                <h2 className="text-lg font-semibold flex items-center gap-2">
+                  <Quote className="h-5 w-5" />
+                  {language === 'es' ? 'Cita' : 'Citation'}
+                </h2>
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  onClick={() => setCitePublication(null)}
+                  className="rounded-full hover:bg-muted"
+                >
+                  <X className="h-5 w-5" />
+                </Button>
+              </div>
+              <div className="p-6">
+                <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm font-mono whitespace-pre-wrap break-all max-h-96 overflow-y-auto">
+                  {citePublication.citation}
+                </pre>
+                <div className="mt-4 flex justify-end">
+                  <Button 
+                    className="gap-2" 
+                    onClick={handleCopyCitation}
+                  >
+                    {copied ? (
+                      <>
+                        <Check className="h-4 w-4" />
+                        {language === 'es' ? 'Copiado' : 'Copied'}
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="h-4 w-4" />
+                        {language === 'es' ? 'Copiar' : 'Copy'}
+                      </>
+                    )}
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
