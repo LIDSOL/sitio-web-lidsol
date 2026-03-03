@@ -3,6 +3,7 @@ import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { useLanguage } from "./LanguageProvider";
 import { Publication } from "../data/publications";
+import { members } from "../data/members";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -14,6 +15,56 @@ interface PublicationDetailProps {
 
 export function PublicationDetail({ publication, onBack }: PublicationDetailProps) {
   const { language } = useLanguage();
+
+  interface AuthorMember {
+    name: string;
+    memberId?: number;
+  }
+
+  const findMemberByUsername = (authorName: string): AuthorMember => {
+    const search = authorName.toLowerCase().trim();
+
+    const usernameToMemberId: Record<string, number> = {
+      'quique': 4,
+      'barrionomia': 9,
+    };
+
+    if (usernameToMemberId[search]) {
+      const member = members.find(m => m.id === usernameToMemberId[search]);
+      if (member) {
+        return { name: member.name, memberId: member.id };
+      }
+    }
+
+    const byGithub = members.find(member => {
+      const github = member.contact?.github?.toLowerCase() || '';
+      const gitlab = member.contact?.gitlab?.toLowerCase() || '';
+      const githubUsername = github.replace('https://github.com/', '').replace('http://github.com/', '');
+      const gitlabUsername = gitlab.replace('https://gitlab.com/', '').replace('http://gitlab.com/', '');
+      return githubUsername === search || gitlabUsername === search;
+    });
+    if (byGithub) {
+      return { name: byGithub.name, memberId: byGithub.id };
+    }
+
+    const byName = members.find(member => {
+      const name = member.name.toLowerCase();
+      return name === search || name.includes(search) || search.includes(name);
+    });
+    if (byName) {
+      return { name: byName.name, memberId: byName.id };
+    }
+
+    return { name: authorName };
+  };
+
+  const authorMembers: AuthorMember[] = publication.authors.map(findMemberByUsername);
+
+  const handleAuthorClick = (memberId?: number) => {
+    if (memberId) {
+      window.location.hash = `#about/member/${memberId}`;
+    }
+  };
 
   const getTypeColor = (type: { en: string; es: string }) => {
     switch (type.en) {
@@ -75,7 +126,20 @@ export function PublicationDetail({ publication, onBack }: PublicationDetailProp
         <div className="space-y-4 text-lg mb-8">
           <div className="flex items-start gap-3">
             <Users className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-            <span className="text-muted-foreground">{publication.authors.join(", ")}</span>
+            <span className="text-muted-foreground">
+              {authorMembers.map((author, idx) => (
+                <span key={idx}>
+                  {idx > 0 && (idx === authorMembers.length - 1 ? `, ${language === 'es' ? 'y' : 'and'} ` : ', ')}
+                  <span
+                    className={author.memberId ? "cursor-pointer hover:underline text-foreground font-medium" : ""}
+                    onClick={() => handleAuthorClick(author.memberId)}
+                  >
+                    {author.name}
+                    {author.memberId && <ExternalLink className="h-3 w-3 inline ml-1" />}
+                  </span>
+                </span>
+              ))}
+            </span>
           </div>
           {publication.journal && (
             <div className="flex items-center gap-3">
