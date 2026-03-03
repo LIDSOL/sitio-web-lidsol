@@ -1,12 +1,14 @@
-import { FileText, Users, Calendar, Award, Download, ExternalLink, ArrowLeft } from "lucide-react";
+import { FileText, Users, Calendar, Award, Download, ExternalLink, ArrowLeft, Quote } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { useLanguage } from "./LanguageProvider";
 import { Publication } from "../data/publications";
 import { members } from "../data/members";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { CitationModal } from "./CitationModal";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { useState } from "react";
 
 interface PublicationDetailProps {
   publication: Publication;
@@ -15,6 +17,7 @@ interface PublicationDetailProps {
 
 export function PublicationDetail({ publication, onBack }: PublicationDetailProps) {
   const { language } = useLanguage();
+  const [showCitation, setShowCitation] = useState(false);
 
   interface AuthorMember {
     name: string;
@@ -181,7 +184,21 @@ export function PublicationDetail({ publication, onBack }: PublicationDetailProp
             </Button>
           )}
 
+          {publication.citation && (
+            <Button variant="outline" className="gap-2" onClick={() => setShowCitation(true)}>
+              <Quote className="h-4 w-4" />
+              {language === 'es' ? 'Citar' : 'Cite'}
+            </Button>
+          )}
         </div>
+
+        {publication.citation && (
+          <CitationModal
+            citation={publication.citation}
+            open={showCitation}
+            onClose={() => setShowCitation(false)}
+          />
+        )}
       </div>
     </section>
   );
