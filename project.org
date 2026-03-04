@@ -87,6 +87,7 @@ DEADLINE: <2026-03-03 Tue>
     - [X] Que se pueda copiar al portapapeles
     - [X] Que puedas salir con ESC
     - [X] Que no se desborde el contenido
+    - [ ] La página de fondo debe estar más opaca que la ventana emergente.
 - [ ] ¿Qué hacer con los botones inferiores?
 - [ ] ¿Qué hacer con la opción de mandar una propuesta de investigación?
 **** IN-PROGRESS Blog y BlogDetail [50%]
