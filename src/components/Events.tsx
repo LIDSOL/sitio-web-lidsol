@@ -6,7 +6,7 @@ import { Calendar } from "./ui/calendar";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { events } from "../data/events";
 import { useLanguage } from "./LanguageProvider";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 interface EventsProps {
   onEventClick: (eventId: number) => void;
@@ -15,6 +15,15 @@ interface EventsProps {
 export function Events({ onEventClick }: EventsProps) {
   const { language } = useLanguage();
   const [date, setDate] = useState<Date | undefined>(new Date());
+
+  // Lógica para ordenar los eventos del más reciente al más antiguo
+  const sortedEvents = useMemo(() => {
+    return [...events].sort((a, b) => {
+      const dateA = a.startDate ? new Date(a.startDate).getTime() : 0;
+      const dateB = b.startDate ? new Date(b.startDate).getTime() : 0;
+      return dateB - dateA; // Orden descendente
+    });
+  }, []);
 
   const t = {
     title: { en: "Events", es: "Eventos" },
@@ -52,13 +61,13 @@ export function Events({ onEventClick }: EventsProps) {
 
         {/* Timeline - Vertical Event Cards */}
         <div className="max-w-4xl mx-auto space-y-6">
-          {events.map((event, index) => (
+          {sortedEvents.map((event, index) => (
             <div key={event.id} className="relative">
-              {/* Timeline connector */}
-              {index < events.length - 1 && (
+              {/* Timeline connector (Se mantiene idéntico, solo cambia la referencia al arreglo ordenado) */}
+              {index < sortedEvents.length - 1 && (
                 <div className="absolute left-8 top-24 bottom-0 w-0.5 bg-border -mb-6" />
               )}
-              
+
               {/* Event Card */}
               <div className="flex gap-6">
                 {/* Date indicator */}
@@ -76,7 +85,7 @@ export function Events({ onEventClick }: EventsProps) {
                 {/* Event content */}
                 <Card className="flex-1 overflow-hidden hover:shadow-lg transition-all duration-300 border-border/60 group">
                   <div className="grid md:grid-cols-5 gap-0">
-                    <div 
+                    <div
                       className="md:col-span-2 aspect-video md:aspect-auto relative overflow-hidden cursor-pointer"
                       onClick={() => onEventClick(event.id)}
                     >
@@ -123,8 +132,8 @@ export function Events({ onEventClick }: EventsProps) {
                           </div>
                         )}
                       </div>
-                      <Button 
-                        variant="outline" 
+                      <Button
+                        variant="outline"
                         className="w-full gap-2 group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
                         onClick={() => onEventClick(event.id)}
                       >
