@@ -15,7 +15,7 @@ interface EventDetailProps {
 
 export function EventDetail({ event, onBack }: EventDetailProps) {
   const { language } = useLanguage();
-  const [date, setDate] = useState<Date | undefined>(new Date(event.startDate));
+  const [date, setDate] = useState<Date | undefined>(event.startDate ? new Date(event.startDate) : undefined);
 
   const t = {
     back: { en: "Back to Events", es: "Volver a Eventos" },
@@ -36,7 +36,7 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
       {/* Cover Image */}
       <div className="relative h-96 overflow-hidden">
         <ImageWithFallback
-          src={event.coverImage}
+          src={event.coverImage || event.image || ""}
           alt={event.title[language]}
           className="w-full h-full object-cover"
         />
@@ -57,7 +57,7 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
         {/* Event Header */}
         <div className="bg-card rounded-3xl p-8 md:p-12 border border-border/50 shadow-xl mb-8">
           <div className="flex flex-wrap gap-2 mb-4">
-            {event.tags.map((tag) => (
+            {event.tags?.map((tag) => (
               <Badge key={tag} variant="secondary">
                 {tag}
               </Badge>
@@ -71,22 +71,28 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
           
           <h1 className="text-5xl sm:text-6xl mb-6">{event.title[language]}</h1>
           <p className="text-xl text-muted-foreground mb-8">
-            {event.shortDescription[language]}
+            {event.shortDescription?.[language]}
           </p>
 
           <div className="flex flex-wrap gap-6 text-muted-foreground mb-8">
-            <div className="flex items-center gap-2">
-              <CalendarIcon className="h-5 w-5 text-primary" />
-              <span>{event.date}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="h-5 w-5 text-primary" />
-              <span>{event.time}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <MapPin className="h-5 w-5 text-primary" />
-              <span>{event.location[language]}</span>
-            </div>
+            {event.startDate && (
+              <div className="flex items-center gap-2">
+                <CalendarIcon className="h-5 w-5 text-primary" />
+                <span>{event.startDate}</span>
+              </div>
+            )}
+            {event.time && (
+              <div className="flex items-center gap-2">
+                <Clock className="h-5 w-5 text-primary" />
+                <span>{event.time}</span>
+              </div>
+            )}
+            {event.location && (
+              <div className="flex items-center gap-2">
+                <MapPin className="h-5 w-5 text-primary" />
+                <span>{event.location[language]}</span>
+              </div>
+            )}
           </div>
 
           <Button size="lg" className="gap-2">
@@ -112,12 +118,14 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
             </div>
 
             {/* Summary */}
+            {event.fullDescription && (
             <div className="bg-card rounded-3xl p-8 border border-border/50">
               <h2 className="text-3xl mb-6">{t.summary[language]}</h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">
+              <p className="text-muted-foreground text-lg leading-relaxed whitespace-pre-line">
                 {event.fullDescription[language]}
               </p>
             </div>
+            )}
 
             {/* Agenda */}
             {event.agenda && (
@@ -137,10 +145,11 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
             )}
 
             {/* Requirements */}
+            {event.requirements && (
             <div className="bg-card rounded-3xl p-8 border border-border/50">
               <h2 className="text-3xl mb-6">{t.requirements[language]}</h2>
               <ul className="space-y-3">
-                {event.requirements[language].map((req, index) => (
+                {event.requirements[language]?.map((req, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                     <span className="text-muted-foreground text-lg">{req}</span>
@@ -148,6 +157,7 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
                 ))}
               </ul>
             </div>
+            )}
           </div>
 
           {/* Sidebar */}
@@ -158,17 +168,20 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
                 <h3 className="text-2xl">{t.eventDetails[language]}</h3>
                 
                 <div className="space-y-4">
+                  {event.startDate && (
                   <div className="flex items-start gap-3">
                     <CalendarIcon className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                     <div>
                       <div className="text-sm text-muted-foreground mb-1">
                         {t.dateTime[language]}
                       </div>
-                      <div className="font-medium">{event.date}</div>
-                      <div className="text-sm text-muted-foreground">{event.time}</div>
+                      <div className="font-medium">{event.startDate}</div>
+                      {event.time && <div className="text-sm text-muted-foreground">{event.time}</div>}
                     </div>
                   </div>
+                  )}
 
+                  {event.location && (
                   <div className="flex items-start gap-3">
                     <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                     <div>
@@ -178,7 +191,9 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
                       <div className="font-medium">{event.location[language]}</div>
                     </div>
                   </div>
+                  )}
 
+                  {event.capacity && (
                   <div className="flex items-start gap-3">
                     <Users className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                     <div>
@@ -188,6 +203,7 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
                       <div className="font-medium">{event.capacity}</div>
                     </div>
                   </div>
+                  )}
                 </div>
 
                 <Button className="w-full gap-2" size="lg">

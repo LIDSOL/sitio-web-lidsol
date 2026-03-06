@@ -65,10 +65,10 @@ export function Events({ onEventClick }: EventsProps) {
                 <div className="flex-shrink-0 w-16 pt-2">
                   <div className="bg-primary text-primary-foreground rounded-2xl p-3 text-center">
                     <div className="text-2xl leading-none mb-1">
-                      {new Date(event.startDate).getDate()}
+                      {event.startDate ? new Date(event.startDate).getDate() : '?'}
                     </div>
                     <div className="text-xs uppercase">
-                      {new Date(event.startDate).toLocaleString('default', { month: 'short' })}
+                      {event.startDate ? new Date(event.startDate).toLocaleString('default', { month: 'short' }) : '-'}
                     </div>
                   </div>
                 </div>
@@ -81,7 +81,7 @@ export function Events({ onEventClick }: EventsProps) {
                       onClick={() => onEventClick(event.id)}
                     >
                       <ImageWithFallback
-                        src={event.image}
+                        src={event.image || ""}
                         alt={event.title[language]}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
@@ -93,7 +93,7 @@ export function Events({ onEventClick }: EventsProps) {
                     </div>
                     <div className="md:col-span-3 p-6">
                       <div className="flex flex-wrap gap-2 mb-3">
-                        {event.tags.slice(0, 3).map((tag) => (
+                        {event.tags?.slice(0, 3).map((tag) => (
                           <Badge key={tag} variant="outline" className="text-xs">{tag}</Badge>
                         ))}
                       </div>
@@ -101,21 +101,27 @@ export function Events({ onEventClick }: EventsProps) {
                         {event.title[language]}
                       </h3>
                       <p className="text-muted-foreground mb-4 line-clamp-2">
-                        {event.shortDescription[language]}
+                        {event.shortDescription?.[language]}
                       </p>
                       <div className="space-y-2 mb-4 text-sm">
-                        <div className="flex items-center gap-2">
-                          <CalendarIcon className="h-3.5 w-3.5 text-muted-foreground" />
-                          <span className="text-muted-foreground">{event.date}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Clock className="h-3.5 w-3.5 text-muted-foreground" />
-                          <span className="text-muted-foreground">{event.time}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <MapPin className="h-3.5 w-3.5 text-muted-foreground" />
-                          <span className="text-muted-foreground">{event.location[language]}</span>
-                        </div>
+                        {event.startDate && (
+                          <div className="flex items-center gap-2">
+                            <CalendarIcon className="h-3.5 w-3.5 text-muted-foreground" />
+                            <span className="text-muted-foreground">{event.startDate}</span>
+                          </div>
+                        )}
+                        {event.time && (
+                          <div className="flex items-center gap-2">
+                            <Clock className="h-3.5 w-3.5 text-muted-foreground" />
+                            <span className="text-muted-foreground">{event.time}</span>
+                          </div>
+                        )}
+                        {event.location && (
+                          <div className="flex items-center gap-2">
+                            <MapPin className="h-3.5 w-3.5 text-muted-foreground" />
+                            <span className="text-muted-foreground">{event.location[language]}</span>
+                          </div>
+                        )}
                       </div>
                       <Button 
                         variant="outline" 
