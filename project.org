@@ -90,20 +90,19 @@ DEADLINE: <2026-03-03 Tue>
     - [X] La página de fondo debe estar más opaca que la ventana emergente.
     - [X] Añadir desplazamiento
 - [X] Sección CTA con Mailto, es sencillo y se evita configurar un backend de correo o base de datos (que para esto no se requiere).
-**** IN-PROGRESS CourseDetail y CourseDetail [0%]
+**** IN-PROGRESS Events y EventDetail [%]
+DEADLINE: <2026-03-10 Tue>
+- [-] Mudar el contenido
+- [ ] Implementar una función de calendario. Sería divertido poder exportar un archivo que se pueda cargar a una app de calendario con un ics..
+**** NEXT CourseDetail y CourseDetail [0%]
 DEADLINE: <2026-03-07 Sat>
 - [ ] Mudar el contenido al sitio actual [0%]
   - [ ] Seminario de lisp
   - [ ] Fundamentos de Python
   - [ ] PumaHat
-  - [ ] Curso básico de sysadmin GMU/Linux
+  - [ ] Curso básico de sysadmin GNU/Linux
   - [ ] Curso de LaTeX
-  - [ ] NLP
 - [ ] ¿Sería bueno tener un backen para los cursos, por ejemplo para tener "gente registrada/apuntada" a los cursos?
-**** NEXT Events y EventDetail
-DEADLINE: <2026-03-10 Tue>
-- [ ] Mudar el contenido
-- [ ] Implementar una función de calendario. Sería divertido poder exportar un archivo que se pueda cargar a una app de calendario..
 **** IN-PROGRESS Blog y BlogDetail [50%]
 DEADLINE: <2026-03-05 Thu>
 - [X] Blog [100%]

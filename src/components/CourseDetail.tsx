@@ -44,6 +44,15 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
     level: { en: "Level", es: "Nivel" },
   };
 
+  const formatDate = (dateStr: string, lang: string) => {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString(lang === 'es' ? 'es-MX' : 'en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Cover Image */}
@@ -185,15 +194,15 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
                     )}
 
                     {course.startDate && (
-                    <div className="flex items-start gap-3">
-                      <Calendar className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <div>
-                        <div className="text-sm text-muted-foreground mb-1">
-                          {t.startDate[language]}
+                      <div className="flex items-start gap-3">
+                        <Calendar className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                        <div>
+                          <div className="text-sm text-muted-foreground mb-1">
+                            {t.startDate[language]}
+                          </div>
+                          <div className="font-medium">{formatDate(course.startDate, language)}</div>
                         </div>
-                        <div className="font-medium">{course.startDate}</div>
                       </div>
-                    </div>
                     )}
 
                     {course.schedule && (

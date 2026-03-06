@@ -46,6 +46,24 @@ export function Courses({ onCourseClick }: CoursesProps) {
     proposeCta: { en: "Propose Course", es: "Proponer Curso" },
   };
 
+  const formatDate = (dateStr: string, lang: string) => {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString(lang === 'es' ? 'es-MX' : 'en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
+
+  const sortedCourses = [...courses].sort((a, b) => {
+    const dateA = a.startDate ? new Date(a.startDate).getTime() : 0;
+    const dateB = b.startDate ? new Date(b.startDate).getTime() : 0;
+    return dateB - dateA;
+  });
+
+  const featuredCourse = sortedCourses[0];
+  const otherCourses = sortedCourses.slice(1);
+
   return (
     <section id="courses" className="py-20 bg-background min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,37 +80,37 @@ export function Courses({ onCourseClick }: CoursesProps) {
           <div className="grid md:grid-cols-2 gap-0">
             <div className="aspect-video md:aspect-auto relative overflow-hidden">
               <ImageWithFallback
-                src={courses[0].image || ""}
-                alt={courses[0].title[language]}
+                src={featuredCourse.image || ""}
+                alt={featuredCourse.title[language]}
                 className="w-full h-full object-cover"
               />
               <Badge className="absolute top-4 left-4 shadow-lg">{t.featured[language]}</Badge>
-              {courses[0].level && (
-                <Badge className={`absolute top-4 right-4 shadow-lg border ${getLevelColor(courses[0].level[language])}`}>
-                  {courses[0].level[language]}
+              {featuredCourse.level && (
+                <Badge className={`absolute top-4 right-4 shadow-lg border ${getLevelColor(featuredCourse.level[language])}`}>
+                  {featuredCourse.level[language]}
                 </Badge>
               )}
             </div>
             <div className="p-8 flex flex-col justify-between">
               <div>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {courses[0].tags?.map((tag) => (
+                  {featuredCourse.tags?.map((tag) => (
                     <Badge key={tag} variant="secondary">{tag}</Badge>
                   ))}
                 </div>
-                <h2 className="text-3xl mb-4">{courses[0].title[language]}</h2>
-                <p className="text-muted-foreground mb-6">{courses[0].shortDescription?.[language]}</p>
+                <h2 className="text-3xl mb-4">{featuredCourse.title[language]}</h2>
+                <p className="text-muted-foreground mb-6">{featuredCourse.shortDescription?.[language]}</p>
                 <div className="space-y-3 mb-6">
-                  {courses[0].instructor && (
+                  {featuredCourse.instructor && (
                     <div className="flex items-center gap-2 text-sm">
                       <BookOpen className="h-4 w-4 text-primary" />
-                      <span>{courses[0].instructor}</span>
+                      <span>{featuredCourse.instructor}</span>
                     </div>
                   )}
-                  {(courses[0].duration || courses[0].schedule) && (
+                  {(featuredCourse.duration || featuredCourse.schedule) && (
                     <div className="flex items-center gap-2 text-sm">
                       <Clock className="h-4 w-4 text-primary" />
-                      <span>{courses[0].duration}{courses[0].duration && courses[0].schedule ? ' • ' : ''}{courses[0].schedule}</span>
+                      <span>{featuredCourse.duration}{featuredCourse.duration && featuredCourse.schedule ? ' • ' : ''}{featuredCourse.schedule}</span>
                     </div>
                   )}
                   {courses[0].startDate && (
@@ -101,17 +119,23 @@ export function Courses({ onCourseClick }: CoursesProps) {
                       <span>{t.startDate[language]} {courses[0].startDate}</span>
                     </div>
                   )}
-                  {courses[0].enrolled && (
+                  {featuredCourse.startDate && (
+                    <div className="flex items-center gap-2 text-sm">
+                      <Calendar className="h-4 w-4 text-primary" />
+                      <span>{t.startDate[language]} {formatDate(featuredCourse.startDate, language)}</span>
+                    </div>
+                  )}
+                  {featuredCourse.enrolled && (
                     <div className="flex items-center gap-2 text-sm">
                       <Users className="h-4 w-4 text-primary" />
-                      <span>{courses[0].enrolled} {t.enrolled[language]}</span>
+                      <span>{featuredCourse.enrolled} {t.enrolled[language]}</span>
                     </div>
                   )}
                 </div>
               </div>
               <Button 
                 className="w-fit gap-2"
-                onClick={() => onCourseClick(courses[0].id)}
+                onClick={() => onCourseClick(featuredCourse.id)}
               >
                 {t.enroll[language]} <ArrowRight className="h-4 w-4" />
               </Button>
@@ -121,7 +145,7 @@ export function Courses({ onCourseClick }: CoursesProps) {
 
         {/* Courses Grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {courses.slice(1).map((course) => (
+          {otherCourses.map((course) => (
             <Card 
               key={course.id} 
               className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group border-border/60 flex flex-col"
@@ -166,7 +190,7 @@ export function Courses({ onCourseClick }: CoursesProps) {
                   {course.startDate && (
                     <div className="flex items-center gap-2">
                       <Calendar className="h-3.5 w-3.5 text-muted-foreground" />
-                      <span className="text-muted-foreground">{course.startDate}</span>
+                      <span className="text-muted-foreground">{formatDate(course.startDate, language)}</span>
                     </div>
                   )}
                   {course.enrolled && (

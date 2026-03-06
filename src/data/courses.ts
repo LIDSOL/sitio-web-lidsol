@@ -1,3 +1,5 @@
+import lispImg  from "../../public/courses-images/lisp.png";
+
 export interface Course {
   id: number;
   title: { en: string; es: string };
@@ -20,13 +22,13 @@ export interface Course {
 export const courses: Course[] = [
   {
     id: 1,
-    title: { 
-      en: "Linux Fundamentals", 
-      es: "Fundamentos de Linux" 
+    title: {
+      en: " ",
+      es: "Seminario de LISP"
     },
-    shortDescription: { 
-      en: "Master command line, system administration, and fundamental Linux concepts.", 
-      es: "Domina la línea de comandos, administración del sistema y conceptos fundamentales de Linux." 
+    shortDescription: {
+      en: " ",
+      es: "Acércate a la programación funcional y a la computación con LISP :)"
     },
     fullDescription: {
       en: "This comprehensive course will take you from Linux beginner to confident user. You'll learn essential command-line skills, system administration basics, and how to navigate and manage a Linux system. Perfect for students, developers, and anyone interested in exploring the world of Unix-like operating systems.",
@@ -34,12 +36,12 @@ export const courses: Course[] = [
     },
     instructor: "Dr. Juan Pérez",
     duration: "8 semanas",
-    startDate: "Enero 15, 2025",
+    startDate: "2025-01-15",
     schedule: "Martes y Jueves, 18:00-20:00",
     level: { en: "Beginner", es: "Principiante" },
     enrolled: "25/30",
-    image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=800",
-    coverImage: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1600",
+    image: lispImg,
+    coverImage: lispImg,
     tags: ["Linux", "Terminal", "Bash", "System Administration"],
     modules: {
       en: [
@@ -90,13 +92,13 @@ export const courses: Course[] = [
   },
   {
     id: 2,
-    title: { 
-      en: "Web Development with Python and Django", 
-      es: "Desarrollo Web con Python y Django" 
+    title: {
+      en: " ",
+      es: "Fundamentos de Python"
     },
-    shortDescription: { 
-      en: "Learn to create robust and scalable web applications using Python and Django.", 
-      es: "Aprende a crear aplicaciones web robustas y escalables usando Python y Django." 
+    shortDescription: {
+      en: " ",
+      es: "Curso de los fundamentos del lenguaje de programación Python 🐍"
     },
     fullDescription: {
       en: "Build modern web applications from scratch using Python and the powerful Django framework. This course covers everything from basic setup to deployment, including database design, user authentication, REST APIs, and production best practices. You'll work on real-world projects and learn industry-standard development workflows.",
@@ -104,7 +106,7 @@ export const courses: Course[] = [
     },
     instructor: "Ing. Ana Martínez",
     duration: "10 semanas",
-    startDate: "Enero 22, 2025",
+    startDate: "2021-01-22",
     schedule: "Lunes y Miércoles, 17:00-19:00",
     level: { en: "Intermediate", es: "Intermedio" },
     enrolled: "18/25",
@@ -160,13 +162,13 @@ export const courses: Course[] = [
   },
   {
     id: 3,
-    title: { 
-      en: "Cybersecurity and Ethical Hacking", 
-      es: "Ciberseguridad y Ethical Hacking" 
+    title: {
+      en: "Cybersecurity and Ethical Hacking",
+      es: "Ciberseguridad y Ethical Hacking"
     },
-    shortDescription: { 
-      en: "Explore computer security from an ethical perspective and learn penetration testing.", 
-      es: "Explora la seguridad informática desde una perspectiva ética y aprende pruebas de penetración." 
+    shortDescription: {
+      en: "Explore computer security from an ethical perspective and learn penetration testing.",
+      es: "Explora la seguridad informática desde una perspectiva ética y aprende pruebas de penetración."
     },
     fullDescription: {
       en: "Dive into the world of cybersecurity with a focus on ethical practices. This advanced course teaches you how to think like an attacker to better defend systems. You'll learn penetration testing methodologies, vulnerability assessment, exploitation techniques, and how to secure systems against common attacks. All techniques are taught within a legal and ethical framework.",
@@ -174,7 +176,7 @@ export const courses: Course[] = [
     },
     instructor: "M.C. Carlos Sánchez",
     duration: "12 semanas",
-    startDate: "Febrero 5, 2025",
+    startDate: "2025-02-05",
     schedule: "Viernes, 16:00-20:00",
     level: { en: "Advanced", es: "Avanzado" },
     enrolled: "15/20",
@@ -232,13 +234,13 @@ export const courses: Course[] = [
   },
   {
     id: 4,
-    title: { 
-      en: "Containers with Docker and Kubernetes", 
-      es: "Contenedores con Docker y Kubernetes" 
+    title: {
+      en: "Containers with Docker and Kubernetes",
+      es: "Contenedores con Docker y Kubernetes"
     },
-    shortDescription: { 
-      en: "Learn to containerize applications and orchestrate them in production.", 
-      es: "Aprende a containerizar aplicaciones y orquestarlas en producción." 
+    shortDescription: {
+      en: "Learn to containerize applications and orchestrate them in production.",
+      es: "Aprende a containerizar aplicaciones y orquestarlas en producción."
     },
     fullDescription: {
       en: "Master the art of containerization with Docker and Kubernetes. This course covers everything from basic container concepts to advanced orchestration strategies. You'll learn how to package applications, manage container lifecycles, implement CI/CD pipelines, and deploy scalable applications in production. Essential for modern DevOps practices.",
@@ -246,7 +248,7 @@ export const courses: Course[] = [
     },
     instructor: "Ing. Laura Rodríguez",
     duration: "6 semanas",
-    startDate: "Febrero 12, 2025",
+    startDate: "2025-02-12",
     schedule: "Sábados, 10:00-14:00",
     level: { en: "Intermediate", es: "Intermedio" },
     enrolled: "12/20",
