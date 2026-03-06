@@ -66,19 +66,19 @@ DEADLINE: <2026-02-12 Thu>
     - src/components/ProjectDetail.tsx: Actualizado para usar project.tags[language]
     - src/components/FeaturedProjects.tsx: Actualizado para usar project.tags?.[language]
   - [X] Verificar el estado de los proyectos (para que el ícono sea el adecuado)
-**** IN-PROGRESS Publications [25%]
+**** IN-PROGRESS Publications [50%]
 DEADLINE: <2026-03-03 Tue>
 - [X] Mudar el contenido.
   - [X] Añadir los "metadatos" a src/data/publications.tsx
   - [X] Añadir los contenidos descargables (pdf)
-- [-] Funcionalidades y aspecto
-  - [-] Subpágina con detalles de las publicaciones
+- [X] Funcionalidades y aspecto
+  - [X] Subpágina con detalles de las publicaciones
     - [X] Texto con justificado completo
     - [X] Soporte de sintaxis markdown
     - [X] Mostrar enlace si tienen los autores de la publicación tienen perfil en la página.
-    - [-] Botones
-      - [ ] Código fuente
-      - [ ] DOI
+    - [X] Botones
+      - [X] Código fuente
+      - [X] DOI
       - [X] PDF
       - [X] Citar
   - [X] Animación en el contenido
