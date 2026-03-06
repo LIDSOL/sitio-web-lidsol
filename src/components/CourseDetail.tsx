@@ -15,7 +15,7 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
   const { language } = useLanguage();
 
   const getLevelColor = (level: string) => {
-    const levelEn = course.level.en;
+    const levelEn = course.level?.en || "";
     switch (levelEn) {
       case "Beginner":
         return "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20";
@@ -49,7 +49,7 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
       {/* Cover Image */}
       <div className="relative h-96 overflow-hidden">
         <ImageWithFallback
-          src={course.coverImage}
+          src={course.coverImage || course.image || ""}
           alt={course.title[language]}
           className="w-full h-full object-cover"
         />
@@ -70,19 +70,21 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
         {/* Course Header */}
         <div className="bg-card rounded-3xl p-8 md:p-12 border border-border/50 shadow-xl mb-8">
           <div className="flex flex-wrap gap-2 mb-4">
-            {course.tags.map((tag) => (
+            {course.tags?.map((tag) => (
               <Badge key={tag} variant="secondary">
                 {tag}
               </Badge>
             ))}
-            <Badge className={`border ${getLevelColor(course.level.en)}`}>
-              {course.level[language]}
-            </Badge>
+            {course.level && (
+              <Badge className={`border ${getLevelColor(course.level.en)}`}>
+                {course.level[language]}
+              </Badge>
+            )}
           </div>
           
           <h1 className="text-5xl sm:text-6xl mb-6">{course.title[language]}</h1>
           <p className="text-xl text-muted-foreground mb-8">
-            {course.shortDescription[language]}
+            {course.shortDescription?.[language]}
           </p>
 
           <Button size="lg" className="gap-2">
@@ -98,15 +100,16 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
             <div className="bg-card rounded-3xl p-8 border border-border/50">
               <h2 className="text-3xl mb-6">{t.description[language]}</h2>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                {course.fullDescription[language]}
+                {course.fullDescription?.[language]}
               </p>
             </div>
 
             {/* Modules */}
+            {course.modules && (
             <div className="bg-primary/5 border border-primary/10 rounded-3xl p-8">
               <h2 className="text-3xl mb-6">{t.modules[language]}</h2>
               <ul className="space-y-3">
-                {course.modules[language].map((module, index) => (
+                {course.modules[language]?.map((module, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <div className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
                       {index + 1}
@@ -116,12 +119,14 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
                 ))}
               </ul>
             </div>
+            )}
 
             {/* Requirements */}
+            {course.requirements && (
             <div className="bg-card rounded-3xl p-8 border border-border/50">
               <h2 className="text-3xl mb-6">{t.requirements[language]}</h2>
               <ul className="space-y-3">
-                {course.requirements[language].map((req, index) => (
+                {course.requirements[language]?.map((req, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                     <span className="text-muted-foreground text-lg">{req}</span>
@@ -129,12 +134,14 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
                 ))}
               </ul>
             </div>
+            )}
 
             {/* Objectives */}
+            {course.objectives && (
             <div className="bg-card rounded-3xl p-8 border border-border/50">
               <h2 className="text-3xl mb-6">{t.objectives[language]}</h2>
               <ul className="space-y-3">
-                {course.objectives[language].map((obj, index) => (
+                {course.objectives[language]?.map((obj, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
                     <span className="text-muted-foreground text-lg">{obj}</span>
@@ -142,6 +149,7 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
                 ))}
               </ul>
             </div>
+            )}
           </div>
 
           {/* Sidebar - Course Info */}
@@ -152,6 +160,7 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
                   <h3 className="text-2xl">{t.courseInfo[language]}</h3>
                   
                   <div className="space-y-4">
+                    {course.instructor && (
                     <div className="flex items-start gap-3">
                       <BookOpen className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                       <div>
@@ -161,7 +170,9 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
                         <div className="font-medium">{course.instructor}</div>
                       </div>
                     </div>
+                    )}
 
+                    {course.duration && (
                     <div className="flex items-start gap-3">
                       <Clock className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                       <div>
@@ -171,7 +182,9 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
                         <div className="font-medium">{course.duration}</div>
                       </div>
                     </div>
+                    )}
 
+                    {course.startDate && (
                     <div className="flex items-start gap-3">
                       <Calendar className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                       <div>
@@ -181,7 +194,9 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
                         <div className="font-medium">{course.startDate}</div>
                       </div>
                     </div>
+                    )}
 
+                    {course.schedule && (
                     <div className="flex items-start gap-3">
                       <Clock className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                       <div>
@@ -191,7 +206,9 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
                         <div className="font-medium">{course.schedule}</div>
                       </div>
                     </div>
+                    )}
 
+                    {course.enrolled && (
                     <div className="flex items-start gap-3">
                       <Users className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                       <div>
@@ -201,6 +218,7 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
                         <div className="font-medium">{course.enrolled}</div>
                       </div>
                     </div>
+                    )}
                   </div>
 
                   <Button className="w-full gap-2" size="lg">

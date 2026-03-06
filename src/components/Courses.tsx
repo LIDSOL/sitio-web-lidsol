@@ -62,41 +62,51 @@ export function Courses({ onCourseClick }: CoursesProps) {
           <div className="grid md:grid-cols-2 gap-0">
             <div className="aspect-video md:aspect-auto relative overflow-hidden">
               <ImageWithFallback
-                src={courses[0].image}
+                src={courses[0].image || ""}
                 alt={courses[0].title[language]}
                 className="w-full h-full object-cover"
               />
               <Badge className="absolute top-4 left-4 shadow-lg">{t.featured[language]}</Badge>
-              <Badge className={`absolute top-4 right-4 shadow-lg border ${getLevelColor(courses[0].level[language])}`}>
-                {courses[0].level[language]}
-              </Badge>
+              {courses[0].level && (
+                <Badge className={`absolute top-4 right-4 shadow-lg border ${getLevelColor(courses[0].level[language])}`}>
+                  {courses[0].level[language]}
+                </Badge>
+              )}
             </div>
             <div className="p-8 flex flex-col justify-between">
               <div>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {courses[0].tags.map((tag) => (
+                  {courses[0].tags?.map((tag) => (
                     <Badge key={tag} variant="secondary">{tag}</Badge>
                   ))}
                 </div>
                 <h2 className="text-3xl mb-4">{courses[0].title[language]}</h2>
-                <p className="text-muted-foreground mb-6">{courses[0].shortDescription[language]}</p>
+                <p className="text-muted-foreground mb-6">{courses[0].shortDescription?.[language]}</p>
                 <div className="space-y-3 mb-6">
-                  <div className="flex items-center gap-2 text-sm">
-                    <BookOpen className="h-4 w-4 text-primary" />
-                    <span>{courses[0].instructor}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Clock className="h-4 w-4 text-primary" />
-                    <span>{courses[0].duration} • {courses[0].schedule}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Calendar className="h-4 w-4 text-primary" />
-                    <span>{t.startDate[language]} {courses[0].startDate}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Users className="h-4 w-4 text-primary" />
-                    <span>{courses[0].enrolled} {t.enrolled[language]}</span>
-                  </div>
+                  {courses[0].instructor && (
+                    <div className="flex items-center gap-2 text-sm">
+                      <BookOpen className="h-4 w-4 text-primary" />
+                      <span>{courses[0].instructor}</span>
+                    </div>
+                  )}
+                  {(courses[0].duration || courses[0].schedule) && (
+                    <div className="flex items-center gap-2 text-sm">
+                      <Clock className="h-4 w-4 text-primary" />
+                      <span>{courses[0].duration}{courses[0].duration && courses[0].schedule ? ' • ' : ''}{courses[0].schedule}</span>
+                    </div>
+                  )}
+                  {courses[0].startDate && (
+                    <div className="flex items-center gap-2 text-sm">
+                      <Calendar className="h-4 w-4 text-primary" />
+                      <span>{t.startDate[language]} {courses[0].startDate}</span>
+                    </div>
+                  )}
+                  {courses[0].enrolled && (
+                    <div className="flex items-center gap-2 text-sm">
+                      <Users className="h-4 w-4 text-primary" />
+                      <span>{courses[0].enrolled} {t.enrolled[language]}</span>
+                    </div>
+                  )}
                 </div>
               </div>
               <Button 
@@ -118,43 +128,53 @@ export function Courses({ onCourseClick }: CoursesProps) {
             >
               <div className="aspect-video relative overflow-hidden">
                 <ImageWithFallback
-                  src={course.image}
+                  src={course.image || ""}
                   alt={course.title[language]}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <Badge className={`absolute top-3 right-3 shadow-lg border ${getLevelColor(course.level[language])}`}>
-                  {course.level[language]}
-                </Badge>
+                {course.level && (
+                  <Badge className={`absolute top-3 right-3 shadow-lg border ${getLevelColor(course.level[language])}`}>
+                    {course.level[language]}
+                  </Badge>
+                )}
               </div>
               <CardHeader className="flex-grow">
                 <div className="flex flex-wrap gap-2 mb-3">
-                  {course.tags.map((tag) => (
+                  {course.tags?.map((tag) => (
                     <Badge key={tag} variant="outline" className="text-xs">{tag}</Badge>
                   ))}
                 </div>
                 <CardTitle className="group-hover:text-primary transition-colors">
                   {course.title[language]}
                 </CardTitle>
-                <CardDescription className="mt-2">{course.shortDescription[language]}</CardDescription>
+                <CardDescription className="mt-2">{course.shortDescription?.[language]}</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2 mb-4 text-sm">
-                  <div className="flex items-center gap-2">
-                    <BookOpen className="h-3.5 w-3.5 text-muted-foreground" />
-                    <span className="text-muted-foreground">{course.instructor}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="h-3.5 w-3.5 text-muted-foreground" />
-                    <span className="text-muted-foreground">{course.duration}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Calendar className="h-3.5 w-3.5 text-muted-foreground" />
-                    <span className="text-muted-foreground">{course.startDate}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Users className="h-3.5 w-3.5 text-muted-foreground" />
-                    <span className="text-muted-foreground">{course.enrolled} {t.enrolled[language]}</span>
-                  </div>
+                  {course.instructor && (
+                    <div className="flex items-center gap-2">
+                      <BookOpen className="h-3.5 w-3.5 text-muted-foreground" />
+                      <span className="text-muted-foreground">{course.instructor}</span>
+                    </div>
+                  )}
+                  {course.duration && (
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-3.5 w-3.5 text-muted-foreground" />
+                      <span className="text-muted-foreground">{course.duration}</span>
+                    </div>
+                  )}
+                  {course.startDate && (
+                    <div className="flex items-center gap-2">
+                      <Calendar className="h-3.5 w-3.5 text-muted-foreground" />
+                      <span className="text-muted-foreground">{course.startDate}</span>
+                    </div>
+                  )}
+                  {course.enrolled && (
+                    <div className="flex items-center gap-2">
+                      <Users className="h-3.5 w-3.5 text-muted-foreground" />
+                      <span className="text-muted-foreground">{course.enrolled} {t.enrolled[language]}</span>
+                    </div>
+                  )}
                 </div>
                 <Button 
                   variant="outline" 

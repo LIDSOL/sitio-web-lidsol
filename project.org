@@ -90,9 +90,20 @@ DEADLINE: <2026-03-03 Tue>
     - [X] La página de fondo debe estar más opaca que la ventana emergente.
     - [X] Añadir desplazamiento
 - [X] Sección CTA con Mailto, es sencillo y se evita configurar un backend de correo o base de datos (que para esto no se requiere).
-**** TODO CourseDetail y CourseDetail [0%]
+**** IN-PROGRESS CourseDetail y CourseDetail [0%]
 DEADLINE: <2026-03-07 Sat>
-- [ ] Mudar el contenido al sitio actual
+- [ ] Mudar el contenido al sitio actual [0%]
+  - [ ] Seminario de lisp
+  - [ ] Fundamentos de Python
+  - [ ] PumaHat
+  - [ ] Curso básico de sysadmin GMU/Linux
+  - [ ] Curso de LaTeX
+  - [ ] NLP
+- [ ] ¿Sería bueno tener un backen para los cursos, por ejemplo para tener "gente registrada/apuntada" a los cursos?
+**** NEXT Events y EventDetail
+DEADLINE: <2026-03-10 Tue>
+- [ ] Mudar el contenido
+- [ ] Implementar una función de calendario. Sería divertido poder exportar un archivo que se pueda cargar a una app de calendario..
 **** IN-PROGRESS Blog y BlogDetail [50%]
 DEADLINE: <2026-03-05 Thu>
 - [X] Blog [100%]
@@ -153,10 +164,6 @@ El archivo src/data/blogPosts.ts se sigue usando, este genera los componentes [[
     - Para implementar el soporte multi-idioma:
       - Se modificará el directorio de cada post para contener versiones por idioma, un archivo por cada idioma (en este caso solo inglés-español, por ejemplo: index.es.md, index.en.md).
       - Se modificará el[[file:scripts/build-blog.js][ script]] que genera el[[file:src/data/blogPosts.ts][ archito ts]] con que usan los compontes que genran el blog. Deben detectar los archivos con sufijos .es.md o en.md y generar la estructura tipo json adecuada.
-**** TODO Events y EventDetail
-DEADLINE: <2026-03-10 Tue>
-- [ ] Mudar el contenido
-- [ ] Implementar una función de calendario. Sería divertido poder exportar un archivo que se pueda cargar a una app de calendario..
 **** IN-PROGRESS Header
 DEADLINE: <2026-03-14 Sat>
 **** IN-PROGRESS Footer
