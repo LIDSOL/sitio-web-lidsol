@@ -90,7 +90,7 @@ DEADLINE: <2026-03-03 Tue>
     - [X] La página de fondo debe estar más opaca que la ventana emergente.
     - [X] Añadir desplazamiento
 - [X] Sección CTA con Mailto, es sencillo y se evita configurar un backend de correo o base de datos (que para esto no se requiere).
-**** IN-PROGRESS Events y EventDetail [%]
+**** IN-PROGRESS Events y EventDetail [0%]
 DEADLINE: <2026-03-10 Tue>
 - [-] Mudar el contenido
 - [ ] Implementar una función de calendario. Sería divertido poder exportar un archivo que se pueda cargar a una app de calendario con un ics..
