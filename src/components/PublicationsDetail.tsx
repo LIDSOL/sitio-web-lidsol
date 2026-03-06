@@ -1,4 +1,4 @@
-import { FileText, Users, Calendar, Award, Download, ExternalLink, ArrowLeft, Quote } from "lucide-react";
+import { FileText, Users, Calendar, Award, Download, ExternalLink, ArrowLeft, Quote, Github } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { useLanguage } from "./LanguageProvider";
@@ -121,8 +121,16 @@ export function PublicationDetail({ publication, onBack }: PublicationDetailProp
           <ReactMarkdown 
             remarkPlugins={[remarkGfm]}
             className="text-xl text-muted-foreground leading-relaxed prose prose-xl dark:prose-invert max-w-none"
+            components={{
+              p: ({children}) => <p className="text-justify hyphens-auto leading-relaxed mb-4" style={{textAlign: 'justify'}}>{children}</p>,
+              br: () => <br className="mb-2" />
+            }}
           >
-            {publication.abstract[language]}
+            {publication.abstract[language]
+              .split('\n')
+              .map(line => line.trim())
+              .filter(line => line.length > 0)
+              .join('\n\n')}
           </ReactMarkdown>
         </div>
 
@@ -163,8 +171,17 @@ export function PublicationDetail({ publication, onBack }: PublicationDetailProp
             </div>
           )}
           {publication.doi && (
-            <div className="text-sm text-muted-foreground">
-              DOI: {publication.doi}
+            <div className="flex items-center gap-3">
+              <span className="text-sm text-muted-foreground">
+                <a 
+                  href={publication.doi.startsWith('http') ? publication.doi : `https://doi.org/${publication.doi}`} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:underline text-primary"
+                >
+                  DOI: {publication.doi}
+                </a>
+              </span>
             </div>
           )}
         </div>
@@ -181,6 +198,15 @@ export function PublicationDetail({ publication, onBack }: PublicationDetailProp
             <Button className="gap-2" disabled>
               <Download className="h-4 w-4" />
               {language === 'es' ? 'Descargar PDF' : 'Download PDF'}
+            </Button>
+          )}
+
+          {publication.sourceCode && (
+            <Button variant="outline" className="gap-2" asChild>
+              <a href={publication.sourceCode} target="_blank" rel="noopener noreferrer">
+                <Github className="h-4 w-4" />
+                {language === 'es' ? 'Código fuente' : 'Source code'}
+              </a>
             </Button>
           )}
 

@@ -114,6 +114,19 @@ export function Publications({ onPublicationClick }: PublicationsProps) {
                       <span className="text-muted-foreground">{publication.citations} {language === 'es' ? 'citaciones' : 'citations'}</span>
                     </div>
                   )}
+                  {publication.doi && (
+                    <div className="flex items-center gap-2">
+                      <ExternalLink className="h-3.5 w-3.5 text-muted-foreground" />
+                      <a 
+                        href={publication.doi.startsWith('http') ? publication.doi : `https://doi.org/${publication.doi}`} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        DOI
+                      </a>
+                    </div>
+                  )}
                 </div>
                 <div className="flex gap-2">
                   {publication.pdf ? (
