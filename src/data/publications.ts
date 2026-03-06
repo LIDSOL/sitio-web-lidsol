@@ -75,8 +75,8 @@ isbn="978-3-030-16785-1"
       },
       pdf: "pdf/publication/ruano-2017.pdf",
       abstract: {
-        en: "The Tor network is used to protect users' data privacy and can act as a shield to protect personal information. \n_This article was developed in connection with the [PE102718 PAPIME/DGAPA/UNAM](https://priv-anon.unam.mx/) project._  \n_We thank DGAPA-UNAM for their support in the development of this material for PAPIME PE102718 Development of teaching materials for privacy and anonymity mechanisms in networks._",
-        es: "La red Tor es usada para proteger la privacidad de los datos de los usuarios y puede funcionar como un escudo para proteger la información personal. \n_Este artículo se desarrolló vinculado con el proyecto [PE102718 PAPIME/DGAPA/UNAM](https://priv-anon.unam.mx/)._ \n_Se agradece el apoyo otorgado para el desarrollo de este material a DGAPA-UNAM, PAPIME PE102718 Desarrollo de materiales didácticos para los mecanismos de privacidad y anonimato en redes._"
+        en: "The Tor network is used to protect users' data privacy and can act as a shield to protect personal information. \n_This article was developed in connection with the [PE102718 PAPIME/DGAPA/UNAM](#projects/1) project._  \n_We thank DGAPA-UNAM for their support in the development of this material for [PAPIME PE102718](https://priv-anon.unam.mx/) Development of teaching materials for privacy and anonymity mechanisms in networks._",
+        es: "La red Tor es usada para proteger la privacidad de los datos de los usuarios y puede funcionar como un escudo para proteger la información personal. \n_Este artículo se desarrolló vinculado con el proyecto [PE102718 PAPIME/DGAPA/UNAM](#projects/1)._ \n_Se agradece el apoyo otorgado para el desarrollo de este material a [DGAPA-UNAM, PAPIME PE102718](https://priv-anon.unam.mx/) Desarrollo de materiales didácticos para los mecanismos de privacidad y anonimato en redes._"
       },
       authors: ["Marco Ruano"],
       year: "2017",

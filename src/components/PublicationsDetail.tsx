@@ -123,7 +123,20 @@ export function PublicationDetail({ publication, onBack }: PublicationDetailProp
             className="text-xl text-muted-foreground leading-relaxed prose prose-xl dark:prose-invert max-w-none"
             components={{
               p: ({children}) => <p className="text-justify hyphens-auto leading-relaxed mb-4" style={{textAlign: 'justify'}}>{children}</p>,
-              br: () => <br className="mb-2" />
+              br: () => <br className="mb-2" />,
+              a: ({href, children}) => {
+                const isExternal = href && (href.startsWith('http') || href.startsWith('//'));
+                return (
+                  <a 
+                    href={href} 
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
+                    className="text-primary hover:underline font-medium"
+                  >
+                    {children}
+                  </a>
+                );
+              }
             }}
           >
             {publication.abstract[language]
