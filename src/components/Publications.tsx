@@ -39,12 +39,6 @@ export function Publications({ onPublicationClick }: PublicationsProps) {
     setCitePublication(publication);
   };
 
-  //const contactSubject = language === 'es' ? 'Propuesta de Investigación - LIDSoL' : 'Research Proposal - LIDSoL';
-  //const contactBody = language === 'es'
-  //  ? 'Hola equipo de LIDSoL,\n\nMe gustaría compartir la siguiente investigación...'
-  // : 'Hello LIDSoL team,\n\nI would like to share the following research...';
-  //const mailtoLink = `mailto:lidsol@protonmail.com?subject=${encodeURIComponent(contactSubject)}&body=${encodeURIComponent(contactBody)}`;
-
   // Usamos \r\n (Carriage Return + Line Feed) que se traduce a %0D%0A para máxima compatibilidad
   const contactSubject = language === 'es' ? 'Propuesta de Investigación - LIDSoL' : 'Research Proposal - LIDSoL';
   const contactBody = language === 'es'

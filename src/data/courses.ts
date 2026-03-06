@@ -1,20 +1,20 @@
 export interface Course {
   id: number;
   title: { en: string; es: string };
-  shortDescription: { en: string; es: string };
-  fullDescription: { en: string; es: string };
-  instructor: string;
-  duration: string;
-  startDate: string;
-  schedule: string;
-  level: { en: string; es: string };
-  enrolled: string;
-  image: string;
-  coverImage: string;
-  tags: string[];
-  modules: { en: string[]; es: string[] };
-  requirements: { en: string[]; es: string[] };
-  objectives: { en: string[]; es: string[] };
+  shortDescription?: { en: string; es: string };
+  fullDescription?: { en: string; es: string };
+  instructor?: string;
+  duration?: string;
+  startDate?: string;
+  schedule?: string;
+  level?: { en: string; es: string };
+  enrolled?: string;
+  image?: string;
+  coverImage?: string;
+  tags?: string[];
+  modules?: { en: string[]; es: string[] };
+  requirements?: { en: string[]; es: string[] };
+  objectives?: { en: string[]; es: string[] };
 }
 
 export const courses: Course[] = [
