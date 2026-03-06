@@ -182,11 +182,11 @@ export function Publications({ onPublicationClick }: PublicationsProps) {
 
         {/* Cite Modal */}
         {citePublication && (
-          <CitationModal
-            citation={citePublication.citation}
-            open={!!citePublication}
-            onClose={() => setCitePublication(null)}
-          />
+        <CitationModal
+          citation={citePublication?.citation ?? ""}
+          open={!!citePublication}
+          onClose={() => setCitePublication(null)}
+        />
         )}
       </div>
     </section>

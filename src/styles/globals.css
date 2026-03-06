@@ -211,3 +211,37 @@ html {
     transform: translateX(100%);
   }
 }
+
+@keyframes modalZoomIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes modalZoomOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+.animate-modalZoomIn {
+  animation: modalZoomIn 300ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-modalZoomOut {
+  animation: modalZoomOut 200ms ease-out forwards;
+}
