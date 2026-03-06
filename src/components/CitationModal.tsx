@@ -49,14 +49,14 @@ export function CitationModal({ citation, open, onClose }: CitationModalProps) {
     <AnimatePresence>
       {open && (
         <div style={{ zIndex: 999999 }} className="fixed inset-0 flex items-center justify-center p-4">
-          
+
           {/* Overlay: Fondo con opacidad que cubre TODO (incluyendo Header) */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/60 backdrop-brightness-75"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm"
             onClick={onClose}
           />
 
@@ -65,11 +65,11 @@ export function CitationModal({ citation, open, onClose }: CitationModalProps) {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 10 }}
-            transition={{ 
-              type: "spring", 
-              stiffness: 600, 
-              damping: 25, 
-              mass: 0.8 
+            transition={{
+              type: "spring",
+              stiffness: 600,
+              damping: 25,
+              mass: 0.8
             }}
             onClick={(e) => e.stopPropagation()}
             style={{ zIndex: 999999 }}
@@ -91,7 +91,7 @@ export function CitationModal({ citation, open, onClose }: CitationModalProps) {
               </Button>
             </div>
 
-            <div className="p-6">
+            <div className="p-6 flex flex-col gap-1.5">
               <div className="rounded-xl overflow-hidden border bg-[#1e1e1e]">
                 <SyntaxHighlighter
                   style={materialDark}
