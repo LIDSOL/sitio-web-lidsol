@@ -13,6 +13,24 @@ interface PublicationsProps {
   onPublicationClick: (publicationId: number) => void;
 }
 
+// Limpieza: Movido fuera del componente para mejor rendimiento y hecho "null-safe"
+const getTypeColor = (type?: { en: string; es: string }) => {
+  if (!type || !type.en) return ""; // Previene crasheo si la publicación no tiene tipo
+
+  switch (type.en) {
+    case "Research Article":
+      return "bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20";
+    case "Conference":
+      return "bg-purple-500/10 text-purple-700 dark:text-purple-400 border-purple-500/20";
+    case "Review Article":
+      return "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20";
+    case "Technical Article":
+      return "bg-orange-500/10 text-orange-700 dark:text-orange-400 border-orange-500/20";
+    default:
+      return "";
+  }
+};
+
 export function Publications({ onPublicationClick }: PublicationsProps) {
   const { language } = useLanguage();
   const [citePublication, setCitePublication] = useState<Publication | null>(null);
@@ -21,20 +39,11 @@ export function Publications({ onPublicationClick }: PublicationsProps) {
     setCitePublication(publication);
   };
 
-  const getTypeColor = (type: { en: string; es: string }) => {
-    switch (type.en) {
-      case "Research Article":
-        return "bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20";
-      case "Conference":
-        return "bg-purple-500/10 text-purple-700 dark:text-purple-400 border-purple-500/20";
-      case "Review Article":
-        return "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20";
-      case "Technical Article":
-        return "bg-orange-500/10 text-orange-700 dark:text-orange-400 border-orange-500/20";
-      default:
-        return "";
-    }
-  };
+  const contactSubject = language === 'es' ? 'Propuesta de Investigación - LIDSoL' : 'Research Proposal - LIDSoL';
+  const contactBody = language === 'es'
+    ? 'Hola equipo de LIDSoL,\n\nMe gustaría compartir la siguiente investigación...'
+    : 'Hello LIDSoL team,\n\nI would like to share the following research...';
+  const mailtoLink = `mailto:contacto@lidsol.org?subject=${encodeURIComponent(contactSubject)}&body=${encodeURIComponent(contactBody)}`;
 
   return (
     <section id="publications" className="py-20 bg-background min-h-screen">
@@ -47,26 +56,28 @@ export function Publications({ onPublicationClick }: PublicationsProps) {
           </p>
         </div>
 
-{/* Publications Grid */}
-<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {publications.slice(0).map((publication, index) => (
+        {/* Publications Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {(publications || []).slice(0).map((publication, index) => (
             <Card
-              key={publication.id}
+              key={publication?.id || index}
               className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group border-border/60 flex flex-col h-full"
             >
               <div className="aspect-video relative overflow-hidden shrink-0">
                 <ImageWithFallback
-                  src={publication.image}
-                  alt={publication.title[language]}
+                  src={publication?.image}
+                  alt={publication?.title?.[language] || "Imagen de publicación"}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <Badge className={`absolute top-3 right-3 shadow-lg border ${getTypeColor(publication.type)}`}>
-                  {publication.type[language]}
-                </Badge>
+                {publication?.type && (
+                  <Badge className={`absolute top-3 right-3 shadow-lg border ${getTypeColor(publication.type)}`}>
+                    {publication.type[language]}
+                  </Badge>
+                )}
               </div>
-                <CardHeader className="flex-grow pb-2 pt-2">
+              <CardHeader className="flex-grow pb-2 pt-2">
                 <div className="min-h-[24px]">
-                  {publication.tags && publication.tags[language] && (
+                  {publication?.tags?.[language] && Array.isArray(publication.tags[language]) && (
                     <div className="flex flex-wrap gap-2 mb-1">
                       {publication.tags[language].map((tag) => (
                         <Badge key={tag} variant="outline" className="text-xs">{tag}</Badge>
@@ -80,10 +91,12 @@ export function Publications({ onPublicationClick }: PublicationsProps) {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
                 >
-                <CardTitle className="group-hover:text-primary transition-colors line-clamp-2 leading-relaxed font-bold">
-                  {publication.title[language]}
-                </CardTitle>
-                <CardDescription className="mt-1 line-clamp-3">{publication.abstract[language]}</CardDescription>
+                  <CardTitle className="group-hover:text-primary transition-colors line-clamp-2 leading-relaxed font-bold">
+                    {publication?.title?.[language] || "Título no disponible"}
+                  </CardTitle>
+                  <CardDescription className="mt-1 line-clamp-3">
+                    {publication?.abstract?.[language] || ""}
+                  </CardDescription>
                 </motion.div>
               </CardHeader>
               <motion.div
@@ -92,64 +105,68 @@ export function Publications({ onPublicationClick }: PublicationsProps) {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 + 0.1 }}
               >
-              <CardContent className="mt-auto">
-                <div className="space-y-2 mb-4 text-sm">
-                  <div className="flex items-start gap-2">
-                    <Users className="h-3.5 w-3.5 text-muted-foreground mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground line-clamp-1">{publication.authors.join(", ")}</span>
+                <CardContent className="mt-auto">
+                  <div className="space-y-2 mb-4 text-sm">
+                    {publication?.authors && Array.isArray(publication.authors) && (
+                      <div className="flex items-start gap-2">
+                        <Users className="h-3.5 w-3.5 text-muted-foreground mt-0.5 flex-shrink-0" />
+                        <span className="text-muted-foreground line-clamp-1">{publication.authors.join(", ")}</span>
+                      </div>
+                    )}
+                    {publication?.journal?.[language] && (
+                      <div className="flex items-center gap-2">
+                        <FileText className="h-3.5 w-3.5 text-muted-foreground" />
+                        <span className="text-muted-foreground line-clamp-1">{publication.journal[language]}</span>
+                      </div>
+                    )}
+                    {publication?.year && (
+                      <div className="flex items-center gap-2">
+                        <Calendar className="h-3.5 w-3.5 text-muted-foreground" />
+                        <span className="text-muted-foreground">{publication.year}</span>
+                      </div>
+                    )}
+                    {publication?.citations != null && (
+                      <div className="flex items-center gap-2">
+                        <Award className="h-3.5 w-3.5 text-muted-foreground" />
+                        <span className="text-muted-foreground">{publication.citations} {language === 'es' ? 'citaciones' : 'citations'}</span>
+                      </div>
+                    )}
+                    {publication?.doi && (
+                      <div className="flex items-center gap-2">
+                        <ExternalLink className="h-3.5 w-3.5 text-muted-foreground" />
+                        <a
+                          href={publication.doi.startsWith('http') ? publication.doi : `https://doi.org/${publication.doi}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground hover:text-primary transition-colors"
+                        >
+                          DOI
+                        </a>
+                      </div>
+                    )}
                   </div>
-                  {publication.journal && (
-                    <div className="flex items-center gap-2">
-                      <FileText className="h-3.5 w-3.5 text-muted-foreground" />
-                      <span className="text-muted-foreground line-clamp-1">{publication.journal[language]}</span>
-                    </div>
-                  )}
-                  <div className="flex items-center gap-2">
-                    <Calendar className="h-3.5 w-3.5 text-muted-foreground" />
-                    <span className="text-muted-foreground">{publication.year}</span>
-                  </div>
-                  {publication.citations && (
-                    <div className="flex items-center gap-2">
-                      <Award className="h-3.5 w-3.5 text-muted-foreground" />
-                      <span className="text-muted-foreground">{publication.citations} {language === 'es' ? 'citaciones' : 'citations'}</span>
-                    </div>
-                  )}
-                  {publication.doi && (
-                    <div className="flex items-center gap-2">
-                      <ExternalLink className="h-3.5 w-3.5 text-muted-foreground" />
-                      <a 
-                        href={publication.doi.startsWith('http') ? publication.doi : `https://doi.org/${publication.doi}`} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        DOI
-                      </a>
-                    </div>
-                  )}
-                </div>
-                <div className="flex gap-2">
-                  {publication.pdf ? (
-                    <Button variant="outline" size="sm" className="flex-1 gap-1 group-hover:bg-primary group-hover:text-primary-foreground transition-colors" asChild>
-                      <a href={publication.pdf} target="_blank" rel="noopener noreferrer">
+                  <div className="flex gap-2">
+                    {publication?.pdf ? (
+                      <Button variant="outline" size="sm" className="flex-1 gap-1 group-hover:bg-primary group-hover:text-primary-foreground transition-colors" asChild>
+                        <a href={publication.pdf} target="_blank" rel="noopener noreferrer">
+                          <Download className="h-3.5 w-3.5" /> PDF
+                        </a>
+                      </Button>
+                    ) : (
+                      <Button variant="outline" size="sm" className="flex-1 gap-1 group-hover:bg-primary group-hover:text-primary-foreground transition-colors" disabled>
                         <Download className="h-3.5 w-3.5" /> PDF
-                      </a>
+                      </Button>
+                    )}
+                    <Button variant="outline" size="sm" className="flex-1 gap-1" onClick={() => publication?.id && onPublicationClick(publication.id)}>
+                      <ExternalLink className="h-3.5 w-3.5" /> {language === 'es' ? 'Ver' : 'View'}
                     </Button>
-                  ) : (
-                    <Button variant="outline" size="sm" className="flex-1 gap-1 group-hover:bg-primary group-hover:text-primary-foreground transition-colors" disabled>
-                      <Download className="h-3.5 w-3.5" /> PDF
-                    </Button>
-                  )}
-                  <Button variant="outline" size="sm" className="flex-1 gap-1" onClick={() => onPublicationClick(publication.id)}>
-                    <ExternalLink className="h-3.5 w-3.5" /> {language === 'es' ? 'Ver' : 'View'}
-                  </Button>
-                  {publication.citation && (
-                    <Button variant="outline" size="sm" className="flex-1 gap-1" onClick={() => handleCite(publication)}>
-                      <Quote className="h-3.5 w-3.5" /> {language === 'es' ? 'Citar' : 'Cite'}
-                    </Button>
-                  )}
-                </div>
-              </CardContent>
+                    {publication?.citation && (
+                      <Button variant="outline" size="sm" className="flex-1 gap-1" onClick={() => handleCite(publication)}>
+                        <Quote className="h-3.5 w-3.5" /> {language === 'es' ? 'Citar' : 'Cite'}
+                      </Button>
+                    )}
+                  </div>
+                </CardContent>
               </motion.div>
             </Card>
           ))}
@@ -188,8 +205,10 @@ export function Publications({ onPublicationClick }: PublicationsProps) {
               ? 'Si estás trabajando en investigación relacionada con software libre, hardware abierto o tecnologías abiertas, nos gustaría conocer tu trabajo y considerar su publicación en nuestro repositorio.'
               : 'If you are working on research related to free software, open hardware, or open technologies, we would like to know about your work and consider publishing it in our repository.'}
           </p>
-          <Button size="lg" className="gap-2">
-            {language === 'es' ? 'Enviar Propuesta' : 'Submit Proposal'} <ExternalLink className="h-4 w-4" />
+          <Button size="lg" className="gap-2" asChild>
+            <a href={mailtoLink}>
+              {language === 'es' ? 'Enviar Propuesta' : 'Submit Proposal'} <ExternalLink className="h-4 w-4" />
+            </a>
           </Button>
         </div>
 

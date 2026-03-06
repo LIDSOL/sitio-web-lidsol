@@ -66,7 +66,7 @@ DEADLINE: <2026-02-12 Thu>
     - src/components/ProjectDetail.tsx: Actualizado para usar project.tags[language]
     - src/components/FeaturedProjects.tsx: Actualizado para usar project.tags?.[language]
   - [X] Verificar el estado de los proyectos (para que el ícono sea el adecuado)
-**** IN-PROGRESS Publications [50%]
+**** IN-PROGRESS Publications [75%]
 DEADLINE: <2026-03-03 Tue>
 - [X] Mudar el contenido.
   - [X] Añadir los "metadatos" a src/data/publications.tsx
@@ -89,8 +89,8 @@ DEADLINE: <2026-03-03 Tue>
     - [X] Que no se desborde el contenido
     - [X] La página de fondo debe estar más opaca que la ventana emergente.
     - [X] Añadir desplazamiento
-- [ ] ¿Qué hacer con los botones inferiores?
-- [ ] ¿Qué hacer con la opción de mandar una propuesta de investigación?
+- [X] Sección CTA con Mailto, es sencillo y se evita configurar un backend de correo o base de datos (que para esto no se requiere).
+- [ ] ¿Qué hacer con la sección de stats?
 **** IN-PROGRESS Blog y BlogDetail [50%]
 DEADLINE: <2026-03-05 Thu>
 - [X] Blog [100%]
