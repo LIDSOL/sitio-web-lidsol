@@ -39,12 +39,20 @@ export function Publications({ onPublicationClick }: PublicationsProps) {
     setCitePublication(publication);
   };
 
+  //const contactSubject = language === 'es' ? 'Propuesta de Investigación - LIDSoL' : 'Research Proposal - LIDSoL';
+  //const contactBody = language === 'es'
+  //  ? 'Hola equipo de LIDSoL,\n\nMe gustaría compartir la siguiente investigación...'
+  // : 'Hello LIDSoL team,\n\nI would like to share the following research...';
+  //const mailtoLink = `mailto:lidsol@protonmail.com?subject=${encodeURIComponent(contactSubject)}&body=${encodeURIComponent(contactBody)}`;
+
+  // Usamos \r\n (Carriage Return + Line Feed) que se traduce a %0D%0A para máxima compatibilidad
   const contactSubject = language === 'es' ? 'Propuesta de Investigación - LIDSoL' : 'Research Proposal - LIDSoL';
   const contactBody = language === 'es'
-    ? 'Hola equipo de LIDSoL,\n\nMe gustaría compartir la siguiente investigación...'
-    : 'Hello LIDSoL team,\n\nI would like to share the following research...';
-  const mailtoLink = `mailto:contacto@lidsol.org?subject=${encodeURIComponent(contactSubject)}&body=${encodeURIComponent(contactBody)}`;
+    ? 'Hola equipo de LIDSoL,\r\n\r\nMe gustaría compartir la siguiente investigación...'
+    : 'Hello LIDSoL team,\r\n\r\nI would like to share the following research...';
 
+  // Construcción del link
+  const mailtoLink = `mailto:lidsol@protonmail.com?subject=${encodeURIComponent(contactSubject)}&body=${encodeURIComponent(contactBody)}`;
   return (
     <section id="publications" className="py-20 bg-background min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -172,40 +180,18 @@ export function Publications({ onPublicationClick }: PublicationsProps) {
           ))}
         </div>
 
-        {/* Stats Section */}
-        <div className="grid md:grid-cols-4 gap-6 mb-12">
-          <Card className="text-center p-6 border-border/60">
-            <FileText className="h-8 w-8 text-primary mx-auto mb-3" />
-            <div className="text-3xl mb-1">24</div>
-            <div className="text-sm text-muted-foreground">{language === 'es' ? 'Publicaciones' : 'Publications'}</div>
-          </Card>
-          <Card className="text-center p-6 border-border/60">
-            <Award className="h-8 w-8 text-primary mx-auto mb-3" />
-            <div className="text-3xl mb-1">156</div>
-            <div className="text-sm text-muted-foreground">{language === 'es' ? 'Citaciones' : 'Citations'}</div>
-          </Card>
-          <Card className="text-center p-6 border-border/60">
-            <Users className="h-8 w-8 text-primary mx-auto mb-3" />
-            <div className="text-3xl mb-1">12</div>
-            <div className="text-sm text-muted-foreground">{language === 'es' ? 'Investigadores' : 'Researchers'}</div>
-          </Card>
-          <Card className="text-center p-6 border-border/60">
-            <Calendar className="h-8 w-8 text-primary mx-auto mb-3" />
-            <div className="text-3xl mb-1">5</div>
-            <div className="text-sm text-muted-foreground">{language === 'es' ? 'Años Activos' : 'Active Years'}</div>
-          </Card>
-        </div>
-
-        {/* CTA */}
+        {/* CTA: Con el nuevo texto y traducción */}
         <div className="bg-primary/5 border border-primary/10 rounded-3xl p-8 md:p-12 text-center">
-          <FileText className="h-12 w-12 text-primary mx-auto mb-4" />
-          <h3 className="text-2xl mb-4">{language === 'es' ? '¿Tienes una investigación para compartir?' : 'Do you have research to share?'}</h3>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+          <Users className="h-12 w-12 text-primary mx-auto mb-4" />
+          <h3 className="text-2xl font-bold mb-4">
+            {language === 'es' ? 'Únete al Laboratorio' : 'Join the Laboratory'}
+          </h3>
+          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto leading-relaxed">
             {language === 'es'
-              ? 'Si estás trabajando en investigación relacionada con software libre, hardware abierto o tecnologías abiertas, nos gustaría conocer tu trabajo y considerar su publicación en nuestro repositorio.'
-              : 'If you are working on research related to free software, open hardware, or open technologies, we would like to know about your work and consider publishing it in our repository.'}
+              ? 'Si estás desarrollando tu tesis o un proyecto de investigación sobre software libre, hardware abierto o tecnologías abiertas, queremos conocerte. Te invitamos a integrar tu trabajo al laboratorio y colaborar con nosotros. Envía tu propuesta a nuestro mail:'
+              : 'If you are developing your thesis or a research project on free software, open hardware, or open technologies, we want to meet you. We invite you to integrate your work into the laboratory and collaborate with us. Send your research proposal to our team:'}
           </p>
-          <Button size="lg" className="gap-2" asChild>
+          <Button size="lg" className="gap-2 font-medium" asChild>
             <a href={mailtoLink}>
               {language === 'es' ? 'Enviar Propuesta' : 'Submit Proposal'} <ExternalLink className="h-4 w-4" />
             </a>

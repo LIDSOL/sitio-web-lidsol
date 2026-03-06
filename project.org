@@ -66,7 +66,7 @@ DEADLINE: <2026-02-12 Thu>
     - src/components/ProjectDetail.tsx: Actualizado para usar project.tags[language]
     - src/components/FeaturedProjects.tsx: Actualizado para usar project.tags?.[language]
   - [X] Verificar el estado de los proyectos (para que el ícono sea el adecuado)
-**** IN-PROGRESS Publications [75%]
+**** DONE Publications
 DEADLINE: <2026-03-03 Tue>
 - [X] Mudar el contenido.
   - [X] Añadir los "metadatos" a src/data/publications.tsx
@@ -90,7 +90,9 @@ DEADLINE: <2026-03-03 Tue>
     - [X] La página de fondo debe estar más opaca que la ventana emergente.
     - [X] Añadir desplazamiento
 - [X] Sección CTA con Mailto, es sencillo y se evita configurar un backend de correo o base de datos (que para esto no se requiere).
-- [ ] ¿Qué hacer con la sección de stats?
+**** TODO CourseDetail y CourseDetail [0%]
+DEADLINE: <2026-03-07 Sat>
+- [ ] Mudar el contenido al sitio actual
 **** IN-PROGRESS Blog y BlogDetail [50%]
 DEADLINE: <2026-03-05 Thu>
 - [X] Blog [100%]
@@ -155,8 +157,6 @@ El archivo src/data/blogPosts.ts se sigue usando, este genera los componentes [[
 DEADLINE: <2026-03-10 Tue>
 - [ ] Mudar el contenido
 - [ ] Implementar una función de calendario. Sería divertido poder exportar un archivo que se pueda cargar a una app de calendario..
-**** TODO CourseDetail y CourseDetail
-DEADLINE: <2026-03-13 Fri>
 **** IN-PROGRESS Header
 DEADLINE: <2026-03-14 Sat>
 **** IN-PROGRESS Footer
