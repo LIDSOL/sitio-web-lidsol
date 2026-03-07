@@ -93,6 +93,7 @@ DEADLINE: <2026-03-03 Tue>
 **** IN-PROGRESS Events y EventDetail [0%]
 DEADLINE: <2026-03-10 Tue>
 - [-] Mudar el contenido
+- [ ] Hacer una función para poder ordenar del más antiguo al más nuevo y viceversa (como en la sección de proyectos).
 - [ ] Implementar una función de calendario. Sería divertido poder exportar un archivo que se pueda cargar a una app de calendario con un ics..
 **** NEXT CourseDetail y CourseDetail [0%]
 DEADLINE: <2026-03-07 Sat>

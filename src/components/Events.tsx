@@ -74,10 +74,12 @@ export function Events({ onEventClick }: EventsProps) {
                 <div className="flex-shrink-0 w-16 pt-2">
                   <div className="bg-primary text-primary-foreground rounded-2xl p-3 text-center">
                     <div className="text-2xl leading-none mb-1">
-                      {event.startDate ? new Date(event.startDate).getDate() : '?'}
+                      {/* CORRECCIÓN: Usar getUTCDate() para evitar el desfase de la zona horaria local */}
+                      {event.startDate ? new Date(event.startDate).getUTCDate() : '?'}
                     </div>
                     <div className="text-xs uppercase">
-                      {event.startDate ? new Date(event.startDate).toLocaleString('default', { month: 'short' }) : '-'}
+                      {/* CORRECCIÓN: Añadir timeZone: 'UTC' al formatear el mes */}
+                      {event.startDate ? new Date(event.startDate).toLocaleString('default', { month: 'short', timeZone: 'UTC' }) : '-'}
                     </div>
                   </div>
                 </div>
