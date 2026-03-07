@@ -8,24 +8,24 @@ export function Community() {
 
   const t = {
     title: { en: "Join the Community", es: "Únete a la comunidad" },
-    description: { 
+    description: {
       en: "Connect with developers, designers, and free software enthusiasts from around the world. Whether you're a beginner or an expert, there's a place for you here.",
-      es: "Conéctate con desarrolladores, diseñadores y entusiastas del software libre de todo el mundo. Ya seas principiante o experto, hay un lugar para ti aquí."
+      es: "Conéctate con entusiastas del software libre."
     },
     ongoingProjects: { en: "Ongoing Projects", es: "Proyectos en curso" },
-    ongoingProjectsDesc: { 
+    ongoingProjectsDesc: {
       en: "You can contribute to ongoing projects",
       es: "Puedes contribuir a los proyectos en curso"
     },
-    eventsHackathons: { en: "Events and Hackathons", es: "Eventos y Hackathons" },
-    eventsHackathonsDesc: { 
-      en: "Participate in regular events and coding challenges",
-      es: "Participa en eventos regulares y desafíos de programación"
+    eventsHackathons: { en: "Events", es: "Eventos y Reuniones" },
+    eventsHackathonsDesc: {
+      en: "Participate in events",
+      es: "Participa en eventos"
     },
-    learningResources: { en: "Learning Resources", es: "Recursos de aprendizaje" },
-    learningResourcesDesc: { 
+    learningResources: { en: "Learning Resources", es: "Libera tu servicio social" },
+    learningResourcesDesc: {
       en: "Access tutorials, guides, and mentorship programs",
-      es: "Accede a tutoriales, guías y programas de mentoría"
+      es: " Si eres estudiante de Ingeniería en Computación de la FI UNAM puedes liberar tu servicio social con nosotros, a partir de tercer semestre"
     },
     telegram: { en: "Telegram", es: "Telegram" },
     viewCalendar: { en: "View Calendar", es: "Ver calendario" },
@@ -49,7 +49,7 @@ export function Community() {
           {/* Content */}
           <div className="order-1 lg:order-2 space-y-8">
             <h2 className="text-4xl sm:text-5xl">{t.title[language]}</h2>
-            
+
             <p className="text-xl text-primary-foreground/90">
               {t.description[language]}
             </p>

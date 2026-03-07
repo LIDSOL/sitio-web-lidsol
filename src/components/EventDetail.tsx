@@ -7,6 +7,8 @@ import { useLanguage } from "./LanguageProvider";
 import { Event } from "../data/events";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface EventDetailProps {
   event: Event;
@@ -121,9 +123,25 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
             {event.fullDescription && (
             <div className="bg-card rounded-3xl p-8 border border-border/50">
               <h2 className="text-3xl mb-6">{t.summary[language]}</h2>
-              <p className="text-muted-foreground text-lg leading-relaxed whitespace-pre-line">
-                {event.fullDescription[language]}
-              </p>
+              <article className="max-w-none">
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  components={{
+                    p: ({children}) => <p className="text-foreground mb-6 leading-relaxed text-lg text-justify hyphens-auto" style={{textAlign: 'justify'}}>{children}</p>,
+                    a: ({href, children}) => (
+                      <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">{children}</a>
+                    ),
+                    h2: ({children}) => <h2 className="text-2xl font-bold mt-8 mb-4">{children}</h2>,
+                    h3: ({children}) => <h3 className="text-xl font-semibold mt-6 mb-3">{children}</h3>,
+                    ul: ({children}) => <ul className="list-disc pl-6 mb-6 space-y-2">{children}</ul>,
+                    ol: ({children}) => <ol className="list-decimal pl-6 mb-6 space-y-2">{children}</ol>,
+                    li: ({children}) => <li className="text-muted-foreground">{children}</li>,
+                    blockquote: ({children}) => <blockquote className="border-l-4 border-primary pl-4 italic my-6 text-muted-foreground">{children}</blockquote>,
+                  }}
+                >
+                  {event.fullDescription[language]}
+                </ReactMarkdown>
+              </article>
             </div>
             )}
 
