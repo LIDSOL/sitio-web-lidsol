@@ -1,5 +1,5 @@
 [[file:./project.org][Aqui el archivo para organizar el desarrollo del proyecto]]
-* Build del proyecto.
+* Build del proyecto para desarrollo:
 ** Cambia a la rama de desarrollo
 Despues de clonar el repositorio, cambia a la rama donde se encuentra la nueva versión del sitio (en construcción).
 #+BEGIN_SRC bash
@@ -19,12 +19,12 @@ Este comando ejecuta el script [[file:./scripts/build-blog.js][build-blog]] que 
 El resultado es un sitio web estático listo para desplegar.
 ** Ejecuta el sitio con un contenedor de (Nginx + Podman)
 Eliminar el contenedor previo (si existe):
-#+BEGIN_SRC lenguaje
+#+BEGIN_SRC bash
 podman rm -f lidsol-react 2>/dev/null || true
 #+END_SRC
 
 Levanta un nuevo contenedor:
-#+BEGIN_SRC lenguaje
+#+BEGIN_SRC bash
 podman run -d \
   --name lidsol-react \
   -p 8080:80 \
@@ -39,7 +39,7 @@ Ahora se puede acceder al sitio desde el navegador en:  http://localhost:8080
 
 ** Build automático al detectar cambios
 Instala inotify-tools y ejecuta:
-#+BEGIN_SRC lenguaje
+#+BEGIN_SRC bash
 while inotifywait -r -e modify,create,delete --exclude 'node_modules|build' src/; do
   npm run build
 done
@@ -47,3 +47,9 @@ done
 Este comando hace:
 - Observa los cambios del directorio src/
 - Ejecuta automáticamente el build cuando detecta modificaciones.
+* Para contenedor:
+#+BEGIN_SRC bash
+podman build -t lidsol-contenedor .
+podman run -d -p 8080:80 --name lidsol-web lidsol-contenedor:latest
+#+END_SRC
+Notas: El código fuente original src/, etc no está en el contenedor, solo queda el resultado del Build. En la ruta /usr/share/nginx/html (raiz del servidor web NGINX) está el resultado estático del build de Vite, aquí están los archivos PDF, imágenes..

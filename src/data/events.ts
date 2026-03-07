@@ -40,35 +40,6 @@ export interface Event {
 
 export const events: Event[] = [
   {
-    id: 1,
-    title: {
-      en: "FLISoL 2024",
-      es: "FLISoL 2024"
-    },
-    event: "Festival Latinoamericano de Instalación de Software Libre",
-    event_url: "https://flisol.info/FLISOL2024/Mexico/CDMX/UNAM",
-    shortDescription: {
-      en: "El LIDSoL nuevamente los invita a la edición 2024 del Festival Latinoamericano de Software Libre.",
-      es: "El LIDSoL nuevamente los invita a la edición 2024 del Festival Latinoamericano de Software Libre."
-    },
-    fullDescription: {
-      en: "## What is FLISoL?\n\nFLISoL is the largest Free Software dissemination event in Latin America. Since 2005, it has been held annually on the 4th Saturday of April.\n\nIts main objective is to promote the use of free software, making known to the general public its philosophy, scope, advances, and development.\n\nThe event is organized by various local Free Software communities and takes place simultaneously with events where free software is installed, free of charge and totally legally, on the computers that attendees bring. Additionally, in parallel, talks, presentations, and workshops are offered on local, national, and Latin American topics related to Free Software.\n\n## Where is it?\n\nThe event will take place on May 8 and 9, 2024, at the North Complex of the Faculty of Engineering at UNAM.\n\n## What will there be?\n\n### Free Software Installation\n\nThe main activity of the event is installing free software on attendees' computers.\n\n### Workshops\n\nThere will be introductory workshops on technologies like Arduino and Git.",
-      es: "## ¿Qué es FLISoL?\n\nEl FLISoL es el evento de difusión de Software Libre más grande en Latinoamérica se realiza desde el año 2005 y desde el 2008 se adoptó su realización el 4to sábado de Abril de cada año.\n\nSu principal objetivo es promover el uso del software libre, dando a conocer al público en general su filosofía, alcances, avances y desarrollo.\n\nEl evento es organizado por las diversas comunidades locales de Software Libre y se desarrolla simultáneamente con eventos en los que se instala, de manera gratuita y totalmente legal, software libre en las computadoras que llevan los asistentes. Además, en forma paralela, se ofrecen charlas, ponencias y talleres, sobre temáticas locales, nacionales y latinoamericanas en torno al Software Libre.\n\n## ¿Donde es?\n\nEl evento se llevará a cabo los días 08 y 09 de Mayo de 2024 en el Conjunto Norte de la Facultad de Ingeniería en Ciudad Universitaria.\n\n## ¿Qué habrá?\n\n### Instalación de software libre\n\nLa actividad principal del evento es la instalación de software libre en las computadoras de los asistentes.\n\n### Talleres\n\nLos dos días que dura el evento habrá talleres introductorios a tecnologías como Arduino y Git."
-    },
-    startDate: "2024-05-08",
-    endDate: "2024-05-09",
-    location: {
-      en: "Conjunto Norte, Facultad de Ingeniería, UNAM",
-      es: "Conjunto Norte, Facultad de Ingeniería, UNAM"
-    },
-    status: "past",
-    image: "/events-images/flisol-2024.jpg",
-    coverImage: "/events-images/flisol-2024.jpg",
-    tags: ["flisol", "open source", "comunidad"],
-    all_day: false,
-    publishDate: "2024-05-01"
-  },
-  {
     id: 2,
     title: {
       en: "FLISoL 2023",
@@ -325,7 +296,7 @@ export const events: Event[] = [
   {
     id: 11,
     title: {
-      en: "Las tecnologías de internet en los movimientos sociales",
+      en: "The Internet Technologies in Social Movements",
       es: "Las tecnologías de internet en los movimientos sociales"
     },
     event_url: "https://mx.internetanonima.net/tecnologias-de-internet-en-los-movimientos-sociales",
@@ -430,5 +401,39 @@ export const events: Event[] = [
     authors: ["mijangos"],
     all_day: false,
     publishDate: "2019-12-01"
-  }
+  },
+  //---
+  {
+    id: 15,
+    title: {
+      en: "FLISoL 2024",
+      es: "FLISoL 2024"
+    },
+    event: "Festival Latinoamericano de Instalación de Software Libre",
+    event_url: "https://flisol.info/FLISOL2024/Mexico/CDMX/UNAM",
+    shortDescription: {
+      en: "LIDSoL invites you again to the 2024 edition of the Latin American Free Software Festival.",
+      es: "El LIDSoL nuevamente los invita a la edición 2024 del Festival Latinoamericano de Software Libre."
+    },
+    fullDescription: {
+      en: "## What is FLISoL?\n\nFLISoL is the largest Free Software dissemination event in Latin America. Since 2005, it has been held annually on the 4th Saturday of April.\n\nIts main objective is to promote the use of free software, making known to the general public its philosophy, scope, advances, and development.\n\nThe event is organized by various local Free Software communities and takes place simultaneously with events where free software is installed, free of charge and totally legally, on the computers that attendees bring. Additionally, in parallel, talks, presentations, and workshops are offered on local, national, and Latin American topics related to Free Software.\n\n## Where is it?\n\nThe event will take place on May 8 and 9, 2024, at the North Complex of the Faculty of Engineering at UNAM.\n\n## What will there be?\n\n### Free Software Installation\n\nThe main activity of the event is installing free software on attendees' computers.\n\n### Workshops\n\nThere will be introductory workshops on technologies like Arduino and Git.",
+      es: "## ¿Qué es FLISoL?\n\nEl FLISoL es el evento de difusión de Software Libre más grande en Latinoamérica se realiza desde el año 2005 y desde el 2008 se adoptó su realización el 4to sábado de Abril de cada año.\n\nSu principal objetivo es promover el uso del software libre, dando a conocer al público en general su filosofía, alcances, avances y desarrollo.\n\nEl evento es organizado por las diversas comunidades locales de Software Libre y se desarrolla simultáneamente con eventos en los que se instala, de manera gratuita y totalmente legal, software libre en las computadoras que llevan los asistentes. Además, en forma paralela, se ofrecen charlas, ponencias y talleres, sobre temáticas locales, nacionales y latinoamericanas en torno al Software Libre.\n\n## ¿Donde es?\n\nEl evento se llevará a cabo los días 08 y 09 de Mayo de 2024 en el Conjunto Norte de la Facultad de Ingeniería en Ciudad Universitaria.\n\n## ¿Qué habrá?\n\n### Instalación de software libre\n\nLa actividad principal del evento es la instalación de software libre en las computadoras de los asistentes.\n\n### Talleres\n\nLos dos días que dura el evento habrá talleres introductorios a tecnologías como Arduino y Git."
+    },
+    startDate: "2024-05-08",
+    endDate: "2024-05-09",
+    location: {
+      en: "Conjunto Norte, Facultad de Ingeniería, UNAM",
+      es: "Conjunto Norte, Facultad de Ingeniería, UNAM"
+    },
+    status: "past",
+    agenda: {
+        en: ["10:00:","11:00"],
+        es: ["10:00:","11:00"]
+            },
+    image: "/events-images/flisol-2024.jpg",
+    coverImage: "/events-images/flisol-2024.jpg",
+    tags: ["flisol", "open source", "comunidad"],
+    all_day: false,
+    publishDate: "2024-05-01"
+  },
 ];

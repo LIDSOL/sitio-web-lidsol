@@ -92,8 +92,22 @@ DEADLINE: <2026-03-03 Tue>
 - [X] Sección CTA con Mailto, es sencillo y se evita configurar un backend de correo o base de datos (que para esto no se requiere).
 **** IN-PROGRESS Events y EventDetail [0%]
 DEADLINE: <2026-03-10 Tue>
-- [-] Mudar el contenido
-- [ ] Hacer una función para poder ordenar del más antiguo al más nuevo y viceversa (como en la sección de proyectos).
+- [ ] Mudar el contenido
+  - [ ] Las tecnologías de internet en los movimientos sociales
+  - [ ] CCOSS
+  - [ ] Tayer para contribuir a Python
+  - [ ] Python: Zero To Hero
+  - [ ] Introducción a Pandoc
+  - [ ] Introducción a redes neuronales: Un enfoque interpretativo
+  - [ ] Salvemos el internet
+  - [ ] FLSoL 2020
+  - [ ] Seminario de Lisp 2020
+  - [ ] Túneles y agentes de SSH
+  - [ ] FLISoL 2022
+  - [ ] FLISoL 2023
+  - [ ] FLISoL 2024
+- [ ] Implementar un sort como en la sección de proyectos
+- [ ] Implementar una "tarjeta" con todos los links de interés, event_url, etc
 - [ ] Implementar una función de calendario. Sería divertido poder exportar un archivo que se pueda cargar a una app de calendario con un ics..
 **** NEXT CourseDetail y CourseDetail [0%]
 DEADLINE: <2026-03-07 Sat>
