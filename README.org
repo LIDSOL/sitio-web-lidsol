@@ -25,14 +25,11 @@ podman rm -f lidsol-react 2>/dev/null || true
 
 Levanta un nuevo contenedor:
 #+BEGIN_SRC bash
-podman run -d \
-  --name lidsol-react \
-  -p 8080:80 \
+podman run -d --name lidsol-react -p 8080:80 \
   -v "$(pwd)/build:/usr/share/nginx/html:ro" \
-  nginx:alpine
+  docker.io/library/nginx:alpine
 #+END_SRC
 
-- Usa la imagen oficial nginx:alpine.
 - Expone el puerto 8080.
 - Monta la carpeta build/ como contenido estático.
 Ahora se puede acceder al sitio desde el navegador en:  http://localhost:8080

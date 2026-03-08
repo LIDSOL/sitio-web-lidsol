@@ -48,11 +48,12 @@ export function Courses({ onCourseClick }: CoursesProps) {
 
   const formatDate = (dateStr: string, lang: string) => {
     const date = new Date(dateStr);
-    return date.toLocaleDateString(lang === 'es' ? 'es-MX' : 'en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
+    const day = date.getUTCDate();
+    const month = date.toLocaleString(lang === 'es' ? 'es-MX' : 'en-US', { month: 'long', timeZone: 'UTC' });
+    const year = date.getUTCFullYear();
+    return lang === 'es' 
+      ? `${day} de ${month} de ${year}`
+      : `${month} ${day}, ${year}`;
   };
 
   const sortedCourses = [...courses].sort((a, b) => {
