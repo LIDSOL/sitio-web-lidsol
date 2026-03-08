@@ -1,10 +1,13 @@
-import { ArrowLeft, BookOpen, Calendar, Clock, Users, CheckCircle, Award } from "lucide-react";
+import { ArrowLeft, BookOpen, Calendar, Clock, Users, CheckCircle, Award, ExternalLink } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { Card, CardContent } from "./ui/card";
 import { useLanguage } from "./LanguageProvider";
 import { Course } from "../data/courses";
+import { members } from "../data/members";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface CourseDetailProps {
   course: Course;
@@ -46,12 +49,24 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
 
   const formatDate = (dateStr: string, lang: string) => {
     const date = new Date(dateStr);
-    return date.toLocaleDateString(lang === 'es' ? 'es-MX' : 'en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
+    const day = date.getUTCDate();
+    const month = date.toLocaleString(lang === 'es' ? 'es-MX' : 'en-US', { month: 'long', timeZone: 'UTC' });
+    const year = date.getUTCFullYear();
+    return lang === 'es' 
+      ? `${day} de ${month} de ${year}`
+      : `${month} ${day}, ${year}`;
   };
+
+  const findMemberByInstructor = (instructorName: string) => {
+    const search = instructorName.toLowerCase().trim();
+    const byName = members.find(member => {
+      const name = member.name.toLowerCase();
+      return name === search || name.includes(search) || search.includes(name);
+    });
+    return byName || null;
+  };
+
+  const instructorMember = course.instructor ? findMemberByInstructor(course.instructor) : null;
 
   return (
     <div className="min-h-screen bg-background">
@@ -108,9 +123,23 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
             {/* Description */}
             <div className="bg-card rounded-3xl p-8 border border-border/50">
               <h2 className="text-3xl mb-6">{t.description[language]}</h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                {course.fullDescription?.[language]}
-              </p>
+              {course.fullDescription && (
+                <div className="prose prose-neutral dark:prose-invert max-w-none">
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    components={{
+                      p: ({children}) => <p className="text-justify hyphens-auto leading-relaxed mb-4" style={{textAlign: 'justify'}}>{children}</p>,
+                      br: () => <br className="mb-2" />
+                    }}
+                  >
+                    {course.fullDescription[language]
+                      .split('\n')
+                      .map(line => line.trim())
+                      .filter(line => line.length > 0)
+                      .join('\n\n')}
+                  </ReactMarkdown>
+                </div>
+              )}
             </div>
 
             {/* Modules */}
@@ -176,7 +205,17 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
                         <div className="text-sm text-muted-foreground mb-1">
                           {t.instructor[language]}
                         </div>
-                        <div className="font-medium">{course.instructor}</div>
+                        {instructorMember ? (
+                          <button
+                            onClick={() => window.location.hash = `#about/member/${instructorMember.id}`}
+                            className="font-medium text-foreground hover:underline cursor-pointer flex items-center gap-1"
+                          >
+                            {course.instructor}
+                            <ExternalLink className="h-3 w-3" />
+                          </button>
+                        ) : (
+                          <div className="font-medium">{course.instructor}</div>
+                        )}
                       </div>
                     </div>
                     )}

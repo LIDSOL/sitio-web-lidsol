@@ -1,4 +1,5 @@
 import lispImg  from "../../public/courses-images/lisp.png";
+import latexImg from "../../public/courses-images/LaTeX.png";
 
 export interface Course {
   id: number;
@@ -163,8 +164,8 @@ export const courses: Course[] = [
   {
     id: 3,
     title: {
-      en: "Cybersecurity and Ethical Hacking",
-      es: "Ciberseguridad y Ethical Hacking"
+      en: "",
+      es: "Puma Hat"
     },
     shortDescription: {
       en: "Explore computer security from an ethical perspective and learn penetration testing.",
@@ -235,8 +236,8 @@ export const courses: Course[] = [
   {
     id: 4,
     title: {
-      en: "Containers with Docker and Kubernetes",
-      es: "Contenedores con Docker y Kubernetes"
+      en: " ",
+      es: "Curso básico de SysAdmin GNU/Linux"
     },
     shortDescription: {
       en: "Learn to containerize applications and orchestrate them in production.",
@@ -303,5 +304,77 @@ export const courses: Course[] = [
         "Configurar pipelines CI/CD"
       ]
     }
+  },
+  {
+    id: 5,
+    title: {
+      en: "LaTeX Course",
+      es: "Curso de LaTeX"
+    },
+    shortDescription: {
+      en: "Learn to containerize applications and orchestrate them in production.",
+      es: "Acércate a LaTex para mejorar tus habilidades en composición tipográfica y creación de documentos científicos y académicos de manera profesional."
+    },
+    fullDescription: {
+      en: "Master the art of containerization with Docker and Kubernetes. This course covers everything from basic container concepts to advanced orchestration strategies. You'll learn how to package applications, manage container lifecycles, implement CI/CD pipelines, and deploy scalable applications in production. Essential for modern DevOps practices.",
+      es: "¡Aprende LaTeX desde la comodidad de tu hogar! 🖥️✨ Únete a nuestro curso virtual gratuito organizado por el Laboratorio de Investigación y Desarrollo de Software Libre (LIDSoL). \n¿Quieres mejorar tus habilidades en composición tipográfica y creación de documentos científicos y académicos de manera profesional? ¡Este es el momento perfecto! Aprende LaTeX de la mano de expertos y potencia tu carrera en el ámbito académico y profesional."
+    },
+    instructor: "Francisco Galindo",
+    duration: "5 semanas",
+    startDate: "2024-05-04",
+    schedule: "Sábados, 15:00-16:30 UTC-6",
+    level: { en: "Intermediate", es: "Intermedio" },
+    image: latexImg,
+    coverImage: latexImg,
+    tags: ["LaTeX", "Composición De Textos", "Documentos Académicos",  "Tipografía Digital"],
+    modules: {
+      en: [
+        "Introduction to Containers",
+        "Docker Fundamentals",
+        "Docker Compose",
+        "Kubernetes Basics",
+        "Deployment and Scaling",
+        "CI/CD with Containers"
+      ],
+      es: [
+        "Introducción a Contenedores",
+        "Docker Fundamentals",
+        "Docker Compose",
+        "Kubernetes Basics",
+        "Despliegue y Escalado",
+        "CI/CD con Containers"
+      ]
+    },
+    requirements: {
+      en: [
+        "Basic Linux command line",
+        "Understanding of networking",
+        "Familiarity with web applications",
+        "Basic programming knowledge"
+      ],
+      es: [
+        "Línea de comandos básica de Linux",
+        "Comprensión de redes",
+        "Familiaridad con aplicaciones web",
+        "Conocimientos básicos de programación"
+      ]
+    },
+    objectives: {
+      en: [
+        "Create and manage Docker containers",
+        "Build multi-container applications",
+        "Deploy applications to Kubernetes",
+        "Implement container orchestration",
+        "Set up CI/CD pipelines"
+      ],
+      es: [
+        "Crear y gestionar contenedores Docker",
+        "Construir aplicaciones multi-contenedor",
+        "Desplegar aplicaciones en Kubernetes",
+        "Implementar orquestación de contenedores",
+        "Configurar pipelines CI/CD"
+      ]
+    }
   }
+
 ];
