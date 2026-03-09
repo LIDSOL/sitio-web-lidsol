@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { Card, CardContent } from "./ui/card";
 import { useLanguage } from "./LanguageProvider";
-import { Course, Module, ModuleSubsection } from "../data/courses";
+import { Course, ModuleItem } from "../data/courses";
 import { members } from "../data/members";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import ReactMarkdown from "react-markdown";
@@ -14,56 +14,47 @@ interface CourseDetailProps {
   onBack: () => void;
 }
 
-function ModuleItem({ module, index }: { module: Module | string; index: number }) {
-  if (typeof module === 'string') {
+function renderModuleItem(item: ModuleItem | string, index: number, isNested = false): JSX.Element {
+  const itemKey = isNested ? `nested-${index}` : index;
+  
+  if (typeof item === 'string') {
     return (
-      <li key={index} className="flex items-start gap-3">
+      <li key={itemKey} className="flex items-start gap-3">
         <div className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
           {index + 1}
         </div>
-        <span className="text-muted-foreground text-lg">{module}</span>
+        <span className="text-muted-foreground text-lg">{item}</span>
       </li>
     );
   }
 
+  const [title, topics] = item;
+  const hasTopics = Array.isArray(topics) && topics.length > 0;
+
   return (
-    <li className="flex flex-col gap-2">
+    <li key={itemKey} className="flex flex-col gap-2">
       <div className="flex items-start gap-3">
         <div className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
           {index + 1}
         </div>
-        <span className="text-foreground text-lg font-medium">{module.title}</span>
+        <span className="text-foreground text-lg font-medium">{title}</span>
       </div>
-      {module.topics && module.topics.length > 0 && (
-        <ul className="ml-9 space-y-1.5">
-          {module.topics.map((topic, tIdx) => (
-            <li key={tIdx} className="text-muted-foreground text-base">{topic}</li>
-          ))}
-        </ul>
-      )}
-      {module.subsections && module.subsections.length > 0 && (
-        <ul className="ml-9 space-y-2 mt-2">
-          {module.subsections.map((subsection, sIdx) => (
-            <SubsectionItem key={sIdx} subsection={subsection} />
-          ))}
-        </ul>
-      )}
-    </li>
-  );
-}
-
-function SubsectionItem({ subsection, depth = 0 }: { subsection: ModuleSubsection; depth?: number }) {
-  const indentClass = depth === 0 ? "ml-0" : "ml-4";
-  const textClass = depth === 0 ? "text-foreground font-medium" : "text-muted-foreground";
-  
-  return (
-    <li className={`flex flex-col gap-1 ${indentClass}`}>
-      <span className={textClass}>{subsection.title}</span>
-      {subsection.subsections && subsection.subsections.length > 0 && (
-        <ul className="space-y-1 ml-4">
-          {subsection.subsections.map((sub, idx) => (
-            <SubsectionItem key={idx} subsection={sub} depth={depth + 1} />
-          ))}
+      {hasTopics && (
+        <ul className="ml-9 space-y-1">
+          {topics.map((topic, tIdx) => {
+            if (typeof topic === 'string') {
+              return <li key={tIdx} className="text-muted-foreground text-base">{topic}</li>;
+            }
+            return (
+              <li key={tIdx} className="text-muted-foreground text-base">
+                <ul className="ml-4 space-y-1 mt-1">
+                  {topic.map((sub, sIdx) => (
+                    <li key={sIdx} className="text-muted-foreground/80 text-sm">{sub}</li>
+                  ))}
+                </ul>
+              </li>
+            );
+          })}
         </ul>
       )}
     </li>
@@ -208,9 +199,9 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
             <div className="bg-primary/5 border border-primary/10 rounded-3xl p-8">
               <h2 className="text-3xl mb-6">{t.modules[language]}</h2>
               <ul className="space-y-3">
-                {course.modules[language]?.map((module, index) => (
-                  <ModuleItem key={index} module={module} index={index} />
-                ))}
+                {course.modules[language]?.map((module, index) => 
+                  renderModuleItem(module, index)
+                )}
               </ul>
             </div>
             )}

@@ -5,16 +5,7 @@ import pythonFeaturedImg    from "../../public/courses-images/python-featured.pn
 import latexImg     from "../../public/courses-images/LaTeX.png";
 import sysAdminImg  from "../../public/courses-images/sysadmin.png";
 
-export interface ModuleSubsection {
-  title: string;
-  subsections?: ModuleSubsection[];
-}
-
-export interface Module {
-  title: string;
-  topics?: string[];
-  subsections?: ModuleSubsection[];
-}
+export type ModuleItem = string | [string, (string | string[])[]?];
 
 export interface Course {
   id: number;
@@ -31,7 +22,7 @@ export interface Course {
   image?: string;
   coverImage?: string;
   tags?: string[];
-  modules?: { en: Module[]; es: Module[] };
+  modules?: { en: ModuleItem[]; es: ModuleItem[] };
   requirements?: { en: string[]; es: string[] };
   objectives?: { en: string[]; es: string[] };
 }
@@ -105,148 +96,64 @@ export const courses: Course[] = [
     tags: ["Python", "Django", "Web Development", "Backend", "REST API"],
     modules: {
       en: [
-        {
-          title: "Introduction",
-          topics: ["What is Python?", "Guido Van Rossum", "Companies using the language"],
-          subsections: [
-            {
-              title: "Understanding computers (a bit)",
-              subsections: [
-                { title: "Programmable computers" },
-                { title: "Software and Hardware" },
-                { title: "Programming languages" }
-              ]
-            },
-            { title: "Program design" },
-            { title: "Installing Python" },
-            { title: "Installing a text editor" },
-            { title: "Python interpreter" }
-          ]
-        },
-        {
-          title: "Input, Processing and Output",
-          topics: ["String", "Screen output"],
-          subsections: [
-            {
-              title: "Print statement",
-              subsections: [
-                { title: "Using print" },
-                { title: "F-strings" },
-                { title: "Format" }
-              ]
-            },
-            {
-              title: "Comments",
-              subsections: [
-                { title: "Single line" },
-                { title: "Multi-line" }
-              ]
-            },
-            {
-              title: "Data types",
-              subsections: [
-                { title: "Strings" },
-                { title: "Integers" },
-                { title: "Floating point numbers" },
-                { title: "Booleans" }
-              ]
-            },
-            { title: "Arithmetic operators" },
-            { title: "Reading from keyboard" }
-          ]
-        },
-        {
-          title: "Control structures",
-          topics: ["if", "if-else", "if-elif-else", "while", "for"]
-        },
-        {
-          title: "Sequences",
-          topics: ["Lists", "Tuples", "Dictionaries", "Sets"]
-        },
-        {
-          title: "Modular programming",
-          subsections: [
-            {
-              title: "Functions",
-              subsections: [
-                { title: "Required positional parameters" },
-                { title: "Optional parameters" }
-              ]
-            }
-          ]
-        }
+        ["Introduction", [
+          "What is Python?",
+          "Guido Van Rossum",
+          "Companies using the language",
+          ["Understanding computers (a bit)", [
+            "Programmable computers",
+            ["Software and Hardware", ["CPU", "Primary memory", "Secondary memory", "I/O devices"]],
+            "Programming languages"
+          ]],
+          "Program design",
+          "Installing Python",
+          "Installing a text editor",
+          "Python interpreter"
+        ]],
+        ["Input, Processing and Output", [
+          "String",
+          "Screen output",
+          ["Print statement", ["Using print", "F-strings", "Format"]],
+          ["Comments", ["Single line", "Multi-line"]],
+          ["Data types", ["Strings", "Integers", "Floating point numbers", "Booleans"]],
+          "Arithmetic operators",
+          "Reading from keyboard"
+        ]],
+        ["Control structures", ["if", "if-else", "if-elif-else", "while", "for"]],
+        ["Sequences", ["Lists", "Tuples", "Dictionaries", "Sets"]],
+        ["Modular programming", [
+          ["Functions", ["Required positional parameters", "Optional parameters"]]
+        ]]
       ],
       es: [
-        {
-          title: "Introducción",
-          topics: ["¿Qué es Python?", "Guido Van Rossum", "Empresas que utilizan el lenguaje"],
-          subsections: [
-            {
-              title: "Entendiendo las computadoras (un poco)",
-              subsections: [
-                { title: "Computadoras programables" },
-                { title: "Software y Hardware" },
-                { title: "Lenguajes de programación" }
-              ]
-            },
-            { title: "Diseño de programas" },
-            { title: "Instalación de Python" },
-            { title: "Instalación de editor de texto" },
-            { title: "Intérprete de Python" }
-          ]
-        },
-        {
-          title: "Entrada, Procesamiento y Salida de datos",
-          topics: ["Cadena", "Impresión en pantalla"],
-          subsections: [
-            {
-              title: "Uso de print",
-              subsections: [
-                { title: "Uso de print" },
-                { title: "F-strings" },
-                { title: "Format" }
-              ]
-            },
-            {
-              title: "Comentarios",
-              subsections: [
-                { title: "De una línea" },
-                { title: "Multilínea" }
-              ]
-            },
-            {
-              title: "Tipos de datos",
-              subsections: [
-                { title: "Strings" },
-                { title: "Números enteros" },
-                { title: "Número de punto flotante" },
-                { title: "Booleanos" }
-              ]
-            },
-            { title: "Operadores Aritméticos" },
-            { title: "Lectura desde el teclado" }
-          ]
-        },
-        {
-          title: "Estructuras de control",
-          topics: ["if", "if-else", "if-elif-else", "while", "for"]
-        },
-        {
-          title: "Secuencias",
-          topics: ["Listas", "Tuplas", "Diccionarios", "Conjuntos"]
-        },
-        {
-          title: "Programación modular",
-          subsections: [
-            {
-              title: "Funciones",
-              subsections: [
-                { title: "Parámetros obligatorios posicionales" },
-                { title: "Parámetros opcionales" }
-              ]
-            }
-          ]
-        }
+        ["Introducción", [
+          "¿Qué es Python?",
+          "Guido Van Rossum",
+          "Empresas que utilizan el lenguaje",
+          ["Entendiendo las computadoras (un poco)", [
+            "Computadoras programables",
+            ["Software y Hardware", ["CPU", "Memoria principal", "Memoria secundaria", "Dispositivos de E/S"]],
+            "Lenguajes de programación"
+          ]],
+          "Diseño de programas",
+          "Instalación de Python",
+          "Instalación de editor de texto",
+          "Intérprete de Python"
+        ]],
+        ["Entrada, Procesamiento y Salida de datos", [
+          "Cadena",
+          "Impresión en pantalla",
+          ["Uso de print", ["Uso de print", "F-strings", "Format"]],
+          ["Comentarios", ["De una línea", "Multilínea"]],
+          ["Tipos de datos", ["Strings", "Números enteros", "Número de punto flotante", "Booleanos"]],
+          "Operadores Aritméticos",
+          "Lectura desde el teclado"
+        ]],
+        ["Estructuras de control", ["if", "if-else", "if-elif-else", "while", "for"]],
+        ["Secuencias", ["Listas", "Tuplas", "Diccionarios", "Conjuntos"]],
+        ["Programación modular", [
+          ["Funciones", ["Parámetros obligatorios posicionales", "Parámetros opcionales"]]
+        ]]
       ]
     },
     objectives: {
