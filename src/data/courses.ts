@@ -1,5 +1,20 @@
-import lispImg  from "../../public/courses-images/lisp.png";
-import latexImg from "../../public/courses-images/LaTeX.png";
+import lispImg              from "../../public/courses-images/lisp.png";
+import pythonFeaturedImg    from "../../public/courses-images/python-featured.png";
+
+
+import latexImg     from "../../public/courses-images/LaTeX.png";
+import sysAdminImg  from "../../public/courses-images/sysadmin.png";
+
+export interface ModuleSubsection {
+  title: string;
+  subsections?: ModuleSubsection[];
+}
+
+export interface Module {
+  title: string;
+  topics?: string[];
+  subsections?: ModuleSubsection[];
+}
 
 export interface Course {
   id: number;
@@ -7,15 +22,16 @@ export interface Course {
   shortDescription?: { en: string; es: string };
   fullDescription?: { en: string; es: string };
   instructor?: string;
-  duration?: string;
+  duration?: { en: string; es: string };
   startDate?: string;
-  schedule?: string;
+  schedule?: { en: string; es: string };
   level?: { en: string; es: string };
   enrolled?: string;
+  resources?: string;
   image?: string;
   coverImage?: string;
   tags?: string[];
-  modules?: { en: string[]; es: string[] };
+  modules?: { en: Module[]; es: Module[] };
   requirements?: { en: string[]; es: string[] };
   objectives?: { en: string[]; es: string[] };
 }
@@ -24,140 +40,221 @@ export const courses: Course[] = [
   {
     id: 1,
     title: {
-      en: " ",
+      en: "LISP Seminar",
       es: "Seminario de LISP"
     },
     shortDescription: {
-      en: " ",
+      en: "Get closer to functional programming and computing with LISP :)",
       es: "Acércate a la programación funcional y a la computación con LISP :)"
     },
     fullDescription: {
-      en: "This comprehensive course will take you from Linux beginner to confident user. You'll learn essential command-line skills, system administration basics, and how to navigate and manage a Linux system. Perfect for students, developers, and anyone interested in exploring the world of Unix-like operating systems.",
-      es: "Este curso integral te llevará de principiante en Linux a usuario competente. Aprenderás habilidades esenciales de línea de comandos, fundamentos de administración de sistemas y cómo navegar y gestionar un sistema Linux. Perfecto para estudiantes, desarrolladores y cualquier persona interesada en explorar el mundo de los sistemas operativos tipo Unix."
+      en: "In this seminar, we will recover various materials to learn about the benefits and challenges of the LISP family of languages. Initially, we focused on programming using Scheme, a minimalist and elegant dialect of the LISP family. Currently, we are reviewing the Common Lisp dialect. \n We meet three days a week: Monday, Wednesday, and Thursday from 7:00 PM to 8:00 PM (Mexico City Time) in the Jitsi room [SeminarioLispLisdol](https://meet.jit.si/SeminarioLISPLidsol).",
+      es: "En este seminario recuperaremos diversos materiales para aprender las bondades y retos de la familia de lenguajes LISP. En un principio nos enfocamos en la programación empleando scheme, un dialecto minimalista y elegante de la familia de lenguajes de programación LISP. Actualmente revisamos el dialecto Common Lisp. \n Nos reunimos tres días a la semana; lunes, miercoles y jueves en un horario de 19:00 a 20:00 (Tiempo de la Ciudad de México) en la sala de Jitsi [SeminarioLispLisdol](https://meet.jit.si/SeminarioLISPLidsol)."
     },
-    instructor: "Dr. Juan Pérez",
-    duration: "8 semanas",
-    startDate: "2025-01-15",
-    schedule: "Martes y Jueves, 18:00-20:00",
-    level: { en: "Beginner", es: "Principiante" },
-    enrolled: "25/30",
+    instructor: "Telior",
+    duration: { en: "2 weeks", es: "2 semanas" },
+    startDate: "2020-06-01",
+    schedule: { en: "Monday, Wednesday, and Thursday, 19:00-21:00", es: "Lunes, miércoles y jueves, 19:00-21:00" },
+    level: { en: "Intermediate", es: "Intermedio" },
+    resources: "https://gitlab.com/lidsol/seminario-lisp",
     image: lispImg,
     coverImage: lispImg,
-    tags: ["Linux", "Terminal", "Bash", "System Administration"],
+    tags: ["LISP", "Functional Programming", "Scheme", "sicp"],
     modules: {
       en: [
-        "Introduction to Linux and Open Source",
-        "Basic Command Line",
-        "File System and Permissions",
-        "Process Management",
-        "Networking in Linux",
-        "Bash Scripting"
+        "Structure and Interpretation of Computer Programs: The SICP book was used at MIT for decades to introduce students to computing and programming.",
+        "The Little Schemer",
+        "A Gentle Introduction to Symbolic Computation",
+        "Practical Common Lisp",
+        "ANSI Common Lisp",
+        "The Seasoned Schemer",
+        "The Reasoned Schemer"
       ],
       es: [
-        "Introducción a Linux y Open Source",
-        "Línea de comandos básica",
-        "Sistema de archivos y permisos",
-        "Gestión de procesos",
-        "Redes en Linux",
-        "Scripting con Bash"
-      ]
-    },
-    requirements: {
-      en: [
-        "Basic computer knowledge",
-        "No prior Linux experience required",
-        "Computer for installing Linux (VM or dual boot)"
-      ],
-      es: [
-        "Conocimientos básicos de computación",
-        "No se requiere experiencia previa en Linux",
-        "Computadora para instalar Linux (VM o arranque dual)"
-      ]
-    },
-    objectives: {
-      en: [
-        "Navigate the Linux file system confidently",
-        "Execute and understand essential commands",
-        "Manage users, groups, and permissions",
-        "Write basic Bash scripts",
-        "Troubleshoot common Linux issues"
-      ],
-      es: [
-        "Navegar el sistema de archivos Linux con confianza",
-        "Ejecutar y comprender comandos esenciales",
-        "Gestionar usuarios, grupos y permisos",
-        "Escribir scripts básicos de Bash",
-        "Solucionar problemas comunes de Linux"
+        "Structure and Interpretation of Computer Programs: El libro SICP fue utilizado en el MIT durante décadas para iniciar a sus alumnos a la computación y a la programación.",
+        "The Little Schemer",
+        "A Gentle Introduction to Symbolic Computation",
+        "Practical Common Lisp",
+        "ANSI Common Lisp",
+        "The Seasoned Schemer",
+        "The Reasoned Schemer"
       ]
     }
-  },
+    },
   {
     id: 2,
     title: {
-      en: " ",
+      en: "Python Fundamentals",
       es: "Fundamentos de Python"
     },
     shortDescription: {
-      en: " ",
+      en: "A course on the fundamentals of the Python programming language 🐍",
       es: "Curso de los fundamentos del lenguaje de programación Python 🐍"
     },
     fullDescription: {
-      en: "Build modern web applications from scratch using Python and the powerful Django framework. This course covers everything from basic setup to deployment, including database design, user authentication, REST APIs, and production best practices. You'll work on real-world projects and learn industry-standard development workflows.",
-      es: "Construye aplicaciones web modernas desde cero usando Python y el poderoso framework Django. Este curso cubre todo desde la configuración básica hasta el despliegue, incluyendo diseño de bases de datos, autenticación de usuarios, APIs REST y mejores prácticas de producción. Trabajarás en proyectos del mundo real y aprenderás flujos de trabajo de desarrollo estándar de la industria."
+      en: "Python is a versatile and constantly growing language. In recent years, it has shown explosive adoption reflected in fields such as artificial intelligence, web development, and big data management, among others. In this course, we will delve into the basic elements of the language that will serve as the foundation for creating a project that demonstrates development speed, code clarity, and the language's overall power. \nThe course is designed and built for individuals without prior programming knowledge and with elementary computing notions. It is ideal for those who want to start programming, as Python is relatively simple, has clear syntax, is extensively documented, and is powerful.",
+      es: "Python es un lenguaje versátil y en constante crecimiento. En los últimos años ha mostrado una adopción explosiva que se refleja en el desarrollo de inteligencia artificial, desarrollo web, manejo de grandes cantidades de datos, entre otras. En este curso abundaremos en los elementos básicos del lenguaje que servirán como cimientos para la elaboración de un proyecto que muestre la rapidez de desarrollo, claridad del código y poder del lenguaje. \nEl curso esta pensado y construido para personas sin conocimientos previos en programación y con nociones elementales de computación. Es adecuado para quienes quieran comenzar a programar ya que el lenguaje de programación python es relativamente sencillo, con sintaxis clara, ampliamente documentado y poderoso. \n _Fundamentos de Python por LIDSOL se distribuye bajo una Licencia Creative Commons Atribución 4.0 Internacional._",
     },
-    instructor: "Ing. Ana Martínez",
-    duration: "10 semanas",
-    startDate: "2021-01-22",
-    schedule: "Lunes y Miércoles, 17:00-19:00",
-    level: { en: "Intermediate", es: "Intermedio" },
-    enrolled: "18/25",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=800",
-    coverImage: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1600",
+    instructor: "Diego Barriga",
+    duration: { en: "1 week", es: "1 semana" },
+    startDate: "2020-06-23",
+    level: { en: "Beginner", es: "Principiantes" },
+    resources: "https://gitlab.com/lidsol/intro-python",
+    image: pythonFeaturedImg,
+    coverImage: pythonFeaturedImg,
     tags: ["Python", "Django", "Web Development", "Backend", "REST API"],
     modules: {
       en: [
-        "Python for Web",
-        "Django Configuration",
-        "Models and Databases",
-        "Views and Templates",
-        "Authentication and Security",
-        "Deploy and Production"
+        {
+          title: "Introduction",
+          topics: ["What is Python?", "Guido Van Rossum", "Companies using the language"],
+          subsections: [
+            {
+              title: "Understanding computers (a bit)",
+              subsections: [
+                { title: "Programmable computers" },
+                { title: "Software and Hardware" },
+                { title: "Programming languages" }
+              ]
+            },
+            { title: "Program design" },
+            { title: "Installing Python" },
+            { title: "Installing a text editor" },
+            { title: "Python interpreter" }
+          ]
+        },
+        {
+          title: "Input, Processing and Output",
+          topics: ["String", "Screen output"],
+          subsections: [
+            {
+              title: "Print statement",
+              subsections: [
+                { title: "Using print" },
+                { title: "F-strings" },
+                { title: "Format" }
+              ]
+            },
+            {
+              title: "Comments",
+              subsections: [
+                { title: "Single line" },
+                { title: "Multi-line" }
+              ]
+            },
+            {
+              title: "Data types",
+              subsections: [
+                { title: "Strings" },
+                { title: "Integers" },
+                { title: "Floating point numbers" },
+                { title: "Booleans" }
+              ]
+            },
+            { title: "Arithmetic operators" },
+            { title: "Reading from keyboard" }
+          ]
+        },
+        {
+          title: "Control structures",
+          topics: ["if", "if-else", "if-elif-else", "while", "for"]
+        },
+        {
+          title: "Sequences",
+          topics: ["Lists", "Tuples", "Dictionaries", "Sets"]
+        },
+        {
+          title: "Modular programming",
+          subsections: [
+            {
+              title: "Functions",
+              subsections: [
+                { title: "Required positional parameters" },
+                { title: "Optional parameters" }
+              ]
+            }
+          ]
+        }
       ],
       es: [
-        "Python para web",
-        "Configuración de Django",
-        "Modelos y Bases de Datos",
-        "Vistas y Templates",
-        "Autenticación y Seguridad",
-        "Deploy y Producción"
-      ]
-    },
-    requirements: {
-      en: [
-        "Basic Python knowledge",
-        "Understanding of HTML and CSS",
-        "Familiarity with databases (helpful but not required)"
-      ],
-      es: [
-        "Conocimientos básicos de Python",
-        "Comprensión de HTML y CSS",
-        "Familiaridad con bases de datos (útil pero no requerido)"
+        {
+          title: "Introducción",
+          topics: ["¿Qué es Python?", "Guido Van Rossum", "Empresas que utilizan el lenguaje"],
+          subsections: [
+            {
+              title: "Entendiendo las computadoras (un poco)",
+              subsections: [
+                { title: "Computadoras programables" },
+                { title: "Software y Hardware" },
+                { title: "Lenguajes de programación" }
+              ]
+            },
+            { title: "Diseño de programas" },
+            { title: "Instalación de Python" },
+            { title: "Instalación de editor de texto" },
+            { title: "Intérprete de Python" }
+          ]
+        },
+        {
+          title: "Entrada, Procesamiento y Salida de datos",
+          topics: ["Cadena", "Impresión en pantalla"],
+          subsections: [
+            {
+              title: "Uso de print",
+              subsections: [
+                { title: "Uso de print" },
+                { title: "F-strings" },
+                { title: "Format" }
+              ]
+            },
+            {
+              title: "Comentarios",
+              subsections: [
+                { title: "De una línea" },
+                { title: "Multilínea" }
+              ]
+            },
+            {
+              title: "Tipos de datos",
+              subsections: [
+                { title: "Strings" },
+                { title: "Números enteros" },
+                { title: "Número de punto flotante" },
+                { title: "Booleanos" }
+              ]
+            },
+            { title: "Operadores Aritméticos" },
+            { title: "Lectura desde el teclado" }
+          ]
+        },
+        {
+          title: "Estructuras de control",
+          topics: ["if", "if-else", "if-elif-else", "while", "for"]
+        },
+        {
+          title: "Secuencias",
+          topics: ["Listas", "Tuplas", "Diccionarios", "Conjuntos"]
+        },
+        {
+          title: "Programación modular",
+          subsections: [
+            {
+              title: "Funciones",
+              subsections: [
+                { title: "Parámetros obligatorios posicionales" },
+                { title: "Parámetros opcionales" }
+              ]
+            }
+          ]
+        }
       ]
     },
     objectives: {
       en: [
-        "Build full-featured web applications with Django",
-        "Design and implement database schemas",
-        "Create RESTful APIs",
-        "Implement user authentication and authorization",
-        "Deploy applications to production"
+        "This course does not claim to be exhaustive; however, it aims to cover enough fundamentals to kickstart your journey into the world of programming."
       ],
       es: [
-        "Construir aplicaciones web completas con Django",
-        "Diseñar e implementar esquemas de bases de datos",
-        "Crear APIs RESTful",
-        "Implementar autenticación y autorización de usuarios",
-        "Desplegar aplicaciones a producción"
+        "Este curso no pretende ser exhaustivo, sin embargo, se busca abarcar los fundamentos suficientes para iniciar en el mundo de la programación."
       ]
     }
   },
@@ -176,9 +273,9 @@ export const courses: Course[] = [
       es: "Sumérgete en el mundo de la ciberseguridad con un enfoque en prácticas éticas. Este curso avanzado te enseña a pensar como un atacante para defender mejor los sistemas. Aprenderás metodologías de pruebas de penetración, evaluación de vulnerabilidades, técnicas de explotación y cómo asegurar sistemas contra ataques comunes. Todas las técnicas se enseñan dentro de un marco legal y ético."
     },
     instructor: "M.C. Carlos Sánchez",
-    duration: "12 semanas",
+    duration: { en: "12 weeks", es: "12 semanas" },
     startDate: "2025-02-05",
-    schedule: "Viernes, 16:00-20:00",
+    schedule: { en: "Friday, 16:00-20:00", es: "Viernes, 16:00-20:00" },
     level: { en: "Advanced", es: "Avanzado" },
     enrolled: "15/20",
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=800",
@@ -233,6 +330,7 @@ export const courses: Course[] = [
       ]
     }
   },
+  //---
   {
     id: 4,
     title: {
@@ -240,20 +338,20 @@ export const courses: Course[] = [
       es: "Curso básico de SysAdmin GNU/Linux"
     },
     shortDescription: {
-      en: "Learn to containerize applications and orchestrate them in production.",
-      es: "Aprende a containerizar aplicaciones y orquestarlas en producción."
+      en: " ",
+      es: "Aprende a gestionar servidores GNU/Linux 🐧"
     },
     fullDescription: {
-      en: "Master the art of containerization with Docker and Kubernetes. This course covers everything from basic container concepts to advanced orchestration strategies. You'll learn how to package applications, manage container lifecycles, implement CI/CD pipelines, and deploy scalable applications in production. Essential for modern DevOps practices.",
-      es: "Domina el arte de la containerización con Docker y Kubernetes. Este curso cubre todo desde conceptos básicos de contenedores hasta estrategias avanzadas de orquestación. Aprenderás a empaquetar aplicaciones, gestionar ciclos de vida de contenedores, implementar pipelines CI/CD y desplegar aplicaciones escalables en producción. Esencial para prácticas DevOps modernas."
+      en: " ",
+      es: "Un administrador de sistemas, conocido como sysadmin, es un profesional especializado en la gestión y mantenimiento de la infrestructura tecnologica de una organizacion. Su trabajo consiste en configurar, mantener y asegurar servidores, redes y sistemas informaticos para que funcionen de manera eficiente y segura. Los sysadmin tambien se encargan de garantizar que los servicios tecnológicos estén disponibles y funcionando correctamente para los usuarios. Además, gestionan la seguridad de la información, realizan copias de seguridad y resuelven problemas técnicos para asegurar que todo el sistema operativo de la organización sea confiable y efectivo."
     },
     instructor: "Ing. Laura Rodríguez",
-    duration: "6 semanas",
+    duration: { en: "6 weeks", es: "6 semanas" },
     startDate: "2025-02-12",
-    schedule: "Sábados, 10:00-14:00",
+    schedule: { en: "Saturday, 10:00-14:00", es: "Sábados, 10:00-14:00" },
     level: { en: "Intermediate", es: "Intermedio" },
     enrolled: "12/20",
-    image: "https://images.unsplash.com/photo-1605745341112-85968b19335b?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=800",
+    image: sysAdminImg,
     coverImage: "https://images.unsplash.com/photo-1605745341112-85968b19335b?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1600",
     tags: ["Docker", "Kubernetes", "DevOps", "Containers", "Cloud"],
     modules: {
@@ -320,9 +418,9 @@ export const courses: Course[] = [
       es: "¡Aprende LaTeX desde la comodidad de tu hogar! 🖥️✨ Únete a nuestro curso virtual gratuito organizado por el Laboratorio de Investigación y Desarrollo de Software Libre (LIDSoL). \n¿Quieres mejorar tus habilidades en composición tipográfica y creación de documentos científicos y académicos de manera profesional? ¡Este es el momento perfecto! Aprende LaTeX de la mano de expertos y potencia tu carrera en el ámbito académico y profesional."
     },
     instructor: "Francisco Galindo",
-    duration: "5 semanas",
+    duration: { en: "5 weeks", es: "5 semanas" },
     startDate: "2024-05-04",
-    schedule: "Sábados, 15:00-16:30 UTC-6",
+    schedule: { en: "Saturday, 15:00-16:30 UTC-6", es: "Sábados, 15:00-16:30 UTC-6" },
     level: { en: "Intermediate", es: "Intermedio" },
     image: latexImg,
     coverImage: latexImg,

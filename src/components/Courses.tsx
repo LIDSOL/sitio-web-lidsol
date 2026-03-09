@@ -33,13 +33,13 @@ export function Courses({ onCourseClick }: CoursesProps) {
   const t = {
     title: { en: "Courses", es: "Cursos" },
     subtitle: { en: "Training programs in open source technologies", es: "Programas de formación en tecnologías de código abierto" },
-    featured: { en: "Featured", es: "Destacado" },
+    featured: { en: "Last", es: "Último" },
     enroll: { en: "Enroll", es: "Inscribirse" },
     viewDetails: { en: "View Details", es: "Ver Detalles" },
     startDate: { en: "Starts:", es: "Inicia:" },
     enrolled: { en: "enrolled", es: "inscritos" },
     proposeCourse: { en: "Want to propose a course?", es: "¿Quieres proponer un curso?" },
-    proposeDescription: { 
+    proposeDescription: {
       en: "If you have experience in any open source technology and want to share your knowledge, we'd love to hear your course proposal.",
       es: "Si tienes experiencia en alguna tecnología de código abierto y quieres compartir tu conocimiento, nos encantaría conocer tu propuesta de curso."
     },
@@ -51,7 +51,7 @@ export function Courses({ onCourseClick }: CoursesProps) {
     const day = date.getUTCDate();
     const month = date.toLocaleString(lang === 'es' ? 'es-MX' : 'en-US', { month: 'long', timeZone: 'UTC' });
     const year = date.getUTCFullYear();
-    return lang === 'es' 
+    return lang === 'es'
       ? `${day} de ${month} de ${year}`
       : `${month} ${day}, ${year}`;
   };
@@ -111,7 +111,7 @@ export function Courses({ onCourseClick }: CoursesProps) {
                   {(featuredCourse.duration || featuredCourse.schedule) && (
                     <div className="flex items-center gap-2 text-sm">
                       <Clock className="h-4 w-4 text-primary" />
-                      <span>{featuredCourse.duration}{featuredCourse.duration && featuredCourse.schedule ? ' • ' : ''}{featuredCourse.schedule}</span>
+                      <span>{featuredCourse.duration?.[language]}{featuredCourse.duration && featuredCourse.schedule ? ' • ' : ''}{featuredCourse.schedule?.[language]}</span>
                     </div>
                   )}
                   {courses[0].startDate && (
@@ -134,7 +134,7 @@ export function Courses({ onCourseClick }: CoursesProps) {
                   )}
                 </div>
               </div>
-              <Button 
+              <Button
                 className="w-fit gap-2"
                 onClick={() => onCourseClick(featuredCourse.id)}
               >
@@ -147,8 +147,8 @@ export function Courses({ onCourseClick }: CoursesProps) {
         {/* Courses Grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           {otherCourses.map((course) => (
-            <Card 
-              key={course.id} 
+            <Card
+              key={course.id}
               className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group border-border/60 flex flex-col"
             >
               <div className="aspect-video relative overflow-hidden">
@@ -185,7 +185,7 @@ export function Courses({ onCourseClick }: CoursesProps) {
                   {course.duration && (
                     <div className="flex items-center gap-2">
                       <Clock className="h-3.5 w-3.5 text-muted-foreground" />
-                      <span className="text-muted-foreground">{course.duration}</span>
+                      <span className="text-muted-foreground">{course.duration[language]}</span>
                     </div>
                   )}
                   {course.startDate && (
@@ -201,8 +201,8 @@ export function Courses({ onCourseClick }: CoursesProps) {
                     </div>
                   )}
                 </div>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="w-full gap-2 group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
                   onClick={() => onCourseClick(course.id)}
                 >
