@@ -1,9 +1,9 @@
-import { ArrowLeft, BookOpen, Calendar, Clock, Users, CheckCircle, Award, ExternalLink } from "lucide-react";
+import { ArrowLeft, BookOpen, Calendar, Clock, Users, CheckCircle, Award, ExternalLink, Link } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { Card, CardContent } from "./ui/card";
 import { useLanguage } from "./LanguageProvider";
-import { Course } from "../data/courses";
+import { Course, Module, ModuleSubsection } from "../data/courses";
 import { members } from "../data/members";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import ReactMarkdown from "react-markdown";
@@ -12,6 +12,62 @@ import remarkGfm from "remark-gfm";
 interface CourseDetailProps {
   course: Course;
   onBack: () => void;
+}
+
+function ModuleItem({ module, index }: { module: Module | string; index: number }) {
+  if (typeof module === 'string') {
+    return (
+      <li key={index} className="flex items-start gap-3">
+        <div className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+          {index + 1}
+        </div>
+        <span className="text-muted-foreground text-lg">{module}</span>
+      </li>
+    );
+  }
+
+  return (
+    <li className="flex flex-col gap-2">
+      <div className="flex items-start gap-3">
+        <div className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+          {index + 1}
+        </div>
+        <span className="text-foreground text-lg font-medium">{module.title}</span>
+      </div>
+      {module.topics && module.topics.length > 0 && (
+        <ul className="ml-9 space-y-1.5">
+          {module.topics.map((topic, tIdx) => (
+            <li key={tIdx} className="text-muted-foreground text-base">{topic}</li>
+          ))}
+        </ul>
+      )}
+      {module.subsections && module.subsections.length > 0 && (
+        <ul className="ml-9 space-y-2 mt-2">
+          {module.subsections.map((subsection, sIdx) => (
+            <SubsectionItem key={sIdx} subsection={subsection} />
+          ))}
+        </ul>
+      )}
+    </li>
+  );
+}
+
+function SubsectionItem({ subsection, depth = 0 }: { subsection: ModuleSubsection; depth?: number }) {
+  const indentClass = depth === 0 ? "ml-0" : "ml-4";
+  const textClass = depth === 0 ? "text-foreground font-medium" : "text-muted-foreground";
+  
+  return (
+    <li className={`flex flex-col gap-1 ${indentClass}`}>
+      <span className={textClass}>{subsection.title}</span>
+      {subsection.subsections && subsection.subsections.length > 0 && (
+        <ul className="space-y-1 ml-4">
+          {subsection.subsections.map((sub, idx) => (
+            <SubsectionItem key={idx} subsection={sub} depth={depth + 1} />
+          ))}
+        </ul>
+      )}
+    </li>
+  );
 }
 
 export function CourseDetail({ course, onBack }: CourseDetailProps) {
@@ -34,6 +90,7 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
   const t = {
     back: { en: "Back to Courses", es: "Volver a Cursos" },
     enroll: { en: "Enroll Now", es: "Inscribirse Ahora" },
+    resources: { en: "Resources", es: "Recursos" },
     description: { en: "Course Description", es: "Descripción del Curso" },
     modules: { en: "Course Modules", es: "Módulos del Curso" },
     requirements: { en: "Requirements", es: "Requisitos" },
@@ -52,7 +109,7 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
     const day = date.getUTCDate();
     const month = date.toLocaleString(lang === 'es' ? 'es-MX' : 'en-US', { month: 'long', timeZone: 'UTC' });
     const year = date.getUTCFullYear();
-    return lang === 'es' 
+    return lang === 'es'
       ? `${day} de ${month} de ${year}`
       : `${month} ${day}, ${year}`;
   };
@@ -105,16 +162,20 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
               </Badge>
             )}
           </div>
-          
-          <h1 className="text-5xl sm:text-6xl mb-6">{course.title[language]}</h1>
-          <p className="text-xl text-muted-foreground mb-8">
+        <h1 className="text-5xl sm:text-6xl mb-6 font-bold tracking-tight">{course.title[language]}</h1>
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl">
             {course.shortDescription?.[language]}
           </p>
 
-          <Button size="lg" className="gap-2">
-            <Award className="h-5 w-5" />
-            {t.enroll[language]}
-          </Button>
+
+          {course.resources && (
+            <Button asChild size="lg" className="gap-2">
+              <a href={course.resources} target="_blank" rel="noopener noreferrer">
+                <Link className="h-5 w-5" />
+                {t.resources[language]}
+              </a>
+            </Button>
+          )}
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
@@ -148,12 +209,7 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
               <h2 className="text-3xl mb-6">{t.modules[language]}</h2>
               <ul className="space-y-3">
                 {course.modules[language]?.map((module, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <div className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
-                      {index + 1}
-                    </div>
-                    <span className="text-muted-foreground text-lg">{module}</span>
-                  </li>
+                  <ModuleItem key={index} module={module} index={index} />
                 ))}
               </ul>
             </div>
@@ -196,7 +252,7 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
               <Card className="border-border/60">
                 <CardContent className="p-6 space-y-6">
                   <h3 className="text-2xl">{t.courseInfo[language]}</h3>
-                  
+
                   <div className="space-y-4">
                     {course.instructor && (
                     <div className="flex items-start gap-3">
@@ -227,7 +283,7 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
                         <div className="text-sm text-muted-foreground mb-1">
                           {t.duration[language]}
                         </div>
-                        <div className="font-medium">{course.duration}</div>
+                        <div className="font-medium">{course.duration[language]}</div>
                       </div>
                     </div>
                     )}
@@ -251,7 +307,7 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
                         <div className="text-sm text-muted-foreground mb-1">
                           {t.schedule[language]}
                         </div>
-                        <div className="font-medium">{course.schedule}</div>
+                        <div className="font-medium">{course.schedule[language]}</div>
                       </div>
                     </div>
                     )}
