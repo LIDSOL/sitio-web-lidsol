@@ -114,12 +114,6 @@ export function Courses({ onCourseClick }: CoursesProps) {
                       <span>{featuredCourse.duration?.[language]}{featuredCourse.duration && featuredCourse.schedule ? ' • ' : ''}{featuredCourse.schedule?.[language]}</span>
                     </div>
                   )}
-                  {courses[0].startDate && (
-                    <div className="flex items-center gap-2 text-sm">
-                      <Calendar className="h-4 w-4 text-primary" />
-                      <span>{t.startDate[language]} {courses[0].startDate}</span>
-                    </div>
-                  )}
                   {featuredCourse.startDate && (
                     <div className="flex items-center gap-2 text-sm">
                       <Calendar className="h-4 w-4 text-primary" />
