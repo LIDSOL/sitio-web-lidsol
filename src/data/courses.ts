@@ -1,11 +1,13 @@
 import lispImg              from "../../public/courses-images/lisp.png";
 import pythonFeaturedImg    from "../../public/courses-images/python-featured.png";
+import pumaHatImg           from "../../public/courses-images/pumapwn.jpg";
 
 
-import latexImg     from "../../public/courses-images/LaTeX.png";
-import sysAdminImg  from "../../public/courses-images/sysadmin.png";
+import sysAdminCoverImg     from "../../public/courses-images/gabriel-heinzer-4Mw7nkQDByk-unsplash.jpg";
+import sysAdminImg          from "../../public/courses-images/sysadmin.png";
+import latexFeaturedImg     from "../../public/courses-images/jl-cabrera-vbRWm4Qn-28-unsplash.jpg";
+import latexImg             from "../../public/courses-images/LaTeX.png";
 
-export type ModuleItem = string | [string, (string | string[])[]?];
 
 export interface Course {
   id: number;
@@ -19,10 +21,11 @@ export interface Course {
   level?: { en: string; es: string };
   enrolled?: string;
   resources?: string;
+  courseUrl?: string;
   image?: string;
   coverImage?: string;
   tags?: string[];
-  modules?: { en: ModuleItem[]; es: ModuleItem[] };
+  modules?: { en: string; es: string };
   requirements?: { en: string[]; es: string[] };
   objectives?: { en: string[]; es: string[] };
 }
@@ -48,30 +51,27 @@ export const courses: Course[] = [
     schedule: { en: "Monday, Wednesday, and Thursday, 19:00-21:00", es: "Lunes, miércoles y jueves, 19:00-21:00" },
     level: { en: "Intermediate", es: "Intermedio" },
     resources: "https://gitlab.com/lidsol/seminario-lisp",
+    courseUrl: "https://meet.jit.si/SeminarioLISPLidsol",
     image: lispImg,
     coverImage: lispImg,
     tags: ["LISP", "Functional Programming", "Scheme", "sicp"],
     modules: {
-      en: [
-        "Structure and Interpretation of Computer Programs: The SICP book was used at MIT for decades to introduce students to computing and programming.",
-        "The Little Schemer",
-        "A Gentle Introduction to Symbolic Computation",
-        "Practical Common Lisp",
-        "ANSI Common Lisp",
-        "The Seasoned Schemer",
-        "The Reasoned Schemer"
-      ],
-      es: [
-        "Structure and Interpretation of Computer Programs: El libro SICP fue utilizado en el MIT durante décadas para iniciar a sus alumnos a la computación y a la programación.",
-        "The Little Schemer",
-        "A Gentle Introduction to Symbolic Computation",
-        "Practical Common Lisp",
-        "ANSI Common Lisp",
-        "The Seasoned Schemer",
-        "The Reasoned Schemer"
-      ]
+      en: `Structure and Interpretation of Computer Programs
+The Little Schemer
+A Gentle Introduction to Symbolic Computation
+Practical Common Lisp
+ANSI Common Lisp
+The Seasoned Schemer
+The Reasoned Schemer`,
+      es: `Structure and Interpretation of Computer Programs
+The Little Schemer
+A Gentle Introduction to Symbolic Computation
+Practical Common Lisp
+ANSI Common Lisp
+The Seasoned Schemer
+The Reasoned Schemer`
     }
-    },
+  },
   {
     id: 2,
     title: {
@@ -93,68 +93,94 @@ export const courses: Course[] = [
     resources: "https://gitlab.com/lidsol/intro-python",
     image: pythonFeaturedImg,
     coverImage: pythonFeaturedImg,
-    tags: ["Python", "Django", "Web Development", "Backend", "REST API"],
+    tags: ["Python", "Introducción a la programación"],
     modules: {
-      en: [
-        ["Introduction", [
-          "What is Python?",
-          "Guido Van Rossum",
-          "Companies using the language",
-          ["Understanding computers (a bit)", [
-            "Programmable computers",
-            ["Software and Hardware", ["CPU", "Primary memory", "Secondary memory", "I/O devices"]],
-            "Programming languages"
-          ]],
-          "Program design",
-          "Installing Python",
-          "Installing a text editor",
-          "Python interpreter"
-        ]],
-        ["Input, Processing and Output", [
-          "String",
-          "Screen output",
-          ["Print statement", ["Using print", "F-strings", "Format"]],
-          ["Comments", ["Single line", "Multi-line"]],
-          ["Data types", ["Strings", "Integers", "Floating point numbers", "Booleans"]],
-          "Arithmetic operators",
-          "Reading from keyboard"
-        ]],
-        ["Control structures", ["if", "if-else", "if-elif-else", "while", "for"]],
-        ["Sequences", ["Lists", "Tuples", "Dictionaries", "Sets"]],
-        ["Modular programming", [
-          ["Functions", ["Required positional parameters", "Optional parameters"]]
-        ]]
-      ],
-      es: [
-        ["Introducción", [
-          "¿Qué es Python?",
-          "Guido Van Rossum",
-          "Empresas que utilizan el lenguaje",
-          ["Entendiendo las computadoras (un poco)", [
-            "Computadoras programables",
-            ["Software y Hardware", ["CPU", "Memoria principal", "Memoria secundaria", "Dispositivos de E/S"]],
-            "Lenguajes de programación"
-          ]],
-          "Diseño de programas",
-          "Instalación de Python",
-          "Instalación de editor de texto",
-          "Intérprete de Python"
-        ]],
-        ["Entrada, Procesamiento y Salida de datos", [
-          "Cadena",
-          "Impresión en pantalla",
-          ["Uso de print", ["Uso de print", "F-strings", "Format"]],
-          ["Comentarios", ["De una línea", "Multilínea"]],
-          ["Tipos de datos", ["Strings", "Números enteros", "Número de punto flotante", "Booleanos"]],
-          "Operadores Aritméticos",
-          "Lectura desde el teclado"
-        ]],
-        ["Estructuras de control", ["if", "if-else", "if-elif-else", "while", "for"]],
-        ["Secuencias", ["Listas", "Tuplas", "Diccionarios", "Conjuntos"]],
-        ["Programación modular", [
-          ["Funciones", ["Parámetros obligatorios posicionales", "Parámetros opcionales"]]
-        ]]
-      ]
+      en: `# Introduction
+  ## What is Python?
+    - Guido Van Rossum
+    - Companies using the language
+  ## Understanding computers (a bit)
+    - Programmable computers
+    ## Software and Hardware
+      - CPU
+      - Primary memory
+      - Secondary memory
+      - I/O devices
+    - Programming languages
+  ## Program design
+    - Development cycle
+    - How does a program work?
+    - Python programs as scripts
+  - Installing Python
+  - Installing a text editor
+  - Python interpreter
+# Input, Processing and Output
+  ## Strings
+  ## Screen output
+    - Using print
+    - F-strings
+    - Format
+  ## Comments
+    - Single line
+    - Multi-line
+  ## Data types
+    - Strings
+    - Integers
+    - Floating point numbers
+    - Booleans
+  - Arithmetic operators
+  - Reading from keyboard
+# Control structures
+  - If, If-else, If-elif-else
+  - While
+  - For
+# Sequences
+  - Lists
+  - Tuples
+  - Dictionaries`,
+      es: `# Introducción
+  ## ¿Qué es Python?
+    - Guido Van Rossum
+    - Empresas que utilizan el lenguaje
+  ## Entendiendo las computadoras (un poco)
+    - Computadoras programables
+  ## Software y Hardware
+      - CPU
+      - Memoria principal
+      - Memoria secundaria
+      - Dispositivos de E/S
+    - Lenguajes de programación
+  ## Diseño de programas
+    - Ciclo de desarrollo
+    - ¿Cómo funciona un programa?
+    - Programas en Python como scripts
+  - Instalación de Python
+  - Instalación de editor de texto
+  - Intérprete de Python
+# Entrada, Procesamiento y Salida de datos
+  ## Cadenas
+  ## Impresión en pantalla
+    - Uso de print
+    - F-strings
+    - Format
+  ## Comentarios
+    - De una línea
+    - Multilínea
+  ## Tipos de datos
+    - Strings
+    - Números enteros
+    - Número de punto flotante
+    - Booleanos
+  - Operadores Aritméticos
+  - Lectura desde el teclado
+# Estructuras de control
+  - If, If-else, If-elif-else
+  - While
+  - For
+# Secuencias
+  - Listas
+  - Tuplas
+  - Diccionarios`,
     },
     objectives: {
       en: [
@@ -168,43 +194,34 @@ export const courses: Course[] = [
   {
     id: 3,
     title: {
-      en: "",
+      en: "Puma Hat",
       es: "Puma Hat"
     },
     shortDescription: {
       en: "Explore computer security from an ethical perspective and learn penetration testing.",
-      es: "Explora la seguridad informática desde una perspectiva ética y aprende pruebas de penetración."
+      es: "Comunidad de ciberseguridad. Explora la seguridad informática desde una perspectiva ética y aprende pruebas de penetración."
     },
     fullDescription: {
-      en: "Dive into the world of cybersecurity with a focus on ethical practices. This advanced course teaches you how to think like an attacker to better defend systems. You'll learn penetration testing methodologies, vulnerability assessment, exploitation techniques, and how to secure systems against common attacks. All techniques are taught within a legal and ethical framework.",
-      es: "Sumérgete en el mundo de la ciberseguridad con un enfoque en prácticas éticas. Este curso avanzado te enseña a pensar como un atacante para defender mejor los sistemas. Aprenderás metodologías de pruebas de penetración, evaluación de vulnerabilidades, técnicas de explotación y cómo asegurar sistemas contra ataques comunes. Todas las técnicas se enseñan dentro de un marco legal y ético."
+      en: "We are a community with a diverse range of profiles and interests focused on computer security. We aim to create a space where hacking enthusiasts can connect and expand the cybersecurity landscape in Mexico. \nCheck our activities section to learn about our upcoming events.",
+      es: "Somos una comunidad con pluralidad de perfiles e intereses con un enfoque de seguridad informática. Buscamos crear una comunidad donde entusiastas del hacking puedan convivir y expandir el panorama de la ciberseguridad en México. \nRevisa nuestra sección de actividades para informarte sobre nuestros próximos eventos."
     },
-    instructor: "M.C. Carlos Sánchez",
-    duration: { en: "12 weeks", es: "12 semanas" },
-    startDate: "2025-02-05",
-    schedule: { en: "Friday, 16:00-20:00", es: "Viernes, 16:00-20:00" },
-    level: { en: "Advanced", es: "Avanzado" },
-    enrolled: "15/20",
+    instructor: "BDrag0n",
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=800",
     coverImage: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1600",
     tags: ["Security", "Pentesting", "Ethical Hacking", "Cybersecurity"],
     modules: {
-      en: [
-        "Cybersecurity Fundamentals",
-        "Reconnaissance and Footprinting",
-        "Common Vulnerabilities",
-        "System Exploitation",
-        "Post-Exploitation",
-        "Reports and Remediation"
-      ],
-      es: [
-        "Fundamentos de Ciberseguridad",
-        "Reconocimiento y Footprinting",
-        "Vulnerabilidades comunes",
-        "Explotación de sistemas",
-        "Post-explotación",
-        "Informes y Remediación"
-      ]
+      en: `Cybersecurity Fundamentals
+Reconnaissance and Footprinting
+Common Vulnerabilities
+System Exploitation
+Post-Exploitation
+Reports and Remediation`,
+      es: `Fundamentos de Ciberseguridad
+Reconocimiento y Footprinting
+Vulnerabilidades comunes
+Explotación de sistemas
+Post-explotación
+Informes y Remediación`
     },
     requirements: {
       en: [
@@ -241,75 +258,75 @@ export const courses: Course[] = [
   {
     id: 4,
     title: {
-      en: " ",
+      en: "Basic GNU/Linux System Administrator Course",
       es: "Curso básico de SysAdmin GNU/Linux"
     },
     shortDescription: {
-      en: " ",
+      en: "Learn GNU/Linux Server Administration ",
       es: "Aprende a gestionar servidores GNU/Linux 🐧"
     },
     fullDescription: {
-      en: " ",
+      en: "A system administrator, known as a sysadmin, is a professional specialized in the management and maintenance of an organization's technological infrastructure. Their work consists of configuring, maintaining, and securing servers, networks, and computer systems so they operate efficiently and securely. Sysadmins are also responsible for ensuring that technological services are available and functioning correctly for users. Additionally, they manage information security, perform backups, and resolve technical issues to ensure that the entire organization's operating system is reliable and effective.",
       es: "Un administrador de sistemas, conocido como sysadmin, es un profesional especializado en la gestión y mantenimiento de la infrestructura tecnologica de una organizacion. Su trabajo consiste en configurar, mantener y asegurar servidores, redes y sistemas informaticos para que funcionen de manera eficiente y segura. Los sysadmin tambien se encargan de garantizar que los servicios tecnológicos estén disponibles y funcionando correctamente para los usuarios. Además, gestionan la seguridad de la información, realizan copias de seguridad y resuelven problemas técnicos para asegurar que todo el sistema operativo de la organización sea confiable y efectivo."
     },
-    instructor: "Ing. Laura Rodríguez",
-    duration: { en: "6 weeks", es: "6 semanas" },
-    startDate: "2025-02-12",
-    schedule: { en: "Saturday, 10:00-14:00", es: "Sábados, 10:00-14:00" },
+    instructor: "Francisco Galindo",
+    duration: { en: "1 week", es: "1 semana" },
+    startDate: "2024-07-29",
+    schedule: { en: "Mon–Fri, 10:00-14:00", es: "Lunes a Viernes, 10:00-14:00" },
     level: { en: "Intermediate", es: "Intermedio" },
-    enrolled: "12/20",
     image: sysAdminImg,
-    coverImage: "https://images.unsplash.com/photo-1605745341112-85968b19335b?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1600",
-    tags: ["Docker", "Kubernetes", "DevOps", "Containers", "Cloud"],
+    coverImage: sysAdminCoverImg,
+    tags: ["Sysadmin", "Gnu/Linux", "Server", "Infrastructure"],
     modules: {
-      en: [
-        "Introduction to Containers",
-        "Docker Fundamentals",
-        "Docker Compose",
-        "Kubernetes Basics",
-        "Deployment and Scaling",
-        "CI/CD with Containers"
-      ],
-      es: [
-        "Introducción a Contenedores",
-        "Docker Fundamentals",
-        "Docker Compose",
-        "Kubernetes Basics",
-        "Despliegue y Escalado",
-        "CI/CD con Containers"
-      ]
+      en: `# Command Line 7.5 h
+## Directory structure in GNU/Linux 0.5 h
+## Users and permissions 1 h
+## Basic commands 2 h
+## Text editor 1 h
+## Software installation 1 h
+## Shell 2 h
+# Debian GNU/Linux System 12.5 h
+## Systemd 1 h
+## Service administration 2.5 h
+## Networking and Firewall 3 h
+## Storage and file systems 2 h
+## Data backup methods 2 h
+## Containers 2 h`,
+      es: `# Linea de comandos 7.5 h
+## Estructura de directorios en GNU/Linux 0.5 h
+## Usuarios y permisos 1 h
+## Comandos básicos 2 h
+## Editor de texto 1 h
+## Instalación de programas 1 h
+## Shell 2 h
+# Sistema Debian GNU/Linux 12.5 h
+## Systemd 1 h
+## Administración de servicios 2.5 h
+## Redes y Firewall 3 h
+## Almacenamiento y sistemas de archivos 2 h
+## Métodos de respaldo de información 2 h
+## Contenedores 2 h`
     },
     requirements: {
       en: [
-        "Basic Linux command line",
-        "Understanding of networking",
-        "Familiarity with web applications",
-        "Basic programming knowledge"
+        "Basic knowledge of GNU/Linux",
+        "Computer with a Debian virtual machine (instructions will be sent)"
       ],
       es: [
-        "Línea de comandos básica de Linux",
-        "Comprensión de redes",
-        "Familiaridad con aplicaciones web",
-        "Conocimientos básicos de programación"
+        "Conocimientos básicos de GNU/Linux",
+        "Computadora con máquina virtual con Debian (se enviarán instrucciones)"
       ]
     },
     objectives: {
       en: [
-        "Create and manage Docker containers",
-        "Build multi-container applications",
-        "Deploy applications to Kubernetes",
-        "Implement container orchestration",
-        "Set up CI/CD pipelines"
+        "Students will gain knowledge about GNU/Linux systems administration for server-side use."
       ],
       es: [
-        "Crear y gestionar contenedores Docker",
-        "Construir aplicaciones multi-contenedor",
-        "Desplegar aplicaciones en Kubernetes",
-        "Implementar orquestación de contenedores",
-        "Configurar pipelines CI/CD"
+        "Los alumnos obtendrán conocimientos sobre la administración de sistemas GNU/Linux para su uso como servidor."
       ]
     }
   },
+//---
   {
     id: 5,
     title: {
@@ -317,69 +334,70 @@ export const courses: Course[] = [
       es: "Curso de LaTeX"
     },
     shortDescription: {
-      en: "Learn to containerize applications and orchestrate them in production.",
+      en: "Approach LaTeX to enhance your skills in typographic composition and the professional creation of scientific and academic documents.",
       es: "Acércate a LaTex para mejorar tus habilidades en composición tipográfica y creación de documentos científicos y académicos de manera profesional."
     },
     fullDescription: {
-      en: "Master the art of containerization with Docker and Kubernetes. This course covers everything from basic container concepts to advanced orchestration strategies. You'll learn how to package applications, manage container lifecycles, implement CI/CD pipelines, and deploy scalable applications in production. Essential for modern DevOps practices.",
+      en: "Learn LaTeX from the comfort of your home! 🖥️✨ Join our free virtual course organized by the Research and Development Laboratory for Free Software (LIDSoL). \nDo you want to improve your skills in typographic composition and the professional creation of scientific and academic documents? This is the perfect time! Learn LaTeX from experts and boost your career in the academic and professional fields.",
       es: "¡Aprende LaTeX desde la comodidad de tu hogar! 🖥️✨ Únete a nuestro curso virtual gratuito organizado por el Laboratorio de Investigación y Desarrollo de Software Libre (LIDSoL). \n¿Quieres mejorar tus habilidades en composición tipográfica y creación de documentos científicos y académicos de manera profesional? ¡Este es el momento perfecto! Aprende LaTeX de la mano de expertos y potencia tu carrera en el ámbito académico y profesional."
     },
     instructor: "Francisco Galindo",
     duration: { en: "5 weeks", es: "5 semanas" },
     startDate: "2024-05-04",
     schedule: { en: "Saturday, 15:00-16:30 UTC-6", es: "Sábados, 15:00-16:30 UTC-6" },
-    level: { en: "Intermediate", es: "Intermedio" },
+    level: { en: "Beginner", es: "Principiantes" },
+    resources: "https://github.com/LIDSOL/cursos/tree/master/2024-2/2024-05-05-Latex",
+    courseUrl: "https://www.youtube.com/watch?v=mq2zEP0bo2E&list=PLvd_owpd6H-kSoqbbvdGc_Pg3YRytK8ZN",
     image: latexImg,
-    coverImage: latexImg,
+    coverImage: latexFeaturedImg,
     tags: ["LaTeX", "Composición De Textos", "Documentos Académicos",  "Tipografía Digital"],
     modules: {
-      en: [
-        "Introduction to Containers",
-        "Docker Fundamentals",
-        "Docker Compose",
-        "Kubernetes Basics",
-        "Deployment and Scaling",
-        "CI/CD with Containers"
-      ],
-      es: [
-        "Introducción a Contenedores",
-        "Docker Fundamentals",
-        "Docker Compose",
-        "Kubernetes Basics",
-        "Despliegue y Escalado",
-        "CI/CD con Containers"
-      ]
-    },
-    requirements: {
-      en: [
-        "Basic Linux command line",
-        "Understanding of networking",
-        "Familiarity with web applications",
-        "Basic programming knowledge"
-      ],
-      es: [
-        "Línea de comandos básica de Linux",
-        "Comprensión de redes",
-        "Familiaridad con aplicaciones web",
-        "Conocimientos básicos de programación"
-      ]
+      en: `# What are TeX and LaTeX
+# Basic syntax
+## Writing text
+## Commands
+## Environments
+## Groups
+## Comments
+## Classes and packages
+# Adding content to the document
+## Writing mathematics
+## Notes
+## Links
+## Adding links in the text
+# Formatting the document
+## Line spacing
+## Paragraph spacing
+## Text alignment`,
+      es: `# ¿Qué son TeX y LaTeX
+# Sintaxis básica
+## Escribiendo texto
+## Comandos
+## Ambientes
+## Grupos
+## Comentarios
+## Clases y paquetes
+# Agregando contenido al documento
+## Escribiendo matemáticas
+## Notas
+## Enlaces
+## Agregando enlaces en el texto
+# Dándole formato al documento
+## Interlineado
+## Espaciado entre párrafos
+## Alineación de texto`
     },
     objectives: {
       en: [
-        "Create and manage Docker containers",
-        "Build multi-container applications",
-        "Deploy applications to Kubernetes",
-        "Implement container orchestration",
-        "Set up CI/CD pipelines"
+        "The objective of the first sessions is for you to be able to create a LaTeX document, whether for personal interest or necessity.",
+        "Include the vast majority of standard elements found in other word processing systems: justification, adding images, and inserting tables.",
+        "Learn about unique LaTeX features compared to more popular systems: equation typesetting and bibliography management."
       ],
       es: [
-        "Crear y gestionar contenedores Docker",
-        "Construir aplicaciones multi-contenedor",
-        "Desplegar aplicaciones en Kubernetes",
-        "Implementar orquestación de contenedores",
-        "Configurar pipelines CI/CD"
+        "El objetivo de las primeras sesiones es que puedas crear un documento de LaTeX, ya sea por gusto o por necesidad.",
+        "Agregar la gran mayoría de los elementos habituales en otros sistemas de procesamiento de texto: justificación, adición de imágenes, adición de tablas.",
+        "Conocer elementos únicos de LaTeX frente a sistemas más populares: composición de ecuaciones, manejo de bibliografía."
       ]
     }
-  }
-
+  },
 ];

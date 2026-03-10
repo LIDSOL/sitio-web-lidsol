@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { Card, CardContent } from "./ui/card";
 import { useLanguage } from "./LanguageProvider";
-import { Course, ModuleItem } from "../data/courses";
+import { Course } from "../data/courses";
 import { members } from "../data/members";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import ReactMarkdown from "react-markdown";
@@ -14,49 +14,85 @@ interface CourseDetailProps {
   onBack: () => void;
 }
 
-function renderModuleItem(item: ModuleItem | string, index: number, isNested = false): JSX.Element {
-  const itemKey = isNested ? `nested-${index}` : index;
-  
-  if (typeof item === 'string') {
-    return (
-      <li key={itemKey} className="flex items-start gap-3">
-        <div className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
-          {index + 1}
-        </div>
-        <span className="text-muted-foreground text-lg">{item}</span>
-      </li>
-    );
-  }
+interface ModuleLine {
+  text: string;
+  level: number;
+  isBullet: boolean;
+  isTitle: boolean;
+}
 
-  const [title, topics] = item;
-  const hasTopics = Array.isArray(topics) && topics.length > 0;
+function parseModules(markdown: string): ModuleLine[] {
+  const lines = markdown.split('\n').filter(line => line.trim());
+  return lines.map(line => {
+    const trimmed = line.trim();
+    const leadingSpaces = line.search(/\S/);
+    
+    const titleMatch = trimmed.match(/^(#{1,3})\s+(.+)$/);
+    if (titleMatch) {
+      return {
+        text: titleMatch[2],
+        level: titleMatch[1].length - 1,
+        isBullet: false,
+        isTitle: true
+      };
+    }
+    
+    const bulletMatch = trimmed.match(/^[-*]\s+(.+)$/);
+    if (bulletMatch) {
+      return {
+        text: bulletMatch[1],
+        level: Math.floor(leadingSpaces / 2),
+        isBullet: true,
+        isTitle: false
+      };
+    }
+    
+    return {
+      text: trimmed,
+      level: Math.floor(leadingSpaces / 2),
+      isBullet: false,
+      isTitle: false
+    };
+  });
+}
+
+function renderModuleLine(item: ModuleLine, index: number): JSX.Element {
+  const { text, level, isBullet, isTitle } = item;
+  
+  const baseStyles = "flex items-start";
+  const indentStyles = [
+    "ml-0",
+    "ml-6", 
+    "ml-12",
+    "ml-18"
+  ];
+  
+  const textStyles = isTitle
+    ? level === 0
+      ? "text-foreground text-lg font-bold tracking-tight"
+      : "text-foreground text-base font-semibold"
+    : "text-muted-foreground text-base font-medium";
+
+  const icon = isTitle ? (
+    level === 0 ? (
+      <div className="bg-primary text-primary-foreground rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold shadow-sm flex-shrink-0">
+        {index + 1}
+      </div>
+    ) : (
+      <div className={`rounded-full bg-primary/60 ${level === 1 ? "w-2 h-2 mt-3" : "w-1.5 h-1.5 mt-3"} flex-shrink-0`} />
+    )
+  ) : isBullet ? (
+    <div className={`w-2 h-2 rounded-full bg-primary/60 mt-3 flex-shrink-0`} />
+  ) : (
+    <div className={`w-1.5 h-1.5 rounded-full bg-muted-foreground/50 mt-3 flex-shrink-0`} />
+  );
 
   return (
-    <li key={itemKey} className="flex flex-col gap-2">
-      <div className="flex items-start gap-3">
-        <div className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
-          {index + 1}
-        </div>
-        <span className="text-foreground text-lg font-medium">{title}</span>
+    <li key={index} className="flex flex-col gap-1">
+      <div className={`${baseStyles} ${indentStyles[Math.min(level, 3)]}`}>
+        <div className="mr-4">{icon}</div>
+        <span className={textStyles}>{text}</span>
       </div>
-      {hasTopics && (
-        <ul className="ml-9 space-y-1">
-          {topics.map((topic, tIdx) => {
-            if (typeof topic === 'string') {
-              return <li key={tIdx} className="text-muted-foreground text-base">{topic}</li>;
-            }
-            return (
-              <li key={tIdx} className="text-muted-foreground text-base">
-                <ul className="ml-4 space-y-1 mt-1">
-                  {topic.map((sub, sIdx) => (
-                    <li key={sIdx} className="text-muted-foreground/80 text-sm">{sub}</li>
-                  ))}
-                </ul>
-              </li>
-            );
-          })}
-        </ul>
-      )}
     </li>
   );
 }
@@ -80,7 +116,7 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
 
   const t = {
     back: { en: "Back to Courses", es: "Volver a Cursos" },
-    enroll: { en: "Enroll Now", es: "Inscribirse Ahora" },
+    viewCourse: { en: "View Course", es: "Ver Curso" },
     resources: { en: "Resources", es: "Recursos" },
     description: { en: "Course Description", es: "Descripción del Curso" },
     modules: { en: "Course Modules", es: "Módulos del Curso" },
@@ -198,10 +234,8 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
             {course.modules && (
             <div className="bg-primary/5 border border-primary/10 rounded-3xl p-8">
               <h2 className="text-3xl mb-6">{t.modules[language]}</h2>
-              <ul className="space-y-3">
-                {course.modules[language]?.map((module, index) => 
-                  renderModuleItem(module, index)
-                )}
+              <ul className="flex flex-col gap-1">
+                {parseModules(course.modules[language]).map((line, index) => renderModuleLine(line, index))}
               </ul>
             </div>
             )}
@@ -212,7 +246,7 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
               <h2 className="text-3xl mb-6">{t.requirements[language]}</h2>
               <ul className="space-y-3">
                 {course.requirements[language]?.map((req, index) => (
-                  <li key={index} className="flex items-start gap-3">
+                  <li key={index} className="flex items-start gap-2">
                     <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                     <span className="text-muted-foreground text-lg">{req}</span>
                   </li>
@@ -316,9 +350,11 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
                     )}
                   </div>
 
-                  <Button className="w-full gap-2" size="lg">
-                    <Award className="h-5 w-5" />
-                    {t.enroll[language]}
+                  <Button asChild className="w-full gap-2" size="lg">
+                    <a href={course.courseUrl} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="h-5 w-5" />
+                      {t.viewCourse[language]}
+                    </a>
                   </Button>
                 </CardContent>
               </Card>

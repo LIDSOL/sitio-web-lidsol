@@ -90,19 +90,23 @@ DEADLINE: <2026-03-03 Tue>
     - [X] La página de fondo debe estar más opaca que la ventana emergente.
     - [X] Añadir desplazamiento
 - [X] Sección CTA con Mailto, es sencillo y se evita configurar un backend de correo o base de datos (que para esto no se requiere).
-**** NEXT CourseDetail y CourseDetail [40%]
+**** NEXT CourseDetail y CourseDetail [25%]
 DEADLINE: <2026-03-07 Sat>
-- [-] Mudar el contenido al sitio actual [20%]
+- [-] Mudar el contenido al sitio actual [40%]
   - [X] Seminario de lisp
-  - [ ] Fundamentos de Python
+  - [X] Fundamentos de Python
   - [ ] PumaHat
   - [ ] Curso básico de sysadmin GNU/Linux
   - [ ] Curso de LaTeX
 - [X] Las fechas están atrasadas por un día
 - [X] Justificación completa en la descripción del curso y soporte para Markdown
+- [ ] Sería bueno que los tags también soporten el multiidioma
+- [ ] Cambiar el "enrolled" a "cupo"
 - [ ] ¿Una subsección para contenido de cursos?
 - [ ] ¿Sería bueno tener un backen para los cursos, por ejemplo para tener "gente registrada/apuntada" a los cursos?
   - [ ] Igual y sería bueno cambiar el botón de Inscribirse ahora a "ver curso" y colocar el enlace a YouTube o a la llamada.
+  - [ ] Cambiar el botón de "Unirte al curso" a otra cosa como "ver curso"
+- [ ] Mejorar el aspecto de la sección de "módulos del curso"
 **** IN-PROGRESS Events y EventDetail [0%]
 DEADLINE: <2026-03-10 Tue>
 - [ ] Mudar el contenido
