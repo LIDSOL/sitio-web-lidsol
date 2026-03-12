@@ -1,6 +1,6 @@
 *.sw?
 *~
-public/
+# public/
 resources/_gen/
 node_modules/
 build/
