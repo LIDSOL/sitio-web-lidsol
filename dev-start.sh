@@ -1,4 +1,5 @@
 #!/bin/sh
+npm install
 npm run build
 podman rm -f lidsol-react 2>/dev/null || true
 
