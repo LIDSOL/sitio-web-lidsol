@@ -88,9 +88,67 @@ export function Hero() {
   // CORRECCIÓN: Definimos el link después de 't' y usamos el objeto de traducción
   const mailtoLink = `mailto:lidsol@protonmail.com?subject=${encodeURIComponent(t.contactSubject[language])}&body=${encodeURIComponent(t.contactBody[language])}`;
 
+  const glowDark = {
+    default: `
+      0 0 15px rgba(28,113,216,0.15),
+      0 0 30px rgba(28,113,216,0.1),
+      0 0 50px rgba(28,113,216,0.08),
+      0 0 75px rgba(28,113,216,0.05)
+    `,
+    hover: `
+      0 0 20px rgba(28,113,216,0.25),
+      0 0 40px rgba(28,113,216,0.2),
+      0 0 60px rgba(28,113,216,0.15),
+      0 0 90px rgba(28,113,216,0.1)
+    `
+  };
+
+  const glowLight = {
+    default: `
+      0 0 20px rgba(28,113,216,0.4),
+      0 0 40px rgba(28,113,216,0.3),
+      0 0 70px rgba(28,113,216,0.2),
+      0 0 100px rgba(28,113,216,0.15)
+    `,
+    hover: `
+      0 0 30px rgba(28,113,216,0.5),
+      0 0 60px rgba(28,113,216,0.4),
+      0 0 90px rgba(28,113,216,0.3),
+      0 0 120px rgba(28,113,216,0.2)
+    `
+  };
+
+  const currentGlow = theme === "dark" ? glowDark : glowLight;
+
+  const carouselGlowDark = `
+    0 0 15px rgba(28,113,216,0.1),
+    0 0 30px rgba(28,113,216,0.08),
+    0 0 50px rgba(28,113,216,0.06),
+    0 0 75px rgba(28,113,216,0.04),
+    0 0 100px rgba(28,113,216,0.01)
+  `;
+
+  const carouselGlowLight = `
+    0 0 20px rgba(28,113,216,0.3),
+    0 0 40px rgba(28,113,216,0.25),
+    0 0 60px rgba(28,113,216,0.2),
+    0 0 80px rgba(28,113,216,0.15),
+    0 0 100px rgba(28,113,216,0.1)
+  `;
+
+  const currentCarouselGlow = theme === "dark" ? carouselGlowDark : carouselGlowLight;
+
   return (
     <section className="relative overflow-hidden bg-background py-20 sm:py-32">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Ambient background glows */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#1c71d8]/15 rounded-full blur-[130px]" />
+        <div className="absolute bottom-0 right-1/3 w-80 h-80 bg-[#6C63FF]/10 rounded-full blur-[110px]" />
+        <div className="absolute top-0 right-0 w-72 h-72 bg-[#3B82F6]/10 rounded-full blur-[90px]" />
+        <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-[#62a0ea]/10 rounded-full blur-[100px]" />
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="space-y-8">
@@ -98,34 +156,63 @@ export function Hero() {
               {t.tagline[language]}
             </div>
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl text-foreground">
-              <ImageWithFallback
-                src={theme === "dark" ? "/hero/LIDSOLlogoColor-oscuro.svg" : "/hero/LIDSOLlogoColor-claro.svg"}
-                alt="LIDSoL"
-                className="h-14 w-auto"
-              />
-            </h1>
+
+<h1 className="text-5xl sm:text-6xl lg:text-7xl text-foreground">
+  <ImageWithFallback
+    src={theme === "dark" ? "/hero/LIDSOLlogoColor-oscuro.svg" : "/hero/LIDSOLlogoColor-claro.svg"}
+    alt="LIDSoL"
+    className="h-14 w-auto"
+    style={{
+      //Para tener efecto más sutil.
+      filter: `
+        drop-shadow(0 0 10px rgba(28,113,216,0.7))
+        drop-shadow(0 0 22px rgba(28,113,216,0.1))
+        drop-shadow(0 0 50px rgba(28,113,216,0.05))
+      `
+    }}
+  />
+</h1>
 
             <p className="text-xl text-muted-foreground max-w-2xl">
               {t.description[language]}
             </p>
 
             <div className="flex flex-wrap gap-4">
+              {/* Explore Projects button with glow */}
               <Button
                 asChild
                 size="lg"
-                style={{ animation: "wiggle 1s ease-in-out infinite" }}
+                className="relative transition-all duration-300"
+                style={{
+                  animation: "wiggle 1s ease-in-out infinite",
+                  boxShadow: currentGlow.default
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = currentGlow.hover;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = currentGlow.default;
+                }}
               >
                 <Link href="#projects">
                   {t.exploreProjects[language]} <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
 
-              <Button asChild size="lg" variant="outline">
-                <a href={mailtoLink}>
-                  {t.joinCommunity[language]}
-                </a>
-              </Button>
+              {/* Join Community button with subtle glow */}
+              <div className="relative">
+                <div className="absolute inset-0 rounded-full bg-primary/20 blur-md scale-110" />
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="relative"
+                >
+                  <a href={mailtoLink}>
+                    {t.joinCommunity[language]}
+                  </a>
+                </Button>
+              </div>
             </div>
 
             <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border">
@@ -146,9 +233,12 @@ export function Hero() {
 
           {/* Image */}
           <div className="relative">
-            <div className="absolute -inset-4 bg-gradient-to-r from-primary/10 to-primary/5 rounded-3xl blur-2xl" />
-
-            <div className="aspect-square rounded-3xl overflow-hidden shadow-lg border border-border/50 relative">
+            <div
+              className="aspect-square rounded-3xl overflow-hidden shadow-2xl border border-border relative"
+              style={{
+                boxShadow: currentCarouselGlow
+              }}
+            >
               <AnimatePresence initial={false} custom={direction} mode="popLayout">
                 <motion.div
                   key={currentImageIndex}
@@ -170,6 +260,7 @@ export function Hero() {
                 </motion.div>
               </AnimatePresence>
 
+              {/* Navigation buttons at bottom right */}
               <div className="absolute bottom-4 right-4 flex gap-2">
                 <button
                   onClick={prevImage}
