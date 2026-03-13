@@ -8,8 +8,6 @@
 **** IN-PROGRESS Home
 DEADLINE: <2026-03-13 Fri>
 ***** DONE Hero [100%]
-Se cambió el color de fondo, paso de un degradado al background general del sitio. Se cambió el texto h1 por el logo del laboratorio.
-Ahora al pulsar los botones de navegación, el contador de auto-avance se reinicia. Se colocó una función y esta se invoca al dar clic en el botón 'Únete a la comunidad', para mandar un correo al laboratorio.
 - [X] Cambiar el color de fondo por algo gris pero con degradados
 - [X] Cambiar el texto por el logo del laboratorio.
 - [X] Mejorar el carrusel de imágenes
@@ -230,22 +228,23 @@ export function Hero() {
 - https://unsplash.com/photos/a-close-up-of-a-cell-phone-on-a-table-uZkHtWsi2dE
 - https://unsplash.com/photos/a-laptop-sits-open-on-a-wooden-surface-Tiy7aJwWPvc
 ***** DONE Values
-***** TODO FeaturedProjects [0%]
+***** NEXT Community [%]
+- [ ] Cambiar es estilo de los botones.
+- [ ] Darte funcionalidad a los botones.
+- [ ] Textos que invite a unirse al laboratorio.
+- [ ] Cambiar imágen
+***** NEXT FeaturedProjects [0%]
 - [ ] Mejorar el rendimiento
 - [ ] Quitar la opción "ver más"
-***** TODO LatestEvent [0%]
+***** NEXT LatestEvent [0%]
 - [ ] Mejorar la responsividad
 - [ ] Mejorar aspecto de los botones y tarjetas
-***** TODO LatestBlogPost [0%]
+***** NEXT LatestBlogPost [0%]
 - [ ] Mejorar la responsividad
 - [ ] Mejorar aspecto de los botones y tarjetas
-***** TODO LatestCourse [0%]
+***** NEXT LatestCourse [0%]
 - [ ] Mejorar la responsividad
 - [ ] Mejorar aspecto de los botones y tarjetas
-***** NEXT Community [%]
-- [ ] Cambiar imágen
-- [ ] Darte funcionalidad a los botones
-- [ ] Textos que invite a unirse al laboratorio.
 **** TODO Header [0%]
 DEADLINE: <2026-03-13 Fri>
 - [ ] Hacer un indicador para saber en que sección se está, que sea estilo "pestañas libadwaita"
@@ -359,7 +358,7 @@ DEADLINE: <2026-02-12 Thu>
     - src/components/ProjectDetail.tsx: Actualizado para usar project.tags[language]
     - src/components/FeaturedProjects.tsx: Actualizado para usar project.tags?.[language]
   - [X] Verificar el estado de los proyectos (para que el ícono sea el adecuado)
-**** TODO Events y EventDetail [0%]
+**** IN-PROGRESS Events y EventDetail [0%]
 DEADLINE: <2026-03-10 Tue>
 - [ ] Mudar el contenido
   - [ ] Las tecnologías de internet en los movimientos sociales
@@ -378,7 +377,7 @@ DEADLINE: <2026-03-10 Tue>
 - [ ] Implementar un sort como en la sección de proyectos
 - [ ] Implementar una "tarjeta" con todos los links de interés, event_url, etc
 - [ ] Implementar una función de calendario. Sería divertido poder exportar un archivo que se pueda cargar a una app de calendario con un ics..
-**** TODO CourseDetail y CourseDetail [25%]
+**** IN-PROGRESS CourseDetail y CourseDetail [25%]
 DEADLINE: <2026-03-07 Sat>
 - [-] Mudar el contenido al sitio actual [40%]
   - [X] Seminario de lisp
