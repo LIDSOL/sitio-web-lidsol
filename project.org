@@ -7,12 +7,228 @@
 *** IN-PROGRESS Código
 **** IN-PROGRESS Home
 DEADLINE: <2026-03-13 Fri>
-***** NEXT Hero [0%]
-- [ ] Cambiar el texto por el logo del laboratorio.
-- [ ] Cambiar el color de fondo por algo gris pero con degradados
-- [ ] Mejorar el aspecto del botón "Explorar Proyectos"
-- [ ] Darle función del botón "Únete a la comunidad"
-- [ ] Mejorar el carrusel de imágenes
+***** DONE Hero [100%]
+Se cambió el color de fondo, paso de un degradado al background general del sitio. Se cambió el texto h1 por el logo del laboratorio.
+Ahora al pulsar los botones de navegación, el contador de auto-avance se reinicia. Se colocó una función y esta se invoca al dar clic en el botón 'Únete a la comunidad', para mandar un correo al laboratorio.
+- [X] Cambiar el color de fondo por algo gris pero con degradados
+- [X] Cambiar el texto por el logo del laboratorio.
+- [X] Mejorar el carrusel de imágenes
+  - [X] Cambiar las imágenes y que sean de un directorio local.
+  - [X] Mejorar la transición, si doy en un botón se "reinicia" el contador.
+- [X] Darle función del botón "Únete a la comunidad"
+- [X] Mejorar el aspecto del botón "Explorar Proyectos"
+- [X] Tener un poco más de efecto "Glow", pero que siga siendo sutil...
+- [X] Usar un logo para el tema oscuro y otro para el tema claro.
+****** Glow.. descartado
+import { Button } from "./ui/button";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { useLanguage } from "./LanguageProvider";
+import Link from "next/link";
+
+export function Hero() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const { language } = useLanguage();
+
+  const carouselImages = [
+    {
+      src: "https://images.unsplash.com/photo-1640552435388-a54879e72b28?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870",
+      alt: "Debian Neofetch"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1714846200875-006da50cb5b0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870",
+      alt: "Arch sticker"
+    },
+    {
+      src: "https://www.tecmint.com/wp-content/uploads/2019/04/herbstluftwm-manual-tiling-window-manager-for-linux-768x556.png",
+      alt: "Sudo ubuntu"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1640552435845-d65c23b75934?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1470",
+      alt: "HTOP"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1610812387871-806d3db9f5aa?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1480",
+      alt: "Raspberry pi"
+    },
+    {
+      src: "https://www.tpart.net/wp-content/uploads/2024/12/x210Ai-completed-laptop-768x1024.jpg",
+      alt: "Thinkpad ubuntu"
+    }
+  ];
+
+  const nextImage = () => {
+    setDirection(1);
+    setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
+  };
+
+  const prevImage = () => {
+    setDirection(-1);
+    setCurrentImageIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
+  };
+
+  // Auto-advance carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDirection(1);
+      setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
+    }, 4000); // Change image every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [carouselImages.length]);
+
+  const t = {
+    tagline: { en: "FI ● UNAM ● CDMX", es: "FI ● UNAM ● CDMX" },
+    description: {
+      en: "We are a laboratory formed by volunteers, students, former students, and academics interested in the development of free and open technologies.",
+      es: "Somos un laboratorio formado por voluntarios, estudiantes, ex-estudiantes y académicos interesados en el desarrollo de tecnologías libres y abiertas"
+    },
+    exploreProjects: { en: "Explore Projects", es: "Explorar Proyectos" },
+    joinCommunity: { en: "Join Our Community", es: "Únete a la Comunidad" },
+    activeProjects: { en: "Active Projects", es: "Proyectos Activos" },
+    contributors: { en: "Contributors", es: "Contribuidores" },
+    freeOpen: { en: "Free & Open", es: "Libre y Abierto" },
+  };
+
+  return (
+    <section className="relative overflow-hidden bg-background py-20 sm:py-32">
+      {/* Ambient background glows */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#1c71d8]/15 rounded-full blur-[130px]" />
+        <div className="absolute bottom-0 right-1/3 w-80 h-80 bg-[#6C63FF]/10 rounded-full blur-[110px]" />
+        <div className="absolute top-0 right-0 w-72 h-72 bg-[#3B82F6]/10 rounded-full blur-[90px]" />
+        <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-[#62a0ea]/10 rounded-full blur-[100px]" />
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Content */}
+          <div className="space-y-8">
+            <div className="inline-block px-5 py-2 bg-primary/10 text-primary rounded-full border border-primary/20">
+              {t.tagline[language]}
+            </div>
+
+            {/* Title with glow */}
+            <h1
+              className="text-5xl sm:text-6xl lg:text-7xl text-foreground"
+              style={{
+                textShadow: "0 0 40px rgba(28,113,216,0.35), 0 0 80px rgba(28,113,216,0.15)"
+              }}
+            >
+              LIDSoL
+            </h1>
+
+            <p className="text-xl text-muted-foreground max-w-2xl">
+              {t.description[language]}
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              {/* Explore Projects button with glow */}
+              <div className="relative">
+                <div className="absolute inset-0 rounded-full bg-[#1c71d8]/30 blur-lg scale-110" />
+                <Button
+                  asChild
+                  size="lg"
+                  className="relative border-2 border-[#241F31] shadow-lg shadow-[#1c71d8]/30 hover:shadow-xl hover:shadow-[#1c71d8]/50 transition-shadow duration-300 gap-2 bg-[#1E78E4] text-[#F6F5F4] hover:bg-[#241F31]"
+                  style={{ animation: "wiggle 1s ease-in-out infinite" }}
+                >
+                  <Link href="#projects">
+                    {t.exploreProjects[language]} <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+
+              {/* Join Community button with subtle glow */}
+              <div className="relative">
+                <div className="absolute inset-0 rounded-full bg-primary/10 blur-md scale-110" />
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="relative"
+                >
+                  {t.joinCommunity[language]}
+                </Button>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border">
+              <div>
+                <div className="text-3xl text-foreground">5+</div>
+                <div className="text-sm text-muted-foreground">{t.activeProjects[language]}</div>
+              </div>
+              <div>
+                <div className="text-3xl text-foreground">5+</div>
+                <div className="text-sm text-muted-foreground">{t.contributors[language]}</div>
+              </div>
+              <div>
+                <div className="text-3xl text-foreground">100%</div>
+                <div className="text-sm text-muted-foreground">{t.freeOpen[language]}</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Image */}
+          <div className="relative">
+            {/* Layered glow halos around the image */}
+            <div className="absolute -inset-8 bg-[#62a0ea]/25 rounded-3xl blur-3xl" />
+            <div className="absolute -inset-4 bg-[#1c71d8]/30 rounded-3xl blur-2xl" />
+            <div className="absolute -inset-1 bg-[#3B82F6]/20 rounded-3xl blur-md" />
+
+            <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl shadow-[#1c71d8]/20 border border-border relative">
+              <AnimatePresence initial={false} custom={direction} mode="popLayout">
+                <motion.div
+                  key={currentImageIndex}
+                  custom={direction}
+                  initial={{ x: direction > 0 ? 300 : -300, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: direction > 0 ? -300 : 300, opacity: 0 }}
+                  transition={{
+                    x: { type: "spring", stiffness: 300, damping: 30 },
+                    opacity: { duration: 0.2 }
+                  }}
+                  className="absolute inset-0"
+                >
+                  <ImageWithFallback
+                    src={carouselImages[currentImageIndex].src}
+                    alt={carouselImages[currentImageIndex].alt}
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Navigation buttons at bottom right */}
+              <div className="absolute bottom-4 right-4 flex gap-2">
+                <button
+                  onClick={prevImage}
+                  className="bg-card/95 backdrop-blur hover:bg-card p-2.5 rounded-full shadow-md transition-all border border-border/50"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="bg-card/95 backdrop-blur hover:bg-card p-2.5 rounded-full shadow-md transition-all border border-border/50"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+****** Imágenes añadidas al carrusel
+- https://unsplash.com/photos/green-and-black-digital-device-xbEVM6oJ1Fs
+- https://unsplash.com/photos/a-computer-screen-with-a-program-running-on-it-NLSXFjl_nhc
+- https://unsplash.com/photos/a-computer-screen-with-a-lot-of-data-on-it-MU8w72PzRow
+- https://unsplash.com/photos/a-close-up-of-a-cell-phone-on-a-table-uZkHtWsi2dE
+- https://unsplash.com/photos/a-laptop-sits-open-on-a-wooden-surface-Tiy7aJwWPvc
 ***** DONE Values
 ***** TODO FeaturedProjects [0%]
 - [ ] Mejorar el rendimiento
@@ -26,7 +242,7 @@ DEADLINE: <2026-03-13 Fri>
 ***** TODO LatestCourse [0%]
 - [ ] Mejorar la responsividad
 - [ ] Mejorar aspecto de los botones y tarjetas
-***** NEXT Community
+***** NEXT Community [%]
 - [ ] Cambiar imágen
 - [ ] Darte funcionalidad a los botones
 - [ ] Textos que invite a unirse al laboratorio.
@@ -224,6 +440,8 @@ DEADLINE: <2026-03-03 Tue>
 DEADLINE: <2026-03-17 Tue>
 *** TODO Optimización/Bugs/Testing/Corrección de vulnerabilidades
 DEADLINE: <2026-03-21 Sat>
+**** Añadir una "pantalla de carga" al inicio.
+**** Tema oscuro automático
 **** Hacer que los íconos sean tomados de un svg local
 en blog.tsx hay import { User, ArrowRight, Calendar, Clock } from "lucide-react";
 **** Cuando regreso a una página anterior, que no me regrese hasta el inicio, si no que se quede en el mismo sitio antes de dar click.

@@ -30,7 +30,7 @@ export function Header() {
             <div className="w-7 h-7 sm:w-8 sm:h-8 bg-primary rounded-full flex items-center justify-center">
               <Code2 className="h-4 w-4 sm:h-5 sm:w-5 text-primary-foreground" />
             </div>
-            <span className="text-base sm:text-lg font-semibold whitespace-nowrap">LIDSOL</span>
+            <span className="text-base sm:text-lg font-semibold whitespace-nowrap">LIDSoL</span>
           </a>
 
           {/* Desktop Navigation - Show on larger screens */}
