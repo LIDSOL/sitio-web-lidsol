@@ -39,7 +39,7 @@ export function Community() {
           <div className="order-2 lg:order-1">
             <div className="rounded-3xl overflow-hidden shadow-lg border border-primary-foreground/10">
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1568992688243-52608227497d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsYWJvcmF0aW9uJTIwd29ya3NwYWNlfGVufDF8fHx8MTc2MjIyMTQwMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                src="/home/julio-lopez-hqJJPke16kQ-unsplash.jpg"
                 alt="Collaboration workspace"
                 className="w-full h-full object-cover"
               />
@@ -90,7 +90,7 @@ export function Community() {
               <Button size="lg" variant="secondary">
                 {t.telegram[language]}
               </Button>
-              <Button size="lg" variant="outline" className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+              <Button size="lg" variant="outline" className="border-2">
                 {t.viewCalendar[language]}
               </Button>
             </div>

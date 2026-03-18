@@ -16,23 +16,23 @@ export function Hero() {
 
   const carouselImages = [
     {
-      src: "/hero/eddie-sennov-Tiy7aJwWPvc-unsplash.jpg",
+      src: "/home/eddie-sennov-Tiy7aJwWPvc-unsplash.jpg",
       alt: "Debian Neofetch"
     },
     {
-      src: "/hero/lukas-uZkHtWsi2dE-unsplash.jpg",
+      src: "/home/lukas-uZkHtWsi2dE-unsplash.jpg",
       alt: "Arch sticker"
     },
     {
-      src: "/hero/gabriel-heinzer-4Mw7nkQDByk-unsplash.jpg",
+      src: "/home/gabriel-heinzer-4Mw7nkQDByk-unsplash.jpg",
       alt: "HTOP"
     },
     {
-      src: "/hero/vishnu-mohanan-rZKdS0wI8Ks-unsplash.jpg",
+      src: "/home/vishnu-mohanan-rZKdS0wI8Ks-unsplash.jpg",
       alt: "Raspberry pi"
     },
     {
-      src: "/hero/lukas-NLSXFjl_nhc-unsplash.jpg",
+      src: "/home/lukas-NLSXFjl_nhc-unsplash.jpg",
       alt: "Thinkpad"
     }
   ];
@@ -77,7 +77,6 @@ export function Hero() {
     activeProjects: { en: "Active Projects", es: "Proyectos Activos" },
     contributors: { en: "Contributors", es: "Contribuidores" },
     freeOpen: { en: "Free & Open", es: "Libre y Abierto" },
-    // Agregamos los textos del correo aquí para que sean traducibles
     contactSubject: { en: "Interest in LIDSoL", es: "Interés en LIDSoL" },
     contactBody: {
         en: "Hello, I would like to join the laboratory...",
@@ -85,7 +84,6 @@ export function Hero() {
     },
   };
 
-  // CORRECCIÓN: Definimos el link después de 't' y usamos el objeto de traducción
   const mailtoLink = `mailto:lidsol@protonmail.com?subject=${encodeURIComponent(t.contactSubject[language])}&body=${encodeURIComponent(t.contactBody[language])}`;
 
   const glowDark = {
@@ -140,12 +138,9 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-background py-20 sm:py-32">
-      {/* Ambient background glows */}
+      {/* Ambient background glows - Modificado: Solo en la esquina superior derecha */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#1c71d8]/15 rounded-full blur-[130px]" />
-        <div className="absolute bottom-0 right-1/3 w-80 h-80 bg-[#6C63FF]/10 rounded-full blur-[110px]" />
-        <div className="absolute top-0 right-0 w-72 h-72 bg-[#3B82F6]/10 rounded-full blur-[90px]" />
-        <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-[#62a0ea]/10 rounded-full blur-[100px]" />
+        <div className="absolute -top-[10%] -right-[5%] w-[600px] h-[600px] bg-[#1e78e4]/20 rounded-full blur-[130px]" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -156,22 +151,20 @@ export function Hero() {
               {t.tagline[language]}
             </div>
 
-
-<h1 className="text-5xl sm:text-6xl lg:text-7xl text-foreground">
-  <ImageWithFallback
-    src={theme === "dark" ? "/hero/LIDSOLlogoColor-oscuro.svg" : "/hero/LIDSOLlogoColor-claro.svg"}
-    alt="LIDSoL"
-    className="h-14 w-auto"
-    style={{
-      //Para tener efecto más sutil.
-      filter: `
-        drop-shadow(0 0 10px rgba(28,113,216,0.7))
-        drop-shadow(0 0 22px rgba(28,113,216,0.1))
-        drop-shadow(0 0 50px rgba(28,113,216,0.05))
-      `
-    }}
-  />
-</h1>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl text-foreground">
+              <ImageWithFallback
+                src={theme === "dark" ? "/home/LIDSOLlogoColor-oscuro.svg" : "/home/LIDSOLlogoColor-claro.svg"}
+                alt="LIDSoL"
+                className="h-14 w-auto"
+                style={{
+                  filter: `
+                    drop-shadow(0 0 10px rgba(28,113,216,0.4))
+                    drop-shadow(0 0 22px rgba(28,113,216,0.1))
+                    drop-shadow(0 0 50px rgba(28,113,216,0.05))
+                  `
+                }}
+              />
+            </h1>
 
             <p className="text-xl text-muted-foreground max-w-2xl">
               {t.description[language]}
@@ -235,9 +228,7 @@ export function Hero() {
           <div className="relative">
             <div
               className="aspect-square rounded-3xl overflow-hidden shadow-2xl border border-border relative"
-              style={{
-                boxShadow: currentCarouselGlow
-              }}
+              style={{ boxShadow: currentCarouselGlow }}
             >
               <AnimatePresence initial={false} custom={direction} mode="popLayout">
                 <motion.div
@@ -284,4 +275,3 @@ export function Hero() {
     </section>
   );
 }
-
