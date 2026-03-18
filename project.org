@@ -1,4 +1,5 @@
-* TODO Organización del desarrollo
+* Proyecto
+** TODO Organización del desarrollo
 ** DONE Prototipo de figma
 ** DONE Plaenación de desarrollo
 ** IN-PROGRESS Desarrollo
@@ -228,14 +229,13 @@ export function Hero() {
 - https://unsplash.com/photos/a-close-up-of-a-cell-phone-on-a-table-uZkHtWsi2dE
 - https://unsplash.com/photos/a-laptop-sits-open-on-a-wooden-surface-Tiy7aJwWPvc
 ***** DONE Values
-***** NEXT Community [%]
-- [ ] Cambiar es estilo de los botones.
-- [ ] Darte funcionalidad a los botones.
-- [ ] Textos que invite a unirse al laboratorio.
-- [ ] Cambiar imágen
-***** NEXT FeaturedProjects [0%]
-- [ ] Mejorar el rendimiento
-- [ ] Quitar la opción "ver más"
+***** DONE FeaturedProjects [100%]
+- [X] Quitar la opción "ver más"
+- [X] Mejorar el rendimiento
+- [X] Cambiar el grid
+  - 1 columna en small con tres tarjetas
+  - 2 columnas en md con dos tarjetas por columna
+  - 3 columnas en lg con 3 tarjetas
 ***** NEXT LatestEvent [0%]
 - [ ] Mejorar la responsividad
 - [ ] Mejorar aspecto de los botones y tarjetas
@@ -245,6 +245,11 @@ export function Hero() {
 ***** NEXT LatestCourse [0%]
 - [ ] Mejorar la responsividad
 - [ ] Mejorar aspecto de los botones y tarjetas
+***** NEXT Community [%]
+- [ ] Cambiar es estilo de los botones.
+- [ ] Darte funcionalidad a los botones.
+- [ ] Textos que invite a unirse al laboratorio.
+- [ ] Cambiar imágen
 **** TODO Header [0%]
 DEADLINE: <2026-03-13 Fri>
 - [ ] Hacer un indicador para saber en que sección se está, que sea estilo "pestañas libadwaita"
