@@ -89,7 +89,7 @@ export function LatestCourse({ onViewCourse, onViewAllCourses }: LatestCoursePro
                   </div>
                 </div>
               </div>
-              <div className="flex gap-3">
+              <div className="flex flex-col md:flex-row gap-3">
                 <Button 
                   className="gap-2 flex-1"
                   onClick={() => onViewCourse(latestCourse.id)}

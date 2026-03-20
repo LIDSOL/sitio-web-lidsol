@@ -23,7 +23,7 @@ export function LatestBlogPost({ onViewPost, showHeader = true, showViewAll = tr
     viewPost: { en: "Read Full Article", es: "Leer Artículo Completo" },
     viewAll: { en: "View All Posts", es: "Ver Todos los Posts" },
     readTime: { en: "min read", es: "min de lectura" },
-    new: { en: "New", es: "Nuevo" },
+    new: { en: "Last", es: "Último" },
   };
 
   const title = latestPost.title[language] || latestPost.title.es || '';
@@ -83,23 +83,26 @@ export function LatestBlogPost({ onViewPost, showHeader = true, showViewAll = tr
                   ))}
                 </div>
               </div>
-              <Button
-                className="gap-2"
-                onClick={() => onViewPost(latestPost.id)}
-              >
-                {t.viewPost[language]} <ArrowRight className="h-4 w-4" />
-              </Button>
+              <div className="flex flex-col md:flex-row gap-3">
+                <Button
+                  className="gap-2 flex-1"
+                  onClick={() => onViewPost(latestPost.id)}
+                >
+                  {t.viewPost[language]} <ArrowRight className="h-4 w-4" />
+                </Button>
+                {showViewAll && (
+                  <Button
+                    variant="outline"
+                    className="gap-2"
+                    onClick={() => window.location.hash = "#blog"}
+                  >
+                    {t.viewAll[language]}
+                  </Button>
+                )}
+              </div>
             </div>
           </div>
         </Card>
-
-        {showViewAll && (
-          <div className="text-center mt-16">
-            <Button size="lg" variant="outline" className="gap-2" onClick={() => window.location.hash = "#blog"}>
-              {t.viewAll[language]} <ArrowRight className="h-4 w-4" />
-            </Button>
-          </div>
-        )}
       </div>
     </section>
   );

@@ -13,7 +13,7 @@ interface LatestEventProps {
 
 export function LatestEvent({ onViewEvent, onViewAllEvents }: LatestEventProps) {
   const { language } = useLanguage();
-  
+
   // Get the first upcoming event
   const latestEvent = events.find(e => e.status === "upcoming") || events[0];
 
@@ -32,8 +32,8 @@ export function LatestEvent({ onViewEvent, onViewAllEvents }: LatestEventProps) 
 
         <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 border-border/60 max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-0">
-            <div 
-              className="aspect-video md:aspect-auto relative overflow-hidden cursor-pointer" 
+            <div
+              className="aspect-video md:aspect-auto relative overflow-hidden cursor-pointer"
               onClick={() => onViewEvent(latestEvent.id)}
             >
               <ImageWithFallback
@@ -71,15 +71,15 @@ export function LatestEvent({ onViewEvent, onViewAllEvents }: LatestEventProps) 
                   </div>
                 </div>
               </div>
-              <div className="flex gap-3">
-                <Button 
+              <div className="flex flex-col md:flex-row gap-3">
+                <Button
                   className="gap-2 flex-1"
                   onClick={() => onViewEvent(latestEvent.id)}
                 >
                   {t.viewMore[language]} <ArrowRight className="h-4 w-4" />
                 </Button>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="gap-2"
                   onClick={onViewAllEvents}
                 >

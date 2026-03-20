@@ -6,7 +6,7 @@
 *** DONE Repositorio de GitHub y Versionado
 *** DONE Contenedor
 *** IN-PROGRESS Código
-**** IN-PROGRESS Home
+**** DONE Home
 DEADLINE: <2026-03-13 Fri>
 ***** DONE Hero [100%]
 - [X] Cambiar el color de fondo por algo gris pero con degradados
@@ -236,20 +236,19 @@ export function Hero() {
   - 1 columna en small con tres tarjetas
   - 2 columnas en md con dos tarjetas por columna
   - 3 columnas en lg con 3 tarjetas
-***** NEXT LatestEvent [0%]
-- [ ] Mejorar la responsividad
-- [ ] Mejorar aspecto de los botones y tarjetas
-***** NEXT LatestBlogPost [0%]
-- [ ] Mejorar la responsividad
-- [ ] Mejorar aspecto de los botones y tarjetas
-***** NEXT LatestCourse [0%]
-- [ ] Mejorar la responsividad
-- [ ] Mejorar aspecto de los botones y tarjetas
-***** NEXT Community [%]
-- [ ] Cambiar es estilo de los botones.
-- [ ] Darte funcionalidad a los botones.
-- [ ] Textos que invite a unirse al laboratorio.
-- [ ] Cambiar imágen
+***** DONE LatestEvent [100%]
+- [X] Mejorar la responsividad
+- [X] Mejorar aspecto de los botones y tarjetas
+***** DONE LatestBlogPost [100%]
+- [X] Mejorar la responsividad
+- [X] Mejorar aspecto de los botones y tarjetas
+***** DONE LatestCourse [100%]
+- [X] Mejorar la responsividad
+- [X] Mejorar aspecto de los botones y tarjetas
+***** DONE Community [100%]
+- [X] Textos que invite a unirse al laboratorio.
+- [X] Cambiar es estilo de los botones.
+- [X] Darte funcionalidad a los botones.
 **** TODO Header [0%]
 DEADLINE: <2026-03-13 Fri>
 - [ ] Hacer un indicador para saber en que sección se está, que sea estilo "pestañas libadwaita"
@@ -444,16 +443,17 @@ DEADLINE: <2026-03-03 Tue>
 DEADLINE: <2026-03-17 Tue>
 *** TODO Optimización/Bugs/Testing/Corrección de vulnerabilidades
 DEADLINE: <2026-03-21 Sat>
+**** Tal vez sería bueno cambiar el texto de "Proyectos en desarrollo" del Home, pues hay algunas investigaciones que ya no están en curso.
 **** Añadir una "pantalla de carga" al inicio.
 **** Tema oscuro automático
 **** Hacer que los íconos sean tomados de un svg local
-en blog.tsx hay import { User, ArrowRight, Calendar, Clock } from "lucide-react";
+en blog.tsx hay import { User, ArrowRight, Calendar, Clock } from "lucide-react", etc
 **** Cuando regreso a una página anterior, que no me regrese hasta el inicio, si no que se quede en el mismo sitio antes de dar click.
 **** Mejora el script del blog.
 **** Colocar la información correcta en la fecha de inicio de los miembros.
 **** DONE CursorEffect
 Al estar en dispositivos móviles, el efecto de brillo que sigue al cursos se queda pillado.
-**** Responsibidad
+**** DONE Responsibidad
 Hay un problema con las tarjetas de "Último curso, Último post de blog" en dispositivos móviels el contenido no se ve completo.
 **** Auditoría de ciberseguridad
 ** Deploy
