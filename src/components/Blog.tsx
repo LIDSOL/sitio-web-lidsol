@@ -9,7 +9,6 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { blogPosts } from "../data/blogPosts";
 import { useLanguage } from "./LanguageProvider";
 import { useState } from "react";
-import { LatestBlogPost } from "./LatestBlogPost";
 
 interface BlogProps {
   onPostClick: (postId: number) => void;
@@ -75,11 +74,52 @@ export function Blog({ onPostClick }: BlogProps) {
         </div>
 
         {/* Featured Post */}
-        <LatestBlogPost
-          onViewPost={handleViewPost}
-          showHeader={false}
-          showViewAll={false}
-        />
+        <Card 
+          className="overflow-hidden hover:shadow-xl transition-all duration-300 border-border/60 max-w-5xl mx-auto mb-12"
+          onClick={() => handleViewPost(featuredPost.id)}
+        >
+          <div className="grid md:grid-cols-2 gap-0">
+            <div className="aspect-video md:aspect-auto relative overflow-hidden cursor-pointer">
+              <ImageWithFallback
+                src={featuredPost.image}
+                alt={getLocalizedPost(featuredPost).title}
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+              <Badge className="absolute top-4 left-4 shadow-lg bg-primary">
+                {language === 'en' ? 'Featured' : 'Destacado'}
+              </Badge>
+            </div>
+            <div className="p-8 flex flex-col justify-between">
+              <div>
+                <h3 className="text-3xl mb-4">{getLocalizedPost(featuredPost).title}</h3>
+                <p className="text-muted-foreground mb-6 line-clamp-3">
+                  {getLocalizedPost(featuredPost).excerpt}
+                </p>
+                <div className="flex items-center gap-6 text-sm text-muted-foreground mb-4">
+                  <div className="flex items-center gap-2">
+                    <User className="h-4 w-4" />
+                    <span>{getLocalizedPost(featuredPost).authors[0]}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Calendar className="h-4 w-4" />
+                    <span>{getLocalizedPost(featuredPost).date}</span>
+                  </div>
+                  <div>
+                    {getLocalizedPost(featuredPost).readTime} {language === 'en' ? 'min read' : 'min de lectura'}
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {getLocalizedPost(featuredPost).tags.slice(0, 3).map((tag) => (
+                    <Badge key={tag} variant="outline">{tag}</Badge>
+                  ))}
+                </div>
+              </div>
+              <Button className="gap-2 w-fit">
+                {language === 'en' ? 'Read Article' : 'Leer Artículo'} <ArrowRight className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        </Card>
 
         {/* Blog Posts Grid - Next 2 posts after featured */}
         <div className="grid md:grid-cols-2 gap-8 mb-12 mt-8">

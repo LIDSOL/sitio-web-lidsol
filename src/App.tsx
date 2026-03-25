@@ -2,9 +2,7 @@ import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Values } from "./components/Values";
 import { FeaturedProjects } from "./components/FeaturedProjects";
-import { LatestCourse } from "./components/LatestCourse";
-import { LatestEvent } from "./components/LatestEvent";
-import { LatestBlogPost } from "./components/LatestBlogPost";
+import { LatestHighlights } from "./components/LatestHighlights";
 import { Community } from "./components/Community";
 import { Footer } from "./components/Footer";
 import { Blog } from "./components/Blog";
@@ -290,9 +288,14 @@ export default function App() {
               <Hero />
               <Values />
               <FeaturedProjects />
-              <LatestEvent onViewEvent={handleEventClick} onViewAllEvents={handleViewAllEvents} />
-              <LatestCourse onViewCourse={handleCourseClick} onViewAllCourses={handleViewAllCourses} />
-              <LatestBlogPost onViewPost={handlePostClick} />
+              <LatestHighlights 
+                onViewPost={handlePostClick}
+                onViewAllPosts={() => { window.location.hash = "#blog"; }}
+                onViewCourse={handleCourseClick}
+                onViewAllCourses={handleViewAllCourses}
+                onViewEvent={handleEventClick}
+                onViewAllEvents={handleViewAllEvents}
+              />
               <Community />
             </>
           )}
