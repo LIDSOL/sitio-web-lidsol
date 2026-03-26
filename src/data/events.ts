@@ -409,6 +409,8 @@ export const events: Event[] = [
       en: "FLISoL 2024",
       es: "FLISoL 2024"
     },
+    date: "08-05-2024",
+    time: "10:00 - 16:00 hrs",
     event: "Festival Latinoamericano de Instalación de Software Libre",
     event_url: "https://flisol.info/FLISOL2024/Mexico/CDMX/UNAM",
     shortDescription: {

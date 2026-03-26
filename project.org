@@ -251,11 +251,11 @@ export function Hero() {
 - [X] Darte funcionalidad a los botones.
 **** TODO Header [0%]
 DEADLINE: <2026-03-13 Fri>
-- [ ] Hacer un indicador para saber en que sección se está, que sea estilo "pestañas libadwaita"
 - [ ] Cuando es en pantallas pequeñas:
   - [ ] ¿Menú de hamburguesa a la izquieda o derecha?
   - [ ] El menú debe aparecer a la izquierda y con animación (estilo nautilus)
   - [ ] Colocar un ícono a cada sección (tal vez sea bueno que solo sea visible en esta vista de pantallas pequeñas)
+- [ ] Hacer un indicador para saber en que sección se está, que sea estilo "pestañas libadwaita"
 **** TODO Footer [0%]
 DEADLINE: <2026-03-13 Fri>
 - [ ] Mejorar la distribución de los elementos (principalmente en pantalla grande)

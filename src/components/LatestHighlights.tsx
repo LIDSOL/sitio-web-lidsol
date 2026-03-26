@@ -25,9 +25,27 @@ export function LatestHighlights({
 }: LatestHighlightsProps) {
   const { language } = useLanguage();
 
-  const latestPost = blogPosts[0];
-  const latestCourse = courses[0];
-  const latestEvent = events.find((e) => e.status === "upcoming") || events[0];
+  const sortedBlogPosts = [...blogPosts].sort((a, b) => {
+    const dateA = new Date(a.date[language] || a.date.es).getTime();
+    const dateB = new Date(b.date[language] || b.date.es).getTime();
+    return dateB - dateA;
+  });
+
+  const sortedEvents = [...events].sort((a, b) => {
+    const dateA = new Date(a.startDate || a.publishDate || "1970-01-01").getTime();
+    const dateB = new Date(b.startDate || b.publishDate || "1970-01-01").getTime();
+    return dateB - dateA;
+  });
+
+  const sortedCourses = [...courses].sort((a, b) => {
+    const dateA = new Date(a.startDate || "1970-01-01").getTime();
+    const dateB = new Date(b.startDate || "1970-01-01").getTime();
+    return dateB - dateA;
+  });
+
+  const latestPost = sortedBlogPosts[0];
+  const latestCourse = sortedCourses[0];
+  const latestEvent = sortedEvents.find((e) => e.status === "upcoming") || sortedEvents[0];
 
   const t = {
     sectionLabel: { en: "Highlights", es: "Destacados" },
@@ -74,12 +92,12 @@ export function LatestHighlights({
         </div>
 
         {/* All cards container */}
-        <div className="space-y-6">
+        <div className="space-y-6 mb-6">
           {/* Top row — Blog + Course */}
           <div className="grid md:grid-cols-2 gap-6">
             {/* Blog card */}
             <div
-              className="group bg-card rounded-2xl border border-border overflow-hidden flex flex-col cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+              className="group bg-card rounded-2xl border border-border overflow-hidden flex flex-col cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
               onClick={() => onViewPost(latestPost.id)}
             >
               {/* Image */}
@@ -113,30 +131,32 @@ export function LatestHighlights({
                 </h3>
 
                 {/* Excerpt */}
-                <p className="text-muted-foreground line-clamp-2 mb-5 flex-1">
+                <p className="text-muted-foreground line-clamp-2 mb-0">
                   {latestPost.excerpt[language]}
                 </p>
 
                 {/* Footer */}
-                <div className="flex items-center justify-between pt-4 border-t border-border/60">
-                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-1.5">
-                      <User className="h-3.5 w-3.5" />
-                      <span>{latestPost.authors[language]?.[0] || latestPost.authors.es?.[0]}</span>
-                    </div>
-                    <span className="text-muted-foreground/40">·</span>
-                    <span>{latestPost.readTime[language] || latestPost.readTime.es} {t.readTime[language]}</span>
-                  </div>
-                  <div className="flex items-center gap-1 text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <div className="flex items-center pt-4">
+                  <div className="flex items-center gap-1 text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200 mb-2">
                     {t.readMore[language]} <ArrowRight className="h-3.5 w-3.5" />
                   </div>
+                </div>
+
+                {/* Meta info */}
+                <div className="flex items-center gap-3 text-sm text-muted-foreground pt-4 border-t border-border/60">
+                  <div className="flex items-center gap-1.5">
+                    <User className="h-3.5 w-3.5" />
+                    <span>{latestPost.authors[language]?.[0] || latestPost.authors.es?.[0]}</span>
+                  </div>
+                  <span className="text-muted-foreground/40">·</span>
+                  <span>{latestPost.readTime[language] || latestPost.readTime.es} {t.readTime[language]}</span>
                 </div>
               </div>
             </div>
 
             {/* Course card */}
             <div
-              className="group bg-card rounded-2xl border border-border overflow-hidden flex flex-col cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+              className="group bg-card rounded-2xl border border-border overflow-hidden flex flex-col cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
               onClick={() => onViewCourse(latestCourse.id)}
             >
               {/* Image */}
@@ -173,25 +193,27 @@ export function LatestHighlights({
                 </h3>
 
                 {/* Description */}
-                <p className="text-muted-foreground line-clamp-2 mb-5 flex-1">
+                <p className="text-muted-foreground line-clamp-2 mb-0">
                   {latestCourse.shortDescription?.[language] || latestCourse.shortDescription?.es}
                 </p>
 
                 {/* Footer */}
-                <div className="flex items-center justify-between pt-4 border-t border-border/60">
-                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-1.5">
-                      <BookOpen className="h-3.5 w-3.5" />
-                      <span>{latestCourse.instructor}</span>
-                    </div>
-                    <span className="text-muted-foreground/40">·</span>
-                    <div className="flex items-center gap-1.5">
-                      <Calendar className="h-3.5 w-3.5" />
-                      <span>{latestCourse.startDate}</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-1 text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <div className="flex items-center pt-4">
+                  <div className="flex items-center gap-1 text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200 mb-2">
                     {t.viewCourse[language]} <ArrowRight className="h-3.5 w-3.5" />
+                  </div>
+                </div>
+
+                {/* Meta info */}
+                <div className="flex items-center gap-3 text-sm text-muted-foreground pt-4 border-t border-border/60">
+                  <div className="flex items-center gap-1.5">
+                    <BookOpen className="h-3.5 w-3.5" />
+                    <span>{latestCourse.instructor}</span>
+                  </div>
+                  <span className="text-muted-foreground/40">·</span>
+                  <div className="flex items-center gap-1.5">
+                    <Calendar className="h-3.5 w-3.5" />
+                    <span>{latestCourse.startDate}</span>
                   </div>
                 </div>
               </div>
@@ -200,7 +222,7 @@ export function LatestHighlights({
 
           {/* Bottom row — Featured Event (wide card) */}
           <div
-            className="group bg-card rounded-2xl border border-border overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+            className="group bg-card rounded-2xl border border-border overflow-hidden cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
             onClick={() => onViewEvent(latestEvent.id)}
           >
             <div className="grid grid-cols-1 md:grid-cols-2">
@@ -244,37 +266,30 @@ export function LatestHighlights({
                   <p className="text-muted-foreground line-clamp-2 mb-5 flex-1">
                     {latestEvent.shortDescription[language]}
                   </p>
-
-                  {/* Meta info - inline on desktop */}
-                  <div className="flex items-center flex-wrap gap-4 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-1.5">
-                      <Calendar className="h-3.5 w-3.5 text-primary" />
-                      <span>{latestEvent.date}</span>
-                    </div>
-                    <span className="text-muted-foreground/40">·</span>
-                    <div className="flex items-center gap-1.5">
-                      <Clock className="h-3.5 w-3.5 text-primary" />
-                      <span>{latestEvent.time}</span>
-                    </div>
-                    <span className="text-muted-foreground/40">·</span>
-                    <div className="flex items-center gap-1.5">
-                      <MapPin className="h-3.5 w-3.5 text-primary" />
-                      <span>{latestEvent.location[language]}</span>
-                    </div>
-                  </div>
                 </div>
 
                 {/* Footer */}
-                <div className="flex items-center justify-between pt-4 border-t border-border/60 mt-4">
-                  <button
-                    className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    onClick={(e) => { e.stopPropagation(); onViewAllEvents(); }}
-                  >
-                    {t.seeAllEvents[language]}
-                    <ChevronRight className="h-4 w-4" />
-                  </button>
-                  <div className="flex items-center gap-1 text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <div className="flex items-center pt-4">
+                  <div className="flex items-center gap-1 text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200 mb-2">
                     {t.viewEvent[language]} <ArrowRight className="h-3.5 w-3.5" />
+                  </div>
+                </div>
+
+                {/* Meta info - inline on desktop */}
+                <div className="flex items-center flex-wrap gap-4 text-sm text-muted-foreground pt-4 border-t border-border/60">
+                  <div className="flex items-center gap-1.5">
+                    <Calendar className="h-3.5 w-3.5 text-primary" />
+                    <span>{latestEvent.date}</span>
+                  </div>
+                  <span className="text-muted-foreground/40">·</span>
+                  <div className="flex items-center gap-1.5">
+                    <Clock className="h-3.5 w-3.5 text-primary" />
+                    <span>{latestEvent.time}</span>
+                  </div>
+                  <span className="text-muted-foreground/40">·</span>
+                  <div className="flex items-center gap-1.5">
+                    <MapPin className="h-3.5 w-3.5 text-primary" />
+                    <span>{latestEvent.location[language]}</span>
                   </div>
                 </div>
               </div>
@@ -283,21 +298,19 @@ export function LatestHighlights({
         </div>
 
         {/* Bottom links row */}
-        <div className="flex flex-wrap justify-center gap-6 mt-8">
+        <div className="flex flex-wrap justify-center gap-6 mt-12">
           <button
             className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
             onClick={onViewAllPosts}
           >
             {t.seeAllPosts[language]} <ChevronRight className="h-4 w-4" />
           </button>
-          <span className="text-border">|</span>
           <button
             className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
             onClick={onViewAllCourses}
           >
             {t.seeAllCourses[language]} <ChevronRight className="h-4 w-4" />
           </button>
-          <span className="text-border">|</span>
           <button
             className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
             onClick={onViewAllEvents}
