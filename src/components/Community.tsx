@@ -39,7 +39,7 @@ export function Community() {
     learningResources: { en: "Collaborate on Projects", es: "Colabora en proyectos" },
     learningResourcesDesc: {
       en: "Join active initiatives to strengthen your skills and apply your knowledge. You can become part of frontend, backend, and infrastructure teams, contributing to the development of real, high‑impact solutions.",
-      es: "Únete a los proyectos en marcha para desarrollar tus habilidades y aplicar tus conocimientos. Podrás integrarte en equipos de frontend, backend e infraestructura, contribuyendo al desarrollo de soluciones reales y de alto impacto."
+      es: "Únete a los proyectos en marcha para desarrollar tus habilidades y aplicar tus conocimientos. Podrás integrarte en equipos de frontend, backend e infraestructura, contribuyendo al desarrollo de soluciones reales."
     },
     telegram: { en: "Telegram", es: "Telegram" },
     viewCalendar: { en: "View Calendar", es: "Ver calendario" },

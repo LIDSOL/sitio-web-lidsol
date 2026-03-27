@@ -105,22 +105,30 @@ export function FeaturedProjects() {
                 </CardHeader>
 
                 <CardContent className="relative z-10 pt-0">
-                  {/* Stats */}
-                  <div className="flex items-center gap-4 mb-3">
-                    <div className="flex items-center gap-1">
-                      <Star className="h-4 w-4 text-yellow-500" />
-                      <span className="text-sm">{project.stars}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Users className="h-4 w-4 text-primary" />
-                      <span className="text-sm">{project.contributors} {t.contributors[language]}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <div className={`w-3 h-3 ${project.color} rounded-full`} />
-                      <span className="text-sm">{project.language}</span>
-                    </div>
-                  </div>
+                    {/* Stats */}
+                    <div className="flex flex-wrap items-center gap-4 mb-3">
+                      {/* Estrellas */}
+                      <span className="inline-flex items-center gap-1">
+                        <Star className="h-4 w-4 text-yellow-500" />
+                        <span className="text-sm text-muted-foreground">{project.stars}</span>
+                      </span>
 
+                      {/* Contribuidores */}
+                      <span className="inline-flex items-center gap-1">
+                        <Users className="h-4 w-4 text-primary" />
+                        <span className="text-sm text-muted-foreground">
+                          {project.contributors} {t.contributors[language]}
+                        </span>
+                      </span>
+
+                      {/* Lenguaje - Ahora con el mismo gap que los anteriores */}
+                      {project.language && (
+                        <span className="inline-flex items-center gap-1.5">
+                          <div className={`w-3 h-3 ${project.color || 'bg-gray-500'} rounded-full`} />
+                          <span className="text-sm text-muted-foreground">{project.language}</span>
+                        </span>
+                      )}
+                    </div>
                   {/* Tags */}
                   <div className="flex flex-wrap gap-2">
                     {project.tags?.[language]?.slice(0, 3).map((tag) => (

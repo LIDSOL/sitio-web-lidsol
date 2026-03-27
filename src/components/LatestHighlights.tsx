@@ -222,12 +222,12 @@ export function LatestHighlights({
 
           {/* Bottom row — Featured Event (wide card) */}
           <div
-            className="group bg-card rounded-2xl border border-border overflow-hidden cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+            className="group bg-card rounded-2xl border border-border overflow-hidden cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 min-h-[250px]"
             onClick={() => onViewEvent(latestEvent.id)}
           >
             <div className="grid grid-cols-1 md:grid-cols-2">
               {/* Image */}
-              <div className="relative overflow-hidden aspect-video md:aspect-auto md:h-full">
+              <div className="relative overflow-hidden h-40 md:h-auto md:min-h-[200px]">
                 <ImageWithFallback
                   src={latestEvent.coverImage || latestEvent.image || ""}
                   alt={latestEvent.title[language]}
@@ -263,7 +263,7 @@ export function LatestHighlights({
                   </h3>
 
                   {/* Description */}
-                  <p className="text-muted-foreground line-clamp-2 mb-5 flex-1">
+                  <p className="text-muted-foreground line-clamp-3 flex-1 min-h-[3rem]">
                     {latestEvent.shortDescription[language]}
                   </p>
                 </div>

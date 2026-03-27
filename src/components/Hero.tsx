@@ -88,138 +88,112 @@ export function Hero() {
 
   const glowDark = {
     default: `
-      0 0 15px rgba(28,113,216,0.15),
-      0 0 30px rgba(28,113,216,0.1),
-      0 0 50px rgba(28,113,216,0.08),
-      0 0 75px rgba(28,113,216,0.05)
+      0 0 14px rgba(28,113,216,0.35),
+      0 0 28px rgba(28,113,216,0.25),
+      0 0 49px rgba(28,113,216,0.18),
+      0 0 70px rgba(28,113,216,0.11)
     `,
     hover: `
-      0 0 20px rgba(28,113,216,0.25),
-      0 0 40px rgba(28,113,216,0.2),
-      0 0 60px rgba(28,113,216,0.15),
-      0 0 90px rgba(28,113,216,0.1)
+      0 0 21px rgba(28,113,216,0.49),
+      0 0 42px rgba(28,113,216,0.35),
+      0 0 63px rgba(28,113,216,0.25),
+      0 0 91px rgba(28,113,216,0.14)
     `
   };
 
   const glowLight = {
     default: `
-      0 0 20px rgba(28,113,216,0.4),
-      0 0 40px rgba(28,113,216,0.3),
-      0 0 70px rgba(28,113,216,0.2),
-      0 0 100px rgba(28,113,216,0.15)
+      0 0 14px rgba(28,113,216,0.42),
+      0 0 35px rgba(28,113,216,0.32),
+      0 0 56px rgba(28,113,216,0.21),
+      0 0 77px rgba(28,113,216,0.14)
     `,
     hover: `
-      0 0 30px rgba(28,113,216,0.5),
-      0 0 60px rgba(28,113,216,0.4),
-      0 0 90px rgba(28,113,216,0.3),
-      0 0 120px rgba(28,113,216,0.2)
+      0 0 25px rgba(28,113,216,0.53),
+      0 0 49px rgba(28,113,216,0.39),
+      0 0 70px rgba(28,113,216,0.28),
+      0 0 98px rgba(28,113,216,0.18)
     `
   };
 
   const currentGlow = theme === "dark" ? glowDark : glowLight;
 
   const carouselGlowDark = `
-    0 0 15px rgba(28,113,216,0.1),
-    0 0 30px rgba(28,113,216,0.08),
-    0 0 50px rgba(28,113,216,0.06),
-    0 0 75px rgba(28,113,216,0.04),
-    0 0 100px rgba(28,113,216,0.01)
+    0 0 28px rgba(28,113,216,0.4),
+    0 0 28px rgba(28,113,216,0.15),
+    0 0 44px rgba(28,113,216,0.1),
+    0 0 61px rgba(28,113,216,0.05),
+    0 0 77px rgba(28,113,216,0.3)
   `;
 
   const carouselGlowLight = `
-    0 0 20px rgba(28,113,216,0.3),
-    0 0 40px rgba(28,113,216,0.25),
-    0 0 60px rgba(28,113,216,0.2),
-    0 0 80px rgba(28,113,216,0.15),
-    0 0 100px rgba(28,113,216,0.1)
+    0 0 39px rgba(28,113,216,0.5),
+    0 0 33px rgba(28,113,216,0.2),
+    0 0 50px rgba(28,113,216,0.15),
+    0 0 66px rgba(28,113,216,0.1),
+    0 0 83px rgba(28,113,216,0.05)
   `;
 
   const currentCarouselGlow = theme === "dark" ? carouselGlowDark : carouselGlowLight;
 
   return (
-    <section className="relative overflow-hidden bg-background py-20 sm:py-32">
-      {/* Ambient background glows - Modificado: Solo en la esquina superior derecha */}
+    <section className="relative overflow-hidden bg-primary text-primary-foreground py-20 sm:py-32">
+      {/* Ambient background glows */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-[10%] -right-[5%] w-[600px] h-[600px] bg-[#1e78e4]/20 rounded-full blur-[130px]" />
+        <div className="absolute -top-[15%] -right-[10%] w-[660px] h-[660px] bg-[#1e78e4]/50 rounded-full blur-[143px]" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="space-y-8">
-            <div className="inline-block px-5 py-2 bg-primary/10 text-foreground rounded-full border border-primary/20">
+            <div className="inline-block px-5 py-2 bg-white/10 text-primary-foreground rounded-full border border-white/20">
               {t.tagline[language]}
             </div>
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl text-foreground">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl text-primary-foreground">
               <ImageWithFallback
-                src={theme === "dark" ? "/home/LIDSOLlogoColor-oscuro.svg" : "/home/LIDSOLlogoColor-claro.svg"}
+                src={theme === "dark" ? "/home/LIDSOLlogo.svg" : "/home/LIDSOLlogo.svg"}
                 alt="LIDSoL"
-                className="h-14 w-auto"
-                style={{
-                  filter: `
-                    drop-shadow(0 0 10px rgba(28,113,216,0.4))
-                    drop-shadow(0 0 22px rgba(28,113,216,0.1))
-                    drop-shadow(0 0 50px rgba(28,113,216,0.05))
-                  `
-                }}
+                className="h-18 w-auto drop-shadow-lg"
               />
             </h1>
 
-            <p className="text-xl text-muted-foreground max-w-2xl">
+            <p className="text-xl text-primary-foreground/80 max-w-2xl">
               {t.description[language]}
             </p>
 
-            <div className="flex flex-wrap gap-4">
-              {/* Explore Projects button with glow */}
+            <div className="flex flex-wrap gap-4 pt-4">
               <Button
-                asChild
                 size="lg"
-                className="relative transition-all duration-300"
-                style={{
-                  animation: "wiggle 1s ease-in-out infinite",
-                  boxShadow: currentGlow.default
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = currentGlow.hover;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = currentGlow.default;
-                }}
+                variant="outline"
+                asChild
+                className="gap-2 border-2"
+                style={{ animation: "wiggle 1s ease-in-out infinite" }}
               >
                 <Link href="#projects">
                   {t.exploreProjects[language]} <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-
-              {/* Join Community button with subtle glow */}
-              <div className="relative">
-                <div className="absolute inset-0 rounded-full bg-primary/20 blur-md scale-110" />
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="relative"
-                >
-                  <a href={mailtoLink}>
-                    {t.joinCommunity[language]}
-                  </a>
-                </Button>
-              </div>
+              <Button size="lg" variant="outline" asChild>
+                <a href={mailtoLink}>
+                  {t.joinCommunity[language]}
+                </a>
+              </Button>
             </div>
 
-            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border">
+            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-white/20">
               <div>
-                <div className="text-3xl text-foreground">5+</div>
-                <div className="text-sm text-muted-foreground">{t.activeProjects[language]}</div>
+                <div className="text-3xl text-primary-foreground">5+</div>
+                <div className="text-sm text-primary-foreground/70">{t.activeProjects[language]}</div>
               </div>
               <div>
-                <div className="text-3xl text-foreground">10+</div>
-                <div className="text-sm text-muted-foreground">{t.contributors[language]}</div>
+                <div className="text-3xl text-primary-foreground">10+</div>
+                <div className="text-sm text-primary-foreground/70">{t.contributors[language]}</div>
               </div>
               <div>
-                <div className="text-3xl text-foreground">100%</div>
-                <div className="text-sm text-muted-foreground">{t.freeOpen[language]}</div>
+                <div className="text-3xl text-primary-foreground">100%</div>
+                <div className="text-sm text-primary-foreground/70">{t.freeOpen[language]}</div>
               </div>
             </div>
           </div>
@@ -227,8 +201,7 @@ export function Hero() {
           {/* Image */}
           <div className="relative">
             <div
-              className="aspect-square rounded-3xl overflow-hidden shadow-2xl border border-border relative"
-              style={{ boxShadow: currentCarouselGlow }}
+              className="aspect-square rounded-3xl overflow-hidden shadow-2xl border border-white/20 relative"
             >
               <AnimatePresence initial={false} custom={direction} mode="popLayout">
                 <motion.div
@@ -255,17 +228,17 @@ export function Hero() {
               <div className="absolute bottom-4 right-4 flex gap-2">
                 <button
                   onClick={prevImage}
-                  className="bg-card/95 backdrop-blur hover:bg-card p-2.5 rounded-full shadow-md transition-all border border-border/50"
+                  className="bg-white/10 backdrop-blur hover:bg-white/20 p-2.5 rounded-full shadow-md transition-all border border-white/20"
                   aria-label="Previous image"
                 >
-                  <ChevronLeft className="h-5 w-5" />
+                  <ChevronLeft className="h-5 w-5 text-primary-foreground" />
                 </button>
                 <button
                   onClick={nextImage}
-                  className="bg-card/95 backdrop-blur hover:bg-card p-2.5 rounded-full shadow-md transition-all border border-border/50"
+                  className="bg-white/10 backdrop-blur hover:bg-white/20 p-2.5 rounded-full shadow-md transition-all border border-white/20"
                   aria-label="Next image"
                 >
-                  <ChevronRight className="h-5 w-5" />
+                  <ChevronRight className="h-5 w-5 text-primary-foreground" />
                 </button>
               </div>
             </div>

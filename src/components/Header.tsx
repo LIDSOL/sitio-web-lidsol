@@ -25,14 +25,28 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80 border-b border-border/50 shadow-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-14 items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2 sm:gap-3 flex-shrink-0 hover:opacity-80 transition-opacity">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 bg-primary rounded-full flex items-center justify-center">
-              <Code2 className="h-4 w-4 sm:h-5 sm:w-5 text-primary-foreground" />
-            </div>
-            <span className="text-base sm:text-lg font-semibold whitespace-nowrap">LIDSoL</span>
-          </a>
+          {/* Left side: Menu + Logo */}
+          <div className="flex items-center">
+            {/* Mobile Menu Button - only show on mobile */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+              className="lg:hidden mr-1 p-2 hover:bg-accent rounded-full transition-colors"
+            >
+              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
 
+            {/* Logo */}
+            <a href="#" className="flex items-center gap-2 sm:gap-3 flex-shrink-0 hover:opacity-80 transition-opacity">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 bg-primary rounded-full flex items-center justify-center">
+                <Code2 className="h-4 w-4 sm:h-5 sm:w-5 text-primary-foreground" />
+              </div>
+              <span className="text-base sm:text-lg font-semibold whitespace-nowrap">LIDSoL</span>
+            </a>
+          </div>
+
+          {/* Right side: Desktop nav or Mobile controls */}
+          <div className="flex items-center">
           {/* Desktop Navigation - Show on larger screens */}
           <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
             {navLinks.map((link) => (
@@ -61,7 +75,7 @@ export function Header() {
             </div>
           </nav>
 
-          {/* Mobile Menu Button & Controls */}
+          {/* Mobile Menu Button & Controls - only show on mobile */}
           <div className="lg:hidden flex items-center gap-2 sm:gap-3">
             <LanguageSelector />
             <div className="relative">
@@ -75,36 +89,27 @@ export function Header() {
                 <Moon className={`h-3.5 w-3.5 transition-opacity ${theme === "dark" ? "opacity-100 text-blue-300" : "opacity-40"}`} />
               </div>
             </div>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
-              className="p-2 rounded-full hover:bg-accent transition-colors"
-            >
-              {mobileMenuOpen ? (
-                <X className="h-5 w-5 sm:h-6 sm:w-6" />
-              ) : (
-                <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
-              )}
-            </button>
+          </div>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <nav className="lg:hidden py-4 space-y-2">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="block py-2 px-4 rounded-xl transition-colors hover:bg-accent font-medium"
-              >
-                {link.name[language]}
-              </a>
-            ))}
-          </nav>
-        )}
       </div>
+
+      {/* Mobile Navigation */}
+      {mobileMenuOpen && (
+        <nav className="lg:hidden py-4 space-y-2">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-2 px-4 rounded-xl transition-colors hover:bg-accent font-medium"
+            >
+              {link.name[language]}
+            </a>
+          ))}
+        </nav>
+      )}
     </header>
   );
 }
