@@ -10,6 +10,7 @@ import Link from "next/link";
 export function Hero() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const { language } = useLanguage();
   const { theme } = useTheme();
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -37,6 +38,13 @@ export function Hero() {
     }
   ];
 
+  useEffect(() => {
+    carouselImages.forEach((img) => {
+      const image = new Image();
+      image.src = img.src;
+    });
+  }, []);
+
   const resetTimer = useCallback(() => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
@@ -47,17 +55,23 @@ export function Hero() {
     }, 4000);
   }, [carouselImages.length]);
 
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
     setDirection(1);
     setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
     resetTimer();
-  };
+    setTimeout(() => setIsTransitioning(false), 400);
+  }, [isTransitioning, carouselImages.length, resetTimer]);
 
-  const prevImage = () => {
+  const prevImage = useCallback(() => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
     setDirection(-1);
     setCurrentImageIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
     resetTimer();
-  };
+    setTimeout(() => setIsTransitioning(false), 400);
+  }, [isTransitioning, carouselImages.length, resetTimer]);
 
   useEffect(() => {
     resetTimer();
@@ -118,26 +132,34 @@ export function Hero() {
 
   const currentGlow = theme === "dark" ? glowDark : glowLight;
 
+  const exploreButtonGlow = theme === "dark"
+    ? `0 0 7px rgba(28,113,216,0.01), 0 0 14px rgba(28,113,216,0.02), 0 0 25px rgba(28,113,216,0.1), 0 0 35px rgba(28,113,216,0.3)`
+    : `0 0 7px rgba(28,113,216,0.1), 0 0 18px rgba(28,113,216,0.2), 0 0 28px rgba(28,113,216,0.4), 0 0 40px rgba(28,113,216,0.9)`;
+
+  const exploreButtonGlowHover = theme === "dark"
+    ? `0 0 11px rgba(28,113,216,0.49), 0 0 21px rgba(28,113,216,0.15), 0 0 32px rgba(28,113,216,0.25), 0 0 46px rgba(28,113,216,0.1)`
+    : `0 0 13px rgba(28,113,216,0.53), 0 0 25px rgba(28,113,216,0.19), 0 0 35px rgba(28,113,216,0.28), 0 0 49px rgba(28,113,216,0.8)`;
+
   const carouselGlowDark = `
-    0 0 28px rgba(28,113,216,0.4),
-    0 0 28px rgba(28,113,216,0.15),
-    0 0 44px rgba(28,113,216,0.1),
-    0 0 61px rgba(28,113,216,0.05),
-    0 0 77px rgba(28,113,216,0.3)
+    0 0 25px rgba(28,113,216,0.01),
+    0 0 30px rgba(28,113,216,0.05),
+    0 0 34px rgba(28,113,216,0.09),
+    0 0 37px rgba(28,113,216,0.1),
+    0 0 40px rgba(28,113,216,0.5)
   `;
 
   const carouselGlowLight = `
-    0 0 39px rgba(28,113,216,0.5),
-    0 0 33px rgba(28,113,216,0.2),
-    0 0 50px rgba(28,113,216,0.15),
-    0 0 66px rgba(28,113,216,0.1),
-    0 0 83px rgba(28,113,216,0.05)
+    0 0 30px rgba(28,113,216,0.1),
+    0 0 40px rgba(28,113,216,0.2),
+    0 0 50px rgba(28,113,216,0.3),
+    0 0 65px rgba(28,113,216,0.4),
+    0 0 85px rgba(28,113,216,0.5)
   `;
 
   const currentCarouselGlow = theme === "dark" ? carouselGlowDark : carouselGlowLight;
 
   return (
-    <section className="relative overflow-hidden bg-primary text-primary-foreground py-20 sm:py-32">
+    <section className="relative overflow-hidden bg-background py-20 sm:py-32">
       {/* Ambient background glows */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-[15%] -right-[10%] w-[660px] h-[660px] bg-[#1e78e4]/50 rounded-full blur-[143px]" />
@@ -147,53 +169,72 @@ export function Hero() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="space-y-8">
-            <div className="inline-block px-5 py-2 bg-white/10 text-primary-foreground rounded-full border border-white/20">
+            <div className="inline-block px-5 py-2 bg-primary/10 text-foreground rounded-full border border-primary/20">
               {t.tagline[language]}
             </div>
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl text-primary-foreground">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl text-foreground">
               <ImageWithFallback
-                src={theme === "dark" ? "/home/LIDSOLlogo.svg" : "/home/LIDSOLlogo.svg"}
+                src={theme === "dark" ? "/home/LIDSOLlogoColor-oscuro.svg" : "/home/LIDSOLlogoColor-claro.svg"}
                 alt="LIDSoL"
-                className="h-18 w-auto drop-shadow-lg"
+                className="h-18 w-auto"
               />
             </h1>
 
-            <p className="text-xl text-primary-foreground/80 max-w-2xl">
+            <p className="text-xl text-muted-foreground max-w-2xl">
               {t.description[language]}
             </p>
 
-            <div className="flex flex-wrap gap-4 pt-4">
+            <div className="flex flex-wrap gap-4">
+              {/* Explore Projects button with glow */}
               <Button
-                size="lg"
-                variant="outline"
                 asChild
-                className="gap-2 border-2"
-                style={{ animation: "wiggle 1s ease-in-out infinite" }}
+                size="lg"
+                className="relative transition-all duration-300"
+                style={{
+                  animation: "wiggle 1s ease-in-out infinite",
+                  boxShadow: exploreButtonGlow
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = exploreButtonGlowHover;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = exploreButtonGlow;
+                }}
               >
                 <Link href="#projects">
                   {t.exploreProjects[language]} <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild>
-                <a href={mailtoLink}>
-                  {t.joinCommunity[language]}
-                </a>
-              </Button>
+
+              {/* Join Community button with subtle glow */}
+              <div className="relative">
+                <div className="absolute inset-0 rounded-full bg-primary/20 blur-md scale-110" />
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="relative"
+                >
+                  <a href={mailtoLink}>
+                    {t.joinCommunity[language]}
+                  </a>
+                </Button>
+              </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-white/20">
+            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border">
               <div>
-                <div className="text-3xl text-primary-foreground">5+</div>
-                <div className="text-sm text-primary-foreground/70">{t.activeProjects[language]}</div>
+                <div className="text-3xl text-foreground">5+</div>
+                <div className="text-sm text-muted-foreground">{t.activeProjects[language]}</div>
               </div>
               <div>
-                <div className="text-3xl text-primary-foreground">10+</div>
-                <div className="text-sm text-primary-foreground/70">{t.contributors[language]}</div>
+                <div className="text-3xl text-foreground">10+</div>
+                <div className="text-sm text-muted-foreground">{t.contributors[language]}</div>
               </div>
               <div>
-                <div className="text-3xl text-primary-foreground">100%</div>
-                <div className="text-sm text-primary-foreground/70">{t.freeOpen[language]}</div>
+                <div className="text-3xl text-foreground">100%</div>
+                <div className="text-sm text-muted-foreground">{t.freeOpen[language]}</div>
               </div>
             </div>
           </div>
@@ -201,18 +242,18 @@ export function Hero() {
           {/* Image */}
           <div className="relative">
             <div
-              className="aspect-square rounded-3xl overflow-hidden shadow-2xl border border-white/20 relative"
+              className="aspect-square rounded-3xl overflow-hidden shadow-2xl border border-border relative"
+              style={{ boxShadow: currentCarouselGlow }}
             >
-              <AnimatePresence initial={false} custom={direction} mode="popLayout">
+              <AnimatePresence initial={false} custom={direction} mode="sync">
                 <motion.div
                   key={currentImageIndex}
                   custom={direction}
-                  initial={{ x: direction > 0 ? 300 : -300, opacity: 0 }}
+                  initial={{ x: direction > 0 ? "100%" : "-100%", opacity: 1 }}
                   animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: direction > 0 ? -300 : 300, opacity: 0 }}
+                  exit={{ x: direction > 0 ? "-100%" : "100%", opacity: 1 }}
                   transition={{
-                    x: { type: "spring", stiffness: 300, damping: 30 },
-                    opacity: { duration: 0.2 }
+                    x: { duration: 0.2, ease: "easeOut" }
                   }}
                   className="absolute inset-0"
                 >
@@ -228,17 +269,17 @@ export function Hero() {
               <div className="absolute bottom-4 right-4 flex gap-2">
                 <button
                   onClick={prevImage}
-                  className="bg-white/10 backdrop-blur hover:bg-white/20 p-2.5 rounded-full shadow-md transition-all border border-white/20"
+                  className="bg-card/95 backdrop-blur hover:bg-card p-2.5 rounded-full shadow-md transition-all border border-border/50"
                   aria-label="Previous image"
                 >
-                  <ChevronLeft className="h-5 w-5 text-primary-foreground" />
+                  <ChevronLeft className="h-5 w-5" />
                 </button>
                 <button
                   onClick={nextImage}
-                  className="bg-white/10 backdrop-blur hover:bg-white/20 p-2.5 rounded-full shadow-md transition-all border border-white/20"
+                  className="bg-card/95 backdrop-blur hover:bg-card p-2.5 rounded-full shadow-md transition-all border border-border/50"
                   aria-label="Next image"
                 >
-                  <ChevronRight className="h-5 w-5 text-primary-foreground" />
+                  <ChevronRight className="h-5 w-5" />
                 </button>
               </div>
             </div>
