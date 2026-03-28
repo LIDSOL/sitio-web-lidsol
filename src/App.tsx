@@ -56,9 +56,8 @@ export default function App() {
     const handleHashChange = () => {
       const hash = window.location.hash;
       
-      // Handle contact - scroll to footer
+      // Handle contact - scroll to footer without changing view
       if (hash === "#contact") {
-        setCurrentView("home");
         setTimeout(() => {
           const footer = document.getElementById("footer");
           footer?.scrollIntoView({ behavior: "smooth" });
