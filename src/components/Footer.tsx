@@ -1,4 +1,3 @@
-// Íconos
 import { Code2 } from "lucide-react";
 import { FacebookIcon } from "./ui/source/icons/FacebookIcon";
 import { YoutubeIcon } from "./ui/source/icons/YoutubeIcon";
@@ -8,34 +7,30 @@ import { GithubIcon } from "./ui/source/icons/GithubIcon";
 import { TwitterIcon } from "./ui/source/icons/TwitterIcon";
 import { GitlabIcon } from "./ui/source/icons/GitlabIcon";
 import { LinkedinIcon } from "./ui/source/icons/linkedinIcon";
+import { useLanguage } from "./LanguageProvider";
 
 export function Footer() {
-  /**
-   * Links del footer
-   * - Estructura declarativa → fácil de extender
-   * - No se recalcula nada en render
-   */
-  const footerLinks = {
-    Ubicación: [
-      {
-        name: "Edificio P, Piso 2, P-213",
-        href: "https://www.openstreetmap.org/directions?engine=osrm_car&route=19.3277325,-99.1823637",
-      },
-      {
-        name: "Conjunto Sur (Anexo), Facultad de Ingeniería",
-        href: "https://www.openstreetmap.org/directions?engine=osrm_car&route=19.3277325,-99.1823637",
-      },
-      {
-        name: "Cto. Exterior 18, CU, Ciudad de México 04510",
-        href: "https://www.openstreetmap.org/directions?engine=osrm_car&route=19.3277325,-99.1823637",
-      },
-    ],
-    "Sitios de interes": [
-      { name: "Universidad Nacional Autónoma de México", href: "https://www.unam.mx" },
-      { name: "Facultad de Ingeniería", href: "https://www.ingenieria.unam.mx" },
-      { name: "División de Ingeniería Electrica", href: "https://www.fi-b.unam.mx" },
-    ],
+  const { language } = useLanguage();
+
+  const t = {
+    contact: { en: "Contact", es: "Contacto" },
+    location: { en: "Location", es: "Ubicación" },
+    interestSites: { en: "Sites of interest", es: "Sitios de interés" },
+    copyright: { en: "© 2026 Free Software Lab. MIT License.", es: "© 2026 Free Software Lab. Licencia MIT." },
+    license: { en: "License", es: "Licencia" },
   };
+
+  const locationLinks = [
+    { name: { en: "Building P, Floor 2, P-213", es: "Edificio P, Piso 2, P-213" }, href: "https://www.openstreetmap.org/directions?engine=osrm_car&route=19.3277325,-99.1823637" },
+    { name: { en: "Conjunto Sur (Annex), FI", es: "Conjunto Sur (Anexo), FI" }, href: "https://www.openstreetmap.org/directions?engine=osrm_car&route=19.3277325,-99.1823637" },
+    { name: { en: "Cto. Exterior 18, CU, CDMX 04510", es: "Cto. Exterior 18, CU, CDMX 04510" }, href: "https://www.openstreetmap.org/directions?engine=osrm_car&route=19.3277325,-99.1823637" },
+  ];
+
+  const interestSitesLinks = [
+    { name: { en: "UNAM", es: "UNAM" }, href: "https://www.unam.mx" },
+    { name: { en: "Faculty of Engineering", es: "Facultad de Ingeniería" }, href: "https://www.ingenieria.unam.mx" },
+    { name: { en: "Electrical Engineering Division", es: "División de Ingeniería Eléctrica" }, href: "https://www.fi-b.unam.mx" },
+  ];
 
   return (
     <footer
@@ -44,18 +39,12 @@ export function Footer() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/*
-          Grid principal:
-          - Mobile: una columna (stack vertical)
-          - Desktop: 6 columnas para control fino de posición
-        */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 mb-12">
+        <div className="flex flex-col md:flex-row md:justify-between gap-12 md:gap-7 mb-12">
 
-          {/* ================= Contacto ================= */}
-          <div className="lg:col-span-2 mb-12 lg:mb-0">
+          <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-4">
               <Code2 className="h-8 w-8 text-blue-400 dark:text-blue-500" />
-              <span className="text-xl text-white">Contacto</span>
+              <span className="text-xl text-white">{t.contact[language]}</span>
             </div>
 
             <p className="text-gray-400 dark:text-gray-500 mb-6">
@@ -67,27 +56,29 @@ export function Footer() {
               </a>
             </p>
 
-            {/* Redes sociales */}
-
             <div className="flex flex-wrap gap-4 mb-8">
-              <a href="https://github.com/lidsol" aria-label="Github" className="hover:text-white">
+              <a href="https://github.com/lidsol" target="_blank" rel="noopener noreferrer" aria-label="Github" className="hover:text-white">
                 <GithubIcon className="h-5 w-5" />
               </a>
-              <a href="https://gitlab.com/lidsol" aria-label="Gitlab" className="hover:text-white">
+              <a href="https://gitlab.com/lidsol" target="_blank" rel="noopener noreferrer" aria-label="Gitlab" className="hover:text-white">
                 <GitlabIcon className="h-5 w-5" />
               </a>
               <a
                 href="https://www.linkedin.com/company/lidsol/"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="LinkedIn"
                 className="hover:text-white"
               >
                 <LinkedinIcon className="h-5 w-5" />
               </a>
-              <a href="https://www.youtube.com/@lidsol" aria-label="Youtube" className="hover:text-white">
+              <a href="https://www.youtube.com/@lidsol" target="_blank" rel="noopener noreferrer" aria-label="Youtube" className="hover:text-white">
                 <YoutubeIcon className="h-5 w-5" />
               </a>
               <a
                 href="https://www.facebook.com/lidsol.unam"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Facebook"
                 className="hover:text-white"
               >
@@ -95,58 +86,59 @@ export function Footer() {
               </a>
               <a
                 href="https://www.instagram.com/lidsol_fi"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Instagram"
                 className="hover:text-white"
               >
                 <InstagramIcon className="h-5 w-5" />
               </a>
-              <a href="https://x.com/lidsol" aria-label="Twitter" className="hover:text-white">
+              <a href="https://x.com/lidsol" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-white">
                 <TwitterIcon className="h-5 w-5" />
               </a>
-              <a href="https://telegram.me/lidsol" aria-label="Telegram" className="hover:text-white">
+              <a href="https://telegram.me/lidsol" target="_blank" rel="noopener noreferrer" aria-label="Telegram" className="hover:text-white">
                 <SendIcon className="h-5 w-5" />
               </a>
             </div>
           </div>
 
-          {/* ================= Ubicación (centrado en desktop) ================= */}
-          <div className="lg:col-span-2 lg:col-start-3 mt-12/ lg:mt-0 mb-12">
-            <h3 className="text-white mb-4">Ubicación</h3>
-            <ul className="space-y-2">
-              {footerLinks["Ubicación"].map((link) => (
-                <li key={link.name}>
-                  <a href={link.href} className="hover:text-white transition-colors">
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <div className="md:ml-auto flex flex-col md:flex-row gap-12 md:gap-7">
+            <div className="min-w-0">
+              <h3 className="text-white mb-4">{t.location[language]}</h3>
+              <ul className="space-y-2">
+                {locationLinks.map((link) => (
+                  <li key={link.name[language]}>
+                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                      {link.name[language]}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* ================= Sitios de interés (derecha en desktop) ================= */}
-          <div className="lg:col-span-2 lg:col-start-5 mt-12 lg:mt-0 mb-12">
-            <h3 className="text-white mb-4">Sitios de interes</h3>
-            <ul className="space-y-2">
-              {footerLinks["Sitios de interes"].map((link) => (
-                <li key={link.name}>
-                  <a href={link.href} className="hover:text-white transition-colors">
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <div className="min-w-0">
+              <h3 className="text-white mb-4">{t.interestSites[language]}</h3>
+              <ul className="space-y-2">
+                {interestSitesLinks.map((link) => (
+                  <li key={link.name[language]}>
+                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                      {link.name[language]}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
-        {/* ================= Barra inferior ================= */}
         <div className="pt-8 border-t border-gray-800 dark:border-gray-900 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-400 dark:text-gray-500">
-            © 2024 Free Software Lab. Licensed under GPL-3.0.
+            {t.copyright[language]}
           </p>
           <div className="flex gap-6">
-            <a href="/privacy" className="text-sm hover:text-white">Privacy Policy</a>
-            <a href="/terms" className="text-sm hover:text-white">Terms of Service</a>
-            <a href="/license" className="text-sm hover:text-white">License</a>
+            <button onClick={() => window.location.hash = "#license"} className="text-sm text-gray-400 dark:text-gray-500 hover:text-white transition-colors">
+              {t.license[language]}
+            </button>
           </div>
         </div>
       </div>

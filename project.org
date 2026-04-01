@@ -1,5 +1,5 @@
 * Proyecto
-** TODO Organización del desarrollo
+** DONE Organización del desarrollo
 ** DONE Prototipo de figma
 ** DONE Plaenación de desarrollo
 ** IN-PROGRESS Desarrollo
@@ -255,12 +255,12 @@ DEADLINE: <2026-03-13 Fri>
   - [X] ¿Menú de hamburguesa a la izquieda o derecha?
   - [X] El menú debe aparecer a la izquierda y con animación (estilo nautilus)
   - [X] Colocar un ícono a cada sección (tal vez sea bueno que solo sea visible en esta vista de pantallas pequeñas)
-**** TODO Footer [0%]
+**** DONE Footer [100%]
 DEADLINE: <2026-03-13 Fri>
-- [ ] Mejorar la distribución de los elementos (principalmente en pantalla grande)
-- [ ] Hacer que al dar click se abra en una pestaña nueva y no en la actual
-- [ ] Debe ser compatible con el selector de idioma
-- [ ] Hacer una página de licencias...
+- [X] Mejorar la distribución de los elementos (principalmente en pantalla grande)
+- [X] Hacer que al dar click se abra en una pestaña nueva y no en la actual
+- [X] Debe ser compatible con el selector de idioma
+- [X] Hacer una página de licencias...
 **** IN-PROGRESS Blog (Blog.tsx y BlogDetail.tsx) [50%]
 DEADLINE: <2026-03-13 Fri>
 - [X] Blog [100%]

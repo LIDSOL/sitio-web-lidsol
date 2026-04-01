@@ -142,10 +142,10 @@ export function Hero() {
 
   const carouselGlowDark = `
     0 0 25px rgba(28,113,216,0.01),
-    0 0 30px rgba(28,113,216,0.05),
-    0 0 34px rgba(28,113,216,0.09),
-    0 0 37px rgba(28,113,216,0.1),
-    0 0 40px rgba(28,113,216,0.5)
+    0 0 28px rgba(28,113,216,0.05),
+    0 0 30px rgba(28,113,216,0.09),
+    0 0 34px rgba(28,113,216,0.1),
+    0 0 35px rgba(28,113,216,0.2)
   `;
 
   const carouselGlowLight = `

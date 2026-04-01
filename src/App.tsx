@@ -17,6 +17,7 @@ import { Projects } from "./components/Projects";
 import { ProjectDetail } from "./components/ProjectDetail";
 import { About } from "./components/About";
 import { AboutMember } from "./components/AboutMember";
+import { License } from "./components/License";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { LanguageProvider } from "./components/LanguageProvider";
 import { CursorEffect } from "./components/CursorEffect";
@@ -41,7 +42,8 @@ type ViewType =
   | "projects"
   | "projectDetail"
   | "about"
-  | "aboutMember";
+  | "aboutMember"
+  | "license";
 
 export default function App() {
   const [currentView, setCurrentView] = useState<ViewType>("home");
@@ -129,6 +131,11 @@ export default function App() {
           setSelectedPublicationId(publicationId);
           window.scrollTo(0, 0);
         }
+      }
+      // Handle license
+      else if (hash === "#license") {
+        setCurrentView("license");
+        window.scrollTo(0, 0);
       }
       // Handle projects
       else if (hash === "#projects") {
@@ -282,6 +289,8 @@ export default function App() {
             <AboutMember member={selectedMember} onBack={handleBackToAbout} />
           ) : currentView === "about" ? (
             <About onMemberClick={handleMemberClick} />
+          ) : currentView === "license" ? (
+            <License />
           ) : (
             <>
               <Hero />
