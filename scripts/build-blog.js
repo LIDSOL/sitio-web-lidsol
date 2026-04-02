@@ -265,6 +265,24 @@ function processContent(content, postSlug, copiedImages) {
   return content;
 }
 
+function calculateReadTime(content) {
+  const cleanContent = content
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/`[^`]+`/g, '')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+    .replace(/\[[^\]]*\]\([^)]*\)/g, '')
+    .replace(/#{1,6}\s/g, '')
+    .replace(/[*_~`>]/g, '')
+    .replace(/\|[^|\n]*\|/g, '')
+    .replace(/\$\$[\s\S]*?\$\$/g, '')
+    .replace(/\$[^$\n]+\$/g, '')
+    .trim();
+  
+  const words = cleanContent.split(/\s+/).filter(word => word.length > 0).length;
+  const minutes = Math.max(1, Math.ceil(words / 200));
+  return `${minutes} min`;
+}
+
 function getPostTitleFromMetadata(metadata, lang) {
   if (metadata.title) {
     if (typeof metadata.title === 'object') {
@@ -358,7 +376,8 @@ function buildBlogPosts() {
       postData.excerpt[lang] = getPostFieldFromMetadata(metadata, 'excerpt', lang) || getPostFieldFromMetadata(metadata, 'summary', lang);
       postData.authors[lang] = getPostFieldFromMetadata(metadata, 'author', lang, ['LIDSOL']);
       postData.date[lang] = formatDate(getPostFieldFromMetadata(metadata, 'date', lang));
-      postData.readTime[lang] = getPostFieldFromMetadata(metadata, 'readTime', lang, '5 min');
+      const manualReadTime = getPostFieldFromMetadata(metadata, 'readTime', lang, null);
+      postData.readTime[lang] = manualReadTime || calculateReadTime(content);
       postData.content[lang] = content;
       
       if (metadata.tags && Array.isArray(metadata.tags)) {

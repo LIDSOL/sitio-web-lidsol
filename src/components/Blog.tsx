@@ -104,8 +104,9 @@ export function Blog({ onPostClick }: BlogProps) {
                     <Calendar className="h-4 w-4" />
                     <span>{getLocalizedPost(featuredPost).date}</span>
                   </div>
-                  <div>
-                    {getLocalizedPost(featuredPost).readTime} {language === 'en' ? 'min read' : 'min de lectura'}
+                  <div className="flex items-center gap-2">
+                    <Clock className="h-4 w-4" />
+                    <span>{getLocalizedPost(featuredPost).readTime} {language === 'en' ? 'read' : 'de lectura'}</span>
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2 mb-6">

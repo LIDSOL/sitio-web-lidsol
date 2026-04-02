@@ -3,7 +3,7 @@ title: Free Route 1
 excerpt: A journey through the world of free software from the perspective of a non-programmer user.
 authors: ["Martin Fulgueiras"]
 date: "2024-10-24"
-readTime: "10 min"
+readTime: "3 min"
 tags:
   - "Free Software"
   - "Linux"

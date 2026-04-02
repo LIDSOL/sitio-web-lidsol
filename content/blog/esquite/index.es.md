@@ -3,7 +3,7 @@ title: Esquite
 excerpt: Presentamos el framework Esquite pensado para personas que quieren administrar un corpus paralelo
 authors: ["umoqnier"]
 date: "2020-07-13"
-readTime: "5 min"
+readTime: "10 min"
 tags:
   - "nlp"
   - "corpus paralelo"

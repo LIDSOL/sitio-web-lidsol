@@ -5,7 +5,7 @@ authors:
   - "emilio1625"
   - "Juan M.S. Rios"
 date: "2020-06-06"
-readTime: "5 min"
+readTime: "4 min"
 tags:
   - "tor"
   - "privacy"

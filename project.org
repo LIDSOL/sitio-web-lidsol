@@ -261,65 +261,6 @@ DEADLINE: <2026-03-13 Fri>
 - [X] Hacer que al dar click se abra en una pestaña nueva y no en la actual
 - [X] Debe ser compatible con el selector de idioma
 - [X] Hacer una página de licencias...
-**** IN-PROGRESS Blog (Blog.tsx y BlogDetail.tsx) [50%]
-DEADLINE: <2026-03-13 Fri>
-- [X] Blog [100%]
-  - [X] Hacer que el Blog y el BlogDetail soporten el multi-idioma
-  - [X] Hay una _Tag_, *general*, que se muestra tanto en el Blog como en BlogDetail, esta no respeta el multi-idioma. Mejorar esto, para que funcionen correctamente los tags (tomados desde los archivos de markdown)
-  - [X] Mejoras en la responsividad
-    - [X] Separar más el autor, de la fecha del tiempo de lectura.
-    - [X] Reducir el espacio entre la imágen y el título del post.
-    - [X] Aumentar el espacio del título cuando hay salto de línea.
-    - [X] Cuando se ve en pantalla pequeña, sería mejor que la descripción o los tags se oculten.
-  - [X] El botón de "leer más" está más arriba o abajo dependiendo de la cantidad de tags y de la longitud del título del post, esto hacer que se vea muy irregular. Pasaba algo simiar con las tarjetas de miembros, tal vez puedas apoyarte de ese código para solucionarlo.
-  - [X] Mejoras visuales
-    - [X] Cambiar el bg en el boton readMore
-    - [X] Cambiar el bg en los tags
-    - [X] Añadir la misma animación que tiene la sección de proyectos
-    - [X] Hacer las tarjetas más pequeñas
-  - [X] Hay un botón hasta la parte inferior "Cargar más artículos" que no tiene funcionalidad. Podría ser bueno limitar la cantidad de post que se muestran y darle uso, o bien, retirarlo y que quede como un scroll con todo el contenido sin más.
-- [-] BlogDetail [66%]
-  - [X] Sería bueno reducir la calidad de algunas de las imágenes, pues son muy pesadas y provocan que el sitio tarde en cargar, o en su defecto, hacer que se cargue una  versión reducida en el Blog y en BlogDetail, pero en este último, al dar click en la imágen, verla en tamaño completo a modo de galería. Hacer lazy loading
-  - [-] Mejorar los meta-datos del sitio [80%]
-    - [X] Eliminar los metadatos no necesarios de los .md
-    - [X] Corrección al formato de fechas
-    - [X] Que el BlogDetail enlace al perfil del miembro del lab que escribió el articulo
-    - [X] Añadir imágenes de portada a los post que no tienen. Mejorar aquellas que chocan con la estética del sitio.
-    - [ ] Tiempo de lectura
-  - [X] Mejora en la presentación del post [100%]
-    - [X] Hacer que el texto tenga justificación completa.
-      apliqué la misma solución que en ProjectDetail.tsx:- text-justify hyphens-auto en las clases, style={{textAlign: 'justify'}} inline
-    - [X] Las imágenes deben tener bordes redondeados. Como la imagen de portada.
-      El borde redondeado de las imágenes del markdown se cambió de rounded-lg a rounded-2xl, que es el mismo estilo que usa la imagen de portada. La intención es que el estilo sea "muy libadwaita".
-    - [X] Cambiar el color del botón de "volver al blog".
-    - [X] Cambiar el color de los tags a secondary.
-    - [X] Mejorar el aspecto de los bloques de código de markdown
-        Encontré este "plugin" llamado, react-syntax-highlighter que puede ayudarme con el  formateo de sintaxis.
-        Ahora el componente pre también maneja los fenced code blocks. Extrae el className del componente code hijo y lo usa para renderizar con SyntaxHighlighter.
-        El componente pre se modificó para que cuando no tenga lenguaje, aun así use SyntaxHighlighter pero sin especificar el lenguaje (o usando un lenguaje genérico como "text"). Se modifica el caso if (language) para que también maneje el caso sin lenguaje, mostrando el bloque con el mismo estilo pero sin highlighting específico.
-    - [X] Añadir formateo matemático
-      - Se instaló rehype-katex, remark-math y katex
-      - Se importaron los plugins y el CSS de KaTeX
-      - Se agregó remarkMath y rehypeKatex a ReactMarkdown
-      - Se agreguó el CSS de KaTeX desde CDN en el HTML.
-    - [X] Mejorar el aspecto de las tablas markdown.
-    - [X] {{% alert warning %}} ¿NANI KORE!
-***** Notas
-- *Más adelante, sería bueno añadir paginado*
-- Me doy cuanta que el los separadores de markdown no son correctamente soportados (---) en BlogDetail
-- Se usarán archivos de markdown para el blog, cada [[file:content/][subdirectorio de content]] será un post de blog. Hasta ahora se habían usado archivos .ts, pero para el escribir una artículo de blog, sería muy tedioso.
-
-- Separación clara. Esto es contenido y no código.
-- Es convencional: SSGs como Hugo, Jekyll usan carpetas similares
-
-Se elige este directorio por:
-El archivo src/data/blogPosts.ts se sigue usando, este genera los componentes [[file:src/components/Blog.tsx][Blog.tsx]] y [[file:src/components/BlogPost.tsx][BlogPost.tsx]]. Para no editarlo manualmente se añadió un [[file:scripts/build-blog.js][script]]  que genera automáticamente el contenido desde [[file:content/blog/][el directorio content/blog]]
-  - El sitio usa LenguajeProvider con un hook y useLanguage() que retorna language ( "en" | "es" ).
-  - Los datos tienen campos tipo: { en: string; es: string }
-  - Los componentes usan const { language } = useLanguage() y se acceden con courses[0].title[language]
-    - Para implementar el soporte multi-idioma:
-      - Se modificará el directorio de cada post para contener versiones por idioma, un archivo por cada idioma (en este caso solo inglés-español, por ejemplo: index.es.md, index.en.md).
-      - Se modificará el[[file:scripts/build-blog.js][ script]] que genera el[[file:src/data/blogPosts.ts][ archito ts]] con que usan los compontes que genran el blog. Deben detectar los archivos con sufijos .es.md o en.md y generar la estructura tipo json adecuada.
 **** DONE ProjectDetail y Projects
 DEADLINE: <2026-02-12 Thu>
 - [X] 2.2.0 Detalles de la página de proyectos [100%]
@@ -361,6 +302,65 @@ DEADLINE: <2026-02-12 Thu>
     - src/components/ProjectDetail.tsx: Actualizado para usar project.tags[language]
     - src/components/FeaturedProjects.tsx: Actualizado para usar project.tags?.[language]
   - [X] Verificar el estado de los proyectos (para que el ícono sea el adecuado)
+**** DONE Blog (Blog.tsx y BlogDetail.tsx) [100%]
+DEADLINE: <2026-03-13 Fri>
+- [X] Blog [100%]
+  - [X] Hacer que el Blog y el BlogDetail soporten el multi-idioma
+  - [X] Hay una _Tag_, *general*, que se muestra tanto en el Blog como en BlogDetail, esta no respeta el multi-idioma. Mejorar esto, para que funcionen correctamente los tags (tomados desde los archivos de markdown)
+  - [X] Mejoras en la responsividad
+    - [X] Separar más el autor, de la fecha del tiempo de lectura.
+    - [X] Reducir el espacio entre la imágen y el título del post.
+    - [X] Aumentar el espacio del título cuando hay salto de línea.
+    - [X] Cuando se ve en pantalla pequeña, sería mejor que la descripción o los tags se oculten.
+  - [X] El botón de "leer más" está más arriba o abajo dependiendo de la cantidad de tags y de la longitud del título del post, esto hacer que se vea muy irregular. Pasaba algo simiar con las tarjetas de miembros, tal vez puedas apoyarte de ese código para solucionarlo.
+  - [X] Mejoras visuales
+    - [X] Cambiar el bg en el boton readMore
+    - [X] Cambiar el bg en los tags
+    - [X] Añadir la misma animación que tiene la sección de proyectos
+    - [X] Hacer las tarjetas más pequeñas
+  - [X] Hay un botón hasta la parte inferior "Cargar más artículos" que no tiene funcionalidad. Podría ser bueno limitar la cantidad de post que se muestran y darle uso, o bien, retirarlo y que quede como un scroll con todo el contenido sin más.
+- [X] BlogDetail [100%]
+  - [X] Sería bueno reducir la calidad de algunas de las imágenes, pues son muy pesadas y provocan que el sitio tarde en cargar, o en su defecto, hacer que se cargue una  versión reducida en el Blog y en BlogDetail, pero en este último, al dar click en la imágen, verla en tamaño completo a modo de galería. Hacer lazy loading
+  - [X] Mejorar los meta-datos del sitio [100%]
+    - [X] Eliminar los metadatos no necesarios de los .md
+    - [X] Corrección al formato de fechas
+    - [X] Que el BlogDetail enlace al perfil del miembro del lab que escribió el articulo
+    - [X] Añadir imágenes de portada a los post que no tienen. Mejorar aquellas que chocan con la estética del sitio.
+    - [X] Tiempo de lectura
+  - [X] Mejora en la presentación del post [100%]
+    - [X] Hacer que el texto tenga justificación completa.
+      apliqué la misma solución que en ProjectDetail.tsx:- text-justify hyphens-auto en las clases, style={{textAlign: 'justify'}} inline
+    - [X] Las imágenes deben tener bordes redondeados. Como la imagen de portada.
+      El borde redondeado de las imágenes del markdown se cambió de rounded-lg a rounded-2xl, que es el mismo estilo que usa la imagen de portada. La intención es que el estilo sea "muy libadwaita".
+    - [X] Cambiar el color del botón de "volver al blog".
+    - [X] Cambiar el color de los tags a secondary.
+    - [X] Mejorar el aspecto de los bloques de código de markdown
+        Encontré este "plugin" llamado, react-syntax-highlighter que puede ayudarme con el  formateo de sintaxis.
+        Ahora el componente pre también maneja los fenced code blocks. Extrae el className del componente code hijo y lo usa para renderizar con SyntaxHighlighter.
+        El componente pre se modificó para que cuando no tenga lenguaje, aun así use SyntaxHighlighter pero sin especificar el lenguaje (o usando un lenguaje genérico como "text"). Se modifica el caso if (language) para que también maneje el caso sin lenguaje, mostrando el bloque con el mismo estilo pero sin highlighting específico.
+    - [X] Añadir formateo matemático
+      - Se instaló rehype-katex, remark-math y katex
+      - Se importaron los plugins y el CSS de KaTeX
+      - Se agregó remarkMath y rehypeKatex a ReactMarkdown
+      - Se agreguó el CSS de KaTeX desde CDN en el HTML.
+    - [X] Mejorar el aspecto de las tablas markdown.
+    - [X] {{% alert warning %}} ¿NANI KORE!
+***** Notas
+- *Más adelante, sería bueno añadir paginado*
+- Me doy cuanta que el los separadores de markdown no son correctamente soportados (---) en BlogDetail
+- Se usarán archivos de markdown para el blog, cada [[file:content/][subdirectorio de content]] será un post de blog. Hasta ahora se habían usado archivos .ts, pero para el escribir una artículo de blog, sería muy tedioso.
+
+- Separación clara. Esto es contenido y no código.
+- Es convencional: SSGs como Hugo, Jekyll usan carpetas similares
+
+Se elige este directorio por:
+El archivo src/data/blogPosts.ts se sigue usando, este genera los componentes [[file:src/components/Blog.tsx][Blog.tsx]] y [[file:src/components/BlogPost.tsx][BlogPost.tsx]]. Para no editarlo manualmente se añadió un [[file:scripts/build-blog.js][script]]  que genera automáticamente el contenido desde [[file:content/blog/][el directorio content/blog]]
+  - El sitio usa LenguajeProvider con un hook y useLanguage() que retorna language ( "en" | "es" ).
+  - Los datos tienen campos tipo: { en: string; es: string }
+  - Los componentes usan const { language } = useLanguage() y se acceden con courses[0].title[language]
+    - Para implementar el soporte multi-idioma:
+      - Se modificará el directorio de cada post para contener versiones por idioma, un archivo por cada idioma (en este caso solo inglés-español, por ejemplo: index.es.md, index.en.md).
+      - Se modificará el[[file:scripts/build-blog.js][ script]] que genera el[[file:src/data/blogPosts.ts][ archito ts]] con que usan los compontes que genran el blog. Deben detectar los archivos con sufijos .es.md o en.md y generar la estructura tipo json adecuada.
 **** IN-PROGRESS Events y EventDetail [0%]
 DEADLINE: <2026-03-10 Tue>
 - [ ] Mudar el contenido
@@ -377,10 +377,11 @@ DEADLINE: <2026-03-10 Tue>
   - [ ] FLISoL 2022
   - [ ] FLISoL 2023
   - [ ] FLISoL 2024
-- [ ] Implementar un sort como en la sección de proyectos
+- [ ] Implementar una función de calendario. Sería divertido poder exportar un archivo que se pueda cargar a una app de calendario con un ics.
+- [ ] En la descripción del evento, se debe mostar la fecha correspondiente en el calendario. en EventDetail.tsx
 - [ ] Implementar una "tarjeta" con todos los links de interés, event_url, etc
-- [ ] Implementar una función de calendario. Sería divertido poder exportar un archivo que se pueda cargar a una app de calendario con un ics..
-**** IN-PROGRESS CourseDetail y CourseDetail [25%]
+- [ ] Implementar un sort como en la sección de proyectos
+**** IN-PROGRESS CourseDetail y CourseDetail [22%]
 DEADLINE: <2026-03-07 Sat>
 - [-] Mudar el contenido al sitio actual [40%]
   - [X] Seminario de lisp
@@ -388,6 +389,7 @@ DEADLINE: <2026-03-07 Sat>
   - [ ] PumaHat
   - [ ] Curso básico de sysadmin GNU/Linux
   - [ ] Curso de LaTeX
+- [ ] Mejorar la responsividad
 - [X] Las fechas están atrasadas por un día
 - [X] Justificación completa en la descripción del curso y soporte para Markdown
 - [ ] Sería bueno que los tags también soporten el multiidioma

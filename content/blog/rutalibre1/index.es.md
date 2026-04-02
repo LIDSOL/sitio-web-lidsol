@@ -3,7 +3,7 @@ title: Ruta Libre 1
 excerpt: Un recorrido por el mundo del software libre desde la perspectiva de un usuario no programador.
 authors: ["Martin Fulgueiras"]
 date: "2024-10-24"
-readTime: "10 min"
+readTime: "3 min"
 tags:
   - "Software Libre"
   - "Linux"

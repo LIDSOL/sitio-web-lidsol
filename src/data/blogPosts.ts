@@ -22,8 +22,8 @@ export const blogPosts = [
       "en": "2025/02/02"
     },
     "readTime": {
-      "es": "5 min",
-      "en": "5 min"
+      "es": "2 min",
+      "en": "2 min"
     },
     "image": "/blog-images/reclu/featured.png",
     "tags": {
@@ -62,8 +62,8 @@ export const blogPosts = [
       "en": "2024/10/23"
     },
     "readTime": {
-      "es": "10 min",
-      "en": "10 min"
+      "es": "3 min",
+      "en": "3 min"
     },
     "image": "/blog-images/rutalibre1/featured.png",
     "tags": {
@@ -164,8 +164,8 @@ export const blogPosts = [
       "en": "2024/08/12"
     },
     "readTime": {
-      "es": "5 min",
-      "en": "5 min"
+      "es": "2 min",
+      "en": "2 min"
     },
     "image": "/blog-images/linux/featured.png",
     "tags": {
@@ -212,8 +212,8 @@ export const blogPosts = [
       "en": "2021/07/22"
     },
     "readTime": {
-      "es": "5 min",
-      "en": "5 min"
+      "es": "8 min",
+      "en": "8 min"
     },
     "image": "/blog-images/vagrant/featured.png",
     "tags": {
@@ -266,8 +266,8 @@ export const blogPosts = [
       "en": "2020/07/12"
     },
     "readTime": {
-      "es": "5 min",
-      "en": "5 min"
+      "es": "10 min",
+      "en": "10 min"
     },
     "image": "/blog-images/esquite/featured.png",
     "tags": {
@@ -318,8 +318,8 @@ export const blogPosts = [
       "en": "2020/07/11"
     },
     "readTime": {
-      "es": "5 min",
-      "en": "5 min"
+      "es": "15 min",
+      "en": "15 min"
     },
     "image": "/blog-images/pos-using-crf/featured.jpg",
     "tags": {
@@ -364,8 +364,8 @@ export const blogPosts = [
       "en": "2020/06/05"
     },
     "readTime": {
-      "es": "5 min",
-      "en": "5 min"
+      "es": "4 min",
+      "en": "4 min"
     },
     "image": "/blog-images/invitacion-a-instalar-nodos-de-tor/featured.png",
     "tags": {
@@ -410,8 +410,8 @@ export const blogPosts = [
       "en": "2019/12/21"
     },
     "readTime": {
-      "es": "5 min",
-      "en": "5 min"
+      "es": "6 min",
+      "en": "6 min"
     },
     "image": "/blog-images/ros-debootstrap/featured.png",
     "tags": {

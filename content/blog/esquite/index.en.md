@@ -3,7 +3,7 @@ title: Esquite
 excerpt: We present the Esquite framework designed for people who want to manage a parallel corpus
 authors: ["umoqnier"]
 date: "2020-07-13"
-readTime: "5 min"
+readTime: "10 min"
 tags:
   - "nlp"
   - "parallel corpus"

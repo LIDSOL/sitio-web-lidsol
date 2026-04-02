@@ -3,7 +3,7 @@ title: Reclutamiento LIDSOL UNAM
 excerpt: Únete al Laboratorio de Investigación y Desarrollo de Software Libre 🚀
 authors: ["LIDSOL"]
 date: "2025-02-03"
-readTime: "5 min"
+readTime: "2 min"
 tags:
   - "General"
 ---

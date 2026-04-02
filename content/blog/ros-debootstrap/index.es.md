@@ -3,7 +3,7 @@ title: "Instalar ROS en cualquier distro usando debootstrap y proot"
 excerpt: "ROS es asombroso, por desgracia solo se distribuye para Debian :c "
 authors: ["emilio1625"]
 date: "2019-12-22"
-readTime: "5 min"
+readTime: "6 min"
 tags:
   - "ROS"
   - "hardware"

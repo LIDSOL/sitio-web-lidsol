@@ -3,7 +3,7 @@ title: LIDSOL UNAM Recruitment
 excerpt: Join the Free Software Research and Development Laboratory 🚀
 authors: ["LIDSOL"]
 date: "2025-02-03"
-readTime: "5 min"
+readTime: "2 min"
 tags:
   - "General"
 ---
