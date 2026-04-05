@@ -250,7 +250,7 @@ export function LatestHighlights({
                       {t.eventLabel[language]}
                     </span>
                     <span className="text-muted-foreground/40">·</span>
-                    {latestEvent.tags.slice(0, 3).map((tag) => (
+                    {latestEvent.tags?.[language].slice(0, 3).map((tag) => (
                       <Badge key={tag} variant="secondary" className="text-xs">
                         {tag}
                       </Badge>
@@ -264,7 +264,7 @@ export function LatestHighlights({
 
                   {/* Description */}
                   <p className="text-muted-foreground line-clamp-3 flex-1 min-h-[3rem]">
-                    {latestEvent.shortDescription[language]}
+                    {latestEvent.summary?.[language]}
                   </p>
                 </div>
 
@@ -279,7 +279,7 @@ export function LatestHighlights({
                 <div className="flex items-center flex-wrap gap-4 text-sm text-muted-foreground pt-4 border-t border-border/60">
                   <div className="flex items-center gap-1.5">
                     <Calendar className="h-3.5 w-3.5 text-primary" />
-                    <span>{latestEvent.date}</span>
+                    <span>{latestEvent.startDate}</span>
                   </div>
                   <span className="text-muted-foreground/40">·</span>
                   <div className="flex items-center gap-1.5">
@@ -289,7 +289,7 @@ export function LatestHighlights({
                   <span className="text-muted-foreground/40">·</span>
                   <div className="flex items-center gap-1.5">
                     <MapPin className="h-3.5 w-3.5 text-primary" />
-                    <span>{latestEvent.location[language]}</span>
+                    <span>{latestEvent.location?.name[language]}</span>
                   </div>
                 </div>
               </div>

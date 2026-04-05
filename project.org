@@ -361,26 +361,39 @@ El archivo src/data/blogPosts.ts se sigue usando, este genera los componentes [[
     - Para implementar el soporte multi-idioma:
       - Se modificará el directorio de cada post para contener versiones por idioma, un archivo por cada idioma (en este caso solo inglés-español, por ejemplo: index.es.md, index.en.md).
       - Se modificará el[[file:scripts/build-blog.js][ script]] que genera el[[file:src/data/blogPosts.ts][ archito ts]] con que usan los compontes que genran el blog. Deben detectar los archivos con sufijos .es.md o en.md y generar la estructura tipo json adecuada.
-**** IN-PROGRESS Events y EventDetail [0%]
+**** IN-PROGRESS Events y EventDetail [25%]
 DEADLINE: <2026-03-10 Tue>
-- [ ] Mudar el contenido
-  - [ ] Las tecnologías de internet en los movimientos sociales
-  - [ ] CCOSS
-  - [ ] Tayer para contribuir a Python
-  - [ ] Python: Zero To Hero
-  - [ ] Introducción a Pandoc
-  - [ ] Introducción a redes neuronales: Un enfoque interpretativo
-  - [ ] Salvemos el internet
-  - [ ] FLSoL 2020
-  - [ ] Seminario de Lisp 2020
+- [-] Mudar el contenido "legacy" [76%]
+  - [X] Las tecnologías de internet en los movimientos sociales
+  - [X] CCOSS
+  - [X] Tayer para contribuir a Python
+  - [X] Introducción a Pandoc
+  - [X] Python: Zero To Hero
+  - [X] Introducción a redes neuronales: Un enfoque interpretativo
+  - [X] Salvemos el internet
+  - [X] FLSoL 2020
+  - [X] Seminario de Lisp 2020
   - [ ] Túneles y agentes de SSH
   - [ ] FLISoL 2022
-  - [ ] FLISoL 2023
+  - [X] FLISoL 2023
   - [ ] FLISoL 2024
-- [ ] Implementar una función de calendario. Sería divertido poder exportar un archivo que se pueda cargar a una app de calendario con un ics.
-- [ ] En la descripción del evento, se debe mostar la fecha correspondiente en el calendario. en EventDetail.tsx
-- [ ] Implementar una "tarjeta" con todos los links de interés, event_url, etc
-- [ ] Implementar un sort como en la sección de proyectos
+- [X] Hay dos botones para el "enlace de registro", me gustaría aprovechar mejor estos botones, con "registrarse" y otro para "acceder al curso" si es que este se dio en línea youtube/meet
+- [X] Mejorar el redondeado de las imágenes de la descripción de eventsDetail
+- [-] Calendario
+  Este calendario está basado en la vista de GNOME Notifications/Calendar.
+  - [ ] En el calendario de Events.tsx se muestra un punto debajo del día del evento + un apartado de notificaciones que muestra los próximos eventos con dos meses de antelación.
+  - [X] En el calendario de EventDetail.tsx muestra encerrado en un círculo el día del evento
+- [ ] Mejorar la sección de cronograma
+  - [ ] Tarjeta/Sección para charlas
+  - [ ] Tarjtea/Sección para talleres
+  - [ ] Implementar una "tarjeta" con todos los links de interés, event_url, etc
+- [ ] ¿Y Si un evento tiene más de un lugar de ubicación?
+- [ ] Solo vemos la fecha de inicio pero no del final
+- [ ] La tarjeta que muestra los ponentes tiene un bug 🐛
+- [ ] Mejor difuminado en el cover
+- [ ] Mejorar el sombreado de eventsDetail
+- [ ] Optimización de las imágenes
+- [X] ¿Podríamos añadir un registro?
 **** IN-PROGRESS CourseDetail y CourseDetail [22%]
 DEADLINE: <2026-03-07 Sat>
 - [-] Mudar el contenido al sitio actual [40%]
@@ -457,7 +470,7 @@ Al estar en dispositivos móviles, el efecto de brillo que sigue al cursos se qu
 **** DONE Responsibidad
 Hay un problema con las tarjetas de "Último curso, Último post de blog" en dispositivos móviels el contenido no se ve completo.
 **** Auditoría de ciberseguridad
-** Deploy
+** DONE Deploy
 DEADLINE: <2026-03-28 Sat>
 * Arquitectura
 

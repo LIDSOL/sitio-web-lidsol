@@ -92,7 +92,7 @@ export function Events({ onEventClick }: EventsProps) {
                       onClick={() => onEventClick(event.id)}
                     >
                       <ImageWithFallback
-                        src={event.image || ""}
+                        src={event.coverImage || event.image || ""}
                         alt={event.title[language]}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
@@ -104,7 +104,7 @@ export function Events({ onEventClick }: EventsProps) {
                     </div>
                     <div className="md:col-span-3 p-6">
                       <div className="flex flex-wrap gap-2 mb-3">
-                        {event.tags?.slice(0, 3).map((tag) => (
+                        {event.tags?.[language].slice(0, 3).map((tag) => (
                           <Badge key={tag} variant="outline" className="text-xs">{tag}</Badge>
                         ))}
                       </div>
@@ -112,7 +112,7 @@ export function Events({ onEventClick }: EventsProps) {
                         {event.title[language]}
                       </h3>
                       <p className="text-muted-foreground mb-4 line-clamp-2">
-                        {event.shortDescription?.[language]}
+                        {(event.summary || event.shortDescription)?.[language]}
                       </p>
                       <div className="space-y-2 mb-4 text-sm">
                         {event.startDate && (
@@ -130,7 +130,7 @@ export function Events({ onEventClick }: EventsProps) {
                         {event.location && (
                           <div className="flex items-center gap-2">
                             <MapPin className="h-3.5 w-3.5 text-muted-foreground" />
-                            <span className="text-muted-foreground">{event.location[language]}</span>
+                            <span className="text-muted-foreground">{event.location.name[language]}</span>
                           </div>
                         )}
                       </div>

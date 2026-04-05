@@ -9,6 +9,7 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { blogPosts } from "../data/blogPosts";
 import { useLanguage } from "./LanguageProvider";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 interface BlogProps {
   onPostClick: (postId: number) => void;
@@ -74,7 +75,7 @@ export function Blog({ onPostClick }: BlogProps) {
         </div>
 
         {/* Featured Post */}
-        <Card 
+        <Card
           className="overflow-hidden hover:shadow-xl transition-all duration-300 border-border/60 max-w-5xl mx-auto mb-12"
           onClick={() => handleViewPost(featuredPost.id)}
         >
@@ -89,7 +90,13 @@ export function Blog({ onPostClick }: BlogProps) {
                 {language === 'en' ? 'Featured' : 'Destacado'}
               </Badge>
             </div>
-            <div className="p-8 flex flex-col justify-between">
+            <motion.div
+              className="p-8 flex flex-col justify-between"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0 }}
+            >
               <div>
                 <h3 className="text-3xl mb-4">{getLocalizedPost(featuredPost).title}</h3>
                 <p className="text-muted-foreground mb-6 line-clamp-3">
@@ -118,7 +125,7 @@ export function Blog({ onPostClick }: BlogProps) {
               <Button className="gap-2 w-fit">
                 {language === 'en' ? 'Read Article' : 'Leer Artículo'} <ArrowRight className="h-4 w-4" />
               </Button>
-            </div>
+            </motion.div>
           </div>
         </Card>
 
