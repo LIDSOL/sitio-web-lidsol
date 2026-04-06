@@ -361,9 +361,11 @@ El archivo src/data/blogPosts.ts se sigue usando, este genera los componentes [[
     - Para implementar el soporte multi-idioma:
       - Se modificará el directorio de cada post para contener versiones por idioma, un archivo por cada idioma (en este caso solo inglés-español, por ejemplo: index.es.md, index.en.md).
       - Se modificará el[[file:scripts/build-blog.js][ script]] que genera el[[file:src/data/blogPosts.ts][ archito ts]] con que usan los compontes que genran el blog. Deben detectar los archivos con sufijos .es.md o en.md y generar la estructura tipo json adecuada.
-**** IN-PROGRESS Events y EventDetail [25%]
+**** IN-PROGRESS Events y EventDetail [46%]
 DEADLINE: <2026-03-10 Tue>
-- [-] Mudar el contenido "legacy" [76%]
+- [X] Hay dos botones para el "enlace de registro", me gustaría aprovechar mejor estos botones, con "registrarse" y otro para "acceder al curso" si es que este se dio en línea youtube/meet
+- [X] Mejorar el redondeado de las imágenes de la descripción de eventsDetail
+- [X] Mudar el contenido "legacy" [100%]
   - [X] Las tecnologías de internet en los movimientos sociales
   - [X] CCOSS
   - [X] Tayer para contribuir a Python
@@ -373,26 +375,23 @@ DEADLINE: <2026-03-10 Tue>
   - [X] Salvemos el internet
   - [X] FLSoL 2020
   - [X] Seminario de Lisp 2020
-  - [ ] Túneles y agentes de SSH
-  - [ ] FLISoL 2022
+  - [X] Túneles y agentes de SSH
+  - [X] FLISoL 2022
   - [X] FLISoL 2023
-  - [ ] FLISoL 2024
-- [X] Hay dos botones para el "enlace de registro", me gustaría aprovechar mejor estos botones, con "registrarse" y otro para "acceder al curso" si es que este se dio en línea youtube/meet
-- [X] Mejorar el redondeado de las imágenes de la descripción de eventsDetail
+  - [X] FLISoL 2024
 - [-] Calendario
   Este calendario está basado en la vista de GNOME Notifications/Calendar.
   - [ ] En el calendario de Events.tsx se muestra un punto debajo del día del evento + un apartado de notificaciones que muestra los próximos eventos con dos meses de antelación.
   - [X] En el calendario de EventDetail.tsx muestra encerrado en un círculo el día del evento
 - [ ] Mejorar la sección de cronograma
-  - [ ] Tarjeta/Sección para charlas
-  - [ ] Tarjtea/Sección para talleres
-  - [ ] Implementar una "tarjeta" con todos los links de interés, event_url, etc
+  - [ ] Tener sub-items por día/hora
+- [ ] Optimización de las imágenes
 - [ ] ¿Y Si un evento tiene más de un lugar de ubicación?
 - [ ] Solo vemos la fecha de inicio pero no del final
-- [ ] La tarjeta que muestra los ponentes tiene un bug 🐛
 - [ ] Mejor difuminado en el cover
-- [ ] Mejorar el sombreado de eventsDetail
-- [ ] Optimización de las imágenes
+- [ ] Mejorar la tarjeta de ponentes (que se use le nombre en vez del id y que redireccione a su perfil).
+- [X] Mejorar el sombreado de eventsDetail
+- [X] La tarjeta que muestra los ponentes tiene un bug 🐛
 - [X] ¿Podríamos añadir un registro?
 **** IN-PROGRESS CourseDetail y CourseDetail [22%]
 DEADLINE: <2026-03-07 Sat>
@@ -453,23 +452,24 @@ DEADLINE: <2026-03-03 Tue>
   - [X] Subir la resolución de las imágenes con upscaler
   - [X] Mejorar el color del botón cuando el cursor está sobré él en tema claro
 - Tal vez en el futuro sea bueno añadir paginación, si crece mucho el número de miembros. Igual intentar con una base de datos... (si hay más de 50 miembros, tal vea hora de dejar el "json").
-*** TODO Documentar
-DEADLINE: <2026-03-17 Tue>
 *** TODO Optimización/Bugs/Testing/Corrección de vulnerabilidades
 DEADLINE: <2026-03-21 Sat>
+**** Modo oscuro automático según el sistema
 **** Tal vez sería bueno cambiar el texto de "Proyectos en desarrollo" del Home, pues hay algunas investigaciones que ya no están en curso.
 **** Añadir una "pantalla de carga" al inicio.
 **** Tema oscuro automático
 **** Hacer que los íconos sean tomados de un svg local
 en blog.tsx hay import { User, ArrowRight, Calendar, Clock } from "lucide-react", etc
 **** Cuando regreso a una página anterior, que no me regrese hasta el inicio, si no que se quede en el mismo sitio antes de dar click.
-**** Mejora el script del blog.
 **** Colocar la información correcta en la fecha de inicio de los miembros.
+**** Mejora el script del blog.
 **** DONE CursorEffect
 Al estar en dispositivos móviles, el efecto de brillo que sigue al cursos se queda pillado.
 **** DONE Responsibidad
 Hay un problema con las tarjetas de "Último curso, Último post de blog" en dispositivos móviels el contenido no se ve completo.
 **** Auditoría de ciberseguridad
+*** TODO Documentar
+DEADLINE: <2026-03-17 Tue>
 ** DONE Deploy
 DEADLINE: <2026-03-28 Sat>
 * Arquitectura

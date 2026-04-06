@@ -14,6 +14,7 @@ import remarkGfm from "remark-gfm";
 interface EventDetailProps {
   event: Event;
   onBack: () => void;
+  onMemberClick?: (memberId: number) => void;
 }
 
 function getMemberById(id: number) {
@@ -31,12 +32,12 @@ function parseEventDate(dateStr: string): Date | null {
 
   const [year, month, day] = dateStr.split('-').map(Number);
   const date = new Date(year, month - 1, day);
-  
+
   if (isNaN(date.getTime())) {
     console.warn(`Invalid date: "${dateStr}"`);
     return null;
   }
-  
+
   if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) {
     console.warn(`Invalid date: "${dateStr}"`);
     return null;
@@ -45,7 +46,7 @@ function parseEventDate(dateStr: string): Date | null {
   return date;
 }
 
-export function EventDetail({ event, onBack }: EventDetailProps) {
+export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) {
   const { language } = useLanguage();
   const [date, setDate] = useState<Date | undefined>(() => parseEventDate(event.startDate));
 
@@ -67,6 +68,7 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
       const member = getMemberById(speaker.memberId);
       if (member) {
         return {
+          memberId: member.id,
           name: member.name,
           role: member.role,
           bio: member.bio,
@@ -74,7 +76,20 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
         };
       }
     }
+    if (speaker.name) {
+      const matchedMember = members.find(m => m.name.toLowerCase() === speaker.name!.toLowerCase());
+      if (matchedMember) {
+        return {
+          memberId: matchedMember.id,
+          name: matchedMember.name,
+          role: matchedMember.role,
+          bio: matchedMember.bio,
+          image: matchedMember.image,
+        };
+      }
+    }
     return {
+      memberId: undefined,
       name: speaker.name || '',
       role: speaker.role,
       bio: speaker.bio,
@@ -119,7 +134,7 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
               </Badge>
             )}
           </div>
-          
+
           <h1 className="text-5xl sm:text-6xl mb-6">{event.title[language]}</h1>
           {event.summary && (
             <p className="text-xl text-muted-foreground mb-8">
@@ -144,9 +159,9 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
               <div className="flex items-center gap-2">
                 <MapPin className="h-5 w-5 text-primary" />
                 {event.location.url ? (
-                  <a 
-                    href={event.location.url} 
-                    target="_blank" 
+                  <a
+                    href={event.location.url}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-primary hover:underline"
                   >
@@ -160,7 +175,7 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
           </div>
 
           {event.action1 && (
-            <a 
+            <a
               href={event.action1.url}
               target="_blank"
               rel="noopener noreferrer"
@@ -177,7 +192,7 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* Calendar */}
-            <div className="bg-card rounded-3xl p-8 border border-border/50">
+            <div className="bg-card rounded-3xl p-8 border border-border/50 shadow-xl">
               <h2 className="text-3xl mb-6">{t.eventDate[language]}</h2>
               <div className="flex justify-center">
                 <Calendar
@@ -192,7 +207,7 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
 
             {/* Description Image */}
             {event.image && (
-              <div className="overflow-hidden rounded-2xl mb-8">
+              <div className="overflow-hidden rounded-2xl mb-8 shadow-xl">
                 <img
                   src={event.image}
                   alt={event.title[language]}
@@ -203,7 +218,7 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
 
             {/* Description */}
             {event.description && (
-            <div className="bg-card rounded-3xl p-8 border border-border/50">
+            <div className="bg-card rounded-3xl p-8 border border-border/50 shadow-xl">
               <h2 className="text-3xl mb-6">{t.description[language]}</h2>
               <article className="max-w-none">
                 <ReactMarkdown
@@ -269,11 +284,12 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
 
           {/* Sidebar */}
           <div className="lg:col-span-1 space-y-6">
+            <div className="sticky top-24 space-y-6">
             {/* Event Details Card */}
-            <Card className="border-border/60 sticky top-24">
+            <Card className="border-border/60">
               <CardContent className="p-6 space-y-6">
                 <h3 className="text-2xl">{t.eventDetails[language]}</h3>
-                
+
                 <div className="space-y-4">
                   {event.startDate && (
                   <div className="flex items-start gap-3">
@@ -296,9 +312,9 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
                         {t.location[language]}
                       </div>
                       {event.location.url ? (
-                        <a 
-                          href={event.location.url} 
-                          target="_blank" 
+                        <a
+                          href={event.location.url}
+                          target="_blank"
                           rel="noopener noreferrer"
                           className="font-medium hover:text-primary hover:underline"
                         >
@@ -345,7 +361,7 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
                 </div>
 
                 {event.action2 && (
-                  <a 
+                  <a
                     href={event.action2.url}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -367,7 +383,11 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
                   <h3 className="text-xl mb-4">{t.speakers[language]}</h3>
                   <div className="space-y-4">
                     {matchedSpeakers.map((speaker, index) => (
-                      <div key={index} className="flex items-center gap-4">
+                      <div 
+                        key={index} 
+                        className={`flex items-center gap-4 ${speaker.memberId ? 'cursor-pointer hover:opacity-80 transition-opacity' : ''}`}
+                        onClick={() => speaker.memberId && onMemberClick?.(speaker.memberId)}
+                      >
                         <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border flex-shrink-0">
                           <ImageWithFallback
                             src={speaker.image}
@@ -385,6 +405,7 @@ export function EventDetail({ event, onBack }: EventDetailProps) {
                 </CardContent>
               </Card>
             )}
+            </div>
           </div>
         </div>
       </div>

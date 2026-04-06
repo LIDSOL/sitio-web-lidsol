@@ -270,7 +270,7 @@ export default function App() {
           ) : currentView === "blog" ? (
             <Blog onPostClick={handlePostClick} />
           ) : currentView === "eventDetail" && selectedEvent ? (
-            <EventDetail event={selectedEvent} onBack={handleBackToEvents} />
+            <EventDetail event={selectedEvent} onBack={handleBackToEvents} onMemberClick={handleMemberClick} />
           ) : currentView === "events" ? (
             <Events onEventClick={handleEventClick} />
           ) : currentView === "courseDetail" && selectedCourse ? (
