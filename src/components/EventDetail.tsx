@@ -1,4 +1,4 @@
-import { ArrowLeft, Calendar as CalendarIcon, MapPin, Clock, Users, CheckCircle, Link as LinkIcon, ExternalLink } from "lucide-react";
+import { ArrowLeft, Calendar as CalendarIcon, CalendarX, MapPin, Clock, Users, CheckCircle, Link as LinkIcon, ExternalLink } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { Card, CardContent } from "./ui/card";
@@ -60,6 +60,10 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
     dateTime: { en: "Date & Time", es: "Fecha y Hora" },
     speakers: { en: "Speakers", es: "Ponentes" },
     eventDate: { en: "Event Date", es: "Fecha del Evento" },
+    startDate: { en: "Start Date", es: "Fecha de inicio" },
+    endDate: { en: "End Date", es: "Fecha de fin" },
+    time: { en: "Time", es: "Hora" },
+    capacity: { en: "Capacity", es: "Capacidad" },
     relatedLinks: { en: "Related Links", es: "Enlaces relacionados" },
   };
 
@@ -106,7 +110,7 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
           alt={event.title[language]}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 via-background/50 via-background/20 to-transparent" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl -mt-32 relative pb-20">
@@ -172,6 +176,23 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
                 )}
               </div>
             )}
+            {event.locations && event.locations.length > 0 && event.locations.map((loc, idx) => (
+              <div key={idx} className="flex items-center gap-2">
+                <MapPin className="h-5 w-5 text-primary" />
+                {loc.url ? (
+                  <a
+                    href={loc.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-primary hover:underline"
+                  >
+                    {loc.name[language]}
+                  </a>
+                ) : (
+                  <span>{loc.name[language]}</span>
+                )}
+              </div>
+            ))}
           </div>
 
           {event.action1 && (
@@ -291,15 +312,38 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
                 <h3 className="text-2xl">{t.eventDetails[language]}</h3>
 
                 <div className="space-y-4">
+                  {event.time && (
+                  <div className="flex items-start gap-3">
+                    <Clock className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                    <div>
+                      <div className="text-sm text-muted-foreground mb-1">
+                        {t.time[language]}
+                      </div>
+                      <div className="font-medium">{event.time}</div>
+                    </div>
+                  </div>
+                  )}
+
                   {event.startDate && (
                   <div className="flex items-start gap-3">
                     <CalendarIcon className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                     <div>
                       <div className="text-sm text-muted-foreground mb-1">
-                        {t.dateTime[language]}
+                        {t.startDate[language]}
                       </div>
                       <div className="font-medium">{event.startDate}</div>
-                      {event.time && <div className="text-sm text-muted-foreground">{event.time}</div>}
+                    </div>
+                  </div>
+                  )}
+
+                  {event.endDate && (
+                  <div className="flex items-start gap-3">
+                    <CalendarX className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                    <div>
+                      <div className="text-sm text-muted-foreground mb-1">
+                        {t.endDate[language]}
+                      </div>
+                      <div className="font-medium text-muted-foreground">{event.endDate}</div>
                     </div>
                   </div>
                   )}
@@ -326,6 +370,29 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
                     </div>
                   </div>
                   )}
+
+                  {event.locations && event.locations.length > 0 && event.locations.map((loc, idx) => (
+                  <div key={idx} className="flex items-start gap-3">
+                    <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                    <div>
+                      <div className="text-sm text-muted-foreground mb-1">
+                        {t.location[language]}
+                      </div>
+                      {loc.url ? (
+                        <a
+                          href={loc.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium hover:text-primary hover:underline"
+                        >
+                          {loc.name[language]}
+                        </a>
+                      ) : (
+                        <div className="font-medium">{loc.name[language]}</div>
+                      )}
+                    </div>
+                  </div>
+                  ))}
 
                   {event.capacity && (
                   <div className="flex items-start gap-3">
@@ -383,8 +450,8 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
                   <h3 className="text-xl mb-4">{t.speakers[language]}</h3>
                   <div className="space-y-4">
                     {matchedSpeakers.map((speaker, index) => (
-                      <div 
-                        key={index} 
+                      <div
+                        key={index}
                         className={`flex items-center gap-4 ${speaker.memberId ? 'cursor-pointer hover:opacity-80 transition-opacity' : ''}`}
                         onClick={() => speaker.memberId && onMemberClick?.(speaker.memberId)}
                       >

@@ -11,7 +11,11 @@ export interface Event {
   location?: {
     name: { en: string; es: string };
     url?: string;
-  };
+  }[];
+  locations?: {
+    name: { en: string; es: string };
+    url?: string;
+  }[];
   tags?: { en: string[]; es: string[] };
   links?: {
     text: { en: string; es: string };
@@ -506,7 +510,7 @@ export const events: Event[] = [
           es: "## ¿Qué es FLISoL?\nEl FLISoL es el evento de difusión de Software Libre más grande en Latinoamérica se realiza desde el año 2005 y desde el 2008 se adoptó su realización el 4to sábado de Abril de cada año.\nSu principal objetivo es promover el uso del software libre, dando a conocer al público en general su filosofía, alcances, avances y desarrollo.\nEl evento es organizado por las diversas comunidades locales de Software Libre y se desarrolla simultáneamente con eventos en los que se instala, de manera gratuita y totalmente legal, software libre en las computadoras que llevan los asistentes. Además, en forma paralela, se ofrecen charlas, ponencias y talleres, sobre temáticas locales, nacionales y latinoamericanas en torno al Software Libre, en toda su gama de expresiones: artística, académica, empresarial y social.\n## ¿Donde es?\nEl evento se llevará a cabo el día 29 de abril de 2022 en el Conjunto Norte de la Facultad de Ingeniería en Ciudad Universitaria.\n## ¿A quién está dirigido?\nEl FLISoL esta dirigido a todo tipo de público: estudiantes, académicos, empresarios, trabajadores, funcionarios públicos, entusiastas y aun personas que no poseen mucho conocimiento informático y desean encontrar nuevas formas de usar sus computadoras.\n## ¿Qué habrá?\n### Instalación de software libre\nLa actividad principal del evento es la instalación de software libre en las computadoras de los asistentes, así que si deseas probar algún software libre o instalar un sistema operativo libre puedes traer tu computadora y nosotros te ayudaremos a instalarlo.\n### Conferencias\nLos dos días que dura el evento habrán conferencias relacionadas con la adopción y uso del software libre en la industria, el gobierno y la academia.\n## ¿Cómo participo?\n### Conferencista\nSi te gustaría dar una charla sobre software libre durante el evento puedes registrar una charla en [nuestro canal del Telegram](https://t.me/LIDSoL)\n### Instalador\nSi ya has usado software libre y sabes cómo instalar software en distintas plataformas, puedes asistir al evento y ayudar a otra persona a aprender a usar software libre.\n### Asistente\nLa entrada al evento esta abierta a todo público y es gratuita.\nSi deseas probar o instalar software libre trae tu equipo y nosotros te ayudamos. Si deseas probar un nuevo sistema operativo realiza antes un respaldo de tu información."
     },
     status: "past",
-    image: "/events-images/FLISoL-2022-talks.jpg",
+    image: "/events-images/FLISoL-2022-1.jpg",
     coverImage: "/events-images/FLISoL-2022.jpg",
     publishDate: "2022-04-15"
   },
@@ -595,6 +599,15 @@ export const events: Event[] = [
     ],
     publishDate: "2024-05-01",
     status: "past",
+  },
+  {
+    id: 14,
+    title: {
+        en: "FLISOL 2026",
+        es: "FLISOL 2026"
+    },
+    coverImage: "/events-images/flisol-2026/hubert-neufeld-j-udI4zim2E-unsplash.jpg",
+    startDate: "2026-05-07",
   },
 ];
 

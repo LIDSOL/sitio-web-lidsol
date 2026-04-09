@@ -287,9 +287,9 @@ export function LatestHighlights({
                     <span>{latestEvent.time}</span>
                   </div>
                   <span className="text-muted-foreground/40">·</span>
-                  <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5">
                     <MapPin className="h-3.5 w-3.5 text-primary" />
-                    <span>{latestEvent.location?.name[language]}</span>
+                    <span>{latestEvent.location?.name[language] || latestEvent.locations?.[0]?.name[language]}</span>
                   </div>
                 </div>
               </div>

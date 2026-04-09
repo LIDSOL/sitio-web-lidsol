@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { Calendar as CalendarIcon, MapPin, Clock, Users, ArrowRight } from "lucide-react";
+import { Calendar as CalendarIcon, MapPin, Clock, Users, ArrowRight, Bell } from "lucide-react";
 import { Button } from "./ui/button";
 import { Calendar } from "./ui/calendar";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
@@ -21,7 +21,18 @@ export function Events({ onEventClick }: EventsProps) {
     return [...events].sort((a, b) => {
       const dateA = a.startDate ? new Date(a.startDate).getTime() : 0;
       const dateB = b.startDate ? new Date(b.startDate).getTime() : 0;
-      return dateB - dateA; // Orden descendente
+      return dateB - dateA;
+    });
+  }, []);
+
+  const upcomingEvent = useMemo(() => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return events.find(event => {
+      if (!event.startDate) return false;
+      const eventDate = new Date(event.startDate);
+      eventDate.setHours(0, 0, 0, 0);
+      return eventDate >= today;
     });
   }, []);
 
@@ -31,6 +42,8 @@ export function Events({ onEventClick }: EventsProps) {
     viewMore: { en: "View More", es: "Ver Más" },
     upcoming: { en: "Upcoming", es: "Próximamente" },
     calendar: { en: "Event Calendar", es: "Calendario de Eventos" },
+    nextEvent: { en: "Next Event", es: "Próximo Evento" },
+    noUpcoming: { en: "No upcoming events", es: "Sin eventos próximos" },
   };
 
   return (
@@ -46,15 +59,58 @@ export function Events({ onEventClick }: EventsProps) {
 
         {/* Calendar at top */}
         <div className="max-w-md mx-auto mb-16">
-          <div className="bg-card rounded-3xl p-8 border border-border/50">
-            <h2 className="text-2xl mb-6 text-center">{t.calendar[language]}</h2>
-            <div className="flex justify-center">
-              <Calendar
-                mode="single"
-                selected={date}
-                onSelect={setDate}
-                className="rounded-2xl border"
-              />
+          <div className="bg-card rounded-3xl p-6 border border-border/50">
+            <div className="space-y-4">
+              <h2 className="text-2xl mb-2 text-center">{t.calendar[language]}</h2>
+              <div className="flex justify-center">
+                <div className="w-full flex justify-center">
+                  <Calendar
+                    mode="single"
+                    selected={date}
+                    onSelect={setDate}
+                    className="rounded-2xl border-none"
+                  />
+                </div>
+              </div>
+
+              {/* Notification Card - GNOME style */}
+              <div className="bg-secondary rounded-xl p-3">
+                <div className="flex items-start gap-3">
+                  <div className="mt-0.5">
+                    <Bell className="h-5 w-5 text-primary" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-xs uppercase tracking-wide mb-1 text-muted-foreground">
+                      {t.nextEvent[language]}
+                    </div>
+                    {upcomingEvent ? (
+                      <button
+                        onClick={() => onEventClick(upcomingEvent.id)}
+                        className="text-left w-full hover:opacity-80 transition-opacity"
+                      >
+                        <div className="font-medium truncate">
+                          {upcomingEvent.title[language]}
+                        </div>
+                        <div className="flex items-center gap-2 mt-1 text-sm text-muted-foreground">
+                          <CalendarIcon className="h-3.5 w-3.5" />
+                          <span>{upcomingEvent.startDate}</span>
+                          {upcomingEvent.time && (
+                            <>
+                              <span>·</span>
+                              <Clock className="h-3.5 w-3.5" />
+                              <span>{upcomingEvent.time}</span>
+                            </>
+                          )}
+                        </div>
+                      </button>
+                    ) : (
+                      <div className="text-sm text-muted-foreground">
+                        {t.noUpcoming[language]}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -133,6 +189,12 @@ export function Events({ onEventClick }: EventsProps) {
                             <span className="text-muted-foreground">{event.location.name[language]}</span>
                           </div>
                         )}
+                        {event.locations && event.locations.map((loc, idx) => (
+                          <div key={idx} className="flex items-center gap-2">
+                            <MapPin className="h-3.5 w-3.5 text-muted-foreground" />
+                            <span className="text-muted-foreground">{loc.name[language]}</span>
+                          </div>
+                        ))}
                       </div>
                       <Button
                         variant="outline"
