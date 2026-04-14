@@ -53,7 +53,7 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
   const t = {
     back: { en: "Back to Events", es: "Volver a Eventos" },
     description: { en: "Description", es: "Descripción" },
-    agenda: { en: "Agenda", es: "Agenda" },
+    contents: { en: "Contents", es: "Contenidos" },
     requirements: { en: "Requirements", es: "Requisitos" },
     eventDetails: { en: "Event Details", es: "Detalles del Evento" },
     location: { en: "Location", es: "Ubicación" },
@@ -65,6 +65,7 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
     time: { en: "Time", es: "Hora" },
     capacity: { en: "Capacity", es: "Capacidad" },
     relatedLinks: { en: "Related Links", es: "Enlaces relacionados" },
+    upcoming: { en: "Upcoming", es: "Próximamente" },
   };
 
   const matchedSpeakers = (event.speakers || []).map(speaker => {
@@ -134,7 +135,7 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
             ))}
             {event.status === "upcoming" && (
               <Badge className="bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20">
-                Upcoming
+                {t.upcoming[language]}
               </Badge>
             )}
           </div>
@@ -157,23 +158,6 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
               <div className="flex items-center gap-2">
                 <Clock className="h-5 w-5 text-primary" />
                 <span>{event.time}</span>
-              </div>
-            )}
-            {event.location && (
-              <div className="flex items-center gap-2">
-                <MapPin className="h-5 w-5 text-primary" />
-                {event.location.url ? (
-                  <a
-                    href={event.location.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-primary hover:underline"
-                  >
-                    {event.location.name[language]}
-                  </a>
-                ) : (
-                  <span>{event.location.name[language]}</span>
-                )}
               </div>
             )}
             {event.locations && event.locations.length > 0 && event.locations.map((loc, idx) => (
@@ -270,12 +254,12 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
             </div>
             )}
 
-            {/* Agenda */}
-            {event.agenda && (
+            {/* Contents */}
+            {event.contents && (
               <div className="bg-primary/5 border border-primary/10 rounded-3xl p-8">
-                <h2 className="text-3xl mb-6">{t.agenda[language]}</h2>
+                <h2 className="text-3xl mb-6">{t.contents[language]}</h2>
                 <ul className="space-y-3">
-                  {event.agenda[language].map((item, index) => (
+                  {event.contents[language].map((item, index) => (
                     <li key={index} className="flex items-start gap-3">
                       <div className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
                         {index + 1}
@@ -344,29 +328,6 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
                         {t.endDate[language]}
                       </div>
                       <div className="font-medium text-muted-foreground">{event.endDate}</div>
-                    </div>
-                  </div>
-                  )}
-
-                  {event.location && (
-                  <div className="flex items-start gap-3">
-                    <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <div className="text-sm text-muted-foreground mb-1">
-                        {t.location[language]}
-                      </div>
-                      {event.location.url ? (
-                        <a
-                          href={event.location.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="font-medium hover:text-primary hover:underline"
-                        >
-                          {event.location.name[language]}
-                        </a>
-                      ) : (
-                        <div className="font-medium">{event.location.name[language]}</div>
-                      )}
                     </div>
                   </div>
                   )}

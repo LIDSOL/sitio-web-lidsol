@@ -8,10 +8,6 @@ export interface Event {
   startDate: string;
   endDate?: string;
   time?: string;
-  location?: {
-    name: { en: string; es: string };
-    url?: string;
-  }[];
   locations?: {
     name: { en: string; es: string };
     url?: string;
@@ -29,7 +25,7 @@ export interface Event {
     image?: string;
   }[];
   requirements?: { en: string[]; es: string[] };
-  agenda?: { en: string[]; es: string[] };
+  contents?: { en: string[]; es: string[] };
   action1?: {
     text: { en: string; es: string };
     url: string;
@@ -42,7 +38,93 @@ export interface Event {
   publishDate?: string;
 }
 export const events: Event[] = [
-{
+  {
+    id: 14,
+    title: {
+        en: "FLISoL 2026",
+        es: "FLISoL 2026"
+  },
+    summary: {
+        en: "LIDSoL invites you to the 2026 edition of the Latin American Free Software Festival.",
+        es: "LIDSoL los invita a la edición 2026 del Festival Latinoamericano de Software Libre."
+        },
+    description: {
+        en: "## What is FLISoL?\nThe main objective of the event is to promote the use of free software, introducing its philosophy, scope, advances, and development to the general public. It is organized by various local communities. During the event, free software is installed on attendees' computers in a completely free and legal manner. In parallel, **talks, lectures, and workshops are offered**.\n\n## 2026 Theme\n**\"Free Software, Artificial Intelligence, Open Hardware, Free Culture, and their relationship with user autonomy and privacy\"**\n\n## Where and When?\nThe event will take place on the following days:\n- **May 7th:** Conferences\n- **May 8th:** Workshops\n\nAt the Northern Complex of the Faculty of Engineering, Building I, PC-Puma Kiosk.\n\n## How do I participate?\nIf you are interested in contributing to the event, you can participate in the following ways:\n\n### Conferences and Workshops\nWould you like to give a talk or workshop on any free technology? Register your proposal on [our Telegram channel](https://t.me/LIDSoL).\n\n### Installer\nIf you already have experience with Free Software and know how to install it on different platforms, we invite you to attend and help others learn!\n\n### Attendee\nEntry is open, free, and available to everyone.\nIf you want to try or install free software, bring your equipment and we will provide the necessary assistance.\n\n**Your participation makes this event possible! We are very grateful to those who wish to support us.**\n\n⚠️ *Note:* If you want to try a new operating system, remember to back up your important information beforehand.",
+        es: "## ¿Qué es el FLISoL?\n El principal objetivo del evento es promover el uso del software libre, dando a conocer al público general su filosofía, alcances, avances y desarrollo. Es organizado por diversas comunidades locales. Durante el encuentro se realiza la instalación, de manera gratuita y totalmente legal, de software libre en las computadoras de los asistentes. De forma paralela, **se ofrecen charlas, ponencias y talleres**.\n\n## Temática 2026\n**\"Software Libre, Inteligencia Artificial, Hardware Abierto, Cultura Libre y su relación con la autonomía y la privacidad de los usuarios\"**\n\n## ¿Dónde y cuándo es?\nEl evento se llevará a cabo los días: \n- **7 de mayo:** Conferencias\n- **8 de mayo:** Talleres\n\nEn el Conjunto Norte de la Facultad de Ingeniería, Edificio I, Quiosco PC-Puma.\n\n## ¿Cómo participo?\n Si estás interesado en contribuir en el evento, puedes participar de las siguientes formas:\n\n ### Conferencias y talleres\n¿Te gustaría impartir una charla o un taller sobre alguna tecnología libre? Registra tu propuesta en [nuestro canal de Telegram](https://t.me/LIDSoL).\n\n### Instalador\nSi ya tienes experiencia con Software Libre y sabes cómo instalarlo en distintas plataformas, ¡te invitamos a asistir para ayudar a otras personas a aprender!\n\n### Asistente\nLa entrada es abierta, gratuita y está disponible para todo el público. \nSi deseas probar o instalar software libre, trae tu equipo y nosotros te brindaremos la asistencia necesaria.\n\n**¡Tu participación hace posible este evento! Estamos muy agradecidos con quienes deseen apoyar.**\n\n⚠️ *Nota:* Si deseas probar un nuevo sistema operativo, recuerda realizar previamente un respaldo de tu información importante."
+        },
+    startDate: "2026-05-07",
+    endDate: "2026-05-08",
+    time: "10:00 a.m",
+    coverImage: "/events-images/flisol-2026/hubert-neufeld-j-udI4zim2E-unsplash.jpg",
+    image: "/events-images/flisol-2026/average-arch-linux-user.webp",
+    locations: [
+    {
+    name: {
+        en: "Northern Complex - Faculty of Engineering, Building I, PC-Puma Kiosk",
+        es: "Conjunto Norte de la Facultad de Ingeniería - Edificio I, Quiosco PC-Puma"
+    },
+      url: "https://www.openstreetmap.org/directions?from=&to=19.326487%2C-99.182596#map=19/19.326475/-99.183036"
+    },
+  ],
+    tags: { en: ["FLISoL", "Open Source", "Free Software", "Community"], es: ["FLISoL", "Open Source", "Software Libre" ,"Comunidad"] },
+    status: "upcoming",
+    publishDate: "2026-04-14"
+  },
+  {
+    id: 15,
+    title: {
+        en: "CompuFest FCiencias 2026",
+        es: "CompuFest FCiencias 2026"
+        },
+    image: "/events-images/compufest-2026/compufest-tonejito.png",
+    coverImage: "/events-images/compufest-2026/compufest-tonejito.png",
+    summary: {
+    en: "The SUDO‑FC community invites you to a talk at CompuFest presented by members of LIDSoL.",
+    es: "La comunidad SUDO-FC invita a una charla en el CompuFest impartida por integrantes de LIDSoL."
+    },
+    startDate: "2026-04-23",
+    time: "13:00 — 14:00",
+    description: {
+        "en": "## Things About the Working World They Don't Tell You in School.\nTopics we often avoid discussing when landing a job or considering a career change.\n### Side Notes.\n*The content and opinions presented are drawn from personal experience.*\n*For more specific questions, consult a professional in the relevant field—accountant, lawyer, insurance agent, etc.*",
+        "es": "## Cosas sobre el mundo laboral que no nos dicen en la escuela.\nTemas que muchas veces no queremos hablar cuando estamos consiguiendo empleo o cuando estamos pensando en cambiarnos.\n### Notas al margen.\n*El contenido y opiniones que se presentan son derivados de la experiencia personal.*\n*Para dudas más específicas consultar con un profesional del área en cuestión según sea el caso: contador, abogado, agende de seguros, etc.*"
+    },
+    contents: {
+        en: [
+            "Contract modalities: payroll, mixed scheme, and fee‑based arrangements.",
+            "Payment modalities: bank cards, taxes, interviews, and horror stories."
+        ],
+        es: [
+            "Modalidades de contratación: Nómina, esquema mixto y honorarios",
+            "Modalidades de pago, tarjetas bancarias, impuestos, entrevistas e historias de terror"
+            ]
+    },
+    locations: [
+    {
+      name: {
+        en: "Faculty of Sciences, UNAM",
+        es: "Facultad de Ciencias, UNAM"
+      },
+    },
+    ],
+    tags: {
+        en: ["Compufest" ,"Open Source", "Community"],
+        es: ["Compufest" ,"Open Source", "Comunidad"]
+    },
+    speakers: [
+      { memberId: 2 }
+    ],
+    action1: {
+        text: { en: "Compufest", es: "Compufest" },
+        url: "compufest.cc"
+    },
+    action2: {
+        text: { en: "Compufest", es: "Compufest" },
+        url: "compufest.cc"
+    },
+    status: "upcoming",
+    publishDate: "2026-04-14"
+  },
+  {
     id: 1,
     title: {
       en: "The Internet Technologies in Social Movements",
@@ -54,12 +136,12 @@ export const events: Event[] = [
         es: "URL de evento" },
     url: "https://mx.internetanonima.net/tecnologias-de-internet-en-los-movimientos-sociales"
   },
-    location: {
+    locations: [{
       name: {
-        en: "Microsoft/UNAM Laboratory, Building Q, 2nd Floor, Faculty of Engineering",
+        en: "Microsoft/UNAM Laboratory, Building\u00a0Q, 2nd\u00a0Floor, Faculty of Engineering",
         es: "Laboratorio Microsoft/UNAM, Edificio Q, 2do Piso, Facultad de Ingeniería"
       }
-    },
+    }],
     summary: {
       en: "May First Movement Technology is a member‑based nonprofit organization dedicated to building movements by advancing the strategic use and collective control of technology.",
       es: "May First Movement Technology es una organización de miembros sin fines de lucro que se dedica a la construcción de movimientos mediante el avance del uso estratégico y el control colectivo de la tecnología."
@@ -89,12 +171,12 @@ export const events: Event[] = [
         es: "URL de evento" },
     url: "https://ccoss.org/"
   },
-    location: {
+    locations: [{
       name: {
-        en: "Wizeline facilities located at Amado Nervo 2200, Col. Jardines del Sol, Zapopan, Jalisco 45050.",
+        en: "Wizeline facilities located at Amado Nervo\u00a02200, Col.\u00a0Jardines del Sol, Zapopan, Jalisco\u00a045050.",
         es: "Instalaciones de Wizeline ubicadas en Amado Nervo 2200, Col. Jardines del Sol, Zapopan, Jal. 45050."
       }
-    },
+    }],
     summary: {
       en: "The purpose of CCOSS is to increase the number of people from Latin America who contribute to open‑source projects.",
       es: "El propósito del CCOSS es aumentar la cantidad de personas de Latinoamérica que contribuyen a los proyectos de código abierto."
@@ -136,12 +218,12 @@ export const events: Event[] = [
     url: "https://pythondaymx.github.io/"
   },
     coverImage: "/events-images/cpython-workshop.png",
-    location: {
+    locations: [{
       name: {
         en: "Institute of Research in Applied Mathematics and Systems, UNAM",
         es: "Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas, UNAM"
       }
-    },
+    }],
     summary: {
       en: "Get involved with the Python community and help develop the project.",
       es: "Acércate a la comunidad de Python y ayuda al desarrollo del proyecto."
@@ -167,12 +249,12 @@ export const events: Event[] = [
       en: "Introduction to Pandoc",
       es: "Introducción a Pandoc"
     },
-    location: {
+    locations: [{
       name: {
         en: "Faculty of Engineering, classroom to be determined.",
         es: "Facultad de Ingeniería, salón por definir"
       }
-    },
+    }],
     summary: {
       en: "Create professional‑looking documents and manage your citations and bibliography without hassle using Pandoc.",
       es: "Crea documentos de apariencia profesional y gestiona tus citas y bibliografía sin sufrir usando Pandoc."
@@ -214,12 +296,12 @@ export const events: Event[] = [
       en: "Python: Zero to Hero",
       es: "Python: Zero to Hero"
     },
-    location: {
+    locations: [{
       name: {
         en: "Faculty of Engineering, classroom to be determined",
         es: "Facultad de Ingeniería, salon por definir"
       }
-    },
+    }],
     summary: {
       en: "In this course we will delve into the basic elements of the language that will serve as foundations for developing a project.",
       es: "En este curso ahondaremos en los elementos básicos del lenguaje que servirán como cimientos para la elaboración de un proyecto."
@@ -261,12 +343,12 @@ export const events: Event[] = [
       en: "Introduction to Neural Networks: An Interpretive Approach",
       es: "Introducción a las redes neuronales: un enfoque interpretativo"
     },
-    location: {
+    locations: [{
       name: {
         en: "Faculty of Engineering, classroom to be determined",
         es: "Facultad de Ingeniería, salon por definir"
       }
-    },
+    }],
     summary: {
       en: "The course will present the essential concepts needed to understand the design and implementation of neural networks.",
       es: "El curso presentará las nociones esenciales para comprender el diseño y la implementación de redes neuronales."
@@ -323,12 +405,12 @@ export const events: Event[] = [
         en: "The Federal Institute of Telecommunications (IFT) has opened a public consultation on a draft Traffic Management Guidelines that could allow:\n- Censorship\n- Paid prioritization\n- Invasion of privacy\n\nThe guidelines do not include sufficient transparency and monitoring measures to prevent and sanction companies that violate net neutrality.\nIván Martínez (Incident Officer at R3D) will give a talk on the implications of the IFT draft for network neutrality.\nIn addition, LIDSOL and the UNAM Civic Innovation Lab will be giving away muffins and cookies to everyone who submits a comment to the IFT.",
         es: "El instituto Federal de Telecomunicaciones (IFT) ha sometido a consulta pública un anteproyecto de Lineamientos de Gestión de Tráfico que podría permitir:\n- Censura\n- Priorización pagada\n- Invasión a la privacidad\n\nLos lineamientos no contemplan medidas suficientes de transparencia y monitoreo para evitar y sancionar que las empresas violen la neutralidad de internet.\nIván Martínez (Oficial de Incidencia en R3D) dará una charla sobre las implicaciones del anteproyecto del IFT en la nautralidad de la red.\nAdemás, LIDSOL y UNAM Civic Innovation Lab estará obsequiando muffins y galletas a todas las personas que envíen su comentario al IFT."
     },
-    location: {
+    locations: [{
       name: {
-        en: "Auditorio Raúl J. Marsal",
-        es: "Auditorio Raúl J. Marsal"
+        en: "Faculty of Engineering, classroom to be determined",
+        es: "Facultad de Ingeniería, salon por definir"
       }
-    },
+    }],
     startDate: "2020-02-26",
     endDate: "2020-02-27",
     time: "08:00 - 20:00",
@@ -355,12 +437,12 @@ export const events: Event[] = [
         url: "https://flisol.info/FLISOL2020/Mexico/CDMX/FIUNAM"
       }
     ],
-    location: {
+    locations: [{
       name: {
         en: "Javier Barros Sierra Auditorium, Faculty of Engineering, UNAM.",
         es: "Auditorio Javier Barros Sierra, Facultad de Ingeniería, UNAM"
       }
-    },
+    }],
     startDate: "2020-04-23",
     endDate: "2020-04-24",
     time: "11:00 - 18:00",
@@ -491,12 +573,12 @@ export const events: Event[] = [
         es: "URL del evento" },
     url: "https://flisol.info/FLISOL2022/Mexico/CDMX/UNAM"
     },
-    location: {
+    locations: [{
       name: {
-        en: "Official FLISoL page",
-        es: "Página oficial de FLISoL"
+        en: "Conjunto Norte, Faculty of Engineering, UNAM",
+        es: "Conjunto Norte, Facultad de Ingeniería, UNAM"
       }
-    },
+    }],
     startDate: "2022-04-29",
     endDate: "2022-04-29",
     time: "10:00 - 17:00",
@@ -520,12 +602,12 @@ export const events: Event[] = [
       en: "FLISoL 2023",
       es: "FLISoL 2023"
     },
-    location: {
+    locations: [{
       name: {
         en: "Conjunto Norte, Facultad de Ingeniería, UNAM",
         es: "Conjunto Norte, Facultad de Ingeniería, UNAM"
       }
-    },
+    }],
     startDate: "2023-04-21",
     endDate: "2023-04-26",
     time: "10:00 - 17:00",
@@ -566,12 +648,12 @@ export const events: Event[] = [
       en: "FLISoL 2024",
       es: "FLISoL 2024"
     },
-    location: {
+    locations: [{
       name: {
         en: "Conjunto Norte, Facultad de Ingeniería, UNAM",
         es: "Conjunto Norte, Facultad de Ingeniería, UNAM"
       }
-    },
+    }],
     startDate: "2024-05-08",
     endDate: "2024-05-09",
     time: "10:00 - 16:00 hrs",
@@ -597,17 +679,7 @@ export const events: Event[] = [
         url: "https://flisol.info/FLISOL2024/Mexico/CDMX/UNAM"
       }
     ],
-    publishDate: "2024-05-01",
     status: "past",
-  },
-  {
-    id: 14,
-    title: {
-        en: "FLISOL 2026",
-        es: "FLISOL 2026"
-    },
-    coverImage: "/events-images/flisol-2026/hubert-neufeld-j-udI4zim2E-unsplash.jpg",
-    startDate: "2026-05-07",
   },
 ];
 
