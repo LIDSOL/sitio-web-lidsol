@@ -18,9 +18,9 @@ function Calendar({
     if (!modifiers?.hasEvent) return false;
     return modifiers.hasEvent.some(
       (d) =>
-        d.getDate() === date.getDate() &&
-        d.getMonth() === date.getMonth() &&
-        d.getFullYear() === date.getFullYear()
+        d.getUTCDate() === date.getUTCDate() &&
+        d.getUTCMonth() === date.getUTCMonth() &&
+        d.getUTCFullYear() === date.getUTCFullYear()
     );
   };
 
@@ -63,8 +63,8 @@ function Calendar({
         day_range_middle:
           "aria-selected:bg-accent aria-selected:text-accent-foreground",
         day_hidden: "invisible",
-        ...classNames,
-      }}
+    ...classNames,
+  }}
       modifiers={modifiers}
       components={{
         IconLeft: ({ className, ...props }) => (
@@ -80,8 +80,8 @@ function Calendar({
               <span {...dayProps}>{date.getDate()}</span>
               {showDot && (
                 <span
-                  className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-white rounded-full"
-                  style={{ position: 'absolute', bottom: 2, left: '50%', transform: 'translateX(-50%)', width: 4, height: 4 }}
+                  className="absolute rounded-full text-foreground"
+                  style={{ position: 'absolute', bottom: 3, left: '50%', transform: 'translateX(-50%) translateY(7px)', width: 5, height: 5, backgroundColor: 'currentColor' }}
                 />
               )}
             </div>

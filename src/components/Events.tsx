@@ -26,13 +26,29 @@ export function Events({ onEventClick }: EventsProps) {
 
   const upcomingEvent = useMemo(() => {
     const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    return events.find(event => {
-      if (!event.startDate) return false;
-      const eventDate = new Date(event.startDate);
-      eventDate.setHours(0, 0, 0, 0);
-      return eventDate >= today;
-    });
+    today.setUTCHours(0, 0, 0, 0);
+    const futureEvents = events
+      .filter(event => {
+        if (!event.startDate) return false;
+        const [year, month, day] = event.startDate.split('-').map(Number);
+        const eventDate = new Date(Date.UTC(year, month - 1, day));
+        return eventDate >= today;
+      })
+      .sort((a, b) => {
+        const dateA = a.startDate ? new Date(a.startDate).getTime() : 0;
+        const dateB = b.startDate ? new Date(b.startDate).getTime() : 0;
+        return dateA - dateB;
+      });
+    return futureEvents[0] || null;
+  }, []);
+
+  const eventDates = useMemo(() => {
+    return events
+      .filter((e) => e.startDate)
+      .map((e) => {
+        const [year, month, day] = e.startDate.split('-').map(Number);
+        return new Date(Date.UTC(year, month - 1, day));
+      });
   }, []);
 
   const t = {
@@ -63,13 +79,14 @@ export function Events({ onEventClick }: EventsProps) {
           <div className="bg-card rounded-3xl p-6 border border-border/40 shadow-sm">
             <div className="space-y-6">
               <h2 className="text-xl font-medium text-center">{t.calendar[language]}</h2>
-              
+
               <div className="flex justify-center">
                 <Calendar
                   mode="single"
                   selected={date}
                   onSelect={setDate}
                   className="rounded-2xl border-none"
+                  modifiers={{ hasEvent: eventDates }}
                 />
               </div>
 
@@ -79,7 +96,7 @@ export function Events({ onEventClick }: EventsProps) {
                     <div className="text-[10px] font-bold uppercase tracking-widest mb-1 text-muted-foreground/90">
                       {t.nextEvent[language]}
                     </div>
-                    
+
                     {upcomingEvent ? (
                       <button
                         onClick={() => onEventClick(upcomingEvent.id)}

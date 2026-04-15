@@ -391,9 +391,9 @@ DEADLINE: <2026-04-12 Sun>
 - [X] Ubicación vs Ubicaciones. Hacerlo a modo de lista.
 - [-] Calendario:
   Este calendario está basado en la vista de GNOME Notifications/Calendar.
-  - [ ] Hacer que el calendario soporte el multi-idioma
+  - [X] En el calendario de Events.tsx, se debe mostrar un punto debajo del día del evento
   - [ ] Hacer que la notificación tenga el mismo ancho que el calendario.
-  - [ ] En el calendario de Events.tsx, se debe mostrar un punto debajo del día del evento
+  - [ ] Hacer que el calendario soporte el multi-idioma
   - [X] Hacer que el color de la notificación sea más clara que el BG general
   - [X] En Events.tsx, debajo del calendario, se debe mostrar un apartado de notificaciones que muestre todos los próximos eventos.
   - [X] En el calendario de EventDetail.tsx muestra encerrado en un círculo el día del evento
@@ -463,6 +463,7 @@ DEADLINE: <2026-03-03 Tue>
 DEADLINE: <2026-04-18 Sat>
 **** DONE Modo oscuro automático según el sistema
 **** Mejorar el SEO del sitio (para posicionarlo mejor al buscar en el navegador)
+**** Sería bueno "Normalizar" el tamaño de los títulos del Home.
 **** Tal vez sería bueno cambiar el texto de "Proyectos en desarrollo" del Home, pues hay algunas investigaciones que ya no están en curso.
 **** Añadir una "pantalla de carga" al inicio.
 **** Tema oscuro automático
