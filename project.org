@@ -462,6 +462,7 @@ DEADLINE: <2026-03-03 Tue>
 *** TODO Optimización/Bugs/Testing/Corrección de vulnerabilidades
 DEADLINE: <2026-04-18 Sat>
 **** DONE Modo oscuro automático según el sistema
+**** Mejorar el SEO del sitio (para posicionarlo mejor al buscar en el navegador)
 **** Tal vez sería bueno cambiar el texto de "Proyectos en desarrollo" del Home, pues hay algunas investigaciones que ya no están en curso.
 **** Añadir una "pantalla de carga" al inicio.
 **** Tema oscuro automático
