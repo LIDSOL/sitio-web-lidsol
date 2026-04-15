@@ -361,7 +361,7 @@ El archivo src/data/blogPosts.ts se sigue usando, este genera los componentes [[
     - Para implementar el soporte multi-idioma:
       - Se modificará el directorio de cada post para contener versiones por idioma, un archivo por cada idioma (en este caso solo inglés-español, por ejemplo: index.es.md, index.en.md).
       - Se modificará el[[file:scripts/build-blog.js][ script]] que genera el[[file:src/data/blogPosts.ts][ archito ts]] con que usan los compontes que genran el blog. Deben detectar los archivos con sufijos .es.md o en.md y generar la estructura tipo json adecuada.
-**** IN-PROGRESS Events y EventDetail [86%]
+**** IN-PROGRESS Events y EventDetail [76%]
 DEADLINE: <2026-04-12 Sun>
 - [X] Mudar el contenido "legacy" [100%]
   - [X] Las tecnologías de internet en los movimientos sociales
@@ -389,6 +389,8 @@ DEADLINE: <2026-04-12 Sun>
 - [X] ¿Podríamos añadir un registro?
 - [X] Añadir el nuevo evento flisol
 - [X] Ubicación vs Ubicaciones. Hacerlo a modo de lista.
+- [ ] El "tag" de "próximamente" está en un campo de event.ts, que indica el estado del evento. Sería mejor que esto sea automático.
+- [ ] Verificar que la notificación de próximo evento y la tarjeta de eventos de src/components/LatestHighlights.tsx no tengan errores.
 - [-] Calendario:
   Este calendario está basado en la vista de GNOME Notifications/Calendar.
   - [X] En el calendario de Events.tsx, se debe mostrar un punto debajo del día del evento
@@ -462,15 +464,14 @@ DEADLINE: <2026-03-03 Tue>
 *** TODO Optimización/Bugs/Testing/Corrección de vulnerabilidades
 DEADLINE: <2026-04-18 Sat>
 **** DONE Modo oscuro automático según el sistema
+**** Colocar la información correcta en la fecha de inicio de los miembros.
 **** Mejorar el SEO del sitio (para posicionarlo mejor al buscar en el navegador)
 **** Sería bueno "Normalizar" el tamaño de los títulos del Home.
 **** Tal vez sería bueno cambiar el texto de "Proyectos en desarrollo" del Home, pues hay algunas investigaciones que ya no están en curso.
 **** Añadir una "pantalla de carga" al inicio.
-**** Tema oscuro automático
 **** Hacer que los íconos sean tomados de un svg local
 en blog.tsx hay import { User, ArrowRight, Calendar, Clock } from "lucide-react", etc
 **** Cuando regreso a una página anterior, que no me regrese hasta el inicio, si no que se quede en el mismo sitio antes de dar click.
-**** Colocar la información correcta en la fecha de inicio de los miembros.
 **** Mejora el script del blog.
 **** DONE CursorEffect
 Al estar en dispositivos móviles, el efecto de brillo que sigue al cursos se queda pillado.
