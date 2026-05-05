@@ -88,20 +88,24 @@ export const events: Event[] = [
             "SuperTuxKart Challenge"
         ],
         es: [
-            "Modalidades de contratación. Por Tonejito",
-            "Finanzas personales. Por Tonejito",
-            "Recuperando tu privacidad en Android con Software Libre. Por Enrique García",
-            "Enfrentando Pandemias con Software Libre y Mente Fría: GNU Health + Habilidades Humanas en DN-III-E. Por Vivi Nava",
-            "Querida, encogí el Cluster. Por Alex Callejas",
-            "Introducción a Org-Mode. Por RamenRoot",
-            "Sway Window Manager. Por Luis Ugartechea",
-            "MiSTer, Preservación de juegos y hardware retro con FPGAs y Software Libre. Por Δlain",
-            "Reta de SuperTuxKart"
+            "7 de mayo (10:00 - 11:00): Modalidades de contratación. Por Tonejito",
+            "7 de mayo (11:00 - 12:00): Finanzas personales. Por Tonejito",
+            "7 de mayo (12:00 - 12:30): Recuperando tu privacidad en Android con Software Libre. Por Enrique García",
+            "7 de mayo (12:30 - 13:00): Receso",
+            "7 de mayo (13:00 - 14:30): Enfrentando Pandemias con Software Libre y Mente Fría: GNU Health + Habilidades Humanas en DN-III-E. Por Vivi Nava",
+            "8 de mayo (10:00 - 12:00): Querida, encogí el Cluster. Taller de soberanía. Por Alex Callejas",
+            "8 de mayo (12:00 - 12:30): Introducción a Org-Mode. Por RamenRoot",
+            "8 de mayo (12:30 - 13:00): Receso",
+            "8 de mayo (13:00 - 14:00): Sway Window Manager. Por Luis Ugartechea",
+            "8 de mayo (14:00 - 15:00): Pensamientos en voz alta sobre LLMs, generación de código y Software Libre. Por Diego Barriga",
+            "8 de mayo (15:00 - 15:45): MiSTer, Preservación de juegos y hardware retro con FPGAs y Software Libre. Por Δlain",
+            "8 de mayo (16:00 - 17:00): Reta de SuperTuxKart"
         ]
     },
     speakers: [
       { memberId: 2 },
       { memberId: 7 },
+      { memberId: 9 },
     ],
     startDate: "2026-05-07",
     endDate: "2026-05-08",
@@ -117,12 +121,12 @@ export const events: Event[] = [
       url: "https://www.openstreetmap.org/directions?from=&to=19.326487%2C-99.182596#map=19/19.326475/-99.183036"
     },
     ],
-    action1: {
-        text: {
-            en: "Call for Speakers",
-            es: "Call for Speakers" },
-        url: "https://cloud.lidsol.unam.mx/apps/forms/s/iniYSs2ostbLnsnnPyaBM6mm"
-  },
+//    action1: {
+//        text: {
+//            en: "Call for Speakers",
+//            es: "Call for Speakers" },
+//        url: "https://cloud.lidsol.unam.mx/apps/forms/s/iniYSs2ostbLnsnnPyaBM6mm"
+//  },
     tags: { en: ["FLISoL", "Open Source", "Free Software", "Community"], es: ["FLISoL", "Open Source", "Software Libre" ,"Comunidad"] },
     publishDate: "2026-04-14"
   },
