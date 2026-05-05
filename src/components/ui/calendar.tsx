@@ -3,9 +3,11 @@
 import * as React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react@0.487.0";
 import { DayPicker } from "react-day-picker@8.10.1";
+import { es, enUS } from "date-fns/locale";
 
 import { cn } from "./utils";
 import { buttonVariants } from "./button";
+import { useLanguage } from "../LanguageProvider";
 
 function Calendar({
   className,
@@ -14,6 +16,10 @@ function Calendar({
   modifiers,
   ...props
 }: React.ComponentProps<typeof DayPicker> & { modifiers?: { hasEvent?: Date[] } }) {
+  const { language } = useLanguage();
+
+  const locale = language === "es" ? es : enUS;
+
   const hasEventOnDate = (date: Date): boolean => {
     if (!modifiers?.hasEvent) return false;
     return modifiers.hasEvent.some(
@@ -28,6 +34,7 @@ function Calendar({
     <DayPicker
       showOutsideDays={showOutsideDays}
       className={cn("p-3", className)}
+      locale={locale}
       classNames={{
         months: "flex flex-col sm:flex-row gap-2",
         month: "flex flex-col gap-4",

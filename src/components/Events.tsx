@@ -76,12 +76,13 @@ export function Events({ onEventClick }: EventsProps) {
           </p>
         </div>
 
-        <div className="max-w-md mx-auto mb-16">
+         <div className="max-w-md mx-auto mb-16">
           <div className="bg-card rounded-3xl p-6 border border-border/40 shadow-sm">
             <div className="space-y-6">
               <h2 className="text-xl font-medium text-center">{t.calendar[language]}</h2>
 
-              <div className="flex justify-center">
+              <div className="mx-auto flex flex-col items-center" style={{ width: '290px' }}>
+                <div className="flex justify-center">
                 <Calendar
                   mode="single"
                   selected={date}
@@ -89,41 +90,44 @@ export function Events({ onEventClick }: EventsProps) {
                   className="rounded-2xl border-none"
                   modifiers={{ hasEvent: eventDates }}
                 />
-              </div>
-
-              <div className="w-full notification-bg rounded-2xl p-3">
-                <div className="flex items-start gap-4">
-                  <div className="flex-1 min-w-0">
-                    <div className="text-[10px] font-bold uppercase tracking-widest mb-1 text-muted-foreground/90">
-                      {t.nextEvent[language]}
-                    </div>
-
-                    {upcomingEvent ? (
-                      <button
-                        onClick={() => onEventClick(upcomingEvent.id)}
-                        className="text-left w-full group"
-                      >
-                        <div className="font-semibold truncate group-hover:text-primary transition-colors">
-                          {upcomingEvent.title[language]}
-                        </div>
-                        <div className="flex items-center gap-3 mt-1.5 text-sm text-muted-foreground/80">
-                          <div className="flex items-center gap-1">
-                            <CalendarIcon className="h-3.5 w-3.5" />
-                            <span>{upcomingEvent.startDate}</span>
-                          </div>
-                          {upcomingEvent.time && (
-                            <div className="flex items-center gap-1">
-                              <Clock className="h-3.5 w-3.5" />
-                              <span>{upcomingEvent.time}</span>
-                            </div>
-                          )}
-                        </div>
-                      </button>
-                    ) : (
-                      <div className="text-sm text-muted-foreground italic">
-                        {t.noUpcoming[language]}
+                </div>
+                <div className="notification-bg rounded-2xl p-3 mt-4 w-full">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-1 min-w-0">
+                      <div className="text-[10px] font-bold uppercase tracking-widest mb-1 text-muted-foreground/90">
+                        {t.nextEvent[language]}
                       </div>
-                    )}
+
+                      {upcomingEvent ? (
+                        <button
+                          onClick={() => onEventClick(upcomingEvent.id)}
+                          className="text-left w-full group"
+                        >
+                          <div className="font-semibold group-hover:text-primary transition-colors">
+                            {(() => {
+                              const title = upcomingEvent.title[language];
+                              return title.length > 40 ? title.slice(0, 40) + '...' : title;
+                            })()}
+                          </div>
+                          <div className="flex items-center gap-3 mt-1.5 text-sm text-muted-foreground/80">
+                            <div className="flex items-center gap-1">
+                              <CalendarIcon className="h-3.5 w-3.5" />
+                              <span>{upcomingEvent.startDate}</span>
+                            </div>
+                            {upcomingEvent.time && (
+                              <div className="flex items-center gap-1">
+                                <Clock className="h-3.5 w-3.5" />
+                                <span>{upcomingEvent.time}</span>
+                              </div>
+                            )}
+                          </div>
+                        </button>
+                      ) : (
+                        <div className="text-sm text-muted-foreground italic">
+                          {t.noUpcoming[language]}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -131,6 +135,7 @@ export function Events({ onEventClick }: EventsProps) {
           </div>
         </div>
 
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto space-y-6">
           {sortedEvents.map((event, index) => (
             <div key={event.id} className="relative">
@@ -227,6 +232,7 @@ export function Events({ onEventClick }: EventsProps) {
           ))}
         </div>
       </div>
+    </div>
     </section>
   );
 }

@@ -246,3 +246,47 @@ html {
   animation: modalZoomOut 200ms ease-out forwards;
 }
 
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(154, 153, 150, 0.4);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(154, 153, 150, 0.6);
+}
+
+:root ::-webkit-scrollbar-thumb {
+  background: rgba(154, 153, 150, 0.4);
+}
+
+:root ::-webkit-scrollbar-thumb:hover {
+  background: rgba(154, 153, 150, 0.6);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(154, 153, 150, 0.4) transparent;
+}
+
+.dark html {
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
