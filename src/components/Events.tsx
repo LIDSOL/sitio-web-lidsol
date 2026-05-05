@@ -4,7 +4,7 @@ import { Calendar as CalendarIcon, MapPin, Clock, ArrowRight } from "lucide-reac
 import { Button } from "./ui/button";
 import { Calendar } from "./ui/calendar";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { events } from "../data/events";
+import { events, getEventStatus } from "../data/events";
 import { useLanguage } from "./LanguageProvider";
 import { useState, useMemo } from "react";
 
@@ -56,6 +56,7 @@ export function Events({ onEventClick }: EventsProps) {
     subtitle: { en: "Workshops, conferences and community activities", es: "Talleres, conferencias y actividades de la comunidad" },
     viewMore: { en: "View More", es: "Ver Más" },
     upcoming: { en: "Upcoming", es: "Próximamente" },
+    ongoing: { en: "Ongoing", es: "En curso" },
     calendar: { en: "Event Calendar", es: "Calendario de Eventos" },
     nextEvent: { en: "Next Event", es: "Próximo Evento" },
     noUpcoming: { en: "No upcoming events", es: "Sin eventos próximos" },
@@ -160,11 +161,24 @@ export function Events({ onEventClick }: EventsProps) {
                         alt={event.title[language]}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
-                      {event.status === "upcoming" && (
-                        <Badge className="absolute top-4 left-4 shadow-lg bg-green-500">
-                          {t.upcoming[language]}
-                        </Badge>
-                      )}
+                      {(() => {
+                        const status = getEventStatus(event);
+                        if (status === "upcoming") {
+                          return (
+                            <Badge className="absolute top-4 left-4 shadow-lg bg-green-500">
+                              {t.upcoming[language]}
+                            </Badge>
+                          );
+                        }
+                        if (status === "ongoing") {
+                          return (
+                            <Badge className="absolute top-4 left-4 shadow-lg bg-blue-500">
+                              {t.ongoing[language]}
+                            </Badge>
+                          );
+                        }
+                        return null;
+                      })()}
                     </div>
                     <div className="md:col-span-3 p-6">
                       <div className="flex flex-wrap gap-2 mb-3">

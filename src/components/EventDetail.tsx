@@ -4,7 +4,7 @@ import { Badge } from "./ui/badge";
 import { Card, CardContent } from "./ui/card";
 import { Calendar } from "./ui/calendar";
 import { useLanguage } from "./LanguageProvider";
-import { Event } from "../data/events";
+import { Event, getEventStatus } from "../data/events";
 import { members } from "../data/members";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useState } from "react";
@@ -66,6 +66,7 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
     capacity: { en: "Capacity", es: "Capacidad" },
     relatedLinks: { en: "Related Links", es: "Enlaces relacionados" },
     upcoming: { en: "Upcoming", es: "Próximamente" },
+    ongoing: { en: "Ongoing", es: "En curso" },
   };
 
   const matchedSpeakers = (event.speakers || []).map(speaker => {
@@ -133,11 +134,24 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
                 {tag}
               </Badge>
             ))}
-            {event.status === "upcoming" && (
-              <Badge className="bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20">
-                {t.upcoming[language]}
-              </Badge>
-            )}
+            {(() => {
+              const status = getEventStatus(event);
+              if (status === "upcoming") {
+                return (
+                  <Badge className="bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20">
+                    {t.upcoming[language]}
+                  </Badge>
+                );
+              }
+              if (status === "ongoing") {
+                return (
+                  <Badge className="bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20">
+                    {t.ongoing[language]}
+                  </Badge>
+                );
+              }
+              return null;
+            })()}
           </div>
 
           <h1 className="text-5xl sm:text-6xl mb-6">{event.title[language]}</h1>

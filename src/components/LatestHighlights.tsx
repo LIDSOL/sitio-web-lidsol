@@ -4,7 +4,7 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useLanguage } from "./LanguageProvider";
 import { blogPosts } from "../data/blogPosts";
 import { courses } from "../data/courses";
-import { events } from "../data/events";
+import { events, getEventStatus } from "../data/events";
 
 interface LatestHighlightsProps {
   onViewPost: (id: number) => void;
@@ -82,6 +82,7 @@ export function LatestHighlights({
     seeAllCourses: { en: "See all courses", es: "Ver todos los cursos" },
     seeAllEvents: { en: "See all events", es: "Ver todos los eventos" },
     upcoming: { en: "Upcoming", es: "Próximamente" },
+    ongoing: { en: "Ongoing", es: "En curso" },
     readTime: { en: "min read", es: "min de lectura" },
     starts: { en: "Starts", es: "Inicia" },
     getLevelColor: (level: string) => {
@@ -252,11 +253,24 @@ export function LatestHighlights({
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent md:bg-gradient-to-r md:from-transparent md:to-black/10" />
-                {latestEvent.status === "upcoming" && (
-                  <Badge className="absolute top-4 left-4 rounded-full bg-primary text-primary-foreground shadow-md">
-                    {t.upcoming[language]}
-                  </Badge>
-                )}
+                {(() => {
+                  const status = getEventStatus(latestEvent);
+                  if (status === "upcoming") {
+                    return (
+                      <Badge className="absolute top-4 left-4 rounded-full bg-primary text-primary-foreground shadow-md">
+                        {t.upcoming[language]}
+                      </Badge>
+                    );
+                  }
+                  if (status === "ongoing") {
+                    return (
+                      <Badge className="absolute top-4 left-4 rounded-full bg-blue-500 text-white shadow-md">
+                        {t.ongoing[language]}
+                      </Badge>
+                    );
+                  }
+                  return null;
+                })()}
               </div>
 
               {/* Content */}

@@ -34,8 +34,31 @@ export interface Event {
     text: { en: string; es: string };
     url: string;
   };
-  status?: "upcoming" | "ongoing" | "past";
   publishDate?: string;
+}
+
+export function getEventStatus(event: Event): "upcoming" | "ongoing" | "past" {
+  const today = new Date();
+  today.setUTCHours(0, 0, 0, 0);
+
+  if (!event.startDate) return "past";
+
+  const [startYear, startMonth, startDay] = event.startDate.split('-').map(Number);
+  const startDate = new Date(Date.UTC(startYear, startMonth - 1, startDay));
+
+  if (event.endDate) {
+    const [endYear, endMonth, endDay] = event.endDate.split('-').map(Number);
+    const endDate = new Date(Date.UTC(endYear, endMonth - 1, endDay));
+    if (startDate <= today && endDate >= today) {
+      return "ongoing";
+    }
+  }
+
+  if (startDate >= today) {
+    return "upcoming";
+  }
+
+  return "past";
 }
 export const events: Event[] = [
   {
@@ -52,16 +75,44 @@ export const events: Event[] = [
         en: "## What is FLISoL?\nThe main objective of the event is to promote the use of free software, introducing its philosophy, scope, advances, and development to the general public. It is organized by various local communities. During the event, free software is installed on attendees' computers in a completely free and legal manner. In parallel, **talks, lectures, and workshops are offered**.\n\n## 2026 Theme\n**\"Free Software, Artificial Intelligence, Open Hardware, Free Culture, and their relationship with user autonomy and privacy\"**\n\n## Where and When?\nThe event will take place on the following days:\n- **May 7th:** Conferences\n- **May 8th:** Workshops\n\nAt the Northern Complex of the Faculty of Engineering, Building I, PC-Puma Kiosk.\n\n## How do I participate?\nIf you are interested in contributing to the event, you can participate in the following ways:\n\n### Conferences and Workshops\nWould you like to give a talk or workshop on any free technology? Tell us about your proposal through [our Telegram channel](https://t.me/LIDSoL) or register it [in this form](https://cloud.lidsol.unam.mx/apps/forms/s/iniYSs2ostbLnsnnPyaBM6mm).\n\n### Installer\nIf you already have experience with Free Software and know how to install it on different platforms, we invite you to attend and help others learn!\n\n### Attendee\nEntry is open, free, and available to everyone.\nIf you want to try or install free software, bring your equipment and we will provide the necessary assistance.\n\n**Your participation makes this event possible! We are very grateful to those who wish to support us.**\n\n⚠️ *Note:* If you want to try a new operating system, remember to back up your important information beforehand.",
         es: "## ¿Qué es el FLISoL?\n El principal objetivo del evento es promover el uso del software libre, dando a conocer al público general su filosofía, alcances, avances y desarrollo. Es organizado por diversas comunidades locales. Durante el encuentro se realiza la instalación, de manera gratuita y totalmente legal, de software libre en las computadoras de los asistentes. De forma paralela, **se ofrecen charlas, ponencias y talleres**.\n\n## Temática 2026\n**\"Software Libre, Inteligencia Artificial, Hardware Abierto, Cultura Libre y su relación con la autonomía y la privacidad de los usuarios\"**\n\n## ¿Dónde y cuándo es?\nEl evento se llevará a cabo los días: \n- **7 de mayo:** Conferencias\n- **8 de mayo:** Talleres\n\nEn el Conjunto Norte de la Facultad de Ingeniería, Edificio I, Quiosco PC-Puma.\n\n## ¿Cómo participo?\n Si estás interesado en contribuir en el evento, puedes participar de las siguientes formas:\n\n ### Conferencias y talleres\n¿Te gustaría impartir una charla o un taller sobre alguna tecnología libre? Cuéntanos tu propuesta por [nuestro canal de Telegram](https://t.me/LIDSoL) o registra tu propuesta [en este formulario](https://cloud.lidsol.unam.mx/apps/forms/s/iniYSs2ostbLnsnnPyaBM6mm).\n\n### Instalador\nSi ya tienes experiencia con Software Libre y sabes cómo instalarlo en distintas plataformas, ¡te invitamos a asistir para ayudar a otras personas a aprender!\n\n### Asistente\nLa entrada es abierta, gratuita y está disponible para todo el público. \nSi deseas probar o instalar software libre, trae tu equipo y nosotros te brindaremos la asistencia necesaria.\n\n**¡Tu participación hace posible este evento! Estamos muy agradecidos con quienes deseen apoyar.**\n\n⚠️ *Nota:* Si deseas probar un nuevo sistema operativo, recuerda realizar previamente un respaldo de tu información importante."
         },
+    contents: {
+        en: [
+            "Employment Modalities. By Tonejito",
+            "Personal Finance. By Tonejito",
+            "Recovering Your Privacy on Android with Free Software. By Enrique García",
+            "Facing Pandemics with Free Software and Clear Thinking: GNU Health + Human Skills in DN-III-E. By Vivi Nava",
+            "Dear, I Shrunk the Cluster. By Alex Callejas",
+            "Introduction to Org-Mode. By RamenRoot",
+            "Sway Window Manager. By Luis Ugartechea",
+            "MiSTer, Preserving Retro Games and Hardware with FPGAs and Free Software. By Δlain",
+            "SuperTuxKart Challenge"
+        ],
+        es: [
+            "Modalidades de contratación. Por Tonejito",
+            "Finanzas personales. Por Tonejito",
+            "Recuperando tu privacidad en Android con Software Libre. Por Enrique García",
+            "Enfrentando Pandemias con Software Libre y Mente Fría: GNU Health + Habilidades Humanas en DN-III-E. Por Vivi Nava",
+            "Querida, encogí el Cluster. Por Alex Callejas",
+            "Introducción a Org-Mode. Por RamenRoot",
+            "Sway Window Manager. Por Luis Ugartechea",
+            "MiSTer, Preservación de juegos y hardware retro con FPGAs y Software Libre. Por Δlain",
+            "Reta de SuperTuxKart"
+        ]
+    },
+    speakers: [
+      { memberId: 2 },
+      { memberId: 7 },
+    ],
     startDate: "2026-05-07",
     endDate: "2026-05-08",
     time: "10:00 a.m",
     coverImage: "/events-images/flisol-2026/hubert-neufeld-j-udI4zim2E-unsplash.jpg",
-    image: "/events-images/flisol-2026/average-arch-linux-user.webp",
+    image: "/events-images/flisol-2026/img1.png",
     locations: [
     {
     name: {
         en: "Northern Complex - Faculty of Engineering, Building I, PC-Puma Kiosk",
-        es: "Conjunto Norte de la Facultad de Ingeniería - Edificio I, Quiosco PC-Puma"
+        es: "Anexo de la Facultad de Ingeniería - Edificio I, Quiosco PC-Puma"
     },
       url: "https://www.openstreetmap.org/directions?from=&to=19.326487%2C-99.182596#map=19/19.326475/-99.183036"
     },
@@ -73,7 +124,6 @@ export const events: Event[] = [
         url: "https://cloud.lidsol.unam.mx/apps/forms/s/iniYSs2ostbLnsnnPyaBM6mm"
   },
     tags: { en: ["FLISoL", "Open Source", "Free Software", "Community"], es: ["FLISoL", "Open Source", "Software Libre" ,"Comunidad"] },
-    status: "upcoming",
     publishDate: "2026-04-14"
   },
   {
@@ -127,7 +177,6 @@ export const events: Event[] = [
         text: { en: "Compufest", es: "Compufest" },
         url: "compufest.cc"
     },
-    status: "upcoming",
     publishDate: "2026-04-14"
   },
   {
@@ -159,7 +208,6 @@ export const events: Event[] = [
     startDate: "2019-09-13",
     endDate: "2019-09-13",
     time: "10:00 — 11:30",
-    status: "past",
     image: "/events-images/tecnologias-de-internet-en-los-movimientos-sociales.png",
     coverImage: "events-images/lianhao-qu-LfaN1gswV5c-unsplash.jpg",
     tags: { en: ["Privacy and anonymity", "Tor", "MayFirst", "pe102718"], es: ["Privacidad y anonimato", "Tor", "MayFirst", "pe102718"] },
@@ -194,7 +242,6 @@ export const events: Event[] = [
     startDate: "2019-09-14",
     endDate: "2019-09-15",
     time: "09:00 — 20:00",
-    status: "past",
     tags: { en: ["ccoss", "open source", "community"], es: ["ccoss", "open source", "comunidad"] },
     image: "/events-images/ccoss-2019.jpg",
   action1: {
@@ -241,7 +288,6 @@ export const events: Event[] = [
     startDate: "2019-10-19",
     endDate: "2019-10-19",
     time: "10:00 - 13:00",
-    status: "past",
     speakers: [
       { memberId: 16 },
       { memberId: 9 }
@@ -294,7 +340,6 @@ export const events: Event[] = [
     url: "https://forms.gle/DfJdZ9bEJQjAHn5X6"
   },
     coverImage: "events-images/pandoc-cartoon.svgz",
-    status: "past",
   },
   {
     id: 5,
@@ -328,7 +373,6 @@ export const events: Event[] = [
       es: ["Traer computadora personal"]
     },
     publishDate: "2019-12-01",
-    status: "past",
     coverImage: "events-images/rubaitul-azad-ZIPFteu-R8k-unsplash.jpg",
   action1: {
     text: {
@@ -394,7 +438,6 @@ export const events: Event[] = [
     url: "https://forms.gle/CUDRfU4cF3MgTfub8"
     },
     coverImage: "events-images/conny-schneider-xuTJZ7uD7PI-unsplash.jpg",
-    status: "past",
     publishDate: "2019-12-01"
   },
   {
@@ -420,7 +463,6 @@ export const events: Event[] = [
     startDate: "2020-02-26",
     endDate: "2020-02-27",
     time: "08:00 - 20:00",
-    status: "past",
     coverImage: "/events-images/salvemos-internet.png",
     tags: { en: ["save the internet", "net neutrality"], es: ["salvemos el internet", "neutralidad de la red"] },
     links: [
@@ -462,7 +504,6 @@ export const events: Event[] = [
         en: "## What is FLISoL?\n\nFLISoL is the largest Free‑Software dissemination event in Latin America. It has been held since 2005, and since 2008 it takes place on the fourth Saturday of April each year. Its main goal is to promote the use of free software by introducing the general public to its philosophy, scope, advances, and development. The event is organized by various local free‑software communities and runs in parallel with activities where free software is installed—completely free and legal—on attendees’ computers. Additionally, parallel talks, presentations, and workshops cover local, national, and Latin‑American topics related to free software across its full spectrum: artistic, academic, business, and social.\n\n## Where is it?\n\nThe event will take place on April 23 and 24, 2020, at the Javier Barros Sierra Auditorium, Faculty of Engineering, UNAM, Ciudad Universitaria.\n\n## Who is it for?\n\nFLISoL is open to all audiences: students, academics, entrepreneurs, workers, public officials, enthusiasts, and even people with limited computer knowledge who want to discover new ways to use their machines.\n\n## What will happen?\n\n### Free‑software installation\nThe main activity is the installation of free software on attendees’ computers. If you want to try free software or install a free operating system, bring your laptop and we’ll help you install it.\n\n### Conferences\nDuring the two‑day event there will be talks about adopting and using free software in industry, government, and academia.\n\n### Competitions\nA programming contest is also planned; more details will be announced later.\n\n## How can you participate?\n\n### Speaker\nIf you would like to give a talk about free software during the event, register your presentation at [this link](https://www.papercall.io/flisol-fiunam).\n\n### Installer\nIf you have experience with free software and know how to install it on different platforms, attend the event and help others learn to use free software.\n\n### Attendee\nEntry is open to the public and free of charge. Bring your equipment if you want to try or install free software—we’ll assist you. If you plan to test a new operating system, be sure to back up your data beforehand.",
         es: "## ¿Qué es FLISoL?\n El FLISoL es el evento de difusión de Software Libre más grande en Latinoamérica se realiza desde el año 2005 y desde el 2008 se adoptó su realización el 4to sábado de Abril de cada año.\nSu principal objetivo es promover el uso del software libre, dando a conocer al público en general su filosofía, alcances, avances y desarrollo. El evento es organizado por las diversas comunidades locales de Software Libre y se desarrolla simultáneamente con eventos en los que se instala, de manera gratuita y totalmente legal, software libre en las computadoras que llevan los asistentes. Además, en forma paralela, se ofrecen charlas, ponencias y talleres, sobre temáticas locales, nacionales y latinoamericanas en torno al Software Libre, en toda su gama de expresiones: artística, académica, empresarial y social.\n## ¿Donde es?\n El evento se llevará a cabo los días 23 y 24 de Abril de 2020 en la Facultad de Ingeniería en Ciudad Universitaria, en el Auditorio Javier Barros Sierra.\n## ¿A quién está dirigido?\nEl FLISoL esta dirigido a todo tipo de público: estudiantes, académicos, empresarios, trabajadores, funcionarios públicos, entusiastas y aun personas que no poseen mucho conocimiento informático y desean encontrar nuevas formas de usar sus computadoras.\n## ¿Qué habrá?\n### Instalación de software libre\nLa actividad principal del evento es la instalación de software libre en las computadoras de los asistentes, así que si deseas probar algún software libre o instalar un sistema operativo libre puedes traer tu computadora y nosotros te ayudaremos a instalarlo.\n### Conferencias\nLos dos días que dura el evento habrán conferencias relacionadas con la adopción y uso del software libre en la industria, el gobierno y la academia.\n### Concursos\nTambién tenemos planeado un concurso de programación, más adelante publicaremos más información al respecto.\n## ¿Cómo participo?\n### Conferencista\nSi te gustaría dar una charla sobre software libre durante el evento puedes registrar una charla en [este enlace](https://www.papercall.io/flisol-fiunam).\n### Instalador\nSi ya has usado software libre y sabes cómo instalar software en distintas plataformas, puedes asistir al evento y ayudar a otra persona a aprender a usarsoftware libre.\n### Asistente\nLa entrada al evento esta abierta a todo público y es gratuita. Si deseas probar o instalar software libre trae tu equipo y nosotros te ayudamos. Si deseas probar un nuevo sistema operativo realiza antes un respaldo de tu información."
     },
-    status: "past",
     tags: { en: ["flisol", "open source", "community"], es: ["flisol", "open source", "comunidad"] },
   },
   {
@@ -499,7 +540,6 @@ export const events: Event[] = [
       { memberId: 11 }
     ],
     tags: { en: ["LISP", "Functional Programming", "Scheme", "Common Lisp"], es: ["LISP", "Programación funcional", "Scheme", "Common Lisp"] },
-    status: "past",
     image: "/events-images/seminario-de-lisp-2020.png",
     links: [
       {
@@ -529,7 +569,6 @@ export const events: Event[] = [
       { memberId: 2 }
     ],
     tags: { en: ["lpi", "security", "openssh", "lpic3", "linux"], es: ["lpi", "seguridad", "openssh", "lpic3", "linux"] },
-    status: "past",
     image: "/events-images/lpi-openexpo-2020.png",
     action1: {
     text: {
@@ -597,7 +636,6 @@ export const events: Event[] = [
           en: "## What is FLISoL?\nFLISoL is the largest Free Software outreach event in Latin America. It has been held since 2005, and since 2008 it has been scheduled for the fourth Saturday of April each year.\nIts main goal is to promote the use of free software, introducing the general public to its philosophy, scope, advances, and development.\nThe event is organized by various local Free Software communities and runs simultaneously with activities where free software is installed—free of charge and entirely legally—on the computers attendees bring. In parallel, talks, presentations, and workshops are offered on local, national, and Latin American topics related to Free Software, covering its full range of expressions: artistic, academic, business, and social.\n## Where is it?\nThe event will take place on April 29, 2022, at the Conjunto Norte of the Faculty of Engineering in Ciudad Universitaria.\n## Who is it for?\nFLISoL is aimed at all audiences: students, academics, entrepreneurs, workers, public officials, enthusiasts, and even people with little computer knowledge who want to discover new ways to use their computers.\n## What will happen?\n### Free‑software installation\nThe main activity of the event is installing free software on attendees' computers, so if you want to try free software or install a free operating system you can bring your computer and we will help you install it.\n### Conferences\nDuring the two days of the event there will be conferences related to the adoption and use of free software in industry, government, and academia.\n## How can I participate?\n### Speaker\nIf you would like to give a talk about free software during the event, you can register a talk on [our Telegram channel](https://t.me/LIDSoL).\n### Installer\nIf you have already used free software and know how to install software on different platforms, you can attend the event and help others learn to use free software.\n### Attendee\nEntry to the event is open to the public and is free of charge.\nIf you want to try or install free software, bring your device and we will help you. If you wish to try a new operating system, make a backup of your data beforehand.",
           es: "## ¿Qué es FLISoL?\nEl FLISoL es el evento de difusión de Software Libre más grande en Latinoamérica se realiza desde el año 2005 y desde el 2008 se adoptó su realización el 4to sábado de Abril de cada año.\nSu principal objetivo es promover el uso del software libre, dando a conocer al público en general su filosofía, alcances, avances y desarrollo.\nEl evento es organizado por las diversas comunidades locales de Software Libre y se desarrolla simultáneamente con eventos en los que se instala, de manera gratuita y totalmente legal, software libre en las computadoras que llevan los asistentes. Además, en forma paralela, se ofrecen charlas, ponencias y talleres, sobre temáticas locales, nacionales y latinoamericanas en torno al Software Libre, en toda su gama de expresiones: artística, académica, empresarial y social.\n## ¿Donde es?\nEl evento se llevará a cabo el día 29 de abril de 2022 en el Conjunto Norte de la Facultad de Ingeniería en Ciudad Universitaria.\n## ¿A quién está dirigido?\nEl FLISoL esta dirigido a todo tipo de público: estudiantes, académicos, empresarios, trabajadores, funcionarios públicos, entusiastas y aun personas que no poseen mucho conocimiento informático y desean encontrar nuevas formas de usar sus computadoras.\n## ¿Qué habrá?\n### Instalación de software libre\nLa actividad principal del evento es la instalación de software libre en las computadoras de los asistentes, así que si deseas probar algún software libre o instalar un sistema operativo libre puedes traer tu computadora y nosotros te ayudaremos a instalarlo.\n### Conferencias\nLos dos días que dura el evento habrán conferencias relacionadas con la adopción y uso del software libre en la industria, el gobierno y la academia.\n## ¿Cómo participo?\n### Conferencista\nSi te gustaría dar una charla sobre software libre durante el evento puedes registrar una charla en [nuestro canal del Telegram](https://t.me/LIDSoL)\n### Instalador\nSi ya has usado software libre y sabes cómo instalar software en distintas plataformas, puedes asistir al evento y ayudar a otra persona a aprender a usar software libre.\n### Asistente\nLa entrada al evento esta abierta a todo público y es gratuita.\nSi deseas probar o instalar software libre trae tu equipo y nosotros te ayudamos. Si deseas probar un nuevo sistema operativo realiza antes un respaldo de tu información."
     },
-    status: "past",
     image: "/events-images/FLISoL-2022-1.jpg",
     coverImage: "/events-images/FLISoL-2022.jpg",
     publishDate: "2022-04-15"
@@ -627,7 +665,6 @@ export const events: Event[] = [
       es: "## ¿Qué es FLISoL?\nEl FLISoL es el evento de difusión de Software Libre más grande en Latinoamérica se realiza desde el año 2005 y desde el 2008 se adoptó su realización el 4to sábado de Abril de cada año.\nSu principal objetivo es promover el uso del software libre, dando a conocer al público en general su filosofía, alcances, avances y desarrollo.\nEl evento es organizado por las diversas comunidades locales de Software Libre y se desarrolla simultáneamente con eventos en los que se instala, de manera gratuita y totalmente legal, software libre en las computadoras que llevan los asistentes. Además, en forma paralela, se ofrecen charlas, ponencias y talleres, sobre temáticas locales, nacionales y latinoamericanas en torno al Software Libre, en toda su gama de expresiones: artística, académica, empresarial y social.\n## ¿Donde es?\nEl evento se llevará a cabo el día 21 de abril de 2023 en el Conjunto Norte de la Facultad de Ingeniería en Ciudad Universitaria.\n## ¿A quién está dirigido?\nEl FLISoL esta dirigido a todo tipo de público: estudiantes, académicos, empresarios, trabajadores, funcionarios públicos, entusiastas y aun personas que no poseen mucho conocimiento informático y desean encontrar nuevas formas de usar sus computadoras.\n## ¿Qué habrá?\n### Instalación de software libre\nLa actividad principal del evento es la instalación de software libre en las computadoras de los asistentes, así que si deseas probar algún software libre o instalar un sistema operativo libre puedes traer tu computadora y nosotros te ayudaremos a instalarlo.\n### Conferencias\nLos dos días que dura el evento habrán conferencias relacionadas con la adopción y uso del software libre en la industria, el gobierno y la academia.\n## ¿Cómo participo?\n### Conferencista\nSi te gustaría dar una charla sobre software libre durante el evento puedes registrar una charla en [nuestro canal del Telegran](https://t.me/LIDSoL)\n### Instalador\nSi ya has usado software libre y sabes cómo instalar software en distintas plataformas, puedes asistir al evento y ayudar a otra persona a aprender a usar software libre.\n### Asistente\nLa entrada al evento esta abierta a todo público y es gratuita.\nSi deseas probar o instalar software libre trae tu equipo y nosotros te ayudamos.\nSi deseas probar un nuevo sistema operativo realiza antes un respaldo de tu información. \n## Charlas \n![Conferencias](/events-images/FLISoL-2023-talks.jpg)\n## Talleres\n![Talleres](/events-images/FLISoL-2023-workshops.jpg)"
     },
     tags: { en: ["flisol", "open source", "community"], es: ["flisol", "open source", "comunidad"] },
-    status: "past",
     image: "/events-images/flisol-2023.jpg",
     action1: {
     text: {
@@ -685,7 +722,6 @@ export const events: Event[] = [
         url: "https://flisol.info/FLISOL2024/Mexico/CDMX/UNAM"
       }
     ],
-    status: "past",
   },
 ];
 
