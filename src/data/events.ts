@@ -24,7 +24,7 @@ export interface Event {
     bio?: { en: string; es: string };
     image?: string;
   }[];
-  requirements?: { en: string[]; es: string[] };
+  requirements?: { en: string; es: string };
   contents?: { en: string[]; es: string[] };
   action1?: {
     text: { en: string; es: string };
@@ -102,18 +102,10 @@ export const events: Event[] = [
             "8 de mayo (16:00 - 17:00): Reta de SuperTuxKart"
         ]
     },
-//    requirements: {
-//      en: [
-//        "Basic knowledge of probability, statistics, linear algebra, and calculus",
-//        "It is recommended to have experience using the Python programming language (optional)",
-//        "Bring your own computer (optional)"
-//      ],
-//      es: [
-//        "Conocimientos básicos en probabilidad, estadística, álgebra lineal y cálculo",
-//        "Se recomienda tener experiencia usando el lenguaje de programación Python (opcional)",
-//        "Traer computadora personal (opcional)"
-//      ]
-//    },
+     requirements: {
+      en: "- **Sovereignty Workshop: \"Dear, I Shrunk the Cluster\"**\n  You must prepare your Red Hat access credentials in advance. Check [this link](developers.redhat.com) and use [this guide](/pdf/events/FLISoL_Taller_Encogiendo_el_Cluster_MANUAL.pdf) (page 8) as reference.\n- **Sway Workshop**\n  You must have Sway installed on your system before attending.\n- **Org Mode Workshop**\n  We recommend having Emacs installed. For greater convenience, we suggest using Doom Emacs — you can see how to install it at [this link](https://github.com/doomemacs/doomemacs).",
+      es: "- **Taller de soberanía: \"Querida, encogí el clúster\"**\n  Se requiere preparar con anticipación las credenciales de acceso a Red Hat. Consulta [este enlace](https://developers.redhat.com/) y usa [esta guía](/pdf/events/FLISoL_Taller_Encogiendo_el_Cluster_MANUAL.pdf) (página 8) como referencia.\n- **Taller de Sway**\n  Debes tener Sway ya instalado.\n- **Taller de Org Mode**\n  Se recomienda tener Emacs instalado. Para mayor comodidad, sugerimos usar Doom Emacs — puedes ver cómo instalarlo en [este enlace](https://github.com/doomemacs/doomemacs)."
+    },
     speakers: [
       { memberId: 2 },
       { memberId: 7 },
@@ -346,8 +338,8 @@ export const events: Event[] = [
     ],
     tags: { en: ["Pandoc", "Intersemester Courses", "Documents"], es: ["Pandoc", "Cursos intersemestrales", "Documentos"] },
     requirements: {
-      en: ["Bring your own computer"],
-      es: ["Traer computadora personal"]
+      en: "- Bring your own computer",
+      es: "- Traer computadora personal"
     },
   action1: {
     text: {
@@ -391,8 +383,8 @@ export const events: Event[] = [
     ],
     tags: { en: ["Python", "Courses Intersemester", "Programming"], es: ["Python", "Cursos intersemestrales", "Programación"] },
     requirements: {
-      en: ["Bring your own computer"],
-      es: ["Traer computadora personal"]
+      en: "- Bring your own computer",
+      es: "- Traer computadora personal"
     },
     publishDate: "2019-12-01",
     coverImage: "events-images/rubaitul-azad-ZIPFteu-R8k-unsplash.jpg",
@@ -436,16 +428,8 @@ export const events: Event[] = [
       en: ["Artificial Intelligence", "Machine Learning", "Intersemester Courses"],
       es: ["Inteligencia Artificial", "ML", "Cursos Intersemestrales"]},
     requirements: {
-      en: [
-        "Basic knowledge of probability, statistics, linear algebra, and calculus",
-        "It is recommended to have experience using the Python programming language (optional)",
-        "Bring your own computer (optional)"
-      ],
-      es: [
-        "Conocimientos básicos en probabilidad, estadística, álgebra lineal y cálculo",
-        "Se recomienda tener experiencia usando el lenguaje de programación Python (opcional)",
-        "Traer computadora personal (opcional)"
-      ]
+      en: "- Basic knowledge of probability, statistics, linear algebra, and calculus\n- It is recommended to have experience using the Python programming language (optional)\n- Bring your own computer (optional)",
+      es: "- Conocimientos básicos en probabilidad, estadística, álgebra lineal y cálculo\n- Se recomienda tener experiencia usando el lenguaje de programación Python (opcional)\n- Traer computadora personal (opcional)"
     },
     action1: {
     text: {

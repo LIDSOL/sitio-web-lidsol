@@ -287,16 +287,34 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
 
             {/* Requirements */}
             {event.requirements && (
-            <div className="bg-card rounded-3xl p-8 border border-border/50">
+            <div className="bg-card rounded-3xl p-8 border border-border/50 shadow-xl">
               <h2 className="text-3xl mb-6">{t.requirements[language]}</h2>
-              <ul className="space-y-3">
-                {event.requirements[language]?.map((req, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground text-lg">{req}</span>
-                  </li>
-                ))}
-              </ul>
+              <article className="max-w-none">
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  components={{
+                    p: ({children}) => <p className="text-foreground mb-6 leading-relaxed text-lg text-justify hyphens-auto" style={{textAlign: 'justify'}}>{children}</p>,
+                    img: ({src, alt}) => (
+                      <figure className="my-8">
+                        <img src={src} alt={alt} className="rounded-2xl w-full" loading="lazy" decoding="async" />
+                        {alt && <figcaption className="text-center text-muted-foreground mt-2 text-sm">{alt}</figcaption>}
+                      </figure>
+                    ),
+                    a: ({href, children}) => (
+                      <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">{children}</a>
+                    ),
+                    h2: ({children}) => <h2 className="text-2xl font-bold mt-8 mb-4">{children}</h2>,
+                    h3: ({children}) => <h3 className="text-xl font-semibold mt-6 mb-3">{children}</h3>,
+                    h4: ({children}) => <h4 className="text-lg font-semibold mt-4 mb-2">{children}</h4>,
+                    ul: ({children}) => <ul className="space-y-3">{children}</ul>,
+                    ol: ({children}) => <ol className="list-decimal pl-6 mb-6 space-y-2">{children}</ol>,
+                    li: ({children}) => <li className="flex items-start gap-3"><CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" /><span className="text-muted-foreground text-lg">{children}</span></li>,
+                    blockquote: ({children}) => <blockquote className="border-l-4 border-primary pl-4 italic my-6 text-muted-foreground">{children}</blockquote>,
+                  }}
+                >
+                  {event.requirements[language]}
+                </ReactMarkdown>
+              </article>
             </div>
             )}
           </div>

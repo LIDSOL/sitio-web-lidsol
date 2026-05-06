@@ -401,12 +401,12 @@ DEADLINE: <2026-04-12 Sun>
   - [X] En el calendario de EventDetail.tsx muestra encerrado en un círculo el día del evento
 - [-] Mejorar la sección de cronograma
   - [X] Tener sub-items por día/hora
-  - [ ] Añadir la información faltante de FLISOL 2026
+  - [-] Añadir la información faltante de FLISOL 2026
     - [ ] Añadir los ponentes faltantes
     - [ ] Añadir los requermientos de los talleres
-    - [ ] Actualizar la descripción
-    - [ ] Añadir botón de registro al evento.
-    - [ ] Añadir el botón de "Ayudar a los asistentes".
+    - [X] Actualizar la descripción
+    - [X] Añadir botón de registro al evento.
+    - [X] Añadir el botón de "Ayudar a los asistentes".
 **** IN-PROGRESS CourseDetail y CourseDetail [22%]
 DEADLINE: <2026-04-12 Sun>
 - [ ] Mudar el contenido al sitio actual [0%]
