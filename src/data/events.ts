@@ -103,8 +103,16 @@ export const events: Event[] = [
         ]
     },
 //    requirements: {
-//      en: ["Bring your own computer"],
-//      es: ["Traer computadora personal"]
+//      en: [
+//        "Basic knowledge of probability, statistics, linear algebra, and calculus",
+//        "It is recommended to have experience using the Python programming language (optional)",
+//        "Bring your own computer (optional)"
+//      ],
+//      es: [
+//        "Conocimientos básicos en probabilidad, estadística, álgebra lineal y cálculo",
+//        "Se recomienda tener experiencia usando el lenguaje de programación Python (opcional)",
+//        "Traer computadora personal (opcional)"
+//      ]
 //    },
     speakers: [
       { memberId: 2 },

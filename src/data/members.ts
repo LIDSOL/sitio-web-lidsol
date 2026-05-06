@@ -467,35 +467,35 @@ export const members: Member[] = [
           en: "Python: Zero to Hero",
           es: "Python: Zero to Hero",
         },
-        url: "https://lidsol.unam.mx/talk/2020-1-python-zero-to-hero",
+        url: "https://lidsol.unam.mx/#events/5",
       },
       {
         label: {
           en: "Python contribution workshop",
           es: "Taller para contribuir a Python",
         },
-        url: "https://lidsol.unam.mx/talk/cpython-workshop",
+        url: "https://lidsol.unam.mx/#events/3",
       },
       {
         label: {
           en: "Memories of the CCOSS",
           es: "Memorias del CCOSS",
         },
-        url: "https://lidsol.unam.mx/post/ccoss",
+        url: "https://lidsol.unam.mx/#blog/2",
       },
       {
         label: {
           en: "Part‑of‑speech (POS) tagger using Conditional Random Fields",
           es: "Etiquetador gramatical (POS) usando Conditional Random Fields",
         },
-        url: "https://lidsol.unam.mx/post/pos-using-crf",
+        url: "https://lidsol.unam.mx/#blog/6",
       },
       {
         label: {
           en: "Esquite",
           es: "Esquite",
         },
-        url: "https://lidsol.unam.mx/post/esquite",
+        url: "https://lidsol.unam.mx/#blog/3",
       },
     ],
   },
