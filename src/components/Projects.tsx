@@ -1,4 +1,5 @@
-import { Star, Users, Github, ChevronUp, ChevronDown } from "lucide-react";
+import { Star, Users, ChevronUp, ChevronDown } from "lucide-react";
+import { GithubIcon } from "./ui/source/icons/GithubIcon";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { useLanguage } from "./LanguageProvider";
@@ -175,7 +176,7 @@ export function Projects({ onProjectClick }: ProjectsProps) {
                           className="gap-2"
                           onClick={() => window.open(project.github, '_blank')}
                         >
-                          <Github className="h-4 w-4" />
+                          <GithubIcon className="h-4 w-4" />
                           {t.sourceCode[language]}
                         </Button>
                       )}

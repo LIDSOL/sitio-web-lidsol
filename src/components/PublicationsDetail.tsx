@@ -1,4 +1,5 @@
-import { FileText, Users, Calendar, Award, Download, ExternalLink, ArrowLeft, Quote, Github } from "lucide-react";
+import { FileText, Users, Calendar, Award, Download, ExternalLink, ArrowLeft, Quote } from "lucide-react";
+import { GithubIcon } from "./ui/source/icons/GithubIcon";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { useLanguage } from "./LanguageProvider";
@@ -217,7 +218,7 @@ export function PublicationDetail({ publication, onBack }: PublicationDetailProp
           {publication.sourceCode && (
             <Button variant="outline" className="gap-2" asChild>
               <a href={publication.sourceCode} target="_blank" rel="noopener noreferrer">
-                <Github className="h-4 w-4" />
+                <GithubIcon className="h-4 w-4" />
                 {language === 'es' ? 'Código fuente' : 'Source code'}
               </a>
             </Button>

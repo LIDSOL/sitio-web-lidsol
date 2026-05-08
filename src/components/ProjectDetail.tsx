@@ -1,4 +1,5 @@
-import { ArrowLeft, Github, ExternalLink, Star, Users, CheckCircle, Download, Construction, Skull, ShieldQuestion } from "lucide-react";
+import { ArrowLeft, ExternalLink, Star, Users, CheckCircle, Download, Construction, Skull, ShieldQuestion } from "lucide-react";
+import { GithubIcon } from "./ui/source/icons/GithubIcon";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { useLanguage } from "./LanguageProvider";
@@ -96,7 +97,7 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Github className="h-5 w-5" />
+                  <GithubIcon className="h-5 w-5" />
                   {t.sourceCode[language]}
                 </a>
               </Button>

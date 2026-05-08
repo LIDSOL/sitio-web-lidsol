@@ -240,6 +240,7 @@ export function LatestHighlights({
           </div>
 
           {/* Bottom row — Featured Event (wide card) */}
+          {latestEvent && (
           <div
             className="group bg-card rounded-2xl border border-border overflow-hidden cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 min-h-[250px]"
             onClick={() => onViewEvent(latestEvent.id)}
@@ -327,6 +328,7 @@ export function LatestHighlights({
               </div>
             </div>
           </div>
+          )}
         </div>
 
         {/* Bottom links row */}
