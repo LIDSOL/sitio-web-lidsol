@@ -43,27 +43,31 @@ export function LatestHighlights({
     return dateB - dateA;
   });
 
-  const upcomingEvent = (() => {
-    const today = new Date();
-    today.setUTCHours(0, 0, 0, 0);
-    const futureEvents = events
-      .filter(event => {
-        if (!event.startDate) return false;
-        const [year, month, day] = event.startDate.split('-').map(Number);
-        const eventDate = new Date(Date.UTC(year, month - 1, day));
-        return eventDate >= today;
+  const latestEvent = (() => {
+    const active = events
+      .filter(e => {
+        const status = getEventStatus(e);
+        return status === "upcoming" || status === "ongoing";
       })
       .sort((a, b) => {
         const dateA = a.startDate ? new Date(a.startDate).getTime() : 0;
         const dateB = b.startDate ? new Date(b.startDate).getTime() : 0;
         return dateA - dateB;
       });
-    return futureEvents[0] || null;
+
+    if (active.length > 0) return active[0];
+
+    return [...events]
+      .filter(e => getEventStatus(e) === "past")
+      .sort((a, b) => {
+        const dateA = a.startDate ? new Date(a.startDate).getTime() : 0;
+        const dateB = b.startDate ? new Date(b.startDate).getTime() : 0;
+        return dateB - dateA;
+      })[0] || null;
   })();
 
   const latestPost = sortedBlogPosts[0];
   const latestCourse = sortedCourses[0];
-  const latestEvent = upcomingEvent;
 
   const t = {
     sectionLabel: { en: "Highlights", es: "Destacados" },
@@ -188,13 +192,6 @@ export function LatestHighlights({
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                {latestCourse.level && (
-                  <Badge
-                    className={`absolute top-3 right-3 rounded-full border text-xs ${t.getLevelColor(latestCourse.level?.en)}`}
-                  >
-                    {latestCourse.level[language]}
-                  </Badge>
-                )}
               </div>
 
               {/* Content */}
@@ -204,8 +201,13 @@ export function LatestHighlights({
                 <span className="text-xs font-medium uppercase tracking-wider text-primary">
                   {t.courseLabel[language]}
                 </span>
-                <span className="text-muted-foreground/40">·</span>
-                <span className="text-xs text-muted-foreground">{latestCourse.duration?.[language] || latestCourse.duration?.es}</span>
+                {latestCourse.level && (
+                  <Badge
+                    className={`rounded-full border text-xs ${t.getLevelColor(latestCourse.level?.en)}`}
+                  >
+                    {latestCourse.level[language]}
+                  </Badge>
+                )}
               </div>
 
                 {/* Title */}

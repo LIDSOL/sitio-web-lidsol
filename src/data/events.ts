@@ -37,11 +37,11 @@ export interface Event {
   publishDate?: string;
 }
 
-export function getEventStatus(event: Event): "upcoming" | "ongoing" | "past" {
+export function getEventStatus(event: Event | null | undefined): "upcoming" | "ongoing" | "past" {
   const today = new Date();
   today.setUTCHours(0, 0, 0, 0);
 
-  if (!event.startDate) return "past";
+  if (!event || !event.startDate) return "past";
 
   const [startYear, startMonth, startDay] = event.startDate.split('-').map(Number);
   const startDate = new Date(Date.UTC(startYear, startMonth - 1, startDay));
