@@ -6,9 +6,9 @@
 *** DONE Repositorio de GitHub y Versionado
 *** DONE Contenedor
 *** IN-PROGRESS Código
-**** DONE Home
-DEADLINE: <2026-03-13 Fri>
-***** DONE Hero [100%]
+**** IN-PROGRESS [#B] Home
+DEADLINE: <2026-06-05 Fri>
+***** DONE Hero [70%]
 - [X] Cambiar el color de fondo por algo gris pero con degradados
 - [X] Cambiar el texto por el logo del laboratorio.
 - [X] Mejorar el carrusel de imágenes
@@ -18,6 +18,9 @@ DEADLINE: <2026-03-13 Fri>
 - [X] Mejorar el aspecto del botón "Explorar Proyectos"
 - [X] Tener un poco más de efecto "Glow", pero que siga siendo sutil...
 - [X] Usar un logo para el tema oscuro y otro para el tema claro.
+- [ ] Optimizar el código de Hero, aún hay glow que ya no se usa.
+- [ ] Optimizar el carrusel
+- [ ] Modificar el botón "únete a la comunidad", en este momento manda un mail, sería mejor usar un form de nextcloud
 ****** Glow.. descartado
 import { Button } from "./ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
@@ -245,6 +248,8 @@ export function Hero() {
 ***** DONE LatestCourse [100%]
 - [X] Mejorar la responsividad
 - [X] Mejorar aspecto de los botones y tarjetas
+***** TODO LatestHighlights
+- [ ] Mostar el último evento o el próximo evento.
 ***** DONE Community [100%]
 - [X] Textos que invite a unirse al laboratorio.
 - [X] Cambiar es estilo de los botones.
@@ -302,7 +307,7 @@ DEADLINE: <2026-02-12 Thu>
     - src/components/ProjectDetail.tsx: Actualizado para usar project.tags[language]
     - src/components/FeaturedProjects.tsx: Actualizado para usar project.tags?.[language]
   - [X] Verificar el estado de los proyectos (para que el ícono sea el adecuado)
-**** DONE Blog (Blog.tsx y BlogDetail.tsx) [100%]
+**** DONE Blog (Blog.tsx y BlogDetail.tsx) [50%]
 DEADLINE: <2026-03-13 Fri>
 - [X] Blog [100%]
   - [X] Hacer que el Blog y el BlogDetail soporten el multi-idioma
@@ -345,6 +350,8 @@ DEADLINE: <2026-03-13 Fri>
       - Se agreguó el CSS de KaTeX desde CDN en el HTML.
     - [X] Mejorar el aspecto de las tablas markdown.
     - [X] {{% alert warning %}} ¿NANI KORE!
+- [ ] Optimizar las imágenes
+- [ ] Hacer un script de python/js para automatizar el añadir un post nuevo
 ***** Notas
 - *Más adelante, sería bueno añadir paginado*
 - Me doy cuanta que el los separadores de markdown no son correctamente soportados (---) en BlogDetail
@@ -361,8 +368,8 @@ El archivo src/data/blogPosts.ts se sigue usando, este genera los componentes [[
     - Para implementar el soporte multi-idioma:
       - Se modificará el directorio de cada post para contener versiones por idioma, un archivo por cada idioma (en este caso solo inglés-español, por ejemplo: index.es.md, index.en.md).
       - Se modificará el[[file:scripts/build-blog.js][ script]] que genera el[[file:src/data/blogPosts.ts][ archito ts]] con que usan los compontes que genran el blog. Deben detectar los archivos con sufijos .es.md o en.md y generar la estructura tipo json adecuada.
-**** IN-PROGRESS Events y EventDetail [88%]
-DEADLINE: <2026-04-12 Sun>
+**** IN-PROGRESS [#A] Events y EventDetail [78%]
+DEADLINE: <2026-06-05 Fri>
 - [X] Mudar el contenido "legacy" [100%]
   - [X] Las tecnologías de internet en los movimientos sociales
   - [X] CCOSS
@@ -407,8 +414,10 @@ DEADLINE: <2026-04-12 Sun>
     - [X] Actualizar la descripción
     - [X] Añadir botón de registro al evento.
     - [X] Añadir el botón de "Ayudar a los asistentes".
-**** IN-PROGRESS CourseDetail y CourseDetail [22%]
-DEADLINE: <2026-04-12 Sun>
+- [ ] Optimizar las imágenes
+- [ ] Hacer un script de js/Python para añadir eventos de forma sencilla (como en hugo)
+**** IN-PROGRESS [#B] CourseDetail y CourseDetail [20%]
+DEADLINE: <2026-06-05 Fri>
 - [ ] Mudar el contenido al sitio actual [0%]
   - [ ] Seminario de lisp
   - [ ] Fundamentos de Python
@@ -425,8 +434,9 @@ DEADLINE: <2026-04-12 Sun>
   - [ ] Igual y sería bueno cambiar el botón de Inscribirse ahora a "ver curso" y colocar el enlace a YouTube o a la llamada.
   - [ ] Cambiar el botón de "Unirte al curso" a otra cosa como "ver curso"
 - [ ] Mejorar el aspecto de la sección de "módulos del curso"
-**** DONE Publications
-DEADLINE: <2026-03-03 Tue>
+- [ ] Mejorar el botón "proponer curso" con un form
+**** IN-PROGRESS [#A] Publications
+DEADLINE: <2026-06-05 Fri>
 - [X] Mudar el contenido.
   - [X] Añadir los "metadatos" a src/data/publications.tsx
   - [X] Añadir los contenidos descargables (pdf)
@@ -448,8 +458,11 @@ DEADLINE: <2026-03-03 Tue>
     - [X] Que no se desborde el contenido
     - [X] La página de fondo debe estar más opaca que la ventana emergente.
     - [X] Añadir desplazamiento
-- [X] Sección CTA con Mailto, es sencillo y se evita configurar un backend de correo o base de datos (que para esto no se requiere).**** About
-**** DONE About y AboutMembers
+- [X] Sección CTA con Mailto, es sencillo y se evita configurar un backend de correo o base de datos (que para esto no se requiere).
+- [ ] Optimizar las imágenes
+- [ ] Tener un tema adaptativo claro/oscuro para la cita.
+**** IN-PROGRESS [#A] About y AboutMembers
+DEADLINE: <2026-06-05 Fri>
 - [X] Sería bueno que la zona de "Educado en" esté con dots.
 - [X] ¿De dónde salió ese ícono de mail? ¿Nani Kore?? Borralo..
 - [X] Faltan los intereses... v2.1.1
@@ -466,26 +479,32 @@ DEADLINE: <2026-03-03 Tue>
   - [X] Subir la resolución de las imágenes con upscaler
   - [X] Mejorar el color del botón cuando el cursor está sobré él en tema claro
 - Tal vez en el futuro sea bueno añadir paginación, si crece mucho el número de miembros. Igual intentar con una base de datos... (si hay más de 50 miembros, tal vea hora de dejar el "json").
+- [ ] Añadir el perfil de ramenroot
+- [ ] Actualizar la información de los miembros
+  - [ ] Mejorar las fotos de los miembros
 *** TODO Optimización/Bugs/Testing/Corrección de vulnerabilidades
-DEADLINE: <2026-04-18 Sat>
-**** Mejorar el SEO del sitio (para posicionarlo mejor al buscar en el navegador)
+DEADLINE: <2026-06-12 Fri>
+**** [#A] Mejorar el SEO del sitio (para posicionarlo mejor al buscar en el navegador)
+**** NEXT Actualizar README
 **** DONE Modo oscuro automático según el sistema
-**** Desactivar la ejecución automática de scripts y crear un por área (miembros, eventos, etc) para añadir info maś fácilmente sin la necesidad de meterte al ts
-**** Colocar la información correcta en la fecha de inicio de los miembros.
-**** Sería bueno "Normalizar" el tamaño de los títulos del Home.
-**** Tal vez sería bueno cambiar el texto de "Proyectos en desarrollo" del Home, pues hay algunas investigaciones que ya no están en curso.
-**** Añadir una "pantalla de carga" al inicio.
-**** Hacer que los íconos sean tomados de un svg local
+**** DONE [#A] Dejar de usar npm por seguridad
+El gestor de paquetes npm no es seguro por defecto y este último mes ha habido ataques a la cadena de suministros; según lo informado por SafeDep, un mantenedor comprometido publico 637 versiones maliciosas en 317 paquetes; es por ello que vamos a cambiar de gestor de paquetes a pnpm versión 11 o superior; pnpm por defecto resulta más seguro, por ejemplo, gracias a minimumReleaseAge no se instalan paquetes con menos de un día de haber sido publicados y evita la instalación de sub-dependencias de fuentes que pueden resultar "extrañas" gracias a blockExocticSubdeps.
+**** [#A] Desactivar la ejecución automática de scripts y crear un por área (miembros, eventos, etc) para añadir info maś fácilmente sin la necesidad de meterte al ts
+**** [#B] Colocar la información correcta en la fecha de inicio de los miembros.
+**** [#C] Sería bueno "Normalizar" el tamaño de los títulos del Home.
+**** [#C] Tal vez sería bueno cambiar el texto de "Proyectos en desarrollo" del Home, pues hay algunas investigaciones que ya no están en curso.
+**** [#C] Añadir una "pantalla de carga" al inicio.
+**** [#B] Hacer que los íconos sean tomados de un svg local
 en blog.tsx hay import { User, ArrowRight, Calendar, Clock } from "lucide-react", etc
 **** Cuando regreso a una página anterior, que no me regrese hasta el inicio, si no que se quede en el mismo sitio antes de dar click.
-**** Mejora el script del blog.
+**** [#B] Mejora el script del blog.
 **** DONE CursorEffect
 Al estar en dispositivos móviles, el efecto de brillo que sigue al cursos se queda pillado.
 **** DONE Responsibidad
 Hay un problema con las tarjetas de "Último curso, Último post de blog" en dispositivos móviels el contenido no se ve completo.
 **** Auditoría de ciberseguridad
 *** TODO Documentar
-DEADLINE: <2026-04-18 Sat>
+DEADLINE: <2026-06-12 Fri>
 ** DONE Deploy
 DEADLINE: <2026-03-28 Sat>
 * Arquitectura

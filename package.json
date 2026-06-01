@@ -33,6 +33,7 @@
             "class-variance-authority": "^0.7.1",
             "clsx": "*",
             "cmdk": "^1.1.1",
+            "date-fns": "^3.6.0",
             "embla-carousel-react": "^8.6.0",
             "input-otp": "^1.4.2",
             "katex": "^0.16.28",
@@ -69,8 +70,8 @@
             "build": "node scripts/build-blog.js && vite build",
             "build:staging": "vite build --mode staging",
             "preview": "vite preview --host",
-            "security:audit": "npm audit && npm audit fix",
-            "security:check": "npm ls --depth=0",
+            "security:audit": "pnpm audit",
+            "security:check": "pnpm ls --depth=0",
             "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
             "type-check": "tsc --noEmit",
             "build:blog": "node scripts/build-blog.js"

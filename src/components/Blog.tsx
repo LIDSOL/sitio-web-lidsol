@@ -9,7 +9,7 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { blogPosts } from "../data/blogPosts";
 import { useLanguage } from "./LanguageProvider";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 interface BlogProps {
   onPostClick: (postId: number) => void;

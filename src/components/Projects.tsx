@@ -5,7 +5,7 @@ import { Badge } from "./ui/badge";
 import { useLanguage } from "./LanguageProvider";
 import { projects } from "../data/projects";
 import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 

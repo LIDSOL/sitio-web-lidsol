@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useLanguage } from "./LanguageProvider";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import latex from "react-syntax-highlighter/dist/esm/languages/prism/latex";

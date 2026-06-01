@@ -6,7 +6,7 @@ import { FileText, ExternalLink, Download, Users, Calendar, Award, Quote } from 
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { CitationModal } from "./CitationModal";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useState } from "react";
 
 interface PublicationsProps {

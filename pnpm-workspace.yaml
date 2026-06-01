@@ -1,0 +1,8 @@
+allowBuilds:
+  "@swc/core": true
+  esbuild: true
+  sharp: true
+
+minimumReleaseAge: 1440
+blockExoticSubdeps: true
+strictDepBuilds: true
