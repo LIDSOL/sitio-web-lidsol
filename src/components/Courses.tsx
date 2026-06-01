@@ -13,20 +13,16 @@ interface CoursesProps {
 export function Courses({ onCourseClick }: CoursesProps) {
   const { language } = useLanguage();
 
-  const getLevelColor = (level: string) => {
-    const levelEn = typeof level === 'string' ? level : level;
-    switch (levelEn) {
-      case "Principiante":
+  const getLevelColor = (level?: string) => {
+    switch (level) {
       case "Beginner":
-        return "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20";
-      case "Intermedio":
+        return "bg-green-500 text-white";
       case "Intermediate":
-        return "bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20";
-      case "Avanzado":
+        return "bg-yellow-500 text-white";
       case "Advanced":
-        return "bg-purple-500/10 text-purple-700 dark:text-purple-400 border-purple-500/20";
+        return "bg-destructive text-white";
       default:
-        return "";
+        return "bg-blue-500 text-white";
     }
   };
 
@@ -34,10 +30,10 @@ export function Courses({ onCourseClick }: CoursesProps) {
     title: { en: "Courses", es: "Cursos" },
     subtitle: { en: "Training programs in open source technologies", es: "Programas de formación en tecnologías de código abierto" },
     featured: { en: "Last", es: "Último" },
-    enroll: { en: "Enroll", es: "Inscribirse" },
+    enroll: { en: "View Details", es: "Ver Detalles" },
     viewDetails: { en: "View Details", es: "Ver Detalles" },
     startDate: { en: "Starts:", es: "Inicia:" },
-    enrolled: { en: "enrolled", es: "inscritos" },
+    capacity: { en: "Capacity:", es: "Cupo:" },
     proposeCourse: { en: "Want to propose a course?", es: "¿Quieres proponer un curso?" },
     proposeDescription: {
       en: "If you have experience in any open source technology and want to share your knowledge, we'd love to hear your course proposal.",
@@ -87,7 +83,7 @@ export function Courses({ onCourseClick }: CoursesProps) {
               />
               <Badge className="absolute top-4 left-4 shadow-lg">{t.featured[language]}</Badge>
               {featuredCourse.level && (
-                <Badge className={`absolute top-4 right-4 shadow-lg border ${getLevelColor(featuredCourse.level[language])}`}>
+                <Badge className={`absolute top-4 right-4 shadow-lg border ${getLevelColor(featuredCourse.level?.en)}`}>
                   {featuredCourse.level[language]}
                 </Badge>
               )}
@@ -95,7 +91,7 @@ export function Courses({ onCourseClick }: CoursesProps) {
             <div className="p-8 flex flex-col justify-between">
               <div>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {featuredCourse.tags?.map((tag) => (
+                  {featuredCourse.tags?.[language]?.map((tag) => (
                     <Badge key={tag} variant="secondary">{tag}</Badge>
                   ))}
                 </div>
@@ -120,10 +116,10 @@ export function Courses({ onCourseClick }: CoursesProps) {
                       <span>{t.startDate[language]} {formatDate(featuredCourse.startDate, language)}</span>
                     </div>
                   )}
-                  {featuredCourse.enrolled && (
+                  {featuredCourse.capacity && (
                     <div className="flex items-center gap-2 text-sm">
                       <Users className="h-4 w-4 text-primary" />
-                      <span>{featuredCourse.enrolled} {t.enrolled[language]}</span>
+                      <span>{t.capacity[language]} {featuredCourse.capacity}</span>
                     </div>
                   )}
                 </div>
@@ -139,7 +135,7 @@ export function Courses({ onCourseClick }: CoursesProps) {
         </Card>
 
         {/* Courses Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {otherCourses.map((course) => (
             <Card
               key={course.id}
@@ -152,14 +148,14 @@ export function Courses({ onCourseClick }: CoursesProps) {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 {course.level && (
-                  <Badge className={`absolute top-3 right-3 shadow-lg border ${getLevelColor(course.level[language])}`}>
+                  <Badge className={`absolute top-3 right-3 shadow-lg border ${getLevelColor(course.level?.en)}`}>
                     {course.level[language]}
                   </Badge>
                 )}
               </div>
               <CardHeader className="flex-grow">
                 <div className="flex flex-wrap gap-2 mb-3">
-                  {course.tags?.map((tag) => (
+                  {course.tags?.[language]?.map((tag) => (
                     <Badge key={tag} variant="outline" className="text-xs">{tag}</Badge>
                   ))}
                 </div>
@@ -188,10 +184,10 @@ export function Courses({ onCourseClick }: CoursesProps) {
                       <span className="text-muted-foreground">{formatDate(course.startDate, language)}</span>
                     </div>
                   )}
-                  {course.enrolled && (
+                  {course.capacity && (
                     <div className="flex items-center gap-2">
                       <Users className="h-3.5 w-3.5 text-muted-foreground" />
-                      <span className="text-muted-foreground">{course.enrolled} {t.enrolled[language]}</span>
+                      <span className="text-muted-foreground">{t.capacity[language]} {course.capacity}</span>
                     </div>
                   )}
                 </div>

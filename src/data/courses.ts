@@ -1,8 +1,8 @@
+
+
 import lispImg              from "../../public/courses-images/lisp.png";
 import pythonFeaturedImg    from "../../public/courses-images/python-featured.png";
 import pumaHatImg           from "../../public/courses-images/pumapwn.jpg";
-
-
 import sysAdminCoverImg     from "../../public/courses-images/gabriel-heinzer-4Mw7nkQDByk-unsplash.jpg";
 import sysAdminImg          from "../../public/courses-images/sysadmin.png";
 import latexFeaturedImg     from "../../public/courses-images/jl-cabrera-vbRWm4Qn-28-unsplash.jpg";
@@ -19,12 +19,12 @@ export interface Course {
   startDate?: string;
   schedule?: { en: string; es: string };
   level?: { en: string; es: string };
-  enrolled?: string;
+  capacity?: string;
   resources?: string;
   courseUrl?: string;
   image?: string;
   coverImage?: string;
-  tags?: string[];
+  tags?: { en: string[]; es: string[] };
   modules?: { en: string; es: string };
   requirements?: { en: string[]; es: string[] };
   objectives?: { en: string[]; es: string[] };
@@ -46,6 +46,7 @@ export const courses: Course[] = [
       es: "En este seminario recuperaremos diversos materiales para aprender las bondades y retos de la familia de lenguajes LISP. En un principio nos enfocamos en la programación empleando scheme, un dialecto minimalista y elegante de la familia de lenguajes de programación LISP. Actualmente revisamos el dialecto Common Lisp. \n Nos reunimos tres días a la semana; lunes, miercoles y jueves en un horario de 19:00 a 20:00 (Tiempo de la Ciudad de México) en la sala de Jitsi [SeminarioLispLisdol](https://meet.jit.si/SeminarioLISPLidsol)."
     },
     instructor: "Telior",
+    capacity: "20",
     duration: { en: "2 weeks", es: "2 semanas" },
     startDate: "2020-06-01",
     schedule: { en: "Monday, Wednesday, and Thursday, 19:00-21:00", es: "Lunes, miércoles y jueves, 19:00-21:00" },
@@ -54,7 +55,10 @@ export const courses: Course[] = [
     courseUrl: "https://meet.jit.si/SeminarioLISPLidsol",
     image: lispImg,
     coverImage: lispImg,
-    tags: ["LISP", "Functional Programming", "Scheme", "sicp"],
+    tags: {
+      en: ["LISP", "Functional Programming", "Scheme", "SICP"],
+      es: ["LISP", "Programación Funcional", "Scheme", "SICP"]
+    },
     modules: {
       en: `Structure and Interpretation of Computer Programs
 The Little Schemer
@@ -93,7 +97,10 @@ The Reasoned Schemer`
     resources: "https://gitlab.com/lidsol/intro-python",
     image: pythonFeaturedImg,
     coverImage: pythonFeaturedImg,
-    tags: ["Python", "Introducción a la programación"],
+    tags: {
+      en: ["Python", "Introduction to Programming"],
+      es: ["Python", "Introducción a la programación"]
+    },
     modules: {
       en: `# Introduction
   ## What is Python?
@@ -208,7 +215,10 @@ The Reasoned Schemer`
     instructor: "BDrag0n",
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=800",
     coverImage: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1600",
-    tags: ["Security", "Pentesting", "Ethical Hacking", "Cybersecurity"],
+    tags: {
+      en: ["Security", "Pentesting", "Ethical Hacking", "Cybersecurity"],
+      es: ["Seguridad", "Pentesting", "Hacking Ético", "Ciberseguridad"]
+    },
     modules: {
       en: `Cybersecurity Fundamentals
 Reconnaissance and Footprinting
@@ -276,7 +286,10 @@ Informes y Remediación`
     level: { en: "Intermediate", es: "Intermedio" },
     image: sysAdminImg,
     coverImage: sysAdminCoverImg,
-    tags: ["Sysadmin", "Gnu/Linux", "Server", "Infrastructure"],
+    tags: {
+      en: ["Sysadmin", "GNU/Linux", "Server", "Infrastructure"],
+      es: ["Sysadmin", "GNU/Linux", "Servidor", "Infraestructura"]
+    },
     modules: {
       en: `# Command Line 7.5 h
 ## Directory structure in GNU/Linux 0.5 h
@@ -350,7 +363,10 @@ Informes y Remediación`
     courseUrl: "https://www.youtube.com/watch?v=mq2zEP0bo2E&list=PLvd_owpd6H-kSoqbbvdGc_Pg3YRytK8ZN",
     image: latexImg,
     coverImage: latexFeaturedImg,
-    tags: ["LaTeX", "Composición De Textos", "Documentos Académicos",  "Tipografía Digital"],
+    tags: {
+      en: ["LaTeX", "Text Composition", "Academic Documents", "Digital Typography"],
+      es: ["LaTeX", "Composición De Textos", "Documentos Académicos", "Tipografía Digital"]
+    },
     modules: {
       en: `# What are TeX and LaTeX
 # Basic syntax

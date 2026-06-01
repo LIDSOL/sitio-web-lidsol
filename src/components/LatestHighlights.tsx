@@ -85,12 +85,14 @@ export function LatestHighlights({
     ongoing: { en: "Ongoing", es: "En curso" },
     readTime: { en: "min read", es: "min de lectura" },
     starts: { en: "Starts", es: "Inicia" },
-    getLevelColor: (level: string) => {
-      if (level === "Beginner" || level === "Principiante")
-        return "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20";
-      if (level === "Intermediate" || level === "Intermedio")
-        return "bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20";
-      return "bg-purple-500/10 text-purple-700 dark:text-purple-400 border-purple-500/20";
+    getLevelColor: (level?: string) => {
+      if (level === "Beginner")
+        return "bg-green-500 text-white";
+      if (level === "Intermediate")
+        return "bg-yellow-500 text-white";
+      if (level === "Advanced")
+        return "bg-destructive text-white";
+      return "bg-blue-500 text-white";
     },
   };
 
@@ -188,7 +190,7 @@ export function LatestHighlights({
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                 {latestCourse.level && (
                   <Badge
-                    className={`absolute top-3 right-3 rounded-full border text-xs ${t.getLevelColor(latestCourse.level[language])}`}
+                    className={`absolute top-3 right-3 rounded-full border text-xs ${t.getLevelColor(latestCourse.level?.en)}`}
                   >
                     {latestCourse.level[language]}
                   </Badge>

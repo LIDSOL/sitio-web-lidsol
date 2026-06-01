@@ -100,17 +100,16 @@ function renderModuleLine(item: ModuleLine, index: number): JSX.Element {
 export function CourseDetail({ course, onBack }: CourseDetailProps) {
   const { language } = useLanguage();
 
-  const getLevelColor = (level: string) => {
-    const levelEn = course.level?.en || "";
-    switch (levelEn) {
+  const getLevelColor = (level?: string) => {
+    switch (level) {
       case "Beginner":
-        return "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20";
+        return "bg-green-500 text-white";
       case "Intermediate":
-        return "bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20";
+        return "bg-yellow-500 text-white";
       case "Advanced":
-        return "bg-purple-500/10 text-purple-700 dark:text-purple-400 border-purple-500/20";
+        return "bg-destructive text-white";
       default:
-        return "";
+        return "bg-blue-500 text-white";
     }
   };
 
@@ -127,7 +126,7 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
     duration: { en: "Duration", es: "Duración" },
     schedule: { en: "Schedule", es: "Horario" },
     startDate: { en: "Start Date", es: "Fecha de Inicio" },
-    enrolled: { en: "Enrolled", es: "Inscritos" },
+    capacity: { en: "Capacity", es: "Cupo" },
     level: { en: "Level", es: "Nivel" },
   };
 
@@ -178,7 +177,7 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
         {/* Course Header */}
         <div className="bg-card rounded-3xl p-8 md:p-12 border border-border/50 shadow-xl mb-8">
           <div className="flex flex-wrap gap-2 mb-4">
-            {course.tags?.map((tag) => (
+            {course.tags?.[language]?.map((tag) => (
               <Badge key={tag} variant="secondary">
                 {tag}
               </Badge>
@@ -337,14 +336,14 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
                     </div>
                     )}
 
-                    {course.enrolled && (
+                    {course.capacity && (
                     <div className="flex items-start gap-3">
                       <Users className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                       <div>
                         <div className="text-sm text-muted-foreground mb-1">
-                          {t.enrolled[language]}
+                          {t.capacity[language]}
                         </div>
-                        <div className="font-medium">{course.enrolled}</div>
+                        <div className="font-medium">{course.capacity}</div>
                       </div>
                     </div>
                     )}

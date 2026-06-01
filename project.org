@@ -416,7 +416,7 @@ DEADLINE: <2026-06-05 Fri>
     - [X] Añadir el botón de "Ayudar a los asistentes".
 - [ ] Optimizar las imágenes
 - [ ] Hacer un script de js/Python para añadir eventos de forma sencilla (como en hugo)
-**** IN-PROGRESS [#B] CourseDetail y CourseDetail [20%]
+**** IN-PROGRESS [#B] CourseDetail y CourseDetail [58%]
 DEADLINE: <2026-06-05 Fri>
 - [ ] Mudar el contenido al sitio actual [0%]
   - [ ] Seminario de lisp
@@ -424,17 +424,18 @@ DEADLINE: <2026-06-05 Fri>
   - [ ] PumaHat
   - [ ] Curso básico de sysadmin GNU/Linux
   - [ ] Curso de LaTeX
-- [ ] Mejorar la responsividad
+- [X] Mejorar la responsividad
 - [X] Las fechas están atrasadas por un día
 - [X] Justificación completa en la descripción del curso y soporte para Markdown
-- [ ] Sería bueno que los tags también soporten el multiidioma
-- [ ] Cambiar el "enrolled" a "cupo"
+- [X] Sería bueno que los tags también soporten el multiidioma
+- [X] El tag que muestra el nivel de dificultad del curso varía de apariencia según el idioma seleccionado.
+- [X] Cambiar el texto "Inscribirse" por "Ver detalles" como en las tarjetas del grid.
+- [X] Cambiar el "enrolled" a "cupo"
+- [ ] Cambiar el botón de "proponer curso", en vez de un correo, puede ser un form.
+- [ ] El botón ver curso debe ser personalizable en contenido y enlace.
+- [ ] Añadir un botón extra para algún enlace de interés.
 - [ ] ¿Una subsección para contenido de cursos?
-- [ ] ¿Sería bueno tener un backen para los cursos, por ejemplo para tener "gente registrada/apuntada" a los cursos?
-  - [ ] Igual y sería bueno cambiar el botón de Inscribirse ahora a "ver curso" y colocar el enlace a YouTube o a la llamada.
-  - [ ] Cambiar el botón de "Unirte al curso" a otra cosa como "ver curso"
 - [ ] Mejorar el aspecto de la sección de "módulos del curso"
-- [ ] Mejorar el botón "proponer curso" con un form
 **** IN-PROGRESS [#A] Publications
 DEADLINE: <2026-06-05 Fri>
 - [X] Mudar el contenido.
