@@ -6,8 +6,15 @@
 *** DONE Repositorio de GitHub y Versionado
 *** DONE Contenedor
 *** IN-PROGRESS Código
-**** IN-PROGRESS [#B] CourseDetail y CourseDetail [57%]
+**** IN-PROGRESS [#B] CourseDetail y CourseDetail [60%]
 DEADLINE: <2026-06-05 Fri>
+- [X] Mejorar el aspecto de la tarjeta Featured Course
+  Antes la imagen estaba en flujo normal, el <img> imponía su tamaño en el contenedor, forzando al grid a hacer la fila más alta.
+  Ahora absolute insert-0 saca la imagen del flujo, el contenedor ignora el tamaño de la imagen.
+  - El grid determina la altura de la fila solo con el contenido.
+  - La columna izquierda se estira para igualar esta altura.
+  - La imagen llena el contenedor con object-cover y se recorta si es necesario
+  En móvil, aspect-video sigue dando la relación 16:9. En desktop, el contenedor se estira al alto del contenido.
 - [ ] Mudar el contenido al sitio actual [0%]
   - [ ] Seminario de lisp
   - [ ] Fundamentos de Python

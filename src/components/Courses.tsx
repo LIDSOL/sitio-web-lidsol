@@ -75,11 +75,11 @@ export function Courses({ onCourseClick }: CoursesProps) {
         {/* Featured Course */}
         <Card className="mb-12 overflow-hidden hover:shadow-lg transition-all duration-300 border-border/60">
           <div className="grid md:grid-cols-2 gap-0">
-            <div className="aspect-video md:aspect-auto relative overflow-hidden">
+            <div className="aspect-video md:aspect-auto md:min-h-0 relative overflow-hidden">
               <ImageWithFallback
                 src={featuredCourse.image || ""}
                 alt={featuredCourse.title[language]}
-                className="w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
               />
               <Badge className="absolute top-4 left-4 shadow-lg">{t.featured[language]}</Badge>
               {featuredCourse.level && (
