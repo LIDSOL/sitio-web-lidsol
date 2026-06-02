@@ -1,8 +1,7 @@
-
-
 import lispImg              from "../../public/courses-images/lisp.png";
 import pythonFeaturedImg    from "../../public/courses-images/python-featured.png";
 import pumaHatImg           from "../../public/courses-images/pumapwn.jpg";
+import matrixIMg            from "../../public/courses-images/markus-spiske-iar-afB0QQw-unsplash.jpg";
 import sysAdminCoverImg     from "../../public/courses-images/gabriel-heinzer-4Mw7nkQDByk-unsplash.jpg";
 import sysAdminImg          from "../../public/courses-images/sysadmin.png";
 import latexFeaturedImg     from "../../public/courses-images/jl-cabrera-vbRWm4Qn-28-unsplash.jpg";
@@ -213,8 +212,8 @@ The Reasoned Schemer`
       es: "Somos una comunidad con pluralidad de perfiles e intereses con un enfoque de seguridad informática. Buscamos crear una comunidad donde entusiastas del hacking puedan convivir y expandir el panorama de la ciberseguridad en México. \nRevisa nuestra sección de actividades para informarte sobre nuestros próximos eventos."
     },
     instructor: "BDrag0n",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=800",
-    coverImage: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1600",
+    image: pumaHatImg,
+    coverImage: matrixIMg,
     tags: {
       en: ["Security", "Pentesting", "Ethical Hacking", "Cybersecurity"],
       es: ["Seguridad", "Pentesting", "Hacking Ético", "Ciberseguridad"]

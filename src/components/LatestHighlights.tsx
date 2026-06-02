@@ -312,22 +312,29 @@ export function LatestHighlights({
                   </div>
                 </div>
 
-                {/* Meta info - inline on desktop */}
-                <div className="flex items-center flex-wrap gap-4 text-sm text-muted-foreground pt-4 border-t border-border/60">
-                  <div className="flex items-center gap-1.5">
-                    <Calendar className="h-3.5 w-3.5 text-primary" />
-                    <span>{latestEvent.startDate}</span>
-                  </div>
-                  <span className="text-muted-foreground/40">·</span>
-                  <div className="flex items-center gap-1.5">
-                    <Clock className="h-3.5 w-3.5 text-primary" />
-                    <span>{latestEvent.time}</span>
-                  </div>
-                  <span className="text-muted-foreground/40">·</span>
-                    <div className="flex items-center gap-1.5">
-                    <MapPin className="h-3.5 w-3.5 text-primary" />
-                    <span>{latestEvent.locations?.[0]?.name[language]}</span>
+                {/* Meta info - with dots */}
+                <div className="flex flex-col gap-1.5 text-sm text-muted-foreground pt-4 border-t border-border/60">
+                  <div className="flex items-center gap-2">
+                    <span className="h-1 w-1 rounded-full bg-muted-foreground/50 shrink-0" />
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <Calendar className="h-3.5 w-3.5 text-primary shrink-0" />
+                      <span className="truncate max-w-[30ch]">{latestEvent.startDate}</span>
                     </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="h-1 w-1 rounded-full bg-muted-foreground/50 shrink-0" />
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <Clock className="h-3.5 w-3.5 text-primary shrink-0" />
+                      <span className="truncate max-w-[30ch]">{latestEvent.time}</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="h-1 w-1 rounded-full bg-muted-foreground/50 shrink-0" />
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <MapPin className="h-3.5 w-3.5 text-primary shrink-0" />
+                      <span className="truncate max-w-[30ch]">{latestEvent.locations?.[0]?.name[language]}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
