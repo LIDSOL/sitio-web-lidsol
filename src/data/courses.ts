@@ -4,9 +4,9 @@ import pumaHatImg           from "../../public/courses-images/pumapwn.jpg";
 import matrixIMg            from "../../public/courses-images/markus-spiske-iar-afB0QQw-unsplash.jpg";
 import sysAdminCoverImg     from "../../public/courses-images/gabriel-heinzer-4Mw7nkQDByk-unsplash.jpg";
 import sysAdminImg          from "../../public/courses-images/sysadmin.png";
-import latexFeaturedImg     from "../../public/courses-images/jl-cabrera-vbRWm4Qn-28-unsplash.jpg";
 import latexImg             from "../../public/courses-images/LaTeX.png";
-
+import latexThumbImg        from "../../public/courses-images/jl-cabrera-vbRWm4Qn-28-unsplash.jpg";
+import latexBannerImg       from "../../public/courses-images/LaTeXfeatured.png";
 
 export interface Course {
   id: number;
@@ -23,6 +23,7 @@ export interface Course {
   courseUrl?: string;
   image?: string;
   coverImage?: string;
+  descriptionImage?: string;
   tags?: { en: string[]; es: string[] };
   modules?: { en: string; es: string };
   requirements?: { en: string[]; es: string[] };
@@ -361,7 +362,8 @@ Informes y Remediación`
     resources: "https://github.com/LIDSOL/cursos/tree/master/2024-2/2024-05-05-Latex",
     courseUrl: "https://www.youtube.com/watch?v=mq2zEP0bo2E&list=PLvd_owpd6H-kSoqbbvdGc_Pg3YRytK8ZN",
     image: latexImg,
-    coverImage: latexFeaturedImg,
+    descriptionImage: latexBannerImg,
+    coverImage: latexThumbImg,
     tags: {
       en: ["LaTeX", "Text Composition", "Academic Documents", "Digital Typography"],
       es: ["LaTeX", "Composición De Textos", "Documentos Académicos", "Tipografía Digital"]

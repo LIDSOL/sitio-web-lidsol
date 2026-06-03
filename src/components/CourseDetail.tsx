@@ -229,6 +229,17 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
               )}
             </div>
 
+            {/* Description Image */}
+            {course.descriptionImage && (
+              <div className="overflow-hidden rounded-2xl shadow-xl">
+                <img
+                  src={course.descriptionImage}
+                  alt={course.title[language]}
+                  className="w-full max-h-[500px] object-cover"
+                />
+              </div>
+            )}
+
             {/* Modules */}
             {course.modules && (
             <div className="bg-primary/5 border border-primary/10 rounded-3xl p-8">
