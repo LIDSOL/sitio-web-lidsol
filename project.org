@@ -34,6 +34,27 @@ DEADLINE: <2026-06-05 Fri>
 - [X] Cambiar el "enrolled" a "cupo"
 - [ ] ¿Una subsección para contenido de cursos?
 - [ ] Mejorar el aspecto de la sección de "módulos del curso"
+**** IN-PROGRESS [#A] About y AboutMembers
+DEADLINE: <2026-06-05 Fri>
+- [X] Sería bueno que la zona de "Educado en" esté con dots.
+- [X] ¿De dónde salió ese ícono de mail? ¿Nani Kore?? Borralo..
+- [X] Faltan los intereses... v2.1.1
+- [X] Si no hay cierto tipo de datos, se rompe el sitio 2.1.2
+  - [X] Si no hay bio se rompe el sitio
+  - [X] Si no hay rol se rompe el sitio
+- [X] Mudar el contenido 2.1.3
+- [X] Detalles visuales 2.1.4
+  - [X] Mostrar dos tarjetas en horizontal si el contenido se ve desde movil o desde una ventana pequeña.
+  - [X] Ocultar la bio, creo que no aporta tanto, y provoca que la tarjeta crezca demasiado en vertical.
+  - [X] Hacer que el botón de ver perfil se vea correcto.
+  - [X] Regularizar el tamaño de todas las tarjetas
+  - [X] Centrar el contenido sin cambiar su tamaño.
+  - [X] Subir la resolución de las imágenes con upscaler
+  - [X] Mejorar el color del botón cuando el cursor está sobré él en tema claro
+- Tal vez en el futuro sea bueno añadir paginación, si crece mucho el número de miembros. Igual intentar con una base de datos... (si hay más de 50 miembros, tal vea hora de dejar el "json").
+- [ ] Añadir el perfil de ramenroot
+- [ ] Actualizar la información de los miembros
+- [ ] Mejorar las fotos de los miembros
 **** NEXT [#B] Home [%]
 DEADLINE: <2026-06-05 Fri>
 ***** DONE LatestHighlights
@@ -402,13 +423,13 @@ El archivo src/data/blogPosts.ts se sigue usando, este genera los componentes [[
 **** IN-PROGRESS [#A] Events y EventDetail [78%]
 DEADLINE: <2026-06-05 Fri>
 - [X] Mudar el contenido "legacy" [100%]
+  - [X] Salvemos el internet
   - [X] Las tecnologías de internet en los movimientos sociales
   - [X] CCOSS
   - [X] Tayer para contribuir a Python
   - [X] Introducción a Pandoc
   - [X] Python: Zero To Hero
   - [X] Introducción a redes neuronales: Un enfoque interpretativo
-  - [X] Salvemos el internet
   - [X] FLSoL 2020
   - [X] Seminario de Lisp 2020
   - [X] Túneles y agentes de SSH
@@ -473,27 +494,6 @@ DEADLINE: <2026-06-05 Fri>
 - [X] Sección CTA con Mailto, es sencillo y se evita configurar un backend de correo o base de datos (que para esto no se requiere).
 - [ ] Optimizar las imágenes
 - [ ] Tener un tema adaptativo claro/oscuro para la cita.
-**** IN-PROGRESS [#A] About y AboutMembers
-DEADLINE: <2026-06-05 Fri>
-- [X] Sería bueno que la zona de "Educado en" esté con dots.
-- [X] ¿De dónde salió ese ícono de mail? ¿Nani Kore?? Borralo..
-- [X] Faltan los intereses... v2.1.1
-- [X] Si no hay cierto tipo de datos, se rompe el sitio 2.1.2
-  - [X] Si no hay bio se rompe el sitio
-  - [X] Si no hay rol se rompe el sitio
-- [X] Mudar el contenido 2.1.3
-- [X] Detalles visuales 2.1.4
-  - [X] Mostrar dos tarjetas en horizontal si el contenido se ve desde movil o desde una ventana pequeña.
-  - [X] Ocultar la bio, creo que no aporta tanto, y provoca que la tarjeta crezca demasiado en vertical.
-  - [X] Hacer que el botón de ver perfil se vea correcto.
-  - [X] Regularizar el tamaño de todas las tarjetas
-  - [X] Centrar el contenido sin cambiar su tamaño.
-  - [X] Subir la resolución de las imágenes con upscaler
-  - [X] Mejorar el color del botón cuando el cursor está sobré él en tema claro
-- Tal vez en el futuro sea bueno añadir paginación, si crece mucho el número de miembros. Igual intentar con una base de datos... (si hay más de 50 miembros, tal vea hora de dejar el "json").
-- [ ] Añadir el perfil de ramenroot
-- [ ] Actualizar la información de los miembros
-  - [ ] Mejorar las fotos de los miembros
 *** TODO Optimización/Bugs/Testing/Corrección de vulnerabilidades
 DEADLINE: <2026-06-12 Fri>
 **** [#A] Mejorar el SEO del sitio (para posicionarlo mejor al buscar en el navegador)

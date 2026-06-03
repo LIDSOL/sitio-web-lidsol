@@ -52,7 +52,7 @@ export interface Member {
   role: { en: string; es: string };
   bio?: { en: string; es: string };
   image: string;
-  joined: string;
+  joined?: string;
   category: MemberCategory;
 
   educatedAt?: {
@@ -83,7 +83,7 @@ export const members: Member[] = [
       es: "Ingeniero en software de formación autodidacta; entusiasta, usuario y desarrollador de software libre desde 1997, especializado en la administración de redes y en el desarrollo de sistemas Web. Ha fomentado la cohesión y profesionalización de las comunidades locales de software libre.",
     },
     image: gunnarImg,
-    joined: "2010",
+//    joined: "2010",
     category: "academic",
 
     educatedAt: {
@@ -135,7 +135,7 @@ export const members: Member[] = [
     },
 
     image: tonejitoImg,
-    joined: "2010",
+//    joined: "2010",
     category: "academic",
 
     educatedAt: {
@@ -179,7 +179,7 @@ export const members: Member[] = [
       es: "Llegué de casualidad al mundo FLOSS buscando un ERP para una fábrica de galletas. La fabrica se fue, pero el software y la curiosidad quedaron. Ahora ayudando a organizaciones a navegar los meandros de la tecnología.",
     },
     image: fulgueirasImg,
-    joined: "2010",
+//    joined: "2010",
     category: "student",
 
     educatedAt: {
@@ -237,7 +237,7 @@ export const members: Member[] = [
       es: "Un estudiante intentando aprender sobre computadoras, automatización, resolución de problemas mediante la programación, y mucha tecnología. Fan de la buena comida y las largas caminatas.",
     },
     image: quiqueImg,
-    joined: "2010",
+//    joined: "2010",
     category: "student",
 
     educatedAt: {
@@ -292,7 +292,7 @@ export const members: Member[] = [
       es: "Soy un compa al que le gusta todo lo relacionado con las computadoras y las matemáticas. Me gusta el software simple, que no trate de bajarme la luna ni de imponerme reglas cuando yo sólo quiero leer un libro.",
     },
     image: franciscoGalindoImg,
-    joined: "2010",
+//    joined: "2010",
     category: "student",
 
     educatedAt: {
@@ -338,7 +338,7 @@ export const members: Member[] = [
       es: "Soy un estudiante que se interesa en aprender algo nuevo, me uní a LIDSoL con la finalidad de explorar más a fondo la computación como el desarrollo de software, la administración de servidores, etc.",
     },
     image: hansImg,
-    joined: "2010",
+//    joined: "2010",
     category: "student",
 
     educatedAt: {
@@ -377,7 +377,7 @@ export const members: Member[] = [
       es: "Soy un compa que disfruta la personalización propio de mi equipo, desde momento que conocí Linux me gusto el nivel de personalización que te permite, en especial el window manager Sway. Me convertí en miembro del LIDSoL gracias a un amigo, el me enseñó la amplitud que permite linux sobre la computación.",
     },
     image: ugartecheaImg,
-    joined: "2010",
+//    joined: "2010",
     category: "student",
 
     educatedAt: {
@@ -411,7 +411,7 @@ export const members: Member[] = [
       es: "Desarrollo NLP para lenguas mexicanas en la Comunidad Elotl, promuevo la privacidad y el anonimato, hago danza aérea y soy músico de closet. Siempre empujar las fronteras del conocimiento es mi mantra.",
     },
     image: barrigaImg,
-    joined: "2010",
+//    joined: "2010",
     category: "formerStudents",
 
     educatedAt: {
@@ -508,7 +508,7 @@ export const members: Member[] = [
       es: "Estudiante de Ingeniería en Computación interesado en lenguajes de programación, hardware abierto, inteligencia artificial, seguridad informática y ética en la computación.",
     },
     image: cabreraImg,
-    joined: "2010",
+//    joined: "2010",
     category: "formerStudents",
 
     educatedAt: {
@@ -556,7 +556,7 @@ export const members: Member[] = [
     id: 11,
     name: "Juan M.S. Rios",
     image: riosImg,
-    joined: "2010",
+//    joined: "2010",
     category: "formerStudents",
 
     educatedAt: {
@@ -589,7 +589,7 @@ export const members: Member[] = [
     id: 12,
     name: "Alexis Ríos",
     image: alexisRiosImg,
-    joined: "2010",
+//    joined: "2010",
     category: "formerStudents",
 
     educatedAt: {
@@ -611,7 +611,7 @@ export const members: Member[] = [
     },
 
     image: drag0nImg,
-    joined: "2010",
+//    joined: "2010",
     category: "formerStudents",
 
     educatedAt: {
@@ -632,7 +632,7 @@ export const members: Member[] = [
       es: "Estudiante de ingeniería en telecomunicaciones, ingresó a la facultad en el año 2015, actualmente cursando el noveno semestre en el módulo de salida de redes. Especial interés en el área de seguridad de redes inalámbricas.",
     },
     image: cinthyaCelinaImg,
-    joined: "2010",
+//    joined: "2010",
     category: "formerStudents",
 
     educatedAt: {
@@ -653,7 +653,7 @@ export const members: Member[] = [
       es: "Estudiante de Ingeniería Eléctrica Electrónica, entusiasta sobre la impresión y diseño en 3D en plataformas libres como OpensCAD, FreeCAD y libreCAD, creador del sistema interconectable Ditac. Actualmente gestionando la plataforma de diseños colaborativos en idea161.org.",
     },
     image: pabloVivarImg,
-    joined: "2010",
+//    joined: "2010",
     category: "formerStudents",
 
     educatedAt: {
@@ -691,7 +691,7 @@ export const members: Member[] = [
           "Neófito de la computación, practicante en todo y experto en nada. \"Nada es gratis todo es libre. \nEstamos condenados a la libertad.\" – Abuelo Sartre",
     },
     image: luisVilchisImg,
-    joined: "2010",
+//    joined: "2010",
     category: "formerStudents",
 
     educatedAt: {
@@ -722,7 +722,7 @@ export const members: Member[] = [
           "Tapatío de nacimiento, libre de corazón, perdido en la Ciudad Monstruo. Maestro Jedi de la seguridad digital en SocialTIC de día, disque bot hacktivista en Internet por las noches. Supuesto Ingeniero en Computación, intento fallido de matemático. Causante del Tercer Impacto con software libre en lenguas indígenas desde LIDSOL y Elotl. El futuro esta escrito por hechiceros en LISP y Rust. No soy nadie, no soy nada. Me gusta el tejuino y las jericallas ❤",
     },
     image: aesahaettrImg,
-    joined: "2010",
+//    joined: "2010",
     category: "formerStudents",
 
     educatedAt: {
@@ -762,7 +762,7 @@ export const members: Member[] = [
           "Estudiante de ingeniería en computación en la UNAM. Autodidacta en temas de redes y seguridad informática. Participante del proyecto mecanismos de privacidad y anonimato en redes. Actualmente interesado por el desarrollo web y el lenguaje de programación python.",
     },
     image: noImg,
-    joined: "2010",
+//    joined: "2010",
     category: "formerStudents",
 
     educatedAt: {
@@ -784,7 +784,7 @@ export const members: Member[] = [
           "Estudiante de ingeniería eléctrica electrónica, con interés en sistemas energéticos y gestión energética, aprendiz de software libre y como emplearlo en dependencias públicas.",
     },
     image: noImg,
-    joined: "2010",
+//    joined: "2010",
     category: "formerStudents",
 
     educatedAt: {
@@ -826,7 +826,7 @@ export const members: Member[] = [
       es: "Soy una estudiante apasionada de la Facultad de Ingeniería de la UNAM, donde cultivo mi fascinación por el vasto universo de la seguridad informática, el software libre, la programación y la astronomía. Mi curiosidad me impulsa a explorar las intersecciones entre la protección digital y la libertad del código abierto, buscando entender cómo estas disciplinas pueden transformar nuestra comprensión del cosmos y fortalecer nuestras herramientas tecnológicas.",
     },
     image: ferImg,
-    joined: "2010",
+//    joined: "2010",
     category: "student",
 
     educatedAt: {

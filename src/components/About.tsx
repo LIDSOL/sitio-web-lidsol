@@ -33,7 +33,7 @@ export function About({ onMemberClick }: AboutProps) {
         },
         {
           year: "2001 - Present",
-          text: "With the support of Engineer Juan Correón Granados, GULFI transformed into LIDSoL in 2001, under the umbrella of the Electrical Engineering Division, and moved into its current facilities on the second floor of Building P of the Engineering Annex.",
+          text: "With the support of Engineer Juan Carreón Granados, GULFI transformed into LIDSoL in 2001, under the umbrella of the Electrical Engineering Division, and moved into its current facilities on the second floor of Building P of the Engineering Annex.",
         },
         {
           year: "2019 - Present",
@@ -51,7 +51,7 @@ export function About({ onMemberClick }: AboutProps) {
         },
         {
           year: "2001 - Presente",
-          text: "Con el apoyo del Ing. Juan Correón Granados el GULFI se transformó en el LIDSOL en 2001, bajo el cobijo de la División de Ingeniería Eléctrica, y se alojó en sus instalaciones actuales en el segundo piso del edificio P del Anexo de Ingeniería.",
+          text: "Con el apoyo del Ing. Juan Carreón Granados el GULFI se transformó en el LIDSOL en 2001, bajo el cobijo de la División de Ingeniería Eléctrica, y se alojó en sus instalaciones actuales en el segundo piso del edificio P del Anexo de Ingeniería.",
         },
         {
           year: "2019 - Presente",
