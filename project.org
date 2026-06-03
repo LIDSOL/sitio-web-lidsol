@@ -6,7 +6,7 @@
 *** DONE Repositorio de GitHub y Versionado
 *** DONE Contenedor
 *** IN-PROGRESS Código
-**** IN-PROGRESS [#B] CourseDetail y CourseDetail [60%]
+**** IN-PROGRESS [#B] CourseDetail y CourseDetail [66%]
 DEADLINE: <2026-06-05 Fri>
 - [X] Mejorar el aspecto de la tarjeta Featured Course
   Antes la imagen estaba en flujo normal, el <img> imponía su tamaño en el contenedor, forzando al grid a hacer la fila más alta.
@@ -22,7 +22,7 @@ DEADLINE: <2026-06-05 Fri>
   - [ ] Curso básico de sysadmin GNU/Linux
   - [ ] Curso de LaTeX
 - [X] Optimizar las imágenes
-- [ ] Cambiar el botón de "proponer curso", en vez de un correo, puede ser un form.
+- [X] Darle funcionalidad al botón "proponer curso" con onClick con un enalce a github.
 - [ ] El botón ver curso debe ser personalizable en contenido y enlace.
 - [ ] Añadir un botón extra para algún enlace de interés en los detalles del curso.
 - [X] Mejorar la responsividad

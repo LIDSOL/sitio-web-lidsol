@@ -210,7 +210,11 @@ export function Courses({ onCourseClick }: CoursesProps) {
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
             {t.proposeDescription[language]}
           </p>
-          <Button size="lg" className="gap-2">
+          <Button
+            size="lg"
+            className="gap-2"
+            onClick={() => window.open('https://github.com/LIDSOL/cursos#c%C3%B3mo-agregar-un-nuevo-curso', '_blank')}
+          >
             {t.proposeCta[language]} <ArrowRight className="h-4 w-4" />
           </Button>
         </div>
