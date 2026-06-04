@@ -6,7 +6,7 @@
 *** DONE Repositorio de GitHub y Versionado
 *** DONE Contenedor
 *** IN-PROGRESS Código
-**** IN-PROGRESS [#B] CourseDetail y CourseDetail [66%]
+**** IN-PROGRESS [#B] CourseDetail y CourseDetail [82%]
 DEADLINE: <2026-06-05 Fri>
 - [X] Mejorar el aspecto de la tarjeta Featured Course
   Antes la imagen estaba en flujo normal, el <img> imponía su tamaño en el contenedor, forzando al grid a hacer la fila más alta.
@@ -15,16 +15,17 @@ DEADLINE: <2026-06-05 Fri>
   - La columna izquierda se estira para igualar esta altura.
   - La imagen llena el contenedor con object-cover y se recorta si es necesario
   En móvil, aspect-video sigue dando la relación 16:9. En desktop, el contenedor se estira al alto del contenido.
-- [ ] Mudar el contenido al sitio actual [0%]
-  - [ ] Seminario de lisp
-  - [ ] Fundamentos de Python
-  - [ ] PumaHat
-  - [ ] Curso básico de sysadmin GNU/Linux
-  - [ ] Curso de LaTeX
+- [X] Mudar el contenido al sitio actual [100%]
+  - [X] Seminario de lisp
+  - [X] Fundamentos de Python
+  - [X] PumaHat
+  - [X] Curso básico de sysadmin GNU/Linux
+  - [X] Curso de LaTeX
 - [X] Optimizar las imágenes
 - [X] Darle funcionalidad al botón "proponer curso" con onClick con un enalce a github.
-- [ ] El botón ver curso debe ser personalizable en contenido y enlace.
-- [ ] Añadir un botón extra para algún enlace de interés en los detalles del curso.
+- [X] Imagen del instructor en la información del curso
+- [X] El botón ver curso debe ser personalizable en contenido y enlace.
+- [X] Añadir un botón extra para algún enlace de interés en los detalles del curso.
 - [X] Mejorar la responsividad
 - [X] Las fechas están atrasadas por un día
 - [X] Justificación completa en la descripción del curso y soporte para Markdown
@@ -33,7 +34,8 @@ DEADLINE: <2026-06-05 Fri>
 - [X] Cambiar el texto "Inscribirse" por "Ver detalles" como en las tarjetas del grid.
 - [X] Cambiar el "enrolled" a "cupo"
 - [ ] ¿Una subsección para contenido de cursos?
-- [ ] Mejorar el aspecto de la sección de "módulos del curso"
+- [ ] Mejorar el aspecto de la sección de "módulos del curso".
+- [ ] Mejorar el aspecto de la fuente de "Descripción del curso"
 **** IN-PROGRESS [#A] About y AboutMembers
 DEADLINE: <2026-06-05 Fri>
 - [X] Sería bueno que la zona de "Educado en" esté con dots.

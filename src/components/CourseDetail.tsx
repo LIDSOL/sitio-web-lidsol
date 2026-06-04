@@ -1,4 +1,4 @@
-import { ArrowLeft, BookOpen, Calendar, Clock, Users, CheckCircle, Award, ExternalLink, Link } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Users, CheckCircle, ExternalLink, Link, MapPin, Globe, Wallet } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { Card, CardContent } from "./ui/card";
@@ -26,7 +26,7 @@ function parseModules(markdown: string): ModuleLine[] {
   return lines.map(line => {
     const trimmed = line.trim();
     const leadingSpaces = line.search(/\S/);
-    
+
     const titleMatch = trimmed.match(/^(#{1,3})\s+(.+)$/);
     if (titleMatch) {
       return {
@@ -36,7 +36,7 @@ function parseModules(markdown: string): ModuleLine[] {
         isTitle: true
       };
     }
-    
+
     const bulletMatch = trimmed.match(/^[-*]\s+(.+)$/);
     if (bulletMatch) {
       return {
@@ -46,7 +46,7 @@ function parseModules(markdown: string): ModuleLine[] {
         isTitle: false
       };
     }
-    
+
     return {
       text: trimmed,
       level: Math.floor(leadingSpaces / 2),
@@ -58,15 +58,15 @@ function parseModules(markdown: string): ModuleLine[] {
 
 function renderModuleLine(item: ModuleLine, index: number): JSX.Element {
   const { text, level, isBullet, isTitle } = item;
-  
+
   const baseStyles = "flex items-start";
   const indentStyles = [
     "ml-0",
-    "ml-6", 
+    "ml-6",
     "ml-12",
     "ml-18"
   ];
-  
+
   const textStyles = isTitle
     ? level === 0
       ? "text-foreground text-lg font-bold tracking-tight"
@@ -115,19 +115,21 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
 
   const t = {
     back: { en: "Back to Courses", es: "Volver a Cursos" },
-    viewCourse: { en: "View Course", es: "Ver Curso" },
-    resources: { en: "Resources", es: "Recursos" },
     description: { en: "Course Description", es: "Descripción del Curso" },
-    modules: { en: "Course Modules", es: "Módulos del Curso" },
+    modules: { en: "Course Modules", es: "Contenido, actividades" },
     requirements: { en: "Requirements", es: "Requisitos" },
     objectives: { en: "Learning Objectives", es: "Objetivos de Aprendizaje" },
     courseInfo: { en: "Course Information", es: "Información del Curso" },
     instructor: { en: "Instructor", es: "Instructor" },
+    modality: { en: "Modality", es: "Modalidad" },
+    cost: { en: "Cost", es: "Costo" },
+    location: { en: "Location", es: "Ubicación" },
     duration: { en: "Duration", es: "Duración" },
     schedule: { en: "Schedule", es: "Horario" },
     startDate: { en: "Start Date", es: "Fecha de Inicio" },
     capacity: { en: "Capacity", es: "Cupo" },
     level: { en: "Level", es: "Nivel" },
+    relatedLinks: { en: "Related Links", es: "Enlaces relacionados" },
   };
 
   const formatDate = (dateStr: string, lang: string) => {
@@ -194,11 +196,11 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
           </p>
 
 
-          {course.resources && (
+          {course.action1 && (
             <Button asChild size="lg" className="gap-2">
-              <a href={course.resources} target="_blank" rel="noopener noreferrer">
+              <a href={course.action1.url} target="_blank" rel="noopener noreferrer">
                 <Link className="h-5 w-5" />
-                {t.resources[language]}
+                {course.action1.text[language]}
               </a>
             </Button>
           )}
@@ -216,7 +218,10 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
                     remarkPlugins={[remarkGfm]}
                     components={{
                       p: ({children}) => <p className="text-justify hyphens-auto leading-relaxed mb-4" style={{textAlign: 'justify'}}>{children}</p>,
-                      br: () => <br className="mb-2" />
+                      br: () => <br className="mb-2" />,
+                      a: ({href, children}) => (
+                        <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary font-medium hover:underline">{children}</a>
+                      ),
                     }}
                   >
                     {course.fullDescription[language]
@@ -283,46 +288,37 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
 
           {/* Sidebar - Course Info */}
           <div className="lg:col-span-1">
-            <div className="sticky top-24">
+            <div className="sticky top-24 space-y-6">
+              {/* Instructor Card */}
+              {course.instructor && (
+              <Card className="border-border/60">
+                <CardContent className="p-6">
+                  <h3 className="text-xl mb-4">{t.instructor[language]}</h3>
+                  <div
+                    className={`flex items-center gap-4 ${instructorMember ? 'cursor-pointer hover:opacity-80 transition-opacity' : ''}`}
+                    onClick={() => instructorMember && (window.location.hash = `#about/member/${instructorMember.id}`)}
+                  >
+                    <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border flex-shrink-0">
+                      <ImageWithFallback
+                        src={instructorMember?.image || ""}
+                        alt={course.instructor}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <div className="font-medium text-lg">{course.instructor}</div>
+                      {instructorMember?.role && <div className="text-sm text-primary">{instructorMember.role[language]}</div>}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              )}
+
               <Card className="border-border/60">
                 <CardContent className="p-6 space-y-6">
                   <h3 className="text-2xl">{t.courseInfo[language]}</h3>
 
                   <div className="space-y-4">
-                    {course.instructor && (
-                    <div className="flex items-start gap-3">
-                      <BookOpen className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <div>
-                        <div className="text-sm text-muted-foreground mb-1">
-                          {t.instructor[language]}
-                        </div>
-                        {instructorMember ? (
-                          <button
-                            onClick={() => window.location.hash = `#about/member/${instructorMember.id}`}
-                            className="font-medium text-foreground hover:underline cursor-pointer flex items-center gap-1"
-                          >
-                            {course.instructor}
-                            <ExternalLink className="h-3 w-3" />
-                          </button>
-                        ) : (
-                          <div className="font-medium">{course.instructor}</div>
-                        )}
-                      </div>
-                    </div>
-                    )}
-
-                    {course.duration && (
-                    <div className="flex items-start gap-3">
-                      <Clock className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <div>
-                        <div className="text-sm text-muted-foreground mb-1">
-                          {t.duration[language]}
-                        </div>
-                        <div className="font-medium">{course.duration[language]}</div>
-                      </div>
-                    </div>
-                    )}
-
                     {course.startDate && (
                       <div className="flex items-start gap-3">
                         <Calendar className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
@@ -347,6 +343,54 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
                     </div>
                     )}
 
+                    {course.duration && (
+                    <div className="flex items-start gap-3">
+                      <Clock className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="text-sm text-muted-foreground mb-1">
+                          {t.duration[language]}
+                        </div>
+                        <div className="font-medium">{course.duration[language]}</div>
+                      </div>
+                    </div>
+                    )}
+
+                    {course.modality && (
+                    <div className="flex items-start gap-3">
+                      <Globe className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="text-sm text-muted-foreground mb-1">
+                          {t.modality[language]}
+                        </div>
+                        <div className="font-medium">{course.modality[language]}</div>
+                      </div>
+                    </div>
+                    )}
+
+                    {course.cost && (
+                    <div className="flex items-start gap-3">
+                      <Wallet className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="text-sm text-muted-foreground mb-1">
+                          {t.cost[language]}
+                        </div>
+                        <div className="font-medium">{course.cost[language]}</div>
+                      </div>
+                    </div>
+                    )}
+
+                    {course.location && (
+                    <div className="flex items-start gap-3">
+                      <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="text-sm text-muted-foreground mb-1">
+                          {t.location[language]}
+                        </div>
+                        <div className="font-medium">{course.location[language]}</div>
+                      </div>
+                    </div>
+                    )}
+
                     {course.capacity && (
                     <div className="flex items-start gap-3">
                       <Users className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
@@ -360,12 +404,34 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
                     )}
                   </div>
 
+                  {course.links && course.links.length > 0 && (
+                    <div className="pt-4 border-t border-border/50">
+                      <h4 className="text-sm text-muted-foreground mb-2">{t.relatedLinks[language]}</h4>
+                      <div className="space-y-2">
+                        {course.links.map((link, index) => (
+                          <a
+                            key={index}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-primary hover:underline text-sm"
+                          >
+                            <ExternalLink className="h-4 w-4 flex-shrink-0" />
+                            <span>{link.text[language]}</span>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {course.action2 && (
                   <Button asChild className="w-full gap-2" size="lg">
-                    <a href={course.courseUrl} target="_blank" rel="noopener noreferrer">
+                    <a href={course.action2.url} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="h-5 w-5" />
-                      {t.viewCourse[language]}
+                      {course.action2.text[language]}
                     </a>
                   </Button>
+                  )}
                 </CardContent>
               </Card>
             </div>
