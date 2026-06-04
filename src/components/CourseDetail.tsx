@@ -213,15 +213,18 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
             <div className="bg-card rounded-3xl p-8 border border-border/50">
               <h2 className="text-3xl mb-6">{t.description[language]}</h2>
               {course.fullDescription && (
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
+                <article className="max-w-none">
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
                     components={{
-                      p: ({children}) => <p className="text-justify hyphens-auto leading-relaxed mb-4" style={{textAlign: 'justify'}}>{children}</p>,
+                      p: ({children}) => <p className="text-foreground mb-6 leading-relaxed text-lg text-justify hyphens-auto" style={{textAlign: 'justify'}}>{children}</p>,
                       br: () => <br className="mb-2" />,
                       a: ({href, children}) => (
                         <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary font-medium hover:underline">{children}</a>
                       ),
+                      h2: ({children}) => <h2 className="text-2xl font-bold mt-8 mb-4">{children}</h2>,
+                      h3: ({children}) => <h3 className="text-xl font-semibold mt-6 mb-3">{children}</h3>,
+                      h4: ({children}) => <h4 className="text-lg font-semibold mt-4 mb-2">{children}</h4>,
                     }}
                   >
                     {course.fullDescription[language]
@@ -230,7 +233,7 @@ export function CourseDetail({ course, onBack }: CourseDetailProps) {
                       .filter(line => line.length > 0)
                       .join('\n\n')}
                   </ReactMarkdown>
-                </div>
+                </article>
               )}
             </div>
 

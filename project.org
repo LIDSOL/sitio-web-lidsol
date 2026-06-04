@@ -6,7 +6,7 @@
 *** DONE Repositorio de GitHub y Versionado
 *** DONE Contenedor
 *** IN-PROGRESS Código
-**** IN-PROGRESS [#B] CourseDetail y CourseDetail [82%]
+**** IN-PROGRESS [#B] CourseDetail y CourseDetail [94%]
 DEADLINE: <2026-06-05 Fri>
 - [X] Mejorar el aspecto de la tarjeta Featured Course
   Antes la imagen estaba en flujo normal, el <img> imponía su tamaño en el contenedor, forzando al grid a hacer la fila más alta.
@@ -34,8 +34,8 @@ DEADLINE: <2026-06-05 Fri>
 - [X] Cambiar el texto "Inscribirse" por "Ver detalles" como en las tarjetas del grid.
 - [X] Cambiar el "enrolled" a "cupo"
 - [ ] ¿Una subsección para contenido de cursos?
-- [ ] Mejorar el aspecto de la sección de "módulos del curso".
-- [ ] Mejorar el aspecto de la fuente de "Descripción del curso"
+- [X] Mejorar el aspecto de la sección de "módulos del curso".
+- [X] Mejorar el aspecto de la fuente de "Descripción del curso"
 **** IN-PROGRESS [#A] About y AboutMembers
 DEADLINE: <2026-06-05 Fri>
 - [X] Sería bueno que la zona de "Educado en" esté con dots.
