@@ -123,49 +123,49 @@ export const courses: Course[] = [
       es: ["Python", "Introducción a la programación"]
     },
     modules: {
-      en: `# Introduction
-  ## What is Python?
-    - Guido Van Rossum
-    - Companies using the language
-  ## Understanding computers (a bit)
-    - Programmable computers
-    ## Software and Hardware
-      - CPU
-      - Primary memory
-      - Secondary memory
-      - I/O devices
-    - Programming languages
-  ## Program design
-    - Development cycle
-    - How does a program work?
-    - Python programs as scripts
-  - Installing Python
-  - Installing a text editor
-  - Python interpreter
-# Input, Processing and Output
-  ## Strings
-  ## Screen output
-    - Using print
-    - F-strings
-    - Format
-  ## Comments
-    - Single line
-    - Multi-line
-  ## Data types
-    - Strings
-    - Integers
-    - Floating point numbers
-    - Booleans
-  - Arithmetic operators
-  - Reading from keyboard
-# Control structures
-  - If, If-else, If-elif-else
-  - While
-  - For
-# Sequences
-  - Lists
-  - Tuples
-  - Dictionaries`,
+      en: `# Introduction\n
+  ## What is Python?\n
+    - Guido Van Rossum\n
+    - Companies using the language\n
+  ## Understanding computers (a bit)\n
+    - Programmable computers\n
+    ## Software and Hardware\n
+      - CPU\n
+      - Primary memory\n
+      - Secondary memory\n
+      - I/O devices\n
+    - Programming languages\n
+  ## Program design\n
+    - Development cycle\n
+    - How does a program work?\n
+    - Python programs as scripts\n
+  - Installing Python\n
+  - Installing a text editor\n
+  - Python interpreter\n
+# Input, Processing and Output\n
+  ## Strings\n
+  ## Screen output\n
+    - Using print\n
+    - F-strings\n
+    - Format\n
+  ## Comments\n
+    - Single line\n
+    - Multi-line\n
+  ## Data types\n
+    - Strings\n
+    - Integers\n
+    - Floating point numbers\n
+    - Booleans\n
+  - Arithmetic operators\n
+  - Reading from keyboard\n
+# Control structures\n
+  - If, If-else, If-elif-else\n
+  - While\n
+  - For\n
+# Sequences\n
+  - Lists\n
+  - Tuples\n
+  - Dictionaries\n`,
       es: `# Introducción
   ## ¿Qué es Python?
     - Guido Van Rossum

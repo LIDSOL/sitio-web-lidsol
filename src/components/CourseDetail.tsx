@@ -62,30 +62,22 @@ function renderModuleLine(item: ModuleLine, index: number): JSX.Element {
   const baseStyles = "flex items-start";
   const indentStyles = [
     "ml-0",
-    "ml-6",
-    "ml-12",
-    "ml-18"
+    "ml-8",
+    "ml-16",
+    "ml-24"
   ];
 
   const textStyles = isTitle
     ? level === 0
-      ? "text-foreground text-lg font-bold tracking-tight"
+      ? "text-foreground text-xl font-bold tracking-tight"
+      : level === 1
+      ? "text-foreground text-lg font-bold"
       : "text-foreground text-base font-semibold"
-    : "text-muted-foreground text-base font-medium";
+    : "text-muted-foreground text-sm";
 
-  const icon = isTitle ? (
-    level === 0 ? (
-      <div className="bg-primary text-primary-foreground rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold shadow-sm flex-shrink-0">
-        {index + 1}
-      </div>
-    ) : (
-      <div className={`rounded-full bg-primary/60 ${level === 1 ? "w-2 h-2 mt-3" : "w-1.5 h-1.5 mt-3"} flex-shrink-0`} />
-    )
-  ) : isBullet ? (
-    <div className={`w-2 h-2 rounded-full bg-primary/60 mt-3 flex-shrink-0`} />
-  ) : (
-    <div className={`w-1.5 h-1.5 rounded-full bg-muted-foreground/50 mt-3 flex-shrink-0`} />
-  );
+  const icon = isTitle && level === 0 ? (
+    <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" style={{ marginTop: '10px', marginLeft: '-12px' }} />
+  ) : null;
 
   return (
     <li key={index} className="flex flex-col gap-1">
