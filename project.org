@@ -485,7 +485,7 @@ DEADLINE: <2026-06-05 Fri>
     - [X] Añadir desplazamiento
 - [X] Sección CTA con Mailto, es sencillo y se evita configurar un backend de correo o base de datos (que para esto no se requiere).
 - [ ] Optimizar las imágenes
-- [ ] Tener un tema adaptativo claro/oscuro para la cita.
+- [X] Tener un tema adaptativo claro/oscuro para la cita.
 *** TODO Optimización/Bugs/Testing/Corrección de vulnerabilidades
 DEADLINE: <2026-06-12 Fri>
 **** TODO [#A] Mejorar el SEO del sitio (para posicionarlo mejor al buscar en el navegador)

@@ -3,11 +3,12 @@ import { Button } from "./ui/button";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useLanguage } from "./LanguageProvider";
+import { useTheme } from "./ThemeProvider";
 import { motion, AnimatePresence } from "motion/react";
 
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import latex from "react-syntax-highlighter/dist/esm/languages/prism/latex";
-import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { materialDark, oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 SyntaxHighlighter.registerLanguage("latex", latex);
 
@@ -19,6 +20,7 @@ interface CitationModalProps {
 
 export function CitationModal({ citation, open, onClose }: CitationModalProps) {
   const { language } = useLanguage();
+  const { theme } = useTheme();
   const [copied, setCopied] = useState(false);
 
   // Manejo de teclado (ESC) y bloqueo de Scroll
@@ -92,9 +94,9 @@ export function CitationModal({ citation, open, onClose }: CitationModalProps) {
             </div>
 
             <div className="p-6 flex flex-col gap-1.5">
-              <div className="rounded-xl overflow-hidden border bg-[#1e1e1e]">
+              <div className="rounded-xl overflow-hidden border bg-card">
                 <SyntaxHighlighter
-                  style={materialDark}
+                  style={theme === "dark" ? materialDark : oneLight}
                   language="latex"
                   showLineNumbers
                   customStyle={{
