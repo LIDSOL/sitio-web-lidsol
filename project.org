@@ -412,7 +412,7 @@ El archivo src/data/blogPosts.ts se sigue usando, este genera los componentes [[
     - Para implementar el soporte multi-idioma:
       - Se modificará el directorio de cada post para contener versiones por idioma, un archivo por cada idioma (en este caso solo inglés-español, por ejemplo: index.es.md, index.en.md).
       - Se modificará el[[file:scripts/build-blog.js][ script]] que genera el[[file:src/data/blogPosts.ts][ archito ts]] con que usan los compontes que genran el blog. Deben detectar los archivos con sufijos .es.md o en.md y generar la estructura tipo json adecuada.
-**** IN-PROGRESS [#A] Events y EventDetail [78%]
+**** IN-PROGRESS [#A] Events y EventDetail [84%]
 DEADLINE: <2026-06-05 Fri>
 - [X] Mudar el contenido "legacy" [100%]
   - [X] Salvemos el internet
@@ -442,10 +442,10 @@ DEADLINE: <2026-06-05 Fri>
 - [X] Ubicación vs Ubicaciones. Hacerlo a modo de lista.
 - [X] El "tag" de "próximamente" está en un campo de event.ts, que indica el estado del evento. Sería mejor que esto sea automático.
 - [X] Verificar que la notificación de próximo evento y la tarjeta de eventos de src/components/LatestHighlights.tsx no tengan errores.
-- [-] Calendario:
+- [X] Calendario:
   Este calendario está basado en la vista de GNOME Notifications/Calendar.
   - [X] En el calendario de Events.tsx, se debe mostrar un punto debajo del día del evento
-  - [ ] Hacer que la notificación tenga el mismo ancho que el calendario.
+  - [X] Hacer que la notificación tenga el mismo ancho que el calendario.
   - [X] Hacer que el calendario soporte el multi-idioma
   - [X] Hacer que el color de la notificación sea más clara que el BG general
   - [X] En Events.tsx, debajo del calendario, se debe mostrar un apartado de notificaciones que muestre todos los próximos eventos.
@@ -488,7 +488,7 @@ DEADLINE: <2026-06-05 Fri>
 - [ ] Tener un tema adaptativo claro/oscuro para la cita.
 *** TODO Optimización/Bugs/Testing/Corrección de vulnerabilidades
 DEADLINE: <2026-06-12 Fri>
-**** [#A] Mejorar el SEO del sitio (para posicionarlo mejor al buscar en el navegador)
+**** TODO [#A] Mejorar el SEO del sitio (para posicionarlo mejor al buscar en el navegador)
 **** NEXT Actualizar README
 **** DONE Modo oscuro automático según el sistema
 **** DONE [#A] Dejar de usar npm por seguridad
