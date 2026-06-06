@@ -460,7 +460,7 @@ DEADLINE: <2026-06-05 Fri>
     - [X] Añadir el botón de "Ayudar a los asistentes".
 - [ ] Optimizar las imágenes
 - [ ] Hacer un script de js/Python para añadir eventos de forma sencilla (como en hugo)
-**** IN-PROGRESS [#A] Publications
+**** DONE Publications
 DEADLINE: <2026-06-05 Fri>
 - [X] Mudar el contenido.
   - [X] Añadir los "metadatos" a src/data/publications.tsx
@@ -484,7 +484,7 @@ DEADLINE: <2026-06-05 Fri>
     - [X] La página de fondo debe estar más opaca que la ventana emergente.
     - [X] Añadir desplazamiento
 - [X] Sección CTA con Mailto, es sencillo y se evita configurar un backend de correo o base de datos (que para esto no se requiere).
-- [ ] Optimizar las imágenes
+- [X] Optimizar las imágenes
 - [X] Tener un tema adaptativo claro/oscuro para la cita.
 *** TODO Optimización/Bugs/Testing/Corrección de vulnerabilidades
 DEADLINE: <2026-06-12 Fri>
