@@ -21,8 +21,8 @@ export interface Event {
     memberId?: number;
     name?: string;
     role?: { en: string; es: string };
-    bio?: { en: string; es: string };
     image?: string;
+    url?: string;
   }[];
   requirements?: { en: string; es: string };
   contents?: { en: string[]; es: string[] };
@@ -110,6 +110,12 @@ export const events: Event[] = [
       { memberId: 2 },
       { memberId: 7 },
       { memberId: 9 },
+      { name: "Alex Callejas",
+        image: "/events-images/flisol-2026/alexcallejasgod.jpg",
+        role: {en: "RedHat MX", es: "RedHat MX"},
+        bio: {en: "what?", es: "what?"},
+        url: "https://github.com/AlexCallejas"
+      }
     ],
     startDate: "2026-05-07",
     endDate: "2026-05-08",
@@ -125,18 +131,6 @@ export const events: Event[] = [
       url: "https://www.openstreetmap.org/directions?from=&to=19.326487%2C-99.182596#map=19/19.326475/-99.183036"
     },
     ],
-    action1: {
-        text: {
-            en: "Help the attendees",
-            es: "Ayuda a los asistentes" },
-        url: "https://cloud.lidsol.unam.mx/apps/forms/s/ejoEFkozs59NzFHe6SoGyFwp"
-    },
-    action2: {
-        text: {
-            en: "Register for the event",
-            es: "Registrate al evento" },
-        url: "https://cloud.lidsol.unam.mx/apps/forms/s/szsBEWQHGo4MaStGK9qMtgA7"
-    },
     tags: { en: ["FLISoL", "Open Source", "Free Software", "Community"], es: ["FLISoL", "Open Source", "Software Libre" ,"Comunidad"] },
     publishDate: "2026-04-14"
   },

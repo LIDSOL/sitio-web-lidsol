@@ -77,7 +77,6 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
           memberId: member.id,
           name: member.name,
           role: member.role,
-          bio: member.bio,
           image: member.image,
         };
       }
@@ -89,7 +88,6 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
           memberId: matchedMember.id,
           name: matchedMember.name,
           role: matchedMember.role,
-          bio: matchedMember.bio,
           image: matchedMember.image,
         };
       }
@@ -98,8 +96,8 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
       memberId: undefined,
       name: speaker.name || '',
       role: speaker.role,
-      bio: speaker.bio,
       image: speaker.image,
+      url: speaker.url,
     };
   });
 
@@ -445,8 +443,11 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
                     {matchedSpeakers.map((speaker, index) => (
                       <div
                         key={index}
-                        className={`flex items-center gap-4 ${speaker.memberId ? 'cursor-pointer hover:opacity-80 transition-opacity' : ''}`}
-                        onClick={() => speaker.memberId && onMemberClick?.(speaker.memberId)}
+                        className={`flex items-center gap-4 ${(speaker.memberId || speaker.url) ? 'cursor-pointer hover:opacity-80 transition-opacity' : ''}`}
+                        onClick={() => {
+                          if (speaker.memberId) onMemberClick?.(speaker.memberId);
+                          else if (speaker.url) window.open(speaker.url, '_blank', 'noopener');
+                        }}
                       >
                         <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border flex-shrink-0">
                           <ImageWithFallback
@@ -455,9 +456,9 @@ export function EventDetail({ event, onBack, onMemberClick }: EventDetailProps) 
                             className="w-full h-full object-cover"
                           />
                         </div>
-                        <div>
-                          <div className="font-medium text-lg">{speaker.name}</div>
-                          {speaker.role && <div className="text-sm text-primary">{speaker.role[language]}</div>}
+                        <div className="min-w-0">
+                          <div className="font-medium text-lg truncate">{speaker.name}</div>
+                          {speaker.role && <div className="text-sm text-primary truncate">{speaker.role[language]}</div>}
                         </div>
                       </div>
                     ))}

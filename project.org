@@ -351,7 +351,7 @@ DEADLINE: <2026-02-12 Thu>
     - src/components/ProjectDetail.tsx: Actualizado para usar project.tags[language]
     - src/components/FeaturedProjects.tsx: Actualizado para usar project.tags?.[language]
   - [X] Verificar el estado de los proyectos (para que el ícono sea el adecuado)
-**** DONE Blog (Blog.tsx y BlogDetail.tsx) [75%]
+**** DONE Blog (Blog.tsx y BlogDetail.tsx) [100%]
 DEADLINE: <2026-03-13 Fri>
 - [X] Blog [100%]
   - [X] Hacer que el Blog y el BlogDetail soporten el multi-idioma
@@ -395,7 +395,7 @@ DEADLINE: <2026-03-13 Fri>
     - [X] Mejorar el aspecto de las tablas markdown.
     - [X] {{% alert warning %}} ¿NANI KORE!
 - [X] Optimizar las imágenes
-- [ ] Hacer un script de python/js para automatizar el añadir un post nuevo
+- [X] Hacer un script de python/js para automatizar el añadir un post nuevo
 ***** Notas
 - *Más adelante, sería bueno añadir paginado*
 - Me doy cuanta que el los separadores de markdown no son correctamente soportados (---) en BlogDetail
@@ -412,7 +412,7 @@ El archivo src/data/blogPosts.ts se sigue usando, este genera los componentes [[
     - Para implementar el soporte multi-idioma:
       - Se modificará el directorio de cada post para contener versiones por idioma, un archivo por cada idioma (en este caso solo inglés-español, por ejemplo: index.es.md, index.en.md).
       - Se modificará el[[file:scripts/build-blog.js][ script]] que genera el[[file:src/data/blogPosts.ts][ archito ts]] con que usan los compontes que genran el blog. Deben detectar los archivos con sufijos .es.md o en.md y generar la estructura tipo json adecuada.
-**** IN-PROGRESS [#A] Events y EventDetail [84%]
+**** DONE Events y EventDetail [100%]
 DEADLINE: <2026-06-05 Fri>
 - [X] Mudar el contenido "legacy" [100%]
   - [X] Salvemos el internet
@@ -450,16 +450,13 @@ DEADLINE: <2026-06-05 Fri>
   - [X] Hacer que el color de la notificación sea más clara que el BG general
   - [X] En Events.tsx, debajo del calendario, se debe mostrar un apartado de notificaciones que muestre todos los próximos eventos.
   - [X] En el calendario de EventDetail.tsx muestra encerrado en un círculo el día del evento
-- [-] Mejorar la sección de cronograma
+- [X] Mejorar la sección de cronograma
   - [X] Tener sub-items por día/hora
-  - [-] Añadir la información faltante de FLISOL 2026
-    - [ ] Añadir los ponentes faltantes
-    - [ ] Añadir los requermientos de los talleres
+  - [X] Añadir la información faltante de FLISOL 2026
+    - [X] Añadir los ponentes faltantes
     - [X] Actualizar la descripción
     - [X] Añadir botón de registro al evento.
     - [X] Añadir el botón de "Ayudar a los asistentes".
-- [ ] Optimizar las imágenes
-- [ ] Hacer un script de js/Python para añadir eventos de forma sencilla (como en hugo)
 **** DONE Publications
 DEADLINE: <2026-06-05 Fri>
 - [X] Mudar el contenido.
@@ -493,7 +490,7 @@ DEADLINE: <2026-06-12 Fri>
 **** DONE Modo oscuro automático según el sistema
 **** DONE [#A] Dejar de usar npm por seguridad
 El gestor de paquetes npm no es seguro por defecto y este último mes ha habido ataques a la cadena de suministros; según lo informado por SafeDep, un mantenedor comprometido publico 637 versiones maliciosas en 317 paquetes; es por ello que vamos a cambiar de gestor de paquetes a pnpm versión 11 o superior; pnpm por defecto resulta más seguro, por ejemplo, gracias a minimumReleaseAge no se instalan paquetes con menos de un día de haber sido publicados y evita la instalación de sub-dependencias de fuentes que pueden resultar "extrañas" gracias a blockExocticSubdeps.
-**** [#A] Desactivar la ejecución automática de scripts y crear un por área (miembros, eventos, etc) para añadir info maś fácilmente sin la necesidad de meterte al ts
+**** DONE Desactivar la ejecución automática de scripts y crear un por área (miembros, eventos, etc) para añadir info maś fácilmente sin la necesidad de meterte al ts
 **** [#B] Colocar la información correcta en la fecha de inicio de los miembros.
 **** [#C] Sería bueno "Normalizar" el tamaño de los títulos del Home.
 **** [#C] Tal vez sería bueno cambiar el texto de "Proyectos en desarrollo" del Home, pues hay algunas investigaciones que ya no están en curso.
@@ -501,7 +498,7 @@ El gestor de paquetes npm no es seguro por defecto y este último mes ha habido 
 **** [#B] Hacer que los íconos sean tomados de un svg local
 en blog.tsx hay import { User, ArrowRight, Calendar, Clock } from "lucide-react", etc
 **** Cuando regreso a una página anterior, que no me regrese hasta el inicio, si no que se quede en el mismo sitio antes de dar click.
-**** [#B] Mejora el script del blog.
+**** DONE [#B] Mejora el script del blog.
 **** DONE CursorEffect
 Al estar en dispositivos móviles, el efecto de brillo que sigue al cursos se queda pillado.
 **** DONE Responsibidad
