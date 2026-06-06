@@ -80,7 +80,7 @@ export function Blog({ onPostClick }: BlogProps) {
           onClick={() => handleViewPost(featuredPost.id)}
         >
           <div className="grid md:grid-cols-2 gap-0">
-            <div className="aspect-video md:aspect-auto relative overflow-hidden cursor-pointer">
+            <div className="aspect-video md:aspect-auto md:h-full relative overflow-hidden cursor-pointer">
               <ImageWithFallback
                 src={featuredPost.image}
                 alt={getLocalizedPost(featuredPost).title}
