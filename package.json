@@ -67,7 +67,7 @@
       },
       "scripts": {
             "dev": "vite",
-            "build": "node scripts/build-blog.js && vite build",
+            "build": "vite build",
             "build:staging": "vite build --mode staging",
             "preview": "vite preview --host",
             "security:audit": "pnpm audit",
