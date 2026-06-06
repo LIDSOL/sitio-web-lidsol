@@ -62,7 +62,7 @@
       "devDependencies": {
             "@types/node": "^20.10.0",
             "@vitejs/plugin-react-swc": "^3.10.2",
-            "vite": "^6.4.1",
+            "vite": "^6.4.3",
             "vite-plugin-image-optimizer": "^2.0.3"
       },
       "scripts": {
