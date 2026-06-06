@@ -351,7 +351,7 @@ DEADLINE: <2026-02-12 Thu>
     - src/components/ProjectDetail.tsx: Actualizado para usar project.tags[language]
     - src/components/FeaturedProjects.tsx: Actualizado para usar project.tags?.[language]
   - [X] Verificar el estado de los proyectos (para que el ícono sea el adecuado)
-**** DONE Blog (Blog.tsx y BlogDetail.tsx) [50%]
+**** DONE Blog (Blog.tsx y BlogDetail.tsx) [75%]
 DEADLINE: <2026-03-13 Fri>
 - [X] Blog [100%]
   - [X] Hacer que el Blog y el BlogDetail soporten el multi-idioma
@@ -394,7 +394,7 @@ DEADLINE: <2026-03-13 Fri>
       - Se agreguó el CSS de KaTeX desde CDN en el HTML.
     - [X] Mejorar el aspecto de las tablas markdown.
     - [X] {{% alert warning %}} ¿NANI KORE!
-- [ ] Optimizar las imágenes
+- [X] Optimizar las imágenes
 - [ ] Hacer un script de python/js para automatizar el añadir un post nuevo
 ***** Notas
 - *Más adelante, sería bueno añadir paginado*

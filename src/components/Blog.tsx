@@ -80,11 +80,11 @@ export function Blog({ onPostClick }: BlogProps) {
           onClick={() => handleViewPost(featuredPost.id)}
         >
           <div className="grid md:grid-cols-2 gap-0">
-            <div className="aspect-video md:aspect-auto md:h-full relative overflow-hidden cursor-pointer">
+            <div className="aspect-video md:aspect-auto md:min-h-0 relative overflow-hidden cursor-pointer">
               <ImageWithFallback
                 src={featuredPost.image}
                 alt={getLocalizedPost(featuredPost).title}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
               <Badge className="absolute top-4 left-4 shadow-lg bg-primary">
                 {language === 'en' ? 'Featured' : 'Destacado'}
