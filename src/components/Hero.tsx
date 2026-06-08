@@ -15,26 +15,11 @@ export function Hero() {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const carouselImages = [
-    {
-      src: "/home/eddie-sennov-Tiy7aJwWPvc-unsplash.jpg",
-      alt: "Debian Neofetch"
-    },
-    {
-      src: "/home/lukas-uZkHtWsi2dE-unsplash.jpg",
-      alt: "Arch sticker"
-    },
-    {
-      src: "/home/gabriel-heinzer-4Mw7nkQDByk-unsplash.jpg",
-      alt: "Sudo Debian"
-    },
-    {
-      src: "/home/vishnu-mohanan-rZKdS0wI8Ks-unsplash.jpg",
-      alt: "Raspberry pi"
-    },
-    {
-      src: "/home/lukas-NLSXFjl_nhc-unsplash.jpg",
-      alt: "Thinkpad"
-    },
+    { src: "/home/lukas-NLSXFjl_nhc-unsplash.jpg", alt: "Debian Neofetch"},
+    { src: "/home/lukas-uZkHtWsi2dE-unsplash.jpg", alt: "Arch Sticker"},
+    { src: "/home/lukas-DTochqoK3Rg-unsplash.jpg", alt: "NixOS Neofetch"},
+    { src: "/home/eddie-sennov-43P5FiTFcXo-unsplash.jpg", alt: "ThinkPad Ubuntu"},
+    { src: "/home/harrison-broadbent-1mu9gF8OhNk-unsplash.jpg", alt: "Open Hardware"},
   ];
 
   const resetTimer = useCallback(() => {

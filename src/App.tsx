@@ -21,6 +21,7 @@ import { License } from "./components/License";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { LanguageProvider } from "./components/LanguageProvider";
 import { CursorEffect } from "./components/CursorEffect";
+import { LoadingScreen } from "./components/LoadingScreen";
 import { useState, useEffect } from "react";
 import { blogPosts } from "./data/blogPosts";
 import { projects } from "./data/projects";
@@ -29,15 +30,15 @@ import { events } from "./data/events";
 import { members } from "./data/members";
 import { publications } from "./data/publications";
 
-type ViewType = 
-  | "home" 
-  | "blog" 
-  | "blogPost" 
-  | "events" 
+type ViewType =
+  | "home"
+  | "blog"
+  | "blogPost"
+  | "events"
   | "eventDetail"
-  | "courses" 
+  | "courses"
   | "courseDetail"
-  | "publications" 
+  | "publications"
   | "publicationDetail"
   | "projects"
   | "projectDetail"
@@ -54,10 +55,61 @@ export default function App() {
   const [selectedMemberId, setSelectedMemberId] = useState<number | null>(null);
   const [selectedPublicationId, setSelectedPublicationId] = useState<number | null>(null);
 
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadProgress, setLoadProgress] = useState(0);
+
+  useEffect(() => {
+    const criticalImages = [
+      "/home/eddie-sennov-43P5FiTFcXo-unsplash.jpg",
+      "/home/lukas-DTochqoK3Rg-unsplash.jpg",
+      "/home/lukas-NLSXFjl_nhc-unsplash.jpg",
+      "/home/lukas-uZkHtWsi2dE-unsplash.jpg",
+      "/home/vishnu-mohanan-eaDwf4UAEhk-unsplash.jpg",
+      "/home/gabo-romay-j7Xs-riThbU-unsplash.jpg",
+      "/home/LIDSOLlogo.svg",
+    ];
+
+    let loaded = 0;
+    const total = criticalImages.length;
+    let cancelled = false;
+
+    if (total === 0) {
+      setIsLoading(false);
+      return;
+    }
+
+    const onLoad = () => {
+      if (cancelled) return;
+      loaded++;
+      setLoadProgress(loaded / total);
+      if (loaded >= total) {
+        setIsLoading(false);
+      }
+    };
+
+    criticalImages.forEach((src) => {
+      const img = new Image();
+      img.onload = onLoad;
+      img.onerror = onLoad;
+      img.src = src;
+    });
+
+    const fallback = setTimeout(() => {
+      if (cancelled) return;
+      cancelled = true;
+      setIsLoading(false);
+    }, 10000);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(fallback);
+    };
+  }, []);
+
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
-      
+
       // Handle contact - scroll to footer without changing view
       if (hash === "#contact") {
         setTimeout(() => {
@@ -66,7 +118,7 @@ export default function App() {
         }, 100);
         return;
       }
-      
+
       // Handle about page and member subpages
       if (hash === "#about") {
         setCurrentView("about");
@@ -235,7 +287,7 @@ export default function App() {
   };
 
   // Get selected items
-  const selectedPost = selectedPostId 
+  const selectedPost = selectedPostId
     ? blogPosts.find(post => post.id === selectedPostId)
     : null;
 
@@ -262,7 +314,10 @@ export default function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <div className="min-h-screen">
+        {isLoading ? (
+          <LoadingScreen progress={loadProgress} />
+        ) : null}
+        <div className={`min-h-screen ${isLoading ? "hidden" : ""}`}>
           <CursorEffect />
           <Header />
           {currentView === "blogPost" && selectedPost ? (
@@ -296,7 +351,7 @@ export default function App() {
               <Hero />
               <Values />
               <FeaturedProjects />
-              <LatestHighlights 
+              <LatestHighlights
                 onViewPost={handlePostClick}
                 onViewAllPosts={() => { window.location.hash = "#blog"; }}
                 onViewCourse={handleCourseClick}

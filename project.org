@@ -485,6 +485,7 @@ DEADLINE: <2026-06-05 Fri>
 - [X] Tener un tema adaptativo claro/oscuro para la cita.
 *** TODO Optimización/Bugs/Testing/Corrección de vulnerabilidades
 DEADLINE: <2026-06-12 Fri>
+**** TODO [#A] Pantalla de carga
 **** TODO [#A] Mejorar el SEO del sitio (para posicionarlo mejor al buscar en el navegador)
 **** NEXT Actualizar README
 **** DONE Modo oscuro automático según el sistema
@@ -497,7 +498,7 @@ El gestor de paquetes npm no es seguro por defecto y este último mes ha habido 
 **** [#C] Añadir una "pantalla de carga" al inicio.
 **** [#B] Hacer que los íconos sean tomados de un svg local
 en blog.tsx hay import { User, ArrowRight, Calendar, Clock } from "lucide-react", etc
-**** Cuando regreso a una página anterior, que no me regrese hasta el inicio, si no que se quede en el mismo sitio antes de dar click.
+**** NEXT Cuando regreso a una página anterior, que no me regrese hasta el inicio, si no que se quede en el mismo sitio antes de dar click.
 **** DONE [#B] Mejora el script del blog.
 **** DONE CursorEffect
 Al estar en dispositivos móviles, el efecto de brillo que sigue al cursos se queda pillado.
