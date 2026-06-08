@@ -47,14 +47,14 @@ DEADLINE: <2026-06-05 Fri>
 - [ ] Añadir el perfil de ramenroot
 - [ ] Actualizar la información de los miembros
 - [ ] Mejorar las fotos de los miembros
-**** IN-PROGRESS [#B] Home [%]
+**** DONE [#B] Home
 DEADLINE: <2026-06-05 Fri>
 ***** DONE LatestHighlights
 - [X] Mostar el último evento o el próximo evento.
 - [X] Cambiar el badge/tag de los cursos lugar para que coincida con el tag del post del blog
 - [X] Colocar la info del evento a modo de dots y no como un "string" solo
 - [X] Cambiar de lugar el badge de "proximamente" de la tarjeta de evento y colocarlo junto a los tags
-***** IN-PROGRESS Hero
+***** DONE Hero
 - [X] Cambiar el color de fondo por algo gris pero con degradados
 - [X] Cambiar el texto por el logo del laboratorio.
 - [X] Mejorar el carrusel de imágenes
@@ -64,7 +64,7 @@ DEADLINE: <2026-06-05 Fri>
 - [X] Mejorar el aspecto del botón "Explorar Proyectos"
 - [X] Tener un poco más de efecto "Glow", pero que siga siendo sutil...
 - [X] Usar un logo para el tema oscuro y otro para el tema claro.
-- [ ] Modificar el botón "únete a la comunidad", en este momento manda un mail, sería mejor usar un form de nextcloud
+- [X] Modificar el botón "únete a la comunidad", en este momento manda un mail, sería mejor usar un form de nextcloud
 - [X] Optimizar el código de Hero, aún hay glow que ya no se usa.
 - [X] Optimizar el carrusel
 ****** Glow.. descartado

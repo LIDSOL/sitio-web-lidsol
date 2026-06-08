@@ -22,7 +22,7 @@ import { ThemeProvider } from "./components/ThemeProvider";
 import { LanguageProvider } from "./components/LanguageProvider";
 import { CursorEffect } from "./components/CursorEffect";
 import { LoadingScreen } from "./components/LoadingScreen";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { blogPosts } from "./data/blogPosts";
 import { projects } from "./data/projects";
 import { courses } from "./data/courses";
@@ -57,6 +57,7 @@ export default function App() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [loadProgress, setLoadProgress] = useState(0);
+  const scrollPositions = useRef<Record<string, number>>({});
 
   useEffect(() => {
     const criticalImages = [
@@ -107,7 +108,22 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const handleHashChange = () => {
+    const handleHashChange = (e?: HashChangeEvent) => {
+      // Save scroll position for the previous page
+      if (e) {
+        const oldHash = new URL(e.oldURL).hash || "#home";
+        scrollPositions.current[oldHash] = window.scrollY;
+      }
+
+      const scrollToSaved = (hash: string) => {
+        const saved = scrollPositions.current[hash];
+        if (saved !== undefined && saved > 0) {
+          requestAnimationFrame(() => window.scrollTo(0, saved));
+        } else {
+          window.scrollTo(0, 0);
+        }
+      };
+
       const hash = window.location.hash;
 
       // Handle contact - scroll to footer without changing view
@@ -123,7 +139,7 @@ export default function App() {
       if (hash === "#about") {
         setCurrentView("about");
         setSelectedMemberId(null);
-        window.scrollTo(0, 0);
+        scrollToSaved(hash);
       } else if (hash.startsWith("#about/member/")) {
         const memberId = parseInt(hash.replace("#about/member/", ""));
         if (!isNaN(memberId)) {
@@ -136,7 +152,7 @@ export default function App() {
       else if (hash === "#blog") {
         setCurrentView("blog");
         setSelectedPostId(null);
-        window.scrollTo(0, 0);
+        scrollToSaved(hash);
       } else if (hash.startsWith("#blog/")) {
         const postId = parseInt(hash.replace("#blog/", ""));
         if (!isNaN(postId)) {
@@ -149,7 +165,7 @@ export default function App() {
       else if (hash === "#events") {
         setCurrentView("events");
         setSelectedEventId(null);
-        window.scrollTo(0, 0);
+        scrollToSaved(hash);
       } else if (hash.startsWith("#events/")) {
         const eventId = parseInt(hash.replace("#events/", ""));
         if (!isNaN(eventId)) {
@@ -162,7 +178,7 @@ export default function App() {
       else if (hash === "#courses") {
         setCurrentView("courses");
         setSelectedCourseId(null);
-        window.scrollTo(0, 0);
+        scrollToSaved(hash);
       } else if (hash.startsWith("#courses/")) {
         const courseId = parseInt(hash.replace("#courses/", ""));
         if (!isNaN(courseId)) {
@@ -175,7 +191,7 @@ export default function App() {
       else if (hash === "#publications") {
         setCurrentView("publications");
         setSelectedPublicationId(null);
-        window.scrollTo(0, 0);
+        scrollToSaved(hash);
       } else if (hash.startsWith("#publications/")) {
         const publicationId = parseInt(hash.replace("#publications/", ""));
         if (!isNaN(publicationId)) {
@@ -187,13 +203,13 @@ export default function App() {
       // Handle license
       else if (hash === "#license") {
         setCurrentView("license");
-        window.scrollTo(0, 0);
+        scrollToSaved(hash);
       }
       // Handle projects
       else if (hash === "#projects") {
         setCurrentView("projects");
         setSelectedProjectId(null);
-        window.scrollTo(0, 0);
+        scrollToSaved(hash);
       } else if (hash.startsWith("#projects/")) {
         const projectId = parseInt(hash.replace("#projects/", ""));
         if (!isNaN(projectId)) {
@@ -210,7 +226,7 @@ export default function App() {
         setSelectedCourseId(null);
         setSelectedEventId(null);
         setSelectedMemberId(null);
-        window.scrollTo(0, 0);
+        scrollToSaved("#home");
       }
     };
 
