@@ -65,7 +65,7 @@ export default function App() {
       "/home/lukas-NLSXFjl_nhc-unsplash.jpg",
       "/home/lukas-uZkHtWsi2dE-unsplash.jpg",
       "/home/vishnu-mohanan-eaDwf4UAEhk-unsplash.jpg",
-      "/home/gabo-romay-j7Xs-riThbU-unsplash.jpg",
+      "/home/harrison-broadbent-1mu9gF8OhNk-unsplash.jpg",
       "/home/LIDSOLlogo.svg",
     ];
 

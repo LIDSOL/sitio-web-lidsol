@@ -98,7 +98,7 @@ export function LoadingScreen({ progress }: LoadingScreenProps) {
               r={radius}
               fill="none"
               strokeWidth={stroke}
-              className="stroke-secondary"
+              style={{ stroke: "var(--secondary)" }}
             />
             <circle
               cx={size / 2}
@@ -109,7 +109,8 @@ export function LoadingScreen({ progress }: LoadingScreenProps) {
               strokeLinecap="round"
               strokeDasharray={circumference}
               strokeDashoffset={offset}
-              className="stroke-primary transition-all duration-300 ease-out"
+              style={{ stroke: "var(--primary)" }}
+              className="transition-all duration-300 ease-out"
             />
           </svg>
           <span className="absolute text-sm font-medium tabular-nums text-foreground">
