@@ -151,24 +151,19 @@ export function LatestHighlights({
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl mb-3 group-hover:text-primary transition-colors duration-200 line-clamp-2">
+                <h3 className="text-2xl mb-3 group-hover:text-primary transition-colors duration-200 truncate">
                   {latestPost.title[language]}
                 </h3>
 
                 {/* Excerpt */}
-                <p className="text-muted-foreground line-clamp-2 mb-0">
+                <p className="text-muted-foreground truncate mb-0">
                   {latestPost.excerpt[language]}
                 </p>
 
-                {/* Footer */}
-                <div className="flex items-center pt-4">
-                  <div className="flex items-center gap-1 text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200 mb-2">
-                    {t.readMore[language]} <ArrowRight className="h-3.5 w-3.5" />
-                  </div>
-                </div>
+                <div className="flex-1" />
 
                 {/* Meta info */}
-                <div className="flex items-center gap-3 text-sm text-muted-foreground pt-4 border-t border-border/60">
+                <div className="flex items-center gap-3 text-sm text-muted-foreground mt-4 pt-4 border-t border-border/60">
                   <div className="flex items-center gap-1.5">
                     <User className="h-3.5 w-3.5" />
                     <span>{latestPost.authors[language]?.[0] || latestPost.authors.es?.[0]}</span>
@@ -211,24 +206,19 @@ export function LatestHighlights({
               </div>
 
                 {/* Title */}
-                <h3 className="text-2xl mb-3 group-hover:text-primary transition-colors duration-200 line-clamp-2">
+                <h3 className="text-2xl mb-3 group-hover:text-primary transition-colors duration-200 truncate">
                   {latestCourse.title[language]}
                 </h3>
 
                 {/* Description */}
-                <p className="text-muted-foreground line-clamp-2 mb-0">
+                <p className="text-muted-foreground truncate mb-0">
                   {latestCourse.shortDescription?.[language] || latestCourse.shortDescription?.es}
                 </p>
 
-                {/* Footer */}
-                <div className="flex items-center pt-4">
-                  <div className="flex items-center gap-1 text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200 mb-2">
-                    {t.viewCourse[language]} <ArrowRight className="h-3.5 w-3.5" />
-                  </div>
-                </div>
+                <div className="flex-1" />
 
                 {/* Meta info */}
-                <div className="flex items-center gap-3 text-sm text-muted-foreground pt-4 border-t border-border/60">
+                <div className="flex items-center gap-3 text-sm text-muted-foreground mt-4 pt-4 border-t border-border/60">
                   <div className="flex items-center gap-1.5">
                     <BookOpen className="h-3.5 w-3.5" />
                     <span>{latestCourse.instructor}</span>
@@ -305,15 +295,8 @@ export function LatestHighlights({
                   </p>
                 </div>
 
-                {/* Footer */}
-                <div className="flex items-center pt-4">
-                  <div className="flex items-center gap-1 text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200 mb-2">
-                    {t.viewEvent[language]} <ArrowRight className="h-3.5 w-3.5" />
-                  </div>
-                </div>
-
                 {/* Meta info - with dots */}
-                <div className="flex flex-col gap-1.5 text-sm text-muted-foreground pt-4 border-t border-border/60">
+                <div className="flex flex-col gap-1.5 text-sm text-muted-foreground mt-4 pt-4 border-t border-border/60">
                   <div className="flex items-center gap-2">
                     <span className="h-1 w-1 rounded-full bg-muted-foreground/50 shrink-0" />
                     <div className="flex items-center gap-1.5 min-w-0">

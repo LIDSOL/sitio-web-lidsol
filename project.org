@@ -492,12 +492,12 @@ DEADLINE: <2026-06-12 Fri>
 El gestor de paquetes npm no es seguro por defecto y este último mes ha habido ataques a la cadena de suministros; según lo informado por SafeDep, un mantenedor comprometido publico 637 versiones maliciosas en 317 paquetes; es por ello que vamos a cambiar de gestor de paquetes a pnpm versión 11 o superior; pnpm por defecto resulta más seguro, por ejemplo, gracias a minimumReleaseAge no se instalan paquetes con menos de un día de haber sido publicados y evita la instalación de sub-dependencias de fuentes que pueden resultar "extrañas" gracias a blockExocticSubdeps.
 **** DONE Desactivar la ejecución automática de scripts y crear un por área (miembros, eventos, etc) para añadir info maś fácilmente sin la necesidad de meterte al ts
 **** [#B] Colocar la información correcta en la fecha de inicio de los miembros.
-**** [#C] Sería bueno "Normalizar" el tamaño de los títulos del Home.
-**** [#C] Tal vez sería bueno cambiar el texto de "Proyectos en desarrollo" del Home, pues hay algunas investigaciones que ya no están en curso.
+**** NEXT [#C] Tal vez sería bueno cambiar el texto de "Proyectos en desarrollo" del Home, pues hay algunas investigaciones que ya no están en curso.
 **** DONE [#C] Añadir una "pantalla de carga" al inicio.
-**** [#B] Hacer que los íconos sean tomados de un svg local
+**** NEXT [#A] Reorganizar los directorios para que sean como los de Hugo
+**** NEXT [#B] Hacer que los íconos sean tomados de un svg local
 en blog.tsx hay import { User, ArrowRight, Calendar, Clock } from "lucide-react", etc
-**** NEXT Cuando regreso a una página anterior, que no me regrese hasta el inicio, si no que se quede en el mismo sitio antes de dar click.
+**** DONE Cuando regreso a una página anterior, que no me regrese hasta el inicio, si no que se quede en el mismo sitio antes de dar click.
 **** DONE [#B] Mejora el script del blog.
 **** DONE CursorEffect
 Al estar en dispositivos móviles, el efecto de brillo que sigue al cursos se queda pillado.

@@ -15,7 +15,6 @@ export function Hero() {
     { src: "/home/lukas-NLSXFjl_nhc-unsplash.jpg", alt: "Debian Neofetch"},
     { src: "/home/lukas-uZkHtWsi2dE-unsplash.jpg", alt: "Arch Sticker"},
     { src: "/home/lukas-DTochqoK3Rg-unsplash.jpg", alt: "NixOS Neofetch"},
-    { src: "/home/eddie-sennov-43P5FiTFcXo-unsplash.jpg", alt: "ThinkPad Ubuntu"},
     { src: "/home/harrison-broadbent-1mu9gF8OhNk-unsplash.jpg", alt: "Open Hardware"},
   ];
 
