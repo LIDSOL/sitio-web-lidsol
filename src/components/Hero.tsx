@@ -2,16 +2,13 @@ import { Button } from "./ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useState, useEffect, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { useLanguage } from "./LanguageProvider";
-import { useTheme } from "./ThemeProvider";
 import Link from "next/link";
 
 export function Hero() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
   const { language } = useLanguage();
-  const { theme } = useTheme();
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const carouselImages = [
@@ -27,19 +24,16 @@ export function Hero() {
       clearInterval(intervalRef.current);
     }
     intervalRef.current = setInterval(() => {
-      setDirection(1);
       setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
     }, 4000);
   }, [carouselImages.length]);
 
   const nextImage = () => {
-    setDirection(1);
     setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
     resetTimer();
   };
 
   const prevImage = () => {
-    setDirection(-1);
     setCurrentImageIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
     resetTimer();
   };
@@ -71,56 +65,6 @@ export function Hero() {
 
   const mailtoLink = `mailto:lidsol@protonmail.com?subject=${encodeURIComponent(t.contactSubject[language])}&body=${encodeURIComponent(t.contactBody[language])}`;
 
-  const glowDark = {
-    default: `
-      0 0 14px rgba(28,113,216,0.35),
-      0 0 28px rgba(28,113,216,0.25),
-      0 0 49px rgba(28,113,216,0.18),
-      0 0 70px rgba(28,113,216,0.11)
-    `,
-    hover: `
-      0 0 21px rgba(28,113,216,0.49),
-      0 0 42px rgba(28,113,216,0.35),
-      0 0 63px rgba(28,113,216,0.25),
-      0 0 91px rgba(28,113,216,0.14)
-    `
-  };
-
-  const glowLight = {
-    default: `
-      0 0 14px rgba(28,113,216,0.42),
-      0 0 35px rgba(28,113,216,0.32),
-      0 0 56px rgba(28,113,216,0.21),
-      0 0 77px rgba(28,113,216,0.14)
-    `,
-    hover: `
-      0 0 25px rgba(28,113,216,0.53),
-      0 0 49px rgba(28,113,216,0.39),
-      0 0 70px rgba(28,113,216,0.28),
-      0 0 98px rgba(28,113,216,0.18)
-    `
-  };
-
-  const currentGlow = theme === "dark" ? glowDark : glowLight;
-
-  const carouselGlowDark = `
-    0 0 28px rgba(28,113,216,0.4),
-    0 0 28px rgba(28,113,216,0.15),
-    0 0 44px rgba(28,113,216,0.1),
-    0 0 61px rgba(28,113,216,0.05),
-    0 0 77px rgba(28,113,216,0.3)
-  `;
-
-  const carouselGlowLight = `
-    0 0 39px rgba(28,113,216,0.5),
-    0 0 33px rgba(28,113,216,0.2),
-    0 0 50px rgba(28,113,216,0.15),
-    0 0 66px rgba(28,113,216,0.1),
-    0 0 83px rgba(28,113,216,0.05)
-  `;
-
-  const currentCarouselGlow = theme === "dark" ? carouselGlowDark : carouselGlowLight;
-
   return (
     <section className="relative overflow-hidden bg-primary text-primary-foreground py-20 sm:py-32">
       {/* Ambient background glows */}
@@ -138,7 +82,7 @@ export function Hero() {
 
             <h1 className="text-5xl sm:text-6xl lg:text-7xl text-primary-foreground">
               <ImageWithFallback
-                src={theme === "dark" ? "/home/LIDSOLlogo.svg" : "/home/LIDSOLlogo.svg"}
+                src="/home/LIDSOLlogo.svg"
                 alt="LIDSoL"
                 className="h-18 w-auto drop-shadow-lg"
               />
@@ -188,26 +132,22 @@ export function Hero() {
             <div
               className="aspect-square rounded-3xl overflow-hidden shadow-2xl border border-white/20 relative"
             >
-              <AnimatePresence initial={false} custom={direction} mode="popLayout">
+              {carouselImages.map((image, index) => (
                 <motion.div
-                  key={currentImageIndex}
-                  custom={direction}
-                  initial={{ x: direction > 0 ? 300 : -300, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: direction > 0 ? -300 : 300, opacity: 0 }}
-                  transition={{
-                    x: { type: "spring", stiffness: 300, damping: 30 },
-                    opacity: { duration: 0.2 }
-                  }}
+                  key={index}
+                  initial={{ opacity: index === 0 ? 1 : 0 }}
+                  animate={{ opacity: index === currentImageIndex ? 1 : 0 }}
+                  transition={{ duration: 0.3 }}
                   className="absolute inset-0"
+                  style={{ pointerEvents: index === currentImageIndex ? "auto" : "none" }}
                 >
                   <ImageWithFallback
-                    src={carouselImages[currentImageIndex].src}
-                    alt={carouselImages[currentImageIndex].alt}
+                    src={image.src}
+                    alt={image.alt}
                     className="w-full h-full object-cover"
                   />
                 </motion.div>
-              </AnimatePresence>
+              ))}
 
               {/* Navigation buttons at bottom right */}
               <div className="absolute bottom-4 right-4 flex gap-2">

@@ -47,14 +47,14 @@ DEADLINE: <2026-06-05 Fri>
 - [ ] Añadir el perfil de ramenroot
 - [ ] Actualizar la información de los miembros
 - [ ] Mejorar las fotos de los miembros
-**** NEXT [#B] Home [%]
+**** IN-PROGRESS [#B] Home [%]
 DEADLINE: <2026-06-05 Fri>
 ***** DONE LatestHighlights
 - [X] Mostar el último evento o el próximo evento.
 - [X] Cambiar el badge/tag de los cursos lugar para que coincida con el tag del post del blog
 - [X] Colocar la info del evento a modo de dots y no como un "string" solo
 - [X] Cambiar de lugar el badge de "proximamente" de la tarjeta de evento y colocarlo junto a los tags
-***** NEXT Hero [70%]
+***** IN-PROGRESS Hero
 - [X] Cambiar el color de fondo por algo gris pero con degradados
 - [X] Cambiar el texto por el logo del laboratorio.
 - [X] Mejorar el carrusel de imágenes
@@ -65,8 +65,8 @@ DEADLINE: <2026-06-05 Fri>
 - [X] Tener un poco más de efecto "Glow", pero que siga siendo sutil...
 - [X] Usar un logo para el tema oscuro y otro para el tema claro.
 - [ ] Modificar el botón "únete a la comunidad", en este momento manda un mail, sería mejor usar un form de nextcloud
-- [ ] Optimizar el código de Hero, aún hay glow que ya no se usa.
-- [ ] Optimizar el carrusel
+- [X] Optimizar el código de Hero, aún hay glow que ya no se usa.
+- [X] Optimizar el carrusel
 ****** Glow.. descartado
 import { Button } from "./ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
@@ -485,7 +485,6 @@ DEADLINE: <2026-06-05 Fri>
 - [X] Tener un tema adaptativo claro/oscuro para la cita.
 *** TODO Optimización/Bugs/Testing/Corrección de vulnerabilidades
 DEADLINE: <2026-06-12 Fri>
-**** TODO [#A] Pantalla de carga
 **** TODO [#A] Mejorar el SEO del sitio (para posicionarlo mejor al buscar en el navegador)
 **** NEXT Actualizar README
 **** DONE Modo oscuro automático según el sistema
@@ -495,7 +494,7 @@ El gestor de paquetes npm no es seguro por defecto y este último mes ha habido 
 **** [#B] Colocar la información correcta en la fecha de inicio de los miembros.
 **** [#C] Sería bueno "Normalizar" el tamaño de los títulos del Home.
 **** [#C] Tal vez sería bueno cambiar el texto de "Proyectos en desarrollo" del Home, pues hay algunas investigaciones que ya no están en curso.
-**** [#C] Añadir una "pantalla de carga" al inicio.
+**** DONE [#C] Añadir una "pantalla de carga" al inicio.
 **** [#B] Hacer que los íconos sean tomados de un svg local
 en blog.tsx hay import { User, ArrowRight, Calendar, Clock } from "lucide-react", etc
 **** NEXT Cuando regreso a una página anterior, que no me regrese hasta el inicio, si no que se quede en el mismo sitio antes de dar click.
