@@ -4,16 +4,16 @@ import {
   Link as LinkIcon,
 } from "lucide-react";
 
-import { FacebookIcon } from "./ui/source/icons/FacebookIcon";
-import { GithubIcon } from "./ui/source/icons/GithubIcon";
-import { GitlabIcon } from "./ui/source/icons/GitlabIcon";
-import { InstagramIcon } from "./ui/source/icons/InstagramIcon";
-import { LinkedinIcon } from "./ui/source/icons/linkedinIcon";
-import { MailOpenIcon } from "./ui/source/icons/MailOpenIcon";
-import { SendIcon } from "./ui/source/icons/SendIcon";
-import { TwitterIcon } from "./ui/source/icons/TwitterIcon";
-import { YoutubeIcon } from "./ui/source/icons/YoutubeIcon";
-import { GlobeIcon } from "./ui/source/icons/GlobeIcon";
+import { FacebookIcon } from "./icons/FacebookIcon";
+import { GithubIcon } from "./icons/GithubIcon";
+import { GitlabIcon } from "./icons/GitlabIcon";
+import { InstagramIcon } from "./icons/InstagramIcon";
+import { LinkedinIcon } from "./icons/linkedinIcon";
+import { MailOpenIcon } from "./icons/MailOpenIcon";
+import { SendIcon } from "./icons/SendIcon";
+import { TwitterIcon } from "./icons/TwitterIcon";
+import { YoutubeIcon } from "./icons/YoutubeIcon";
+import { GlobeIcon } from "./icons/GlobeIcon";
 
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";

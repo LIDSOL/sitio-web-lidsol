@@ -1,5 +1,5 @@
 import { ArrowLeft, ExternalLink, Star, Users, CheckCircle, Download, Construction, Skull, ShieldQuestion } from "lucide-react";
-import { GithubIcon } from "./ui/source/icons/GithubIcon";
+import { GithubIcon } from "./icons/GithubIcon";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { useLanguage } from "./LanguageProvider";

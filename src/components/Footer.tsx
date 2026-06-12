@@ -1,12 +1,12 @@
 import { Code2 } from "lucide-react";
-import { FacebookIcon } from "./ui/source/icons/FacebookIcon";
-import { YoutubeIcon } from "./ui/source/icons/YoutubeIcon";
-import { SendIcon } from "./ui/source/icons/SendIcon";
-import { InstagramIcon } from "./ui/source/icons/InstagramIcon";
-import { GithubIcon } from "./ui/source/icons/GithubIcon";
-import { TwitterIcon } from "./ui/source/icons/TwitterIcon";
-import { GitlabIcon } from "./ui/source/icons/GitlabIcon";
-import { LinkedinIcon } from "./ui/source/icons/linkedinIcon";
+import { FacebookIcon } from "./icons/FacebookIcon";
+import { YoutubeIcon } from "./icons/YoutubeIcon";
+import { SendIcon } from "./icons/SendIcon";
+import { InstagramIcon } from "./icons/InstagramIcon";
+import { GithubIcon } from "./icons/GithubIcon";
+import { TwitterIcon } from "./icons/TwitterIcon";
+import { GitlabIcon } from "./icons/GitlabIcon";
+import { LinkedinIcon } from "./icons/linkedinIcon";
 import { useLanguage } from "./LanguageProvider";
 
 export function Footer() {
