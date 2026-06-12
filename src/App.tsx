@@ -22,6 +22,8 @@ import { ThemeProvider } from "./components/ThemeProvider";
 import { LanguageProvider } from "./components/LanguageProvider";
 import { CursorEffect } from "./components/CursorEffect";
 import { LoadingScreen } from "./components/LoadingScreen";
+import { SEO, OrganizationSchema } from "./components/SEO";
+import { useLanguage } from "./components/LanguageProvider";
 import { useState, useEffect, useRef } from "react";
 import { blogPosts } from "../content/blogPosts";
 import { projects } from "../content/projects";
@@ -329,57 +331,208 @@ export default function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
-        {isLoading ? (
-          <LoadingScreen progress={loadProgress} />
-        ) : null}
-        <div className={`min-h-screen ${isLoading ? "hidden" : ""}`}>
-          <CursorEffect />
-          <Header />
-          {currentView === "blogPost" && selectedPost ? (
-            <BlogPost post={selectedPost} onBack={handleBackToBlog} onMemberClick={handleMemberClick} />
-          ) : currentView === "blog" ? (
-            <Blog onPostClick={handlePostClick} />
-          ) : currentView === "eventDetail" && selectedEvent ? (
-            <EventDetail event={selectedEvent} onBack={handleBackToEvents} onMemberClick={handleMemberClick} />
-          ) : currentView === "events" ? (
-            <Events onEventClick={handleEventClick} />
-          ) : currentView === "courseDetail" && selectedCourse ? (
-            <CourseDetail course={selectedCourse} onBack={handleBackToCourses} />
-          ) : currentView === "courses" ? (
-            <Courses onCourseClick={handleCourseClick} />
-          ) : currentView === "publications" ? (
-            <Publications onPublicationClick={handlePublicationClick} />
-          ) : currentView === "publicationDetail" && selectedPublication ? (
-            <PublicationDetail publication={selectedPublication} onBack={handleBackToPublications} />
-          ) : currentView === "projectDetail" && selectedProject ? (
-            <ProjectDetail project={selectedProject} onBack={handleBackToProjects} />
-          ) : currentView === "projects" ? (
-            <Projects onProjectClick={handleProjectClick} />
-          ) : currentView === "aboutMember" && selectedMember ? (
-            <AboutMember member={selectedMember} onBack={handleBackToAbout} />
-          ) : currentView === "about" ? (
-            <About onMemberClick={handleMemberClick} />
-          ) : currentView === "license" ? (
-            <License />
-          ) : (
-            <>
-              <Hero />
-              <Values />
-              <FeaturedProjects />
-              <LatestHighlights
-                onViewPost={handlePostClick}
-                onViewAllPosts={() => { window.location.hash = "#blog"; }}
-                onViewCourse={handleCourseClick}
-                onViewAllCourses={handleViewAllCourses}
-                onViewEvent={handleEventClick}
-                onViewAllEvents={handleViewAllEvents}
-              />
-              <Community />
-            </>
-          )}
-          <Footer />
-        </div>
+        <AppContent
+          currentView={currentView}
+          isLoading={isLoading}
+          loadProgress={loadProgress}
+          selectedPost={selectedPost}
+          selectedProject={selectedProject}
+          selectedCourse={selectedCourse}
+          selectedEvent={selectedEvent}
+          selectedMember={selectedMember}
+          selectedPublication={selectedPublication}
+          onPostClick={handlePostClick}
+          onBackToBlog={handleBackToBlog}
+          onProjectClick={handleProjectClick}
+          onBackToProjects={handleBackToProjects}
+          onCourseClick={handleCourseClick}
+          onBackToCourses={handleBackToCourses}
+          onEventClick={handleEventClick}
+          onBackToEvents={handleBackToEvents}
+          onMemberClick={handleMemberClick}
+          onBackToAbout={handleBackToAbout}
+          onPublicationClick={handlePublicationClick}
+          onBackToPublications={handleBackToPublications}
+          onViewAllEvents={handleViewAllEvents}
+          onViewAllPosts={handleViewAllPosts}
+          onViewAllCourses={handleViewAllCourses}
+        />
       </LanguageProvider>
     </ThemeProvider>
+  );
+}
+
+interface AppContentProps {
+  currentView: ViewType;
+  isLoading: boolean;
+  loadProgress: number;
+  selectedPost: typeof blogPosts[0] | null;
+  selectedProject: typeof projects[0] | null;
+  selectedCourse: typeof courses[0] | null;
+  selectedEvent: typeof events[0] | null;
+  selectedMember: typeof members[0] | null;
+  selectedPublication: typeof publications[0] | null;
+  onPostClick: (id: number) => void;
+  onBackToBlog: () => void;
+  onProjectClick: (id: number) => void;
+  onBackToProjects: () => void;
+  onCourseClick: (id: number) => void;
+  onBackToCourses: () => void;
+  onEventClick: (id: number) => void;
+  onBackToEvents: () => void;
+  onMemberClick: (id: number) => void;
+  onBackToAbout: () => void;
+  onPublicationClick: (id: number) => void;
+  onBackToPublications: () => void;
+  onViewAllEvents: () => void;
+  onViewAllPosts: () => void;
+  onViewAllCourses: () => void;
+}
+
+function AppContent({
+  currentView,
+  isLoading,
+  loadProgress,
+  selectedPost,
+  selectedProject,
+  selectedCourse,
+  selectedEvent,
+  selectedMember,
+  selectedPublication,
+  onPostClick,
+  onBackToBlog,
+  onProjectClick,
+  onBackToProjects,
+  onCourseClick,
+  onBackToCourses,
+  onEventClick,
+  onBackToEvents,
+  onMemberClick,
+  onBackToAbout,
+  onPublicationClick,
+  onBackToPublications,
+  onViewAllEvents,
+  onViewAllPosts,
+  onViewAllCourses,
+}: AppContentProps) {
+  const { language } = useLanguage();
+
+  const t = {
+    home: { en: "Home", es: "Inicio" },
+    blog: { en: "Blog", es: "Blog" },
+    events: { en: "Events", es: "Eventos" },
+    courses: { en: "Courses", es: "Cursos" },
+    projects: { en: "Projects", es: "Proyectos" },
+    about: { en: "About", es: "Acerca de" },
+    publications: { en: "Publications", es: "Publicaciones" },
+    license: { en: "License", es: "Licencia" },
+    homeDesc: {
+      en: "Free Software Research and Development Laboratory at FI UNAM. We promote free and open technologies through projects, courses, events, and publications.",
+      es: "Laboratorio de Investigación y Desarrollo de Software Libre en la FI UNAM. Promovemos tecnologías libres y abiertas mediante proyectos, cursos, eventos y publicaciones.",
+    },
+  };
+
+  const seoProps = (() => {
+    switch (currentView) {
+      case "home":
+        return { title: t.home[language], description: t.homeDesc[language] };
+      case "blog":
+        return { title: t.blog[language], description: t.homeDesc[language] };
+      case "blogPost":
+        return selectedPost
+          ? { title: selectedPost.title[language], description: selectedPost.excerpt[language], type: "article" as const }
+          : { title: t.blog[language], description: t.homeDesc[language] };
+      case "events":
+        return { title: t.events[language], description: t.homeDesc[language] };
+      case "eventDetail":
+        return selectedEvent
+          ? { title: selectedEvent.title[language], description: selectedEvent.summary?.[language] || t.homeDesc[language] }
+          : { title: t.events[language], description: t.homeDesc[language] };
+      case "courses":
+        return { title: t.courses[language], description: t.homeDesc[language] };
+      case "courseDetail":
+        return selectedCourse
+          ? { title: selectedCourse.title[language], description: selectedCourse.shortDescription?.[language] || t.homeDesc[language] }
+          : { title: t.courses[language], description: t.homeDesc[language] };
+      case "projects":
+        return { title: t.projects[language], description: t.homeDesc[language] };
+      case "projectDetail":
+        return selectedProject
+          ? { title: selectedProject.title[language], description: selectedProject.shortDescription?.[language] || t.homeDesc[language] }
+          : { title: t.projects[language], description: t.homeDesc[language] };
+      case "about":
+        return { title: t.about[language], description: t.homeDesc[language] };
+      case "aboutMember":
+        return selectedMember
+          ? { title: selectedMember.name, description: t.homeDesc[language] }
+          : { title: t.about[language], description: t.homeDesc[language] };
+      case "publications":
+        return { title: t.publications[language], description: t.homeDesc[language] };
+      case "publicationDetail":
+        return selectedPublication
+          ? { title: selectedPublication.title[language], description: selectedPublication.abstract?.[language] || t.homeDesc[language] }
+          : { title: t.publications[language], description: t.homeDesc[language] };
+      case "license":
+        return { title: t.license[language], description: t.homeDesc[language] };
+      default:
+        return { title: t.home[language], description: t.homeDesc[language] };
+    }
+  })();
+
+  return (
+    <>
+      <SEO {...seoProps} />
+      <OrganizationSchema />
+      {isLoading ? (
+        <LoadingScreen progress={loadProgress} />
+      ) : null}
+      <div className={`min-h-screen ${isLoading ? "hidden" : ""}`}>
+        <CursorEffect />
+        <Header />
+        {currentView === "blogPost" && selectedPost ? (
+          <BlogPost post={selectedPost} onBack={onBackToBlog} onMemberClick={onMemberClick} />
+        ) : currentView === "blog" ? (
+          <Blog onPostClick={onPostClick} />
+        ) : currentView === "eventDetail" && selectedEvent ? (
+          <EventDetail event={selectedEvent} onBack={onBackToEvents} onMemberClick={onMemberClick} />
+        ) : currentView === "events" ? (
+          <Events onEventClick={onEventClick} />
+        ) : currentView === "courseDetail" && selectedCourse ? (
+          <CourseDetail course={selectedCourse} onBack={onBackToCourses} />
+        ) : currentView === "courses" ? (
+          <Courses onCourseClick={onCourseClick} />
+        ) : currentView === "publications" ? (
+          <Publications onPublicationClick={onPublicationClick} />
+        ) : currentView === "publicationDetail" && selectedPublication ? (
+          <PublicationDetail publication={selectedPublication} onBack={onBackToPublications} />
+        ) : currentView === "projectDetail" && selectedProject ? (
+          <ProjectDetail project={selectedProject} onBack={onBackToProjects} />
+        ) : currentView === "projects" ? (
+          <Projects onProjectClick={onProjectClick} />
+        ) : currentView === "aboutMember" && selectedMember ? (
+          <AboutMember member={selectedMember} onBack={onBackToAbout} />
+        ) : currentView === "about" ? (
+          <About onMemberClick={onMemberClick} />
+        ) : currentView === "license" ? (
+          <License />
+        ) : (
+          <>
+            <Hero />
+            <Values />
+            <FeaturedProjects />
+            <LatestHighlights
+              onViewPost={onPostClick}
+              onViewAllPosts={() => { window.location.hash = "#blog"; }}
+              onViewCourse={onCourseClick}
+              onViewAllCourses={onViewAllCourses}
+              onViewEvent={onEventClick}
+              onViewAllEvents={onViewAllEvents}
+            />
+            <Community />
+          </>
+        )}
+        <Footer />
+      </div>
+    </>
   );
 }

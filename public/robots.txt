@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lidsol.fi-b.unam.mx/sitemap.xml

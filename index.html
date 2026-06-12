@@ -1,23 +1,33 @@
-
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>LIDSoL</title>
-      <script>
-        (function() {
-          var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          if (dark) document.documentElement.classList.add('dark');
-        })();
-      </script>
-      <link rel="icon" type="image/svg+xml" href="/home/LIDSOLlogoColor-claro.svg" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
-    </head>
-
-    <body>
-      <div id="root"></div>
-      <script type="module" src="/src/main.tsx"></script>
-    </body>
-  </html>
-
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LIDSoL - Laboratorio de Investigación y Desarrollo de Software Libre</title>
+    <meta name="description" content="Laboratorio de Investigación y Desarrollo de Software Libre en la FI UNAM. Promovemos tecnologías libres y abiertas mediante proyectos, cursos, eventos y publicaciones." />
+    <meta name="keywords" content="software libre, open source, linux, lidsol, unam, fi, laboratorio" />
+    <meta property="og:title" content="LIDSoL - Laboratorio de Investigación y Desarrollo de Software Libre" />
+    <meta property="og:description" content="Laboratorio de Investigación y Desarrollo de Software Libre en la FI UNAM." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lidsol.fi-b.unam.mx" />
+    <meta property="og:image" content="/home/LIDSOLlogo.svg" />
+    <meta property="og:site_name" content="LIDSoL" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lidsol" />
+    <link rel="canonical" href="https://lidsol.fi-b.unam.mx" />
+    <link rel="icon" type="image/svg+xml" href="/home/LIDSOLlogoColor-claro.svg" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous" />
+    <script>
+      (function() {
+        var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) document.documentElement.classList.add('dark');
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
