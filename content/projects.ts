@@ -1,10 +1,9 @@
-import privanonImg  from "../src/components/ui/source/imagesProjects/priv-anon.jpg";
-import torImg       from "../src/components/ui/source/imagesProjects/tor.png"
-import mirrorsImg   from "../src/components/ui/source/imagesProjects/mirrors.png";
-import drawdbImg    from "../src/components/ui/source/imagesProjects/drawdb.png";
-import papeadorImg  from "../src/components/ui/source/imagesProjects/papeador.png";
-import swayImg      from "../src/components/ui/source/imagesProjects/sway.png";
-import swayyImg     from "../src/components/ui/source/imagesProjects/sway2.png";
+const privanonImg  = "/images-projects/priv-anon.jpg";
+const torImg       = "/images-projects/tor.png";
+const mirrorsImg   = "/images-projects/mirrors.png";
+const drawdbImg    = "/images-projects/drawdb.png";
+const papeadorImg  = "/images-projects/papeador.png";
+const swayyImg     = "/images-projects/sway2.png";
 
 export interface Project {
   id: number;
