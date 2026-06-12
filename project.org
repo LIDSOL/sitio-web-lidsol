@@ -496,11 +496,7 @@ El gestor de paquetes npm no es seguro por defecto y este último mes ha habido 
 **** NEXT [#C] Tal vez sería bueno cambiar el texto de "Proyectos en desarrollo" del Home, pues hay algunas investigaciones que ya no están en curso.
 **** DONE [#C] Añadir una "pantalla de carga" al inicio.
 **** NEXT [#A] Reorganizar los directorios para que sean como los de Hugo
-**** NEXT [#B] Hacer que los íconos sean tomados de un svg local
-en blog.tsx hay import { User, ArrowRight, Calendar, Clock } from "lucide-react", etc
-***** IN-PROGRESS Crear un directorio en ./public/ con todos los iconos usados en el sitio Web
-***** Importarlos en cada página
-***** Borrar el directorio ./src/components/ui/iconos y verificar que no existan errores
+**** IN-PROGRESS [#B] Hacer que los íconos sean tomados de un svg local
 **** DONE Cuando regreso a una página anterior, que no me regrese hasta el inicio, si no que se quede en el mismo sitio antes de dar click.
 **** DONE [#B] Mejora el script del blog.
 **** DONE CursorEffect
