@@ -1,5 +1,5 @@
 import { useLanguage } from "./LanguageProvider";
-import { publications, Publication } from "../data/publications";
+import { publications, Publication } from "../../content/publications";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { FileText, ExternalLink, Download, Users, Calendar, Award, Quote } from "lucide-react";

@@ -3,7 +3,7 @@ import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Star, Users, ArrowRight } from "lucide-react";
 import { useState, useMemo, useCallback, useEffect } from "react";
-import { projects } from "../data/projects";
+import { projects } from "../../content/projects";
 import { useLanguage } from "./LanguageProvider";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";

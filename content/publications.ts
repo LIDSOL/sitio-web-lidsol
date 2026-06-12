@@ -1,5 +1,5 @@
-import torBrowserImg    from "../../public/publication-images/tor-browser.jpg";
-import vrImg            from "../../public/publication-images/vr-para-enfentar-fobias.png";
+import torBrowserImg    from "../public/publication-images/tor-browser.jpg";
+import vrImg            from "../public/publication-images/vr-para-enfentar-fobias.png";
 
 export interface Publication {
   id: number;

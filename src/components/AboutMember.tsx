@@ -18,7 +18,7 @@ import { GlobeIcon } from "./ui/source/icons/GlobeIcon";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { useLanguage } from "./LanguageProvider";
-import { Member } from "../data/members";
+import { Member } from "../../content/members";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 interface AboutMemberProps {

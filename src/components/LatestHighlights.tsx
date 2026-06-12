@@ -2,9 +2,9 @@ import { Badge } from "./ui/badge";
 import { Calendar, Clock, MapPin, BookOpen, User, ArrowRight, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useLanguage } from "./LanguageProvider";
-import { blogPosts } from "../data/blogPosts";
-import { courses } from "../data/courses";
-import { events, getEventStatus } from "../data/events";
+import { blogPosts } from "../../content/blogPosts";
+import { courses } from "../../content/courses";
+import { events, getEventStatus } from "../../content/events";
 
 interface LatestHighlightsProps {
   onViewPost: (id: number) => void;

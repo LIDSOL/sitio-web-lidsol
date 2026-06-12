@@ -1,12 +1,12 @@
-import latexImg             from "../../public/courses-images/LaTeX.png";
-import latexThumbImg        from "../../public/courses-images/LaTeX.png";
-import latexBannerImg       from "../../public/courses-images/LaTeXfeatured.png";
-import lispImg              from "../../public/courses-images/lisp.png";
-import pumaHatImg           from "../../public/courses-images/pumapwn.jpg";
-import matrixIMg            from "../../public/courses-images/markus-spiske-iar-afB0QQw-unsplash.jpg";
-import sysAdminCoverImg     from "../../public/courses-images/sysadmin.webp";
-import sysAdminImg          from "../../public/courses-images/sysadmin.webp";
-import pythonFeaturedImg    from "../../public/courses-images/python-featured.png";
+import latexImg             from "../public/courses-images/LaTeX.png";
+import latexThumbImg        from "../public/courses-images/LaTeX.png";
+import latexBannerImg       from "../public/courses-images/LaTeXfeatured.png";
+import lispImg              from "../public/courses-images/lisp.png";
+import pumaHatImg           from "../public/courses-images/pumapwn.jpg";
+import matrixIMg            from "../public/courses-images/markus-spiske-iar-afB0QQw-unsplash.jpg";
+import sysAdminCoverImg     from "../public/courses-images/sysadmin.webp";
+import sysAdminImg          from "../public/courses-images/sysadmin.webp";
+import pythonFeaturedImg    from "../public/courses-images/python-featured.png";
 
 export interface Course {
   id: number;

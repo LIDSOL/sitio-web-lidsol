@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const CONTENT_DIR = path.join(__dirname, '..', 'content', 'blog');
-const OUTPUT_FILE = path.join(__dirname, '..', 'src', 'data', 'blogPosts.ts');
+const OUTPUT_FILE = path.join(__dirname, '..', 'content', 'blogPosts.ts');
 const PUBLIC_IMAGES_DIR = path.join(__dirname, '..', 'public', 'blog-images');
 
 const SUPPORTED_LANGUAGES = ['es', 'en'];

@@ -3,7 +3,7 @@ import { GithubIcon } from "./ui/source/icons/GithubIcon";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { useLanguage } from "./LanguageProvider";
-import { Project } from "../data/projects";
+import { Project } from "../../content/projects";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 

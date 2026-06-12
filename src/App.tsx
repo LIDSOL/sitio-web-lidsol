@@ -23,12 +23,12 @@ import { LanguageProvider } from "./components/LanguageProvider";
 import { CursorEffect } from "./components/CursorEffect";
 import { LoadingScreen } from "./components/LoadingScreen";
 import { useState, useEffect, useRef } from "react";
-import { blogPosts } from "./data/blogPosts";
-import { projects } from "./data/projects";
-import { courses } from "./data/courses";
-import { events } from "./data/events";
-import { members } from "./data/members";
-import { publications } from "./data/publications";
+import { blogPosts } from "../content/blogPosts";
+import { projects } from "../content/projects";
+import { courses } from "../content/courses";
+import { events } from "../content/events";
+import { members } from "../content/members";
+import { publications } from "../content/publications";
 
 type ViewType =
   | "home"
@@ -61,7 +61,6 @@ export default function App() {
 
   useEffect(() => {
     const criticalImages = [
-      "/home/eddie-sennov-43P5FiTFcXo-unsplash.jpg",
       "/home/lukas-DTochqoK3Rg-unsplash.jpg",
       "/home/lukas-NLSXFjl_nhc-unsplash.jpg",
       "/home/lukas-uZkHtWsi2dE-unsplash.jpg",

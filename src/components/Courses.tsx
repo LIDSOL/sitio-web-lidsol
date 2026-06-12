@@ -3,7 +3,7 @@ import { Badge } from "./ui/badge";
 import { BookOpen, Clock, Calendar, Users, ArrowRight, Award } from "lucide-react";
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { courses } from "../data/courses";
+import { courses } from "../../content/courses";
 import { useLanguage } from "./LanguageProvider";
 
 interface CoursesProps {

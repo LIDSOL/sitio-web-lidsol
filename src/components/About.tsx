@@ -1,7 +1,7 @@
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 import { useLanguage } from "./LanguageProvider";
-import { members, Member } from "../data/members";
+import { members, Member } from "../../content/members";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Timeline } from "./Timeline";
 

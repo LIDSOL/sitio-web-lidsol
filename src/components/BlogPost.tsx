@@ -10,7 +10,7 @@ import rehypeKatex from "rehype-katex";
 import { useLanguage } from "./LanguageProvider";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { members } from "../data/members";
+import { members } from "../../content/members";
 
 interface BlogPostContent {
   id: number;

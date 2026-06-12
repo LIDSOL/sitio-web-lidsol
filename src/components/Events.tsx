@@ -4,7 +4,7 @@ import { Calendar as CalendarIcon, MapPin, Clock, ArrowRight } from "lucide-reac
 import { Button } from "./ui/button";
 import { Calendar } from "./ui/calendar";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { events, getEventStatus } from "../data/events";
+import { events, getEventStatus } from "../../content/events";
 import { useLanguage } from "./LanguageProvider";
 import { useState, useMemo } from "react";
 

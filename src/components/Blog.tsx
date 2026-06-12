@@ -6,7 +6,7 @@ import { Badge } from "./ui/badge";
 import { User, ArrowRight, Calendar, Clock } from "lucide-react";
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { blogPosts } from "../data/blogPosts";
+import { blogPosts } from "../../content/blogPosts";
 import { useLanguage } from "./LanguageProvider";
 import { useState } from "react";
 import { motion } from "motion/react";
