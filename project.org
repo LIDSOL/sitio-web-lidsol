@@ -488,12 +488,12 @@ DEADLINE: <2026-06-05 Fri>
 - [X] Tener un tema adaptativo claro/oscuro para la cita.
 *** TODO Optimización/Bugs/Testing/Corrección de vulnerabilidades
 DEADLINE: <2026-06-12 Fri>
-**** IN-PROGRESS [#A] Logo de LIDSoL en la pestaña del navegador
+**** DONE [#A] Logo de LIDSoL en la pestaña del navegador
 DEADLINE: <2026-07-04 Sat>
 **** NEXT [#A] Ajustar el sitio web
 DEADLINE: <2026-07-04 Sat>
 Proporción?
-**** NEXT [#A] Auditoría de ciberseguridad
+**** IN-PROGRESS [#A] Correción de vulnerabilidades (dependabot)
 DEADLINE: <2026-07-04 Sat>
 **** TODO [#A] Actualizar README
 DEADLINE: <2026-07-04 Sat>
