@@ -4,7 +4,8 @@
 ** DONE Planeación de desarrollo
 ** IN-PROGRESS Desarrollo
 *** TODO Código
-**** IN-PROGRESS Course [93%]
+**** TODO [#C] Course [93%]
+DEADLINE: <2026-07-11 Sat>
 - [X] Mudar el contenido al sitio actual [100%]
   - [X] Seminario de lisp
   - [X] Fundamentos de Python
@@ -26,8 +27,8 @@
 - [ ] ¿Una subsección para contenido de cursos?
 - [X] Mejorar el aspecto de la sección de "módulos del curso".
 - [X] Mejorar el aspecto de la fuente de "Descripción del curso"
-**** IN-PROGRESS [#A] About y AboutMembers
-DEADLINE: <2026-06-05 Fri>
+**** TODO [#B] About y AboutMembers
+DEADLINE: <2026-07-04 Sat>
 - [X] Sería bueno que la zona de "Educado en" esté con dots.
 - [X] ¿De dónde salió ese ícono de mail? ¿Nani Kore?? Borralo..
 - [X] Faltan los intereses... v2.1.1
@@ -351,9 +352,11 @@ DEADLINE: <2026-02-12 Thu>
     - src/components/ProjectDetail.tsx: Actualizado para usar project.tags[language]
     - src/components/FeaturedProjects.tsx: Actualizado para usar project.tags?.[language]
   - [X] Verificar el estado de los proyectos (para que el ícono sea el adecuado)
-**** DONE Blog (Blog.tsx y BlogDetail.tsx) [100%]
-DEADLINE: <2026-03-13 Fri>
-- [X] Blog [100%]
+**** NEXT [#A] Blog (Blog.tsx y BlogDetail.tsx) [75%]
+DEADLINE: <2026-07-04 Sat>
+- [-] Blog [75%]
+  - [ ] Mejorar la imagen de portada del blog, y ajustar los post a este cambio.
+  - [ ] Bloques de código adaptativos según el tema
   - [X] Hacer que el Blog y el BlogDetail soporten el multi-idioma
   - [X] Hay una _Tag_, *general*, que se muestra tanto en el Blog como en BlogDetail, esta no respeta el multi-idioma. Mejorar esto, para que funcionen correctamente los tags (tomados desde los archivos de markdown)
   - [X] Mejoras en la responsividad
@@ -485,15 +488,44 @@ DEADLINE: <2026-06-05 Fri>
 - [X] Tener un tema adaptativo claro/oscuro para la cita.
 *** TODO Optimización/Bugs/Testing/Corrección de vulnerabilidades
 DEADLINE: <2026-06-12 Fri>
-**** TODO [#A] Mejorar el SEO del sitio (para posicionarlo mejor al buscar en el navegador)
-**** NEXT Actualizar README
+**** IN-PROGRESS [#A] Logo de LIDSoL en la pestaña del navegador
+DEADLINE: <2026-07-04 Sat>
+**** NEXT [#A] Ajustar el sitio web
+DEADLINE: <2026-07-04 Sat>
+Proporción?
+**** NEXT [#A] Auditoría de ciberseguridad
+DEADLINE: <2026-07-04 Sat>
+**** TODO [#A] Actualizar README
+DEADLINE: <2026-07-04 Sat>
+**** TODO [#A] PageSpeed / Lighthouse audit
+DEADLINE: <2026-07-04 Sat>
+Ejecutar auditoría de Lighthouse para identificar cuellos de botella de rendimiento, accesibilidad, y buenas prácticas. Optimizar según resultados.
+**** NEXT [#B] Service Worker para PWA/offline
+DEADLINE: <2026-07-08 Wed>
+Implementar un Service Worker que permita:
+- Cachear assets estáticos para carga offline/instantánea
+- Estrategia de caché para imágenes y datos
+- Instalación como PWA (manifest.json, iconos)
+- Notificaciones push (opcional)
+Esto mejora la experiencia de usuario en conexiones lentas y permite que el sitio funcione sin conexión.
+**** TODO [#B] Mejorar el SEO del sitio (para posicionarlo mejor al buscar en el navegador)
+DEADLINE: <2026-07-08 Wed>
+  - Agregar meta tag de verificación de Google Search Console en index.html
+  - Revisar la indexación desde Google Search Console y solicitar re-crawleo
+**** TODO [#B] Colocar la información correcta en la fecha de inicio de los miembros.
+DEADLINE: <2026-07-08 Wed>
+**** TODO [#C] Sería bueno "Normalizar" el tamaño de los títulos del Home.
+DEADLINE: <2026-07-11 Sat>
+**** TODO [#C] Tal vez sería bueno cambiar el texto de "Proyectos en desarrollo" del Home, pues hay algunas investigaciones que ya no están en curso.
+DEADLINE: <2026-07-11 Sat>
+**** TODO [#C] Implementar un script para "convertir" md a ts, para hacer más fácil añadir contenido al sitio web
+O igual añadir un panel desde el cuál, miembros del lab puedan loggearse y añadir contenido...
+**** TODO [#C] Server-Side Rendering (SSR)
+Migrar a un framework con SSR (Next.js, Astro, etc.) para obtener URLs reales sin hash, mejor indexación en buscadores, y mejor rendimiento de carga inicial.
 **** DONE Modo oscuro automático según el sistema
 **** DONE [#A] Dejar de usar npm por seguridad
 El gestor de paquetes npm no es seguro por defecto y este último mes ha habido ataques a la cadena de suministros; según lo informado por SafeDep, un mantenedor comprometido publico 637 versiones maliciosas en 317 paquetes; es por ello que vamos a cambiar de gestor de paquetes a pnpm versión 11 o superior; pnpm por defecto resulta más seguro, por ejemplo, gracias a minimumReleaseAge no se instalan paquetes con menos de un día de haber sido publicados y evita la instalación de sub-dependencias de fuentes que pueden resultar "extrañas" gracias a blockExocticSubdeps.
 **** DONE Desactivar la ejecución automática de scripts y crear un por área (miembros, eventos, etc) para añadir info maś fácilmente sin la necesidad de meterte al ts
-**** [#B] Colocar la información correcta en la fecha de inicio de los miembros.
-**** NEXT [#C] Sería bueno "Normalizar" el tamaño de los títulos del Home.
-**** NEXT [#C] Tal vez sería bueno cambiar el texto de "Proyectos en desarrollo" del Home, pues hay algunas investigaciones que ya no están en curso.
 **** DONE [#C] Añadir una "pantalla de carga" al inicio.
 **** DONE [#A] Reorganizar los directorios para que sean como los de Hugo
 **** DONE [#B] Hacer que los íconos sean tomados de un svg local
@@ -503,9 +535,8 @@ El gestor de paquetes npm no es seguro por defecto y este último mes ha habido 
 Al estar en dispositivos móviles, el efecto de brillo que sigue al cursos se queda pillado.
 **** DONE Responsibidad
 Hay un problema con las tarjetas de "Último curso, Último post de blog" en dispositivos móviels el contenido no se ve completo.
-**** Auditoría de ciberseguridad
 *** TODO Documentar
-DEADLINE: <2026-06-12 Fri>
+DEADLINE: <2026-07-18 Sat>
 ** DONE Deploy
 DEADLINE: <2026-03-28 Sat>
 * Arquitectura
@@ -718,11 +749,10 @@ Adicionalmente:
 - sonner (toast notifications)
 
 ** Deployment
-
 *** Estado Actual
 - Build output en =build/=
 - Servido estáticamente via Nginx
-- Docker container definido pero no integrado con CI/CD
-
 *** GitLab CI
+- Docker container definido pero no integrado con CI/CD
 El archivo =.gitlab-ci.yml= está configurado para Hugo (legacy), necesita actualización para el stack actual de Vite/React.
+** Notas
